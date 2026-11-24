@@ -13,7 +13,7 @@
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 [hidden]{display:none!important}
-html{scroll-padding-top:80px}
+html{scroll-padding-top:var(--navh,24px)}
 body{margin:0;color:var(--ink);font:18px/1.6 "Atkinson Hyperlegible",system-ui,sans-serif;overflow-x:clip;
   background-color:var(--bg);
   background-image:linear-gradient(var(--paper-grid) 1px,transparent 1px),linear-gradient(90deg,var(--paper-grid) 1px,transparent 1px);
@@ -87,7 +87,7 @@ table.which{border-collapse:collapse;width:100%;margin:12px 0;font-size:17px;bac
 .which th{font-size:15px;color:var(--mute);font-weight:700;background:var(--soft)}
 
 /* exercises: a page of the Heft, with the red margin line */
-.ex{position:relative;border:2px solid var(--ink);border-radius:20px;padding:20px clamp(14px,3vw,26px) 20px clamp(26px,5vw,48px);margin:26px 0;scroll-margin-top:80px;background:var(--card);box-shadow:5px 5px 0 var(--shadow)}
+.ex{position:relative;border:2px solid var(--ink);border-radius:20px;padding:20px clamp(14px,3vw,26px) 20px clamp(26px,5vw,48px);margin:26px 0;background:var(--card);box-shadow:5px 5px 0 var(--shadow)}
 .ex::before{content:"";position:absolute;top:0;bottom:0;left:clamp(14px,3vw,30px);width:2px;background:var(--margin)}
 .ex-head{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;margin-bottom:6px}
 .ex-head h3{margin:0;font-size:26px}

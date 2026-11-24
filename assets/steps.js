@@ -237,6 +237,12 @@
     }
     exs.forEach(setupExercise);
     progressUpdate();
+    // jump targets land below the sticky nav (its height changes with the progress bar and screen size)
+    if (nav) {
+      const setNavH = () => document.documentElement.style.setProperty('--navh', (nav.offsetHeight + 16) + 'px');
+      setNavH(); window.addEventListener('resize', setNavH);
+      if (location.hash) requestAnimationFrame(() => { const t = document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView(); });
+    }
     setupReveals(document);
     setupPlay();
     setupCircle();
