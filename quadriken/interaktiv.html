@@ -190,7 +190,7 @@ t1:'Brennpunkt',t2:'Tangente',t3:'Kreis & Gerade',t4:'Zwei Kreise',quiz:'Erst se
 snap:'q so wählen, dass D = 0 (Tangente)',dragA:'Den gelben Punkt A kannst du auch im Bild ziehen.',
 mqHelp:'g(x) = m·x + q.  m = Steigung: gehst du 1 nach rechts, geht die Gerade m nach oben (bei m < 0 nach unten).  q = y-Achsenabschnitt: hier schneidet die Gerade die y-Achse, im Punkt (0, q). Beides siehst du am roten Dreieck. Wird die Gerade grün, ist sie eine Tangente.',
 method4:'Rechenweg hier: beide Kreisgleichungen ausmultiplizieren und voneinander abziehen. Dann fallen x² und y² weg und es bleibt eine Gerade durch beide Schnittpunkte. Das Skript (A12) löst nach y auf und quadriert zweimal: gleiche Punkte, aber viel mehr Rechnung.',
-help:{1:'Eine Parabel ist die Menge aller Punkte P, die gleich weit vom Brennpunkt F und von der Leitgeraden ℓ entfernt sind (17.1, A1). Zieh F, die Leitgerade (Griff rechts) oder P.',
+help:{1:'Eine Parabel ist die Menge aller Punkte P, die gleich weit vom Brennpunkt F und von der Leitgeraden ℓ entfernt sind (17.1, A1). Zieh F, die Leitgerade (Griff rechts), P oder den Scheitel S (S verschiebt die ganze Parabel, ohne sie umzudrehen).',
 2:'Eine Gerade ist Tangente, wenn f(x) = g(x) genau eine Lösung hat, also D = 0 (17.2, A2–A8). Verschieb die Gerade oder zieh einen Punkt A und schau, wie viele Tangenten es gibt.',
 3:'Kreisgleichung (x − a)² + (y − b)² = r² und Schnitt mit einer Geraden per Einsetzen (17.3–17.4, A9, A11). Zieh den Mittelpunkt M oder verändere die Gerade.',
 4:'Schnittpunkte zweier Kreise (17.5, A12). Zieh die Mittelpunkte M₁ und M₂ oder gib Mittelpunkte und Radien ein.'},
@@ -207,7 +207,7 @@ t1:'Focus',t2:'Tangent',t3:'Circle & line',t4:'Two circles',quiz:'Try it first',
 snap:'Choose q so that D = 0 (tangent)',dragA:'You can also drag the yellow point A in the picture.',
 mqHelp:'g(x) = m·x + q.  m = slope: go 1 to the right and the line goes m up (down if m < 0).  q = y-intercept: where the line crosses the y-axis, at the point (0, q). The red triangle shows both. When the line turns green, it is a tangent.',
 method4:'Method used here: expand both circle equations and subtract one from the other. x² and y² cancel, leaving a line through both intersection points. The handout (A12) solves for y and squares twice: same points, much more work.',
-help:{1:'A parabola is the set of all points P that are equally far from the focus F and from the directrix ℓ (17.1, A1). Drag F, the directrix (handle on the right) or P.',
+help:{1:'A parabola is the set of all points P that are equally far from the focus F and from the directrix ℓ (17.1, A1). Drag F, the directrix (handle on the right), P or the vertex S (S moves the whole parabola without flipping it).',
 2:'A line is a tangent when f(x) = g(x) has exactly one solution, i.e. D = 0 (17.2, A2–A8). Move the line, or drag a point A and see how many tangents there are.',
 3:'Circle equation (x − a)² + (y − b)² = r² and intersection with a line by substitution (17.3–17.4, A9, A11). Drag the centre M or change the line.',
 4:'Intersection points of two circles (17.5, A12). Drag the centres M₁ and M₂ or type in centres and radii.'},
@@ -234,7 +234,7 @@ const shift=(v,u)=>Math.abs(u)<1e-9?v:'('+v+(u>0?' − ':' + ')+nf(Math.abs(u))+
 function parseNum(t){t=String(t).trim().replace(',','.').replace(/−/g,'-');const m=t.match(/^(-?\d*\.?\d+)\s*\/\s*(\d*\.?\d+)$/);if(m)return parseFloat(m[1])/parseFloat(m[2]);const v=parseFloat(t);return isNaN(v)?NaN:v}
 const snapH=v=>Math.round(v*2)/2;
 const HASH={1:'brennpunkt',2:'tangente',3:'kreis',4:'zwei-kreise',5:'tangente-punkt'};
-const VB={1:[-6.5,6.5,-3.5,9.5],2:[-6.5,6.5,-3.5,9.5],3:[-6.5,6.5,-6.5,6.5],4:[-6.5,6.5,-6.5,6.5]};
+const VB={1:[-6.5,6.5,-6.5,6.5],2:[-6.5,6.5,-3.5,9.5],3:[-6.5,6.5,-6.5,6.5],4:[-6.5,6.5,-6.5,6.5]};
 const PRE=[{n:'x²',a:1,b:0,c:0,ax:1,ay:-3,m:2,s:'A6'},{n:'x² − 2x + 3',a:1,b:-2,c:3,ax:0,ay:0,m:-3,s:'A2'},{n:'x² − 2x + 25/16',a:1,b:-2,c:25/16,ax:0,ay:0,m:0.5,s:'A3'},{n:'¼(x + 3)² + 1',a:.25,b:1.5,c:3.25,ax:-2,ay:-1,m:1,s:'A7, A8'}];
 const PRE4=[{l:'A12',a1:0,b1:0,r1:85,a2:140,b2:20,r2:65},{l:'ex',a1:0,b1:0,r1:5,a2:7,b2:1,r2:5}];
 let world=VB[1];
@@ -265,7 +265,7 @@ function tab1(){
   h+=`<line class="dir" x1="${world[0]}" y1="${-st.d}" x2="${world[1]}" y2="${-st.d}"/>`;
   h+=fpath(fy);
   h+=`<line class="seg-f" x1="${P[0]}" y1="${-P[1]}" x2="${u}" y2="${-st.f}"/><line class="seg-l" x1="${P[0]}" y1="${-P[1]}" x2="${P[0]}" y2="${-st.d}"/>`;
-  h+=dot(u,v,'pt',.09)+lab(u,v,'S','var(--ink)',.2,.45);
+  h+=dot(u,v,'drag',.17,'data-h="S" style="fill:var(--ink)"')+lab(u,v,'S','var(--ink)',.2,.45);
   h+=dot(u,st.f,'drag',.2,'data-h="F" style="fill:var(--red)"')+lab(u,st.f,'F','var(--red)');
   h+=`<rect class="drag" data-h="L" x="${world[1]-1.1}" y="${-st.d-.22}" width=".9" height=".44" rx=".1" style="fill:var(--ink)"/>`+lab(world[1]-1.1,st.d,'ℓ','var(--ink)',-.4,-.15);
   h+=dot(P[0],P[1],'drag',.2,'data-h="P" style="fill:var(--sol)"')+lab(P[0],P[1],'P');
@@ -440,6 +440,7 @@ function move(e){
   if(drag==='F'){st.u=snapH(x);st.f=snapH(y);if(Math.abs(st.f-st.d)<.25)st.f=st.d+(y>st.d?.5:-.5)}
   else if(drag==='L'){const d=snapH(y);if(Math.abs(d-st.f)>=.5)st.d=d}
   else if(drag==='P'){st.px=Math.round(x*4)/4}
+  else if(drag==='S'){const dv=snapH(Math.max(-6,Math.min(6,y)))-(st.f+st.d)/2;st.u=snapH(x);st.f+=dv;st.d+=dv}
   else if(drag==='A'){st.ax=snapH(x);st.ay=snapH(y)}
   else if(drag==='M'){st.ca=cl(snapH(x),-6,6);st.cb=cl(snapH(y),-6,6)}
   else if(drag==='M1'||drag==='M2'){const {cx,cy,k,step}=map4,sn=v=>Math.round(v/(step/2))*(step/2),i=drag==='M1'?1:2;st['a'+i]=sn(x*k+cx);st['b'+i]=sn(y*k+cy)}
