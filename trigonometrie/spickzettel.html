@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-bilingual>
+<head>
+<meta charset="utf-8">
+<script src="../assets/theme.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cheat sheet Trigonometry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/steps.js"></script>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<main class="wrap">
+<nav class="langsw" aria-label="Sprache / language"><button type="button" data-setlang="de">DE</button><button type="button" data-setlang="en">EN</button></nav>
+<p class="crumb"><a href="de.html" data-l="de">← Trigonometrie</a><a href="./" data-l="en">← Trigonometry</a></p>
+<h1><span data-l="de">Lücken-Spickzettel: Trigonometrie</span><span data-l="en">Fill-in cheat sheet: Trigonometry</span></h1>
+<p class="lead"><span data-l="de">Füll die Lücken selbst aus: auf Papier (ausdrucken) oder im Kopf. Wer die Zusammenfassung selbst schreibt, merkt sie sich viel besser. Tipp auf eine Lücke, um sie zu prüfen.</span><span data-l="en">Fill in the gaps yourself: on paper (print it) or in your head. Writing the summary yourself makes it stick much better. Tap a gap to check it.</span></p>
+<div class="ctrl noprint" style="margin-bottom:18px">
+  <button type="button" class="primary" data-gaps><span data-l="de">Alle Lösungen zeigen / verstecken</span><span data-l="en">Show / hide all answers</span></button>
+  <button type="button" onclick="window.print()"><span data-l="de">Leer drucken</span><span data-l="en">Print blank</span></button>
+  <button type="button" onclick="document.body.classList.add('print-answers');window.print();document.body.classList.remove('print-answers')"><span data-l="de">Mit Lösungen drucken</span><span data-l="en">Print with answers</span></button>
+</div>
+<div class="sheet">
+<h3><span data-l="de">Bogenmass</span><span data-l="en">Radians</span></h3>
+<ul>
+<li>\(180^\circ = \)<span class="gap"><span>\(\pi\)</span></span>, \(\ 90^\circ = \)<span class="gap"><span>\(\frac{\pi}{2}\)</span></span>, \(\ 60^\circ = \)<span class="gap"><span>\(\frac{\pi}{3}\)</span></span>, \(\ 45^\circ = \)<span class="gap"><span>\(\frac{\pi}{4}\)</span></span>, \(\ 30^\circ = \)<span class="gap"><span>\(\frac{\pi}{6}\)</span></span></li>
+<li><span data-l="de">Grad → Bogenmass</span><span data-l="en">degrees → radians</span>: \(r = \)<span class="gap"><span>\(\frac{\pi}{180}\cdot d\)</span></span></li>
+<li><span data-l="de">Bogenlänge</span><span data-l="en">Arc length</span> \(b = \)<span class="gap"><span>\(\alpha\cdot r\)</span></span>, <span data-l="de">Sektorfläche</span><span data-l="en">sector area</span> \(A = \)<span class="gap"><span>\(\frac{\alpha}{2}\,r^2\)</span></span></li>
+</ul>
+<h3><span data-l="de">Einheitskreis</span><span data-l="en">Unit circle</span></h3>
+<ul>
+<li>\(P_\alpha = (\)<span class="gap"><span>\(\cos\alpha\)</span></span>\(,\ \)<span class="gap"><span>\(\sin\alpha\)</span></span>\()\)</li>
+<li>\(\cos\alpha\) = <span class="gap"><span><span data-l="de">x-Koordinate</span><span data-l="en">x-coordinate</span></span></span>, \(\sin\alpha\) = <span class="gap"><span><span data-l="de">y-Koordinate</span><span data-l="en">y-coordinate</span></span></span></li>
+<li>\(\tan\alpha = \)<span class="gap"><span>\(\frac{\sin\alpha}{\cos\alpha}\)</span></span> = <span class="gap"><span><span data-l="de">Steigung des Strahls</span><span data-l="en">slope of the ray</span></span></span></li>
+<li>Pythagoras: \(\sin^2\alpha + \cos^2\alpha = \)<span class="gap"><span>\(1\)</span></span></li>
+</ul>
+<h3><span data-l="de">Spezielle Werte</span><span data-l="en">Special values</span></h3>
+<div class="tbl"><table>
+<tr><th>α</th><th>0°</th><th>30°</th><th>45°</th><th>60°</th><th>90°</th></tr>
+<tr><td class="ss">sin</td><td><span class="gap"><span>0</span></span></td><td><span class="gap"><span>\(\frac12\)</span></span></td><td><span class="gap"><span>\(\frac{\sqrt2}{2}\)</span></span></td><td><span class="gap"><span>\(\frac{\sqrt3}{2}\)</span></span></td><td><span class="gap"><span>1</span></span></td></tr>
+<tr><td class="cc">cos</td><td><span class="gap"><span>1</span></span></td><td><span class="gap"><span>\(\frac{\sqrt3}{2}\)</span></span></td><td><span class="gap"><span>\(\frac{\sqrt2}{2}\)</span></span></td><td><span class="gap"><span>\(\frac12\)</span></span></td><td><span class="gap"><span>0</span></span></td></tr>
+<tr><td class="tt">tan</td><td><span class="gap"><span>0</span></span></td><td><span class="gap"><span>\(\frac{\sqrt3}{3}\)</span></span></td><td><span class="gap"><span>1</span></span></td><td><span class="gap"><span>\(\sqrt3\)</span></span></td><td><span class="gap"><span><span data-l="de">n.d.</span><span data-l="en">n.d.</span></span></span></td></tr>
+</table></div>
+<h3><span data-l="de">Vorzeichen</span><span data-l="en">Signs</span></h3>
+<ul>
+<li><span data-l="de">Quadrant I: alle positiv. II: nur</span><span data-l="en">Quadrant I: all positive. II: only</span> <span class="gap"><span>sin</span></span>, III: <span data-l="de">nur</span><span data-l="en">only</span> <span class="gap"><span>tan</span></span>, IV: <span data-l="de">nur</span><span data-l="en">only</span> <span class="gap"><span>cos</span></span></li>
+</ul>
+<h3><span data-l="de">Symmetrien</span><span data-l="en">Symmetries</span></h3>
+<ul>
+<li>\(\cos(-\alpha) = \)<span class="gap"><span>\(\cos\alpha\)</span></span>, \(\ \sin(-\alpha) = \)<span class="gap"><span>\(-\sin\alpha\)</span></span></li>
+<li>\(\sin(180^\circ - \alpha) = \)<span class="gap"><span>\(\sin\alpha\)</span></span>, \(\ \cos(180^\circ - \alpha) = \)<span class="gap"><span>\(-\cos\alpha\)</span></span></li>
+</ul>
+<h3><span data-l="de">Gleichungen</span><span data-l="en">Equations</span></h3>
+<ul>
+<li>\(\sin\alpha = c\): \(\alpha_1\) <span data-l="de">und</span><span data-l="en">and</span> \(\alpha_2 = \)<span class="gap"><span>\(180^\circ - \alpha_1\)</span></span>, <span data-l="de">dann</span><span data-l="en">then</span> \(+\,k\cdot\)<span class="gap"><span>\(360^\circ\)</span></span></li>
+<li>\(\cos\alpha = c\): \(\alpha_1\) <span data-l="de">und</span><span data-l="en">and</span> \(\alpha_2 = \)<span class="gap"><span>\(-\alpha_1\)</span></span></li>
+<li>\(\tan\alpha = c\): \(\alpha = \alpha_1 + k\cdot\)<span class="gap"><span>\(180^\circ\)</span></span></li>
+<li><span data-l="de">Keine Lösung bei sin und cos, wenn</span><span data-l="en">No solution for sin and cos if</span> <span class="gap"><span>\(|c| \gt 1\)</span></span></li>
+</ul>
+</div>
+</main>
+</body>
+</html>

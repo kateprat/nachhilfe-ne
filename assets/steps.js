@@ -1,10 +1,17 @@
 // Step-by-step reveal for worked (data-mode="worked") and faded (data-mode="faded") exercises,
 // KaTeX rendering with colour macros, and the small m/q line playground.
 (function () {
-  const EN = document.documentElement.lang === 'en';
-  const L = EN
-    ? { show: 'Show working', next: 'Next step', all: 'Show all', reset: 'Start over', stamp: 'Done!', of: (a, b) => `${a} of ${b} done`, clear: 'Reset', axis: 'on an axis', x: 'x-coordinate', y: 'y-coordinate', slope: 'slope', nd: 'not defined' }
-    : { show: 'Rechnung zeigen', next: 'Nächster Schritt', all: 'Alles zeigen', reset: 'Von vorn', stamp: 'Geschafft!', of: (a, b) => `${a} von ${b} geschafft`, clear: 'Zurücksetzen', axis: 'auf einer Achse', x: 'x-Koordinate', y: 'y-Koordinate', slope: 'Steigung', nd: 'nicht definiert' };
+  const isEN = () => document.documentElement.lang === 'en';
+  // every generated label carries both languages; CSS shows the one matching <html lang>
+  const T = {
+    show: ['Rechnung zeigen', 'Show working'], next: ['Nächster Schritt', 'Next step'], all: ['Alles zeigen', 'Show all'],
+    reset: ['Von vorn', 'Start over'], stamp: ['Geschafft!', 'Done!'], clear: ['Zurücksetzen', 'Reset'],
+    predict: ['Was kommt als Nächstes? Erst überlegen, dann klicken.', 'What comes next? Think first, then click.'],
+    axis: ['auf einer Achse', 'on an axis'], x: ['x-Koordinate', 'x-coordinate'], y: ['y-Koordinate', 'y-coordinate'],
+    slope: ['Steigung', 'slope'], nd: ['nicht definiert', 'not defined']
+  };
+  const D = k => `<span data-l="de">${T[k][0]}</span><span data-l="en">${T[k][1]}</span>`;
+  const of = (a, b) => `<span data-l="de">${a} von ${b} geschafft</span><span data-l="en">${a} of ${b} done</span>`;
   const MACROS = { '\\m': '\\textcolor{#3b7be8}{m}', '\\q': '\\textcolor{#e0475b}{q}' };
 
   // progress per topic (same for DE and EN), kept only on this device
@@ -33,7 +40,7 @@
       const calc = st.querySelector('.calc');
       if (!calc) return;
       const b = document.createElement('button');
-      b.type = 'button'; b.className = 'reveal'; b.textContent = L.show;
+      b.type = 'button'; b.className = 'reveal'; b.innerHTML = D('show');
       b.addEventListener('click', () => { calc.hidden = false; b.remove(); });
       calc.before(b);
       st._calcBtn = b;
@@ -41,21 +48,23 @@
 
     const ctrl = document.createElement('div');
     ctrl.className = 'ctrl';
-    ctrl.innerHTML = `<button type="button" class="primary" data-a="next">${L.next}</button>` +
-      `<button type="button" data-a="all">${L.all}</button><button type="button" data-a="reset">${L.reset}</button>`;
+    ctrl.innerHTML = `<button type="button" class="primary" data-a="next">${D('next')}</button>` +
+      `<button type="button" data-a="all">${D('all')}</button><button type="button" data-a="reset">${D('reset')}</button>`;
     ex.querySelector('.steps').after(ctrl);
+    const pred = document.createElement('p'); pred.className = 'predict'; pred.innerHTML = D('predict');
+    if (!faded) ctrl.before(pred);
     const next = ctrl.querySelector('[data-a=next]');
 
     function update(scroll) {
       steps.forEach((st, i) => { st.hidden = i >= shown; st.classList.toggle('on', i === shown - 1); });
       if (done) done.hidden = shown < steps.length;
-      next.hidden = shown >= steps.length;
+      next.hidden = shown >= steps.length; pred.hidden = shown >= steps.length;
       if (scroll) steps[shown - 1].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
       if (scroll && shown >= steps.length && !doneSet.has(ex.id)) { doneSet.add(ex.id); saveDone(); stamp(true); progressUpdate(); }
     }
     function stamp(pop) {
       if (ex.querySelector('.stamp')) return;
-      const s = document.createElement('span'); s.className = 'stamp' + (pop ? ' pop' : ''); s.textContent = L.stamp;
+      const s = document.createElement('span'); s.className = 'stamp' + (pop ? ' pop' : ''); s.innerHTML = D('stamp');
       ex.prepend(s);
     }
     if (doneSet.has(ex.id)) stamp(false);
@@ -64,7 +73,7 @@
       steps.forEach(st => { const c = st.querySelector('.calc'); if (c && st._calcBtn) { c.hidden = true; c.before(st._calcBtn); } });
     }
     ctrl.addEventListener('click', e => {
-      const a = e.target.dataset.a;
+      const a = (e.target.closest('button') || {}).dataset?.a;
       if (a === 'next') { shown = Math.min(steps.length, shown + 1); update(true); }
       if (a === 'all') { shown = steps.length; steps.forEach(st => { const c = st.querySelector('.calc'); if (c) c.hidden = false; st._calcBtn && st._calcBtn.remove(); }); update(false); }
       if (a === 'reset') { shown = 1; hideCalcs(); update(false); ex.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
@@ -87,7 +96,7 @@
     const svg = document.getElementById('playSvg');
     if (!svg) return;
     const mS = document.getElementById('mS'), qS = document.getElementById('qS');
-    const fmt = v => (v < 0 ? '−' : '') + String(Math.abs(v)).replace('.', EN ? '.' : ',');
+    const fmt = v => (v < 0 ? '−' : '') + String(Math.abs(v)).replace('.', isEN() ? '.' : ',');
     function draw() {
       const m = +mS.value, q = +qS.value, R = 5;
       let h = '';
@@ -134,19 +143,81 @@
       h += `<circle cx="${c}" cy="${-sn}" r=".045" fill="var(--ink)"/><text x="${c + .07 * Math.sign(c || 1)}" y="${-sn - .06}" font-size=".13" font-weight="700" fill="var(--ink)" text-anchor="${c >= 0 ? 'start' : 'end'}">P</text>`;
       svg.innerHTML = h;
       const k = ((deg % 360) + 360) % 360;
-      const quad = [0, 90, 180, 270].includes(k) ? L.axis : 'Quadrant ' + ['I', 'II', 'III', 'IV'][Math.floor(k / 90)];
+      const quad = [0, 90, 180, 270].includes(k) ? D('axis') : 'Quadrant ' + ['I', 'II', 'III', 'IV'][Math.floor(k / 90)];
       document.getElementById('ucOut').innerHTML =
         `<div><b>α = ${String(deg).replace('-', '−')}°</b> = ${f(a)} rad · ${quad}</div>` +
-        `<div style="color:var(--cos)"><b>cos(α) = ${f(c)}</b> (${L.x})</div>` +
-        `<div style="color:var(--sin)"><b>sin(α) = ${f(sn)}</b> (${L.y})</div>` +
-        `<div style="color:var(--m)"><b>tan(α) = ${tanOk ? f(t) : L.nd}</b> (${L.slope})</div>`;
+        `<div style="color:var(--cos)"><b>cos(α) = ${f(c)}</b> (${D('x')})</div>` +
+        `<div style="color:var(--sin)"><b>sin(α) = ${f(sn)}</b> (${D('y')})</div>` +
+        `<div style="color:var(--m)"><b>tan(α) = ${tanOk ? f(t) : D('nd')}</b> (${D('slope')})</div>`;
     }
     s.addEventListener('input', draw);
     document.querySelectorAll('[data-deg]').forEach(b => b.addEventListener('click', () => { s.value = b.dataset.deg; draw(); }));
     draw();
   }
 
+  // single-file bilingual pages: <html data-bilingual>, buttons with data-setlang
+  function setupBilingual() {
+    document.querySelectorAll('[data-setlang]').forEach(a => {
+      a.toggleAttribute('aria-current', a.dataset.setlang === document.documentElement.lang);
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.documentElement.lang = a.dataset.setlang;
+        document.querySelectorAll('[data-setlang]').forEach(b => b.toggleAttribute('aria-current', b.dataset.setlang === a.dataset.setlang));
+        document.dispatchEvent(new Event('langchange'));
+      });
+    });
+  }
+
+  // fill-in cheat sheet: <span class="gap"><span>answer</span></span>
+  function setupGaps() {
+    document.querySelectorAll('.gap').forEach(g => {
+      g.tabIndex = 0; g.setAttribute('role', 'button');
+      const t = () => g.classList.toggle('open');
+      g.addEventListener('click', t);
+      g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t(); } });
+    });
+    document.querySelectorAll('[data-gaps]').forEach(b => b.addEventListener('click', () => {
+      const open = !document.body.classList.contains('gaps-open');
+      document.body.classList.toggle('gaps-open', open);
+      document.querySelectorAll('.gap').forEach(g => g.classList.toggle('open', open));
+    }));
+  }
+
+  // recipe puzzle: <ol class="puzzle"> items in the right order; shown shuffled, tap them in order
+  function setupPuzzles() {
+    document.querySelectorAll('ol.puzzle').forEach(ol => {
+      const items = [...ol.children]; items.forEach((li, i) => { li.dataset.i = i; });
+      let next = 0;
+      const msg = ol.nextElementSibling && ol.nextElementSibling.classList.contains('puzzle-msg') ? ol.nextElementSibling : null;
+      function shuffle() {
+        next = 0; if (msg) msg.hidden = true;
+        const arr = items.slice();
+        do { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } } while (arr.every((li, i) => +li.dataset.i === i));
+        arr.forEach(li => { li.className = ''; li.removeAttribute('data-n'); ol.append(li); });
+      }
+      items.forEach(li => {
+        li.tabIndex = 0; li.setAttribute('role', 'button');
+        const pick = () => {
+          if (li.classList.contains('ok')) return;
+          if (+li.dataset.i === next) {
+            li.classList.add('ok'); li.dataset.n = ++next;
+            // keep solved ones on top, in order
+            const solved = items.filter(x => x.classList.contains('ok')).sort((a, b) => a.dataset.n - b.dataset.n);
+            solved.forEach(x => ol.insertBefore(x, ol.children[solved.indexOf(x)]));
+            if (next === items.length && msg) msg.hidden = false;
+          } else { li.classList.remove('no'); void li.offsetWidth; li.classList.add('no'); }
+        };
+        li.addEventListener('click', pick);
+        li.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
+      });
+      const again = ol.parentElement.querySelector('[data-puzzle-again]');
+      if (again) again.addEventListener('click', shuffle);
+      shuffle();
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
+    setupBilingual(); setupGaps(); setupPuzzles();
     document.querySelectorAll('.langsw a:not([aria-current])').forEach(a => a.addEventListener('click', e => { e.preventDefault(); location.href = a.getAttribute('href') + location.hash; }));
     document.querySelectorAll('h2').forEach(h => { const sp = document.createElement('span'); sp.className = 'hl'; while (h.firstChild) sp.append(h.firstChild); h.append(sp); });
     const exs = [...document.querySelectorAll('.ex')];
@@ -155,11 +226,11 @@
       const pr = document.createElement('div'); pr.className = 'progress';
       pr.innerHTML = '<span class="txt"></span><span class="bar"><i></i></span><button type="button"></button>';
       nav.append(pr);
-      const btn = pr.querySelector('button'); btn.textContent = L.clear;
+      const btn = pr.querySelector('button'); btn.innerHTML = D('clear');
       btn.addEventListener('click', () => { doneSet.clear(); saveDone(); document.querySelectorAll('.stamp').forEach(x => x.remove()); progressUpdate(); });
       progressUpdate = () => {
         const n = exs.filter(e => doneSet.has(e.id)).length;
-        pr.querySelector('.txt').textContent = L.of(n, exs.length);
+        pr.querySelector('.txt').innerHTML = of(n, exs.length);
         pr.querySelector('i').style.width = (100 * n / exs.length) + '%';
         nav.querySelectorAll('a[href^="#"]').forEach(a => a.classList.toggle('done', doneSet.has(a.getAttribute('href').slice(1))));
       };

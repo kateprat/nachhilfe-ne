@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de" data-bilingual>
+<head>
+<meta charset="utf-8">
+<script src="../assets/theme.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spickzettel Quadriken</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/steps.js"></script>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<main class="wrap">
+<nav class="langsw" aria-label="Sprache / language"><button type="button" data-setlang="de">DE</button><button type="button" data-setlang="en">EN</button></nav>
+<p class="crumb"><a href="./" data-l="de">← Quadriken</a><a href="en.html" data-l="en">← Conics</a></p>
+<h1><span data-l="de">Lücken-Spickzettel: Quadriken</span><span data-l="en">Fill-in cheat sheet: Conics</span></h1>
+<p class="lead"><span data-l="de">Füll die Lücken selbst aus: auf Papier (ausdrucken) oder im Kopf. Wer die Zusammenfassung selbst schreibt, merkt sie sich viel besser. Tipp auf eine Lücke, um sie zu prüfen.</span><span data-l="en">Fill in the gaps yourself: on paper (print it) or in your head. Writing the summary yourself makes it stick much better. Tap a gap to check it.</span></p>
+<div class="ctrl noprint" style="margin-bottom:18px">
+  <button type="button" class="primary" data-gaps><span data-l="de">Alle Lösungen zeigen / verstecken</span><span data-l="en">Show / hide all answers</span></button>
+  <button type="button" onclick="window.print()"><span data-l="de">Leer drucken</span><span data-l="en">Print blank</span></button>
+  <button type="button" onclick="document.body.classList.add('print-answers');window.print();document.body.classList.remove('print-answers')"><span data-l="de">Mit Lösungen drucken</span><span data-l="en">Print with answers</span></button>
+</div>
+<div class="sheet">
+<h3><span data-l="de">Gerade</span><span data-l="en">Line</span></h3>
+<ul>
+<li>\(g(x) = \)<span class="gap"><span>\(\m\)</span></span>\(\cdot x + \)<span class="gap"><span>\(\q\)</span></span></li>
+<li><span data-l="de">m heisst</span><span data-l="en">m is the</span> <span class="gap"><span><span data-l="de">Steigung</span><span data-l="en">slope</span></span></span>, <span data-l="de">q heisst</span><span data-l="en">q is the</span> <span class="gap"><span><span data-l="de">y-Achsenabschnitt</span><span data-l="en">y-intercept</span></span></span>.</li>
+<li><span data-l="de">Ein Punkt P liegt auf g, wenn</span><span data-l="en">A point P lies on g if</span> <span class="gap"><span>\(g(x_P) = y_P\)</span></span>.</li>
+</ul>
+<h3><span data-l="de">Quadratische Gleichung</span><span data-l="en">Quadratic equation</span> \(ax^2 + bx + c = 0\)</h3>
+<ul>
+<li><span data-l="de">Diskriminante</span><span data-l="en">Discriminant</span>: \(D = \)<span class="gap"><span>\(b^2 - 4ac\)</span></span></li>
+<li><span data-l="de">Mitternachtsformel</span><span data-l="en">Quadratic formula</span>: \(x_{1,2} = \)<span class="gap"><span>\(\frac{-b \pm \sqrt{D}}{2a}\)</span></span></li>
+<li>\(D \gt 0\): <span class="gap"><span>2</span></span> <span data-l="de">Lösungen</span><span data-l="en">solutions</span> · \(D = 0\): <span class="gap"><span>1</span></span> <span data-l="de">Lösung</span><span data-l="en">solution</span>, \(x = \)<span class="gap"><span>\(-\frac{b}{2a}\)</span></span> · \(D \lt 0\): <span class="gap"><span><span data-l="de">keine</span><span data-l="en">none</span></span></span></li>
+</ul>
+<h3><span data-l="de">Tangente</span><span data-l="en">Tangent</span></h3>
+<ul>
+<li><span data-l="de">Eine Gerade ist Tangente an die Parabel, wenn sie sie in genau</span><span data-l="en">A line is a tangent to the parabola if it touches it in exactly</span> <span class="gap"><span><span data-l="de">einem</span><span data-l="en">one</span></span></span> <span data-l="de">Punkt berührt, also wenn</span><span data-l="en">point, i.e. when</span> <span class="gap"><span>\(D = 0\)</span></span>.</li>
+</ul>
+<p><b><span data-l="de">Das Kochrezept (7 Schritte)</span><span data-l="en">The recipe (7 steps)</span></b></p>
+<ol>
+<li><span class="gap"><span><span data-l="de">Ansatz \(t(x) = \m x + \q\), Gegebenes einsetzen</span><span data-l="en">Set-up \(t(x) = \m x + \q\), substitute what's given</span></span></span></li>
+<li><span class="gap"><span><span data-l="de">Gleichsetzen \(f(x) = t(x)\)</span><span data-l="en">Set equal \(f(x) = t(x)\)</span></span></span></li>
+<li><span class="gap"><span><span data-l="de">Standardform \(ax^2 + bx + c = 0\)</span><span data-l="en">Standard form \(ax^2 + bx + c = 0\)</span></span></span></li>
+<li><span class="gap"><span>\(D = b^2 - 4ac = 0\)</span></span></li>
+<li><span class="gap"><span><span data-l="de">nach q oder m auflösen</span><span data-l="en">solve for q or m</span></span></span></li>
+<li><span class="gap"><span><span data-l="de">Tangente hinschreiben</span><span data-l="en">write down the tangent</span></span></span></li>
+<li><span class="gap"><span><span data-l="de">Berührpunkt: \(x = -\frac{b}{2a}\), \(y = t(x)\)</span><span data-l="en">Point of contact: \(x = -\frac{b}{2a}\), \(y = t(x)\)</span></span></span></li>
+</ol>
+<ul>
+<li><span data-l="de">Abkürzung: Tangente an</span><span data-l="en">Shortcut: tangent to</span> \(f(x) = x^2\) <span data-l="de">im Punkt</span><span data-l="en">at the point</span> \((p, p^2)\): \(t(x) = \)<span class="gap"><span>\(2p\cdot x - p^2\)</span></span></li>
+</ul>
+<h3><span data-l="de">Parabeln</span><span data-l="en">Parabolas</span></h3>
+<ul>
+<li><span data-l="de">Eine Parabel ist die Menge aller Punkte, die gleich weit von</span><span data-l="en">A parabola is the set of all points that are equally far from</span> <span class="gap"><span><span data-l="de">dem Brennpunkt F</span><span data-l="en">the focus F</span></span></span> <span data-l="de">und</span><span data-l="en">and</span> <span class="gap"><span><span data-l="de">der Leitgeraden ℓ</span><span data-l="en">the directrix ℓ</span></span></span> <span data-l="de">entfernt sind.</span><span data-l="en"></span></li>
+<li><span data-l="de">Scheitelform</span><span data-l="en">Vertex form</span> \(f(x) = a(x - u)^2 + v\): <span data-l="de">Scheitel</span><span data-l="en">vertex</span> \(S = \)<span class="gap"><span>\((u, v)\)</span></span>; <span data-l="de">nach oben offen, wenn</span><span data-l="en">opens upwards if</span> <span class="gap"><span>\(a \gt 0\)</span></span></li>
+</ul>
+<h3><span data-l="de">Kreise</span><span data-l="en">Circles</span></h3>
+<ul>
+<li><span data-l="de">Kreis mit Mittelpunkt</span><span data-l="en">Circle with centre</span> \(M = (a, b)\) <span data-l="de">und Radius</span><span data-l="en">and radius</span> \(r\): <span class="gap"><span>\((x - a)^2 + (y - b)^2 = r^2\)</span></span></li>
+<li><span data-l="de">Schnitt mit einer Geraden:</span><span data-l="en">Intersection with a line:</span> <span class="gap"><span><span data-l="de">y einsetzen, dann D anschauen</span><span data-l="en">substitute y, then look at D</span></span></span></li>
+</ul>
+</div>
+</main>
+</body>
+</html>

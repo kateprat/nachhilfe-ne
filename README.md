@@ -1,8 +1,11 @@
 # Nachhilfe NE – Mathe 2cNP Schritt für Schritt
 
-Static site (no build step). Deploy: Cloudflare Pages, build command empty, output directory `/`.
+Static site (no build step), deployed by Cloudflare on every push.
 
-- `index.html` – start page, topics in course order (Trigonometrie, Quadriken)
-- `quadriken/` – letters intro, tangent recipe, A2–A8 step by step; `interaktiv.html` = interactive conics
-- `trigonometrie/` – placeholder
-- `assets/` – shared CSS, step-reveal JS, vendored KaTeX
+- `index.html` / `en.html` – start page (topics in course order)
+- `trigonometrie/` – chapter page (`index.html` EN default, `de.html`), `interaktiv.html` (unit circle, equations, radians + theory), `spickzettel.html` (fill-in cheat sheet)
+- `quadriken/` – chapter page (`index.html` DE default, `en.html`), `interaktiv.html` (+ theory), `spickzettel.html`
+- `training/` – mixed exam training (own exercises), recipe puzzle
+- `assets/` – shared CSS, `steps.js` (step reveal, progress, bilingual blocks, gaps, puzzle), `theme.js` (Auto/light/dark), vendored KaTeX
+
+Bilingual single-file pages use `<html data-bilingual>` and `data-l="de|en"` blocks.

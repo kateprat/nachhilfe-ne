@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" data-bilingual>
+<head>
+<meta charset="utf-8">
+<script src="../assets/theme.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trigonometry interactive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/steps.js"></script>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+.wrap.wide{max-width:1180px}
+.ilay{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(18px,3vw,36px);align-items:start;margin-top:20px}
+.fig{position:sticky;top:12px;width:min(100%,calc(100svh - 24px),620px);aspect-ratio:1;touch-action:none;user-select:none}
+.fig svg{width:100%;height:100%;display:block;background:var(--card);border:2px solid var(--ink);border-radius:20px;box-shadow:5px 5px 0 var(--shadow)}
+.tabs{display:flex;flex-wrap:wrap;gap:4px;padding:4px;border:2px solid var(--ink);border-radius:14px;background:var(--card)}
+.tabs button{flex:1 1 auto;border:0;min-height:42px;background:transparent;white-space:nowrap}
+.tabs button[aria-selected=true]{background:var(--mark)}
+.panel{display:grid;gap:14px}
+.out{display:grid;gap:6px;padding:14px 16px;border-radius:16px;background:var(--card);border:2px solid var(--line);font-variant-numeric:tabular-nums}
+.out .big{font-size:22px;font-weight:700;font-family:"Bricolage Grotesque",sans-serif}
+.seg{display:flex;border:2px solid var(--ink);border-radius:12px;overflow:hidden;width:max-content}
+.seg button{border:0;border-radius:0;min-height:40px;background:var(--card)}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.hint{color:var(--mute);font-size:16px;margin:0}
+.drag{cursor:grab}
+@media(max-width:820px){.ilay{grid-template-columns:minmax(0,1fr)}.fig{position:static;margin:0 auto}}
+</style>
+</head>
+<body>
+<main class="wrap wide">
+<nav class="langsw" aria-label="Sprache / language"><button type="button" data-setlang="de">DE</button><button type="button" data-setlang="en">EN</button></nav>
+<p class="crumb"><a href="./" data-l="en">← Trigonometry step by step</a><a href="de.html" data-l="de">← Trigonometrie Schritt für Schritt</a></p>
+<h1><span data-l="en">Trigonometry to turn</span><span data-l="de">Trigonometrie zum Drehen</span></h1>
+<p class="lead"><span data-l="en">Drag the point P around the unit circle. Everything else follows. The theory is summarised below.</span><span data-l="de">Zieh den Punkt P um den Einheitskreis. Alles andere läuft mit. Unten steht die Theorie im Überblick.</span></p>
+
+<div class="ilay">
+  <div class="fig"><svg id="svg" viewBox="-1.6 -1.6 3.2 3.2" role="img" aria-label="Unit circle / Einheitskreis"></svg></div>
+  <section class="panel">
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" data-tab="1"><span data-l="en">Unit circle</span><span data-l="de">Einheitskreis</span></button>
+      <button type="button" role="tab" data-tab="2"><span data-l="en">Equations</span><span data-l="de">Gleichungen</span></button>
+      <button type="button" role="tab" data-tab="3"><span data-l="en">Radians</span><span data-l="de">Bogenmass</span></button>
+    </div>
+
+    <!-- tab 1 -->
+    <div data-p="1" class="panel">
+      <p class="hint"><span data-l="en">cos = x (green), sin = y (orange), tan = slope of the ray, read off on the line x = 1 (blue). Special angles snap and show exact values.</span><span data-l="de">cos = x (grün), sin = y (orange), tan = Steigung des Strahls, abgelesen auf der Linie x = 1 (blau). Spezielle Winkel rasten ein und zeigen exakte Werte.</span></p>
+      <div class="sl" style="grid-template-columns:1.6em minmax(0,1fr) 4em"><span>α</span><input id="a1" type="range" min="-360" max="720" step="1" aria-label="α"><b id="a1v"></b></div>
+      <div class="chips" id="chips1"></div>
+      <div class="out" id="out1"></div>
+    </div>
+
+    <!-- tab 2 -->
+    <div data-p="2" class="panel">
+      <p class="hint"><span data-l="en">Which angles give a certain value? Choose the function and the value c. There are always two points on the circle (or none).</span><span data-l="de">Welche Winkel geben einen bestimmten Wert? Wähl die Funktion und den Wert c. Es gibt immer zwei Punkte auf dem Kreis (oder keinen).</span></p>
+      <div class="seg" role="group" id="fn"><button type="button" data-f="sin">sin</button><button type="button" data-f="cos">cos</button><button type="button" data-f="tan">tan</button></div>
+      <div class="sl" style="grid-template-columns:1.6em minmax(0,1fr) 4em"><span>c</span><input id="c2" type="range" min="-1.5" max="1.5" step="0.01" aria-label="c"><b id="c2v"></b></div>
+      <div class="chips" id="chips2"></div>
+      <div class="out" id="out2"></div>
+    </div>
+
+    <!-- tab 3 -->
+    <div data-p="3" class="panel">
+      <p class="hint"><span data-l="en">An angle in radians is arc length divided by radius. Change α and r: the ratio b / r stays the angle.</span><span data-l="de">Ein Winkel im Bogenmass ist Bogenlänge durch Radius. Verändere α und r: Das Verhältnis b / r bleibt der Winkel.</span></p>
+      <div class="sl" style="grid-template-columns:1.6em minmax(0,1fr) 4em"><span>α</span><input id="a3" type="range" min="0" max="360" step="1" aria-label="α"><b id="a3v"></b></div>
+      <div class="sl" style="grid-template-columns:1.6em minmax(0,1fr) 4em"><span>r</span><input id="r3" type="range" min="1" max="5" step="1" aria-label="r"><b id="r3v"></b></div>
+      <div class="out" id="out3"></div>
+    </div>
+  </section>
+</div>
+
+<h2 id="theorie"><span data-l="en">The theory at a glance</span><span data-l="de">Die Theorie im Überblick</span></h2>
+<div class="theory">
+  <div class="tc k-y"><h3><span data-l="en">Radians</span><span data-l="de">Bogenmass</span></h3>
+    <p><span data-l="en">Angle = arc length on the unit circle.</span><span data-l="de">Winkel = Bogenlänge auf dem Einheitskreis.</span></p>
+    $$180^\circ = \pi,\qquad 360^\circ = 2\pi$$
+    <p><span data-l="en">Arc and sector of a circle with radius r:</span><span data-l="de">Bogen und Sektor eines Kreises mit Radius r:</span></p>
+    $$b = \alpha\cdot r,\qquad A = \tfrac{\alpha}{2}\,r^2$$</div>
+  <div class="tc k-g"><h3><span data-l="en">Definition</span><span data-l="de">Definition</span></h3>
+    $$P_\alpha = (\cos\alpha,\ \sin\alpha)$$
+    $$\tan\alpha = \frac{\sin\alpha}{\cos\alpha}$$
+    <p><span data-l="en">= slope of the ray.</span><span data-l="de">= Steigung des Strahls.</span></p>
+    <p><span data-l="en">tan is not defined at 90°, 270°, … (vertical ray).</span><span data-l="de">tan ist bei 90°, 270°, … nicht definiert (senkrechter Strahl).</span></p></div>
+  <div class="tc k-p"><h3>Pythagoras</h3>
+    $$\sin^2\alpha + \cos^2\alpha = 1$$
+    <p><span data-l="en">So if you know one, you know the other up to its sign:</span><span data-l="de">Kennst du eins, kennst du das andere bis aufs Vorzeichen:</span></p>
+    $$\sin\alpha = \pm\sqrt{1 - \cos^2\alpha}$$</div>
+  <div class="tc k-m"><h3><span data-l="en">Signs</span><span data-l="de">Vorzeichen</span></h3>
+    <p><span data-l="en">cos + on the right, sin + at the top.</span><span data-l="de">cos + rechts, sin + oben.</span></p>
+    <p><b>I</b>: <span data-l="en">all +</span><span data-l="de">alle +</span> · <b>II</b>: <span data-l="en">only sin +</span><span data-l="de">nur sin +</span><br><b>III</b>: <span data-l="en">only tan +</span><span data-l="de">nur tan +</span> · <b>IV</b>: <span data-l="en">only cos +</span><span data-l="de">nur cos +</span></p></div>
+  <div class="tc k-y"><h3><span data-l="en">Special values</span><span data-l="de">Spezielle Werte</span></h3>
+    <div class="tbl"><table>
+      <tr><th>α</th><th>0°</th><th>30°</th><th>45°</th><th>60°</th><th>90°</th></tr>
+      <tr><td class="ss">sin</td><td>\(0\)</td><td>\(\frac12\)</td><td>\(\frac{\sqrt2}{2}\)</td><td>\(\frac{\sqrt3}{2}\)</td><td>\(1\)</td></tr>
+      <tr><td class="cc">cos</td><td>\(1\)</td><td>\(\frac{\sqrt3}{2}\)</td><td>\(\frac{\sqrt2}{2}\)</td><td>\(\frac12\)</td><td>\(0\)</td></tr>
+    </table></div>
+    <p><span data-l="en">sin row: \(\frac{\sqrt0}{2}, \frac{\sqrt1}{2}, \dots, \frac{\sqrt4}{2}\). cos = same, backwards.</span><span data-l="de">sin-Zeile: \(\frac{\sqrt0}{2}, \frac{\sqrt1}{2}, \dots, \frac{\sqrt4}{2}\). cos = dieselbe, rückwärts.</span></p></div>
+  <div class="tc k-g"><h3><span data-l="en">Symmetries</span><span data-l="de">Symmetrien</span></h3>
+    $$\begin{aligned}\cos(-\alpha) &= \cos\alpha\\ \sin(-\alpha) &= -\sin\alpha\\ \sin(180^\circ - \alpha) &= \sin\alpha\\ \cos(180^\circ - \alpha) &= -\cos\alpha\end{aligned}$$
+    <p><span data-l="en">+180°: both change sign. +360°: same point.</span><span data-l="de">+180°: beide wechseln das Vorzeichen. +360°: gleicher Punkt.</span></p></div>
+  <div class="tc k-p"><h3><span data-l="en">Equations</span><span data-l="de">Gleichungen</span></h3>
+    $$\begin{aligned}\sin\alpha = c:&\ \ \alpha_1,\ 180^\circ - \alpha_1\\ \cos\alpha = c:&\ \ \alpha_1,\ -\alpha_1\\ \tan\alpha = c:&\ \ \alpha_1,\ \alpha_1 + 180^\circ\end{aligned}$$
+    <p><span data-l="en">Then add \(k\cdot 360^\circ\) (tan: \(k\cdot 180^\circ\)).</span><span data-l="de">Dann \(k\cdot 360^\circ\) dazu (tan: \(k\cdot 180^\circ\)).</span></p>
+    <p><span data-l="en">\(\alpha_1\) from the calculator. No solution if \(|c| \gt 1\) for sin and cos.</span><span data-l="de">\(\alpha_1\) vom Rechner. Keine Lösung, wenn \(|c| \gt 1\) bei sin und cos.</span></p></div>
+  <div class="tc k-m"><h3><span data-l="en">tan known</span><span data-l="de">tan bekannt</span></h3>
+    $$\cos\alpha = \pm\frac{1}{\sqrt{1 + \tan^2\alpha}}$$
+    $$\sin\alpha = \tan\alpha\cdot\cos\alpha$$
+    <p><span data-l="en">Signs from the quadrant.</span><span data-l="de">Vorzeichen aus dem Quadranten.</span></p></div>
+</div>
+<p class="noprint"><a href="spickzettel.html"><span data-l="en">Fill-in cheat sheet for this topic</span><span data-l="de">Lücken-Spickzettel zu diesem Thema</span></a> · <a href="../training/"><span data-l="en">Exam training</span><span data-l="de">Prüfungstraining</span></a></p>
+</main>
+
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+  const svg = $('svg'), R = 1.6;
+  const st = { tab: 1, deg: 150, f: 'sin', c: 0.5, a3: 120, r: 3 };
+  const tex = s => window.katex ? katex.renderToString(s, { throwOnError: false }) : s;
+  const both = (en, de) => `<span data-l="en">${en}</span><span data-l="de">${de}</span>`;
+  const num = (v, d = 3) => (Math.abs(v) < 5e-4 ? '0' : (+v.toFixed(d)).toString()).replace('-', '−');
+  const mod = d => ((d % 360) + 360) % 360;
+  const gcd = (a, b) => b ? gcd(b, a % b) : Math.abs(a);
+  // exact values for multiples of 30° and 45°
+  const S3 = '\\tfrac{\\sqrt3}{2}', S2 = '\\tfrac{\\sqrt2}{2}', H = '\\tfrac12';
+  const EX = { 0: ['0', '1', '0'], 30: [H, S3, '\\tfrac{\\sqrt3}{3}'], 45: [S2, S2, '1'], 60: [S3, H, '\\sqrt3'], 90: ['1', '0', null] };
+  function exact(d) {
+    d = mod(d);
+    const ax = { 0: ['0', '1', '0'], 90: ['1', '0', null], 180: ['0', '-1', '0'], 270: ['-1', '0', null] };
+    if (ax[d]) return ax[d];
+    const q = Math.floor(d / 90), ref = [d, 180 - d, d - 180, 360 - d][q];
+    if (!EX[ref]) return null;
+    const sS = d < 180 ? 1 : -1, sC = (d < 90 || d > 270) ? 1 : -1, sg = (s, v) => s < 0 ? '-' + v : v;
+    return [sg(sS, EX[ref][0]), sg(sC, EX[ref][1]), sg(sS * sC, EX[ref][2])];
+  }
+  function radTex(d) {
+    if (d === 0) return '0';
+    const g = gcd(d, 180), p = d / g, qq = 180 / g;
+    const sign = p < 0 ? '-' : '', P = Math.abs(p);
+    if (qq === 1) return sign + (P === 1 ? '' : P) + '\\pi';
+    return sign + '\\tfrac{' + (P === 1 ? '' : P) + '\\pi}{' + qq + '}';
+  }
+  const isSpecial = d => mod(d) % 30 === 0 || mod(d) % 45 === 0;
+  function grid() {
+    let h = '';
+    for (let i = -1.5; i <= 1.51; i += .5) h += `<line x1="${i}" y1="${-R}" x2="${i}" y2="${R}" stroke="var(--paper-grid)" stroke-width=".012"/><line x1="${-R}" y1="${i}" x2="${R}" y2="${i}" stroke="var(--paper-grid)" stroke-width=".012"/>`;
+    h += `<line x1="${-R}" y1="0" x2="${R}" y2="0" stroke="var(--ink)" stroke-width=".016"/><line x1="0" y1="${-R}" x2="0" y2="${R}" stroke="var(--ink)" stroke-width=".016"/>`;
+    [-1, 1].forEach(v => { h += `<text x="${v + (v > 0 ? .04 : -.04)}" y=".12" font-size=".09" fill="var(--mute)" text-anchor="${v > 0 ? 'start' : 'end'}">${v < 0 ? '−1' : '1'}</text><text x=".04" y="${-v + (v > 0 ? -.04 : .1)}" font-size=".09" fill="var(--mute)">${v < 0 ? '−1' : '1'}</text>`; });
+    return h;
+  }
+  const circle = (r = 1) => `<circle cx="0" cy="0" r="${r}" fill="none" stroke="var(--ink)" stroke-width=".022"/>`;
+  function arc(deg, r, color, w = .02) {
+    const d = mod(deg); if (d < .5) return '';
+    const a = d * Math.PI / 180, large = d > 180 ? 1 : 0;
+    return `<path d="M${r} 0 A${r} ${r} 0 ${large} 0 ${r * Math.cos(a)} ${-r * Math.sin(a)}" fill="none" stroke="${color}" stroke-width="${w}"/>`;
+  }
+  const lbl = (x, y, t, col = 'var(--ink)', anchor = 'start') => `<text x="${x}" y="${y}" font-size=".12" font-weight="700" fill="${col}" text-anchor="${anchor}" font-family="Bricolage Grotesque,sans-serif" paint-order="stroke" stroke="var(--card)" stroke-width=".03">${t}</text>`;
+
+  /* ---- tab 1 ---- */
+  function tab1() {
+    const deg = st.deg, a = deg * Math.PI / 180, c = Math.cos(a), s = Math.sin(a), tanOk = Math.abs(c) > 1e-9, t = s / c;
+    let h = grid() + `<line x1="1" y1="${-R}" x2="1" y2="${R}" stroke="var(--mute)" stroke-width=".01" stroke-dasharray=".04 .03"/>` + circle() + arc(deg, .2, 'var(--ink)', .015);
+    if (tanOk && Math.abs(t) < 6) h += `<line x1="${-R}" y1="${R * t}" x2="${R}" y2="${-R * t}" stroke="var(--mute)" stroke-width=".012"/>`;
+    h += `<line x1="0" y1="0" x2="${c}" y2="${-s}" stroke="var(--ink)" stroke-width=".022"/>`;
+    h += `<line x1="0" y1="0" x2="${c}" y2="0" stroke="var(--cos)" stroke-width=".05"/>`;
+    h += `<line x1="${c}" y1="0" x2="${c}" y2="${-s}" stroke="var(--sin)" stroke-width=".05"/>`;
+    if (tanOk && Math.abs(t) < 1.55) h += `<line x1="1" y1="0" x2="1" y2="${-t}" stroke="var(--m)" stroke-width=".05"/>` + `<circle cx="1" cy="${-t}" r=".03" fill="var(--m)"/>`;
+    h += `<circle class="drag" data-h="P" cx="${c}" cy="${-s}" r=".075" fill="var(--yellow)" stroke="var(--ink)" stroke-width=".02"/>` + lbl(c + (c >= 0 ? .1 : -.1), -s - .08, 'P', 'var(--ink)', c >= 0 ? 'start' : 'end');
+    svg.innerHTML = h;
+    $('a1').value = deg; $('a1v').textContent = String(deg).replace('-', '−') + '°';
+    const d = mod(deg), quad = d % 90 === 0 ? null : Math.floor(d / 90);
+    const ex = isSpecial(deg) ? exact(deg) : null;
+    const row = (name, cls, exTex, val) => `<div class="${cls}"><b>${name}(α) = ${exTex ? tex(exTex) + (exTex.match(/sqrt/) ? ' ≈ ' + num(val) : '') : num(val)}</b></div>`;
+    let o = `<div class="big">α = ${String(deg).replace('-', '−')}° = ${isSpecial(deg) || deg % 15 === 0 ? tex(radTex(deg)) + ' ≈ ' : ''}${num(a)} rad</div>`;
+    o += row('cos', 'cc', ex && ex[1], c) + row('sin', 'ss', ex && ex[0], s);
+    o += tanOk ? row('tan', 'tt', ex && ex[2], t) : `<div class="tt"><b>tan(α): ${both('not defined (vertical)', 'nicht definiert (senkrecht)')}</b></div>`;
+    if (quad !== null) {
+      const sg = [['+', '+', '+'], ['−', '+', '−'], ['−', '−', '+'], ['+', '−', '−']][quad];
+      const ref = [d, 180 - d, d - 180, 360 - d][quad];
+      o += `<div>${both('Quadrant', 'Quadrant')} ${['I', 'II', 'III', 'IV'][quad]}: cos ${sg[0]}, sin ${sg[1]}, tan ${sg[2]}</div>`;
+      if (quad > 0) o += `<div class="hint">${both(`Same numbers as at ${num(ref, 1)}°, only the signs differ.`, `Gleiche Zahlen wie bei ${num(ref, 1)}°, nur die Vorzeichen sind anders.`)}</div>`;
+    }
+    if (deg >= 360 || deg < 0) o += `<div class="hint">${both(`Same point as ${d}° (full turns don't matter).`, `Gleicher Punkt wie ${d}° (volle Umdrehungen spielen keine Rolle).`)}</div>`;
+    $('out1').innerHTML = o;
+  }
+
+  /* ---- tab 2 ---- */
+  const CH2 = { sin: [['0', 0], ['½', .5], ['√2/2', Math.SQRT1_2], ['√3/2', Math.sqrt(3) / 2], ['1', 1], ['−½', -.5], ['0.8', .8]],
+                cos: [['0', 0], ['½', .5], ['√2/2', Math.SQRT1_2], ['√3/2', Math.sqrt(3) / 2], ['−½', -.5], ['−0.2', -.2]],
+                tan: [['0', 0], ['1', 1], ['√3', Math.sqrt(3)], ['√3/3', Math.sqrt(3) / 3], ['−1', -1], ['−2', -2]] };
+  function tab2() {
+    const f = st.f, c = st.c;
+    const inp = $('c2'); inp.min = f === 'tan' ? -3 : -1.5; inp.max = f === 'tan' ? 3 : 1.5; inp.value = c; $('c2v').textContent = num(c, 2);
+    document.querySelectorAll('#fn button').forEach(b => b.setAttribute('aria-pressed', b.dataset.f === f));
+    $('chips2').innerHTML = CH2[f].map(([l, v]) => `<button type="button" data-v="${v}">${l}</button>`).join('');
+    let h = grid() + circle(), sols = [], o = '';
+    const col = { sin: 'var(--sin)', cos: 'var(--cos)', tan: 'var(--m)' }[f];
+    if (f === 'sin') h += `<line x1="${-R}" y1="${-c}" x2="${R}" y2="${-c}" stroke="${col}" stroke-width=".02" stroke-dasharray=".06 .04"/>`;
+    if (f === 'cos') h += `<line x1="${c}" y1="${-R}" x2="${c}" y2="${R}" stroke="${col}" stroke-width=".02" stroke-dasharray=".06 .04"/>`;
+    if (f === 'tan') h += `<line x1="${-R}" y1="${R * c}" x2="${R}" y2="${-R * c}" stroke="${col}" stroke-width=".02" stroke-dasharray=".06 .04"/><line x1="1" y1="0" x2="1" y2="${-c}" stroke="${col}" stroke-width=".05"/>`;
+    const deg = r => r * 180 / Math.PI;
+    if (f !== 'tan' && Math.abs(c) > 1) {
+      o = `<div class="big">${both('No solution', 'Keine Lösung')}</div><div>${both(`${f} is always between −1 and 1.`, `${f} liegt immer zwischen −1 und 1.`)}</div>`;
+    } else {
+      let a1, a2, period = 360;
+      if (f === 'sin') { a1 = deg(Math.asin(c)); a2 = 180 - a1; }
+      if (f === 'cos') { a1 = deg(Math.acos(c)); a2 = -a1; }
+      if (f === 'tan') { a1 = deg(Math.atan(c)); a2 = a1 + 180; period = 180; }
+      sols = [a1, a2];
+      sols.forEach((a, i) => {
+        const r = a * Math.PI / 180, x = Math.cos(r), y = Math.sin(r);
+        h += `<line x1="0" y1="0" x2="${x}" y2="${-y}" stroke="var(--ink)" stroke-width=".02"/><circle cx="${x}" cy="${-y}" r=".06" fill="var(--yellow)" stroke="var(--ink)" stroke-width=".02"/>` + lbl(x + (x >= 0 ? .09 : -.09), -y - .07, `α${i ? '₂' : '₁'}`, 'var(--ink)', x >= 0 ? 'start' : 'end');
+      });
+      const n = v => num(v, 1) + '°';
+      o += `<div class="big">α₁ ≈ ${n(a1)}, &nbsp;α₂ ≈ ${n(a2)}</div>`;
+      if (f === 'sin') o += `<div>${both('Mirror image left/right: α₂ = 180° − α₁', 'Links/rechts gespiegelt: α₂ = 180° − α₁')}</div>`;
+      if (f === 'cos') o += `<div>${both('Mirror image top/bottom: α₂ = −α₁ (same as ', 'Oben/unten gespiegelt: α₂ = −α₁ (dasselbe wie ')}${n(360 + a2)})</div>`;
+      if (f === 'tan') o += `<div>${both('Opposite points on the same line: α₂ = α₁ + 180°', 'Gegenüberliegende Punkte auf derselben Geraden: α₂ = α₁ + 180°')}</div>`;
+      const A1 = num(a1, 1).replace('−', '-'), A2 = num(a2, 1).replace('−', '-');
+      const gen = w => f === 'tan' ? tex(`\\alpha \\approx ${A1}^\\circ + k\\cdot 180^\\circ`) : tex(`\\alpha \\approx ${A1}^\\circ + k\\cdot 360^\\circ`) + ` ${w} ` + tex(`\\alpha \\approx ${A2}^\\circ + k\\cdot 360^\\circ`);
+      o += `<div><b>${both('All solutions', 'Alle Lösungen')}:</b> ${both(gen('or'), gen('oder'))}, ${tex('k \\in \\mathbb{Z}')}</div>`;
+    }
+    svg.innerHTML = h; $('out2').innerHTML = o;
+  }
+
+  /* ---- tab 3 ---- */
+  function tab3() {
+    const d = st.a3, r = st.r, a = d * Math.PI / 180, R0 = 1.25;
+    let h = grid();
+    h += `<circle cx="0" cy="0" r="${R0}" fill="none" stroke="var(--ink)" stroke-width=".02"/>`;
+    if (d > 0 && d < 360) { const large = d > 180 ? 1 : 0; h += `<path d="M0 0 L${R0} 0 A${R0} ${R0} 0 ${large} 0 ${R0 * Math.cos(a)} ${-R0 * Math.sin(a)} Z" fill="var(--pink)" fill-opacity=".45" stroke="none"/>`; }
+    if (d === 360) h += `<circle cx="0" cy="0" r="${R0}" fill="var(--pink)" fill-opacity=".45"/>`;
+    h += arc(d === 360 ? 359.9 : d, R0, 'var(--q)', .06);
+    h += `<line x1="0" y1="0" x2="${R0}" y2="0" stroke="var(--ink)" stroke-width=".025"/><line x1="0" y1="0" x2="${R0 * Math.cos(a)}" y2="${-R0 * Math.sin(a)}" stroke="var(--ink)" stroke-width=".025"/>`;
+    h += lbl(R0 / 2, .16, 'r = ' + r, 'var(--ink)', 'middle') + lbl(R0 * Math.cos(a / 2) * 1.12, -R0 * Math.sin(a / 2) * 1.12, 'b', 'var(--q)', 'middle');
+    h += `<circle class="drag" data-h="A" cx="${R0 * Math.cos(a)}" cy="${-R0 * Math.sin(a)}" r=".075" fill="var(--yellow)" stroke="var(--ink)" stroke-width=".02"/>`;
+    svg.innerHTML = h;
+    $('a3').value = d; $('a3v').textContent = d + '°'; $('r3').value = r; $('r3v').textContent = r;
+    const g = gcd(d, 180) || 180, p = d / g, q = 180 / g;
+    const frac = (num_, den) => { const k = gcd(num_, den); num_ /= k; den /= k; return den === 1 ? (num_ === 1 ? '\\pi' : num_ + '\\pi') : `\\tfrac{${num_ === 1 ? '' : num_}\\pi}{${den}}`; };
+    const exactOk = d % 15 === 0 && d > 0;
+    let o = `<div class="big">α = ${d}° = ${d === 0 ? '0' : exactOk ? tex(frac(p, q)) + ' ≈ ' + num(a) : num(a)}</div>`;
+    o += `<div style="color:var(--q)"><b>b = α · r = ${exactOk ? tex(frac(p * r, q)) + ' ≈ ' : ''}${num(a * r)}</b></div>`;
+    o += `<div><b>A = α/2 · r² = ${exactOk ? tex(frac(p * r * r, 2 * q)) + ' ≈ ' : ''}${num(a / 2 * r * r)}</b></div>`;
+    o += `<div class="hint">b / r = ${num(a * r)} / ${r} = ${num(a)} = α ${both('(in radians, whatever r is)', '(im Bogenmass, egal welches r)')}</div>`;
+    $('out3').innerHTML = o;
+  }
+
+  function draw() {
+    document.querySelectorAll('[data-tab]').forEach(b => b.setAttribute('aria-selected', +b.dataset.tab === st.tab));
+    document.querySelectorAll('[data-p]').forEach(p => p.hidden = +p.dataset.p !== st.tab);
+    [tab1, tab2, tab3][st.tab - 1]();
+  }
+
+  // dragging
+  let drag = null;
+  function wpt(e) { const p = svg.createSVGPoint(); p.x = e.clientX; p.y = e.clientY; const w = p.matrixTransform(svg.getScreenCTM().inverse()); return [w.x, -w.y]; }
+  function snapDeg(x, y) {
+    let d = Math.round(Math.atan2(y, x) * 180 / Math.PI); d = mod(d);
+    const sp = [0, 30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330, 360].find(v => Math.abs(v - d) <= 3);
+    return sp === undefined ? d : sp % 360;
+  }
+  svg.addEventListener('pointerdown', e => {
+    if (st.tab === 2) return;
+    drag = true; svg.setPointerCapture(e.pointerId); move(e);
+  });
+  function move(e) {
+    if (!drag) return;
+    const [x, y] = wpt(e);
+    if (st.tab === 1) st.deg = snapDeg(x, y);
+    if (st.tab === 3) { const d = snapDeg(x, y); st.a3 = d === 0 && st.a3 > 300 ? 360 : d; }
+    draw();
+  }
+  svg.addEventListener('pointermove', move);
+  svg.addEventListener('pointerup', () => drag = null); svg.addEventListener('pointercancel', () => drag = null);
+
+  document.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { st.tab = +b.dataset.tab; draw(); }));
+  $('a1').addEventListener('input', e => { st.deg = +e.target.value; draw(); });
+  $('chips1').innerHTML = [30, 45, 60, 120, 135, 150, 210, 240, 300, 330, 380, -30].map(d => `<button type="button" data-d="${d}">${String(d).replace('-', '−')}°</button>`).join('');
+  $('chips1').addEventListener('click', e => { const b = e.target.closest('[data-d]'); if (b) { st.deg = +b.dataset.d; draw(); } });
+  document.querySelectorAll('#fn button').forEach(b => b.addEventListener('click', () => { st.f = b.dataset.f; if (st.f !== 'tan' && Math.abs(st.c) > 1.5) st.c = .5; draw(); }));
+  $('c2').addEventListener('input', e => { st.c = +e.target.value; draw(); });
+  $('chips2').addEventListener('click', e => { const b = e.target.closest('[data-v]'); if (b) { st.c = +b.dataset.v; draw(); } });
+  $('a3').addEventListener('input', e => { st.a3 = +e.target.value; draw(); });
+  $('r3').addEventListener('input', e => { st.r = +e.target.value; draw(); });
+  const go = () => { const m = location.hash.slice(1); if (m === 'gleichungen' || m === 'equations') st.tab = 2; if (m === 'bogenmass' || m === 'radians') st.tab = 3; draw(); };
+  window.addEventListener('DOMContentLoaded', () => setTimeout(go, 0));
+})();
+</script>
+</body>
+</html>

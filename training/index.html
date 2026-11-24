@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="de" data-bilingual>
+<head>
+<meta charset="utf-8">
+<script src="../assets/theme.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prüfungstraining – Mathe 2cNP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/steps.js"></script>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<main class="wrap">
+<nav class="langsw" aria-label="Sprache / language"><button type="button" data-setlang="de">DE</button><button type="button" data-setlang="en">EN</button></nav>
+<p class="crumb"><a href="../" data-l="de">← Übersicht</a><a href="../en.html" data-l="en">← Overview</a></p>
+<h1><span data-l="de">Prüfungstraining</span><span data-l="en">Exam training</span></h1>
+<p class="lead"><span data-l="de">Neue Aufgaben, bunt gemischt aus Trigonometrie und Quadriken, wie in der Prüfung. Bei jeder Aufgabe zuerst: Welches Rezept passt? Ohne Taschenrechner, und schreib den Lösungsweg ganz auf.</span><span data-l="en">New exercises, mixed from trigonometry and conics, like in the exam. For each one, first ask: which recipe fits? No calculator, and write the full working down.</span></p>
+
+<nav class="nav" aria-label="Aufgaben"><ul>
+  <li><a href="#warmup"><span data-l="de">Aufwärmen</span><span data-l="en">Warm-up</span></a></li>
+  <li><a href="#p1">1</a></li><li><a href="#p2">2</a></li><li><a href="#p3">3</a></li><li><a href="#p4">4</a></li><li><a href="#p5">5</a></li>
+  <li><a href="#p6">6</a></li><li><a href="#p7">7</a></li><li><a href="#p8">8</a></li><li><a href="#p9">9</a></li>
+</ul></nav>
+
+<h2 id="warmup"><span data-l="de">Aufwärmen: aus dem Kopf</span><span data-l="en">Warm-up: from memory</span></h2>
+<div class="box">
+  <p><b><span data-l="de">Bring die 7 Schritte des Tangenten-Rezepts in die richtige Reihenfolge.</span><span data-l="en">Put the 7 steps of the tangent recipe in the right order.</span></b> <span data-l="de">Tipp sie in der Reihenfolge an, in der du sie machst.</span><span data-l="en">Tap them in the order you would do them.</span></p>
+  <ol class="puzzle">
+    <li><span data-l="de">Ansatz \(t(x) = \m x + \q\), Gegebenes einsetzen</span><span data-l="en">Set-up \(t(x) = \m x + \q\), substitute what's given</span></li>
+    <li><span data-l="de">Gleichsetzen \(f(x) = t(x)\)</span><span data-l="en">Set equal \(f(x) = t(x)\)</span></li>
+    <li><span data-l="de">Standardform \(ax^2 + bx + c = 0\)</span><span data-l="en">Standard form \(ax^2 + bx + c = 0\)</span></li>
+    <li><span data-l="de">Diskriminante \(D = 0\) setzen</span><span data-l="en">Set the discriminant \(D = 0\)</span></li>
+    <li><span data-l="de">Nach q oder m auflösen</span><span data-l="en">Solve for q or m</span></li>
+    <li><span data-l="de">Tangente hinschreiben</span><span data-l="en">Write down the tangent</span></li>
+    <li><span data-l="de">Berührpunkt: \(x = -\frac{b}{2a}\)</span><span data-l="en">Point of contact: \(x = -\frac{b}{2a}\)</span></li>
+  </ol>
+  <p class="puzzle-msg"><span data-l="de">Perfekt, das Rezept sitzt!</span><span data-l="en">Perfect, you know the recipe!</span></p>
+  <button type="button" data-puzzle-again><span data-l="de">Neu mischen</span><span data-l="en">Shuffle again</span></button>
+</div>
+
+<h2 id="aufgaben"><span data-l="de">Aufgaben</span><span data-l="en">Exercises</span></h2>
+<p><span data-l="de">Löse zuerst auf Papier. Dann vergleiche Schritt für Schritt: «Rechnung zeigen» deckt jeweils nur einen Schritt auf.</span><span data-l="en">Solve on paper first. Then compare step by step: “Show working” reveals one step at a time.</span></p>
+
+<!-- 1 -->
+<article class="ex" id="p1" data-mode="faded">
+  <div class="ex-head"><h3><span data-l="de">Aufgabe 1</span><span data-l="en">Exercise 1</span></h3></div>
+  <div class="task"><span data-l="de">Bestimme die Tangente mit Steigung 2 an die Parabel \(f(x) = x^2 + 4x + 1\) und ihren Berührpunkt.</span><span data-l="en">Find the tangent with slope 2 to the parabola \(f(x) = x^2 + 4x + 1\) and its point of contact.</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr"><span data-l="de">ERKENNEN</span><span data-l="en">RECOGNISE</span></span><h4><span data-l="de">Welches Rezept?</span><span data-l="en">Which recipe?</span></h4>
+      <div class="calc"><p><span data-l="de">Tangenten-Rezept. Die Steigung ist gegeben (wie A2), also \(\m = 2\), gesucht ist \(\q\).</span><span data-l="en">Tangent recipe. The slope is given (like A2), so \(\m = 2\); we look for \(\q\).</span></p></div></li>
+    <li class="step"><span class="nr">1–3</span><h4><span data-l="de">Ansatz, Gleichsetzen, Standardform</span><span data-l="en">Set-up, set equal, standard form</span></h4>
+      <div class="calc">$$\begin{aligned} t(x) &= 2x + \q \\ x^2 + 4x + 1 &= 2x + \q \\ x^2 + 2x + (1 - \q) &= 0 \end{aligned}$$</div></li>
+    <li class="step"><span class="nr">4–5</span><h4><span data-l="de">D = 0, nach q auflösen</span><span data-l="en">D = 0, solve for q</span></h4>
+      <div class="calc">$$D = 2^2 - 4\cdot 1\cdot(1 - \q) = 4\q = 0 \iff \q = 0$$</div></li>
+    <li class="step"><span class="nr">6–7</span><h4><span data-l="de">Tangente und Berührpunkt</span><span data-l="en">Tangent and point of contact</span></h4>
+      <div class="calc">$$t(x) = 2x, \qquad x = -\tfrac{2}{2} = -1,\quad y = t(-1) = -2$$
+      <p><span data-l="de">Probe:</span><span data-l="en">Check:</span> \(f(-1) = 1 - 4 + 1 = -2\) ✓</p></div></li>
+  </ol>
+  <div class="done">\(t(x) = 2x\), <span data-l="de">Berührpunkt</span><span data-l="en">point of contact</span> \((-1, -2)\).</div>
+</article>
+
+<!-- 2 -->
+<article class="ex" id="p2" data-mode="faded">
+  <div class="ex-head"><h3><span data-l="de">Aufgabe 2</span><span data-l="en">Exercise 2</span></h3></div>
+  <div class="task"><span data-l="de">Bestimme \(\sin 240^\circ\), \(\cos 240^\circ\) und \(\tan 240^\circ\) exakt, ohne Taschenrechner.</span><span data-l="en">Find \(\sin 240^\circ\), \(\cos 240^\circ\) and \(\tan 240^\circ\) exactly, without a calculator.</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr"><span data-l="de">ERKENNEN</span><span data-l="en">RECOGNISE</span></span><h4><span data-l="de">Welches Rezept?</span><span data-l="en">Which recipe?</span></h4>
+      <div class="calc"><p><span data-l="de">Spezielle Werte + Vorzeichen aus dem Quadranten (wie E5 und E3).</span><span data-l="en">Special values + signs from the quadrant (like E5 and E3).</span></p></div></li>
+    <li class="step"><span class="nr">1</span><h4><span data-l="de">Wo liegt 240°?</span><span data-l="en">Where is 240°?</span></h4>
+      <div class="calc"><p>\(240^\circ = 180^\circ + 60^\circ\): <span data-l="de">Quadrant III, gleiche Zahlen wie bei 60°.</span><span data-l="en">quadrant III, same numbers as at 60°.</span></p></div></li>
+    <li class="step"><span class="nr">2</span><h4><span data-l="de">Werte von 60° und Vorzeichen in III</span><span data-l="en">Values at 60° and signs in III</span></h4>
+      <div class="calc"><p><span data-l="de">In III: sin −, cos −, tan +.</span><span data-l="en">In III: sin −, cos −, tan +.</span></p>
+      $$\sin 240^\circ = -\tfrac{\sqrt3}{2},\quad \cos 240^\circ = -\tfrac12,\quad \tan 240^\circ = \sqrt3$$</div></li>
+  </ol>
+  <div class="done">\(\sin 240^\circ = -\frac{\sqrt3}{2}\), \(\cos 240^\circ = -\frac12\), \(\tan 240^\circ = \sqrt3\). <a href="../trigonometrie/interaktiv.html"><span data-l="de">Im Einheitskreis prüfen</span><span data-l="en">Check on the unit circle</span></a></div>
+</article>
+
+<!-- 3 -->
+<article class="ex" id="p3" data-mode="faded">
+  <div class="ex-head"><h3><span data-l="de">Aufgabe 3</span><span data-l="en">Exercise 3</span></h3></div>
+  <div class="task"><span data-l="de">Bestimme alle Tangenten an die Normalparabel \(f(x) = x^2\), die durch den Punkt \(P = (0, -4)\) gehen, und ihre Berührpunkte.</span><span data-l="en">Find all tangents to the standard parabola \(f(x) = x^2\) that pass through \(P = (0, -4)\), and their points of contact.</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr"><span data-l="de">ERKENNEN</span><span data-l="en">RECOGNISE</span></span><h4><span data-l="de">Welches Rezept?</span><span data-l="en">Which recipe?</span></h4>
+      <div class="calc"><p><span data-l="de">Tangenten-Rezept, Punkt ausserhalb der Parabel (wie A6): zwei Tangenten erwartet.</span><span data-l="en">Tangent recipe, point outside the parabola (like A6): expect two tangents.</span></p></div></li>
+    <li class="step"><span class="nr">1</span><h4><span data-l="de">Ansatz: P liegt auf t</span><span data-l="en">Set-up: P lies on t</span></h4>
+      <div class="calc">$$\m\cdot 0 + \q = -4 \iff \q = -4$$</div></li>
+    <li class="step"><span class="nr">2–4</span><h4><span data-l="de">Gleichsetzen, Standardform, D = 0</span><span data-l="en">Set equal, standard form, D = 0</span></h4>
+      <div class="calc">$$x^2 = \m x - 4 \iff x^2 - \m x + 4 = 0, \qquad D = \m^2 - 16 = 0$$</div></li>
+    <li class="step"><span class="nr">5–6</span><h4><span data-l="de">Lösen, Tangenten</span><span data-l="en">Solve, tangents</span></h4>
+      <div class="calc">$$\m^2 = 16 \iff \m = 4 \text{ or/oder } \m = -4, \qquad t_1(x) = 4x - 4,\quad t_2(x) = -4x - 4$$</div></li>
+    <li class="step"><span class="nr">7</span><h4><span data-l="de">Berührpunkte</span><span data-l="en">Points of contact</span></h4>
+      <div class="calc"><p>\(x = -\frac{b}{2a} = \frac{\m}{2}\):</p>$$\m = 4:\ (2, 4), \qquad \m = -4:\ (-2, 4)$$</div></li>
+  </ol>
+  <div class="done">\(t_1(x) = 4x - 4\) <span data-l="de">berührt in</span><span data-l="en">touches at</span> \((2, 4)\), \(t_2(x) = -4x - 4\) <span data-l="de">in</span><span data-l="en">at</span> \((-2, 4)\).</div>
+</article>
+
+<!-- 4 -->
+<article class="ex" id="p4" data-mode="faded">
+  <div class="ex-head"><h3><span data-l="de">Aufgabe 4</span><span data-l="en">Exercise 4</span></h3></div>
+  <div class="task"><span data-l="de">Für welche Winkel α gilt \(\sin\alpha = \frac12\)? Gib alle Lösungen in Grad an.</span><span data-l="en">For which angles α is \(\sin\alpha = \frac12\)? Give all solutions in degrees.</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr"><span data-l="de">ERKENNEN</span><span data-l="en">RECOGNISE</span></span><h4><span data-l="de">Welches Rezept?</span><span data-l="en">Which recipe?</span></h4>
+      <div class="calc"><p><span data-l="de">Gleichung mit sin: waagrechte Linie \(y = \frac12\), zwei Punkte, links und rechts gespiegelt (wie E2 d).</span><span data-l="en">Equation with sin: horizontal line \(y = \frac12\), two points, mirrored left and right (like E2 d).</span></p></div></li>
+    <li class="step"><span class="nr">1</span><h4>\(\alpha_1\)</h4>
+      <div class="calc"><p><span data-l="de">Spezieller Wert:</span><span data-l="en">Special value:</span> \(\sin 30^\circ = \frac12\), <span data-l="de">also</span><span data-l="en">so</span> \(\alpha_1 = 30^\circ\).</p></div></li>
+    <li class="step"><span class="nr">2</span><h4>\(\alpha_2\)</h4>
+      <div class="calc">$$\alpha_2 = 180^\circ - 30^\circ = 150^\circ$$</div></li>
+    <li class="step"><span class="nr">3</span><h4><span data-l="de">Alle Lösungen</span><span data-l="en">All solutions</span></h4>
+      <div class="calc">$$\alpha = 30^\circ + k\cdot 360^\circ \quad\text{or/oder}\quad \alpha = 150^\circ + k\cdot 360^\circ,\qquad k \in \mathbb{Z}$$</div></li>
+  </ol>
+</article>
+
+<!-- 5 -->
+<article class="ex" id="p5" data-mode="faded">
+  <div class="ex-head"><h3><span data-l="de">Aufgabe 5</span><span data-l="en">Exercise 5</span></h3></div>
+  <div class="task"><span data-l="de">(a) Gib 135° im Bogenmass an. (b) Gib \(\frac{5\pi}{6}\) in Grad an.</span><span data-l="en">(a) Give 135° in radians. (b) Give \(\frac{5\pi}{6}\) in degrees.</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr"><span data-l="de">ERKENNEN</span><span data-l="en">RECOGNISE</span></span><h4><span data-l="de">Welches Rezept?</span><span data-l="en">Which recipe?</span></h4>
+      <div class="calc"><p><span data-l="de">Umrechnen, alles aus \(180^\circ = \pi\) (wie E1).</span><span data-l="en">Converting, everything from \(180^\circ = \pi\) (like E1).</span></p></div></li>
+    <li class="step"><span class="nr">(a)</span><h4><span data-l="de">Durch 180, mal π</span><span data-l="en">Divide by 180, multiply by π</span></h4>
+      <div class="calc">$$135^\circ = \tfrac{135}{180}\pi = \tfrac{3\pi}{4}$$</div></li>
+    <li class="step"><span class="nr">(b)</span><h4><span data-l="de">π durch 180° ersetzen</span><span data-l="en">Replace π by 180°</span></h4>
+      <div class="calc">$$\tfrac{5\pi}{6} = \tfrac56\cdot 180^\circ = 150^\circ$$</div></li>
+  </ol>
+</article>
+
+<!-- 6 -->
+<article class="ex" id="p6" data-mode="faded">
+  <div class="ex-head"><h3><span data-l="de">Aufgabe 6</span><span data-l="en">Exercise 6</span></h3></div>
+  <div class="task"><span data-l="de">Bestimme die Tangente an \(f(x) = \frac12 x^2 + 1\) im Punkt \(A = (2, f(2))\).</span><span data-l="en">Find the tangent to \(f(x) = \frac12 x^2 + 1\) at the point \(A = (2, f(2))\).</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr"><span data-l="de">ERKENNEN</span><span data-l="en">RECOGNISE</span></span><h4><span data-l="de">Welches Rezept?</span><span data-l="en">Which recipe?</span></h4>
+      <div class="calc"><p><span data-l="de">Tangenten-Rezept, Punkt auf der Parabel (wie A8): genau eine Tangente.</span><span data-l="en">Tangent recipe, point on the parabola (like A8): exactly one tangent.</span></p></div></li>
+    <li class="step"><span class="nr">0–1</span><h4><span data-l="de">Punkt ausrechnen, Ansatz</span><span data-l="en">Calculate the point, set-up</span></h4>
+      <div class="calc">$$f(2) = \tfrac12\cdot 4 + 1 = 3,\quad A = (2, 3), \qquad 2\m + \q = 3 \iff \q = 3 - 2\m$$</div></li>
+    <li class="step"><span class="nr">2–3</span><h4><span data-l="de">Gleichsetzen, Standardform</span><span data-l="en">Set equal, standard form</span></h4>
+      <p class="why"><span data-l="de">Tipp: mal 2, dann ist der Bruch weg.</span><span data-l="en">Hint: multiply by 2 to get rid of the fraction.</span></p>
+      <div class="calc">$$\tfrac12 x^2 + 1 = \m x + \q \iff x^2 - 2\m x + (2 - 2\q) = 0$$</div></li>
+    <li class="step"><span class="nr">4–5</span><h4><span data-l="de">D = 0, q ersetzen</span><span data-l="en">D = 0, replace q</span></h4>
+      <div class="calc">$$\begin{aligned} 4\m^2 - 4(2 - 2\q) &= 0 \quad\mid :4 \\ \m^2 - 2 + 2\q &= 0 \\ \m^2 - 2 + 2(3 - 2\m) &= 0 \\ \m^2 - 4\m + 4 = (\m - 2)^2 &= 0 \iff \m = 2 \end{aligned}$$
+      <p><span data-l="de">Und</span><span data-l="en">And</span> \(\q = 3 - 4 = -1\).</p></div></li>
+    <li class="step"><span class="nr">6–7</span><h4><span data-l="de">Tangente, Probe</span><span data-l="en">Tangent, check</span></h4>
+      <div class="calc">$$t(x) = 2x - 1, \qquad t(2) = 3 \ \checkmark$$</div></li>
+  </ol>
+</article>
+
+<!-- 7 -->
+<article class="ex" id="p7" data-mode="faded">
+  <div class="ex-head"><h3><span data-l="de">Aufgabe 7</span><span data-l="en">Exercise 7</span></h3></div>
+  <div class="task"><span data-l="de">Für einen Winkel α zwischen 90° und 180° gilt \(\sin\alpha = \frac{5}{13}\). Bestimme \(\cos\alpha\) und \(\tan\alpha\) exakt.</span><span data-l="en">For an angle α between 90° and 180°, \(\sin\alpha = \frac{5}{13}\). Find \(\cos\alpha\) and \(\tan\alpha\) exactly.</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr"><span data-l="de">ERKENNEN</span><span data-l="en">RECOGNISE</span></span><h4><span data-l="de">Welches Rezept?</span><span data-l="en">Which recipe?</span></h4>
+      <div class="calc"><p><span data-l="de">Eins bekannt → die anderen zwei (wie E7): Pythagoras, dann Vorzeichen aus dem Quadranten.</span><span data-l="en">One known → the other two (like E7): Pythagoras, then signs from the quadrant.</span></p></div></li>
+    <li class="step"><span class="nr">1</span><h4>Pythagoras</h4>
+      <div class="calc">$$\cos^2\alpha = 1 - \tfrac{25}{169} = \tfrac{144}{169} \iff \cos\alpha = \pm\tfrac{12}{13}$$</div></li>
+    <li class="step"><span class="nr">2</span><h4><span data-l="de">Vorzeichen</span><span data-l="en">Sign</span></h4>
+      <div class="calc"><p><span data-l="de">90° bis 180° = Quadrant II, dort ist cos negativ:</span><span data-l="en">90° to 180° = quadrant II, where cos is negative:</span> \(\cos\alpha = -\frac{12}{13}\).</p></div></li>
+    <li class="step"><span class="nr">3</span><h4>tan</h4>
+      <div class="calc">$$\tan\alpha = \frac{5/13}{-12/13} = -\tfrac{5}{12}$$</div></li>
+  </ol>
+</article>
+
+<!-- 8 -->
+<article class="ex" id="p8" data-mode="faded">
+  <div class="ex-head"><h3><span data-l="de">Aufgabe 8</span><span data-l="en">Exercise 8</span></h3></div>
+  <div class="task"><span data-l="de">Gib die Tangente an \(f(x) = x^2\) im Punkt \((-3, 9)\) an.</span><span data-l="en">Give the tangent to \(f(x) = x^2\) at the point \((-3, 9)\).</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr"><span data-l="de">ERKENNEN</span><span data-l="en">RECOGNISE</span></span><h4><span data-l="de">Welches Rezept?</span><span data-l="en">Which recipe?</span></h4>
+      <div class="calc"><p><span data-l="de">Normalparabel und Punkt darauf: Abkürzung \(t(x) = 2p\cdot x - p^2\) (wie A5). Das volle Rezept ginge auch, dauert aber länger.</span><span data-l="en">Standard parabola and a point on it: shortcut \(t(x) = 2p\cdot x - p^2\) (like A5). The full recipe works too, but takes longer.</span></p></div></li>
+    <li class="step"><span class="nr">1</span><h4>\(p = -3\)</h4>
+      <div class="calc">$$t(x) = 2\cdot(-3)\cdot x - (-3)^2 = -6x - 9$$
+      <p><span data-l="de">Probe:</span><span data-l="en">Check:</span> \(t(-3) = 18 - 9 = 9\) ✓</p></div></li>
+  </ol>
+</article>
+
+<!-- 9 -->
+<article class="ex" id="p9" data-mode="faded">
+  <div class="ex-head"><h3><span data-l="de">Aufgabe 9</span><span data-l="en">Exercise 9</span></h3></div>
+  <div class="task"><span data-l="de">(a) Eine Gerade geht durch den Ursprung und bildet mit der positiven x-Achse einen Winkel von 60°. Gib ihre Gleichung an. (b) Welchen Winkel bildet \(y = -x\) mit der positiven x-Achse?</span><span data-l="en">(a) A line passes through the origin and makes an angle of 60° with the positive x-axis. Give its equation. (b) What angle does \(y = -x\) make with the positive x-axis?</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr"><span data-l="de">ERKENNEN</span><span data-l="en">RECOGNISE</span></span><h4><span data-l="de">Welches Rezept?</span><span data-l="en">Which recipe?</span></h4>
+      <div class="calc"><p><span data-l="de">Beide Themen zusammen: \(\tan\alpha\) ist die Steigung, also das m in \(\m x + \q\).</span><span data-l="en">Both topics together: \(\tan\alpha\) is the slope, i.e. the m in \(\m x + \q\).</span></p></div></li>
+    <li class="step"><span class="nr">(a)</span><h4>\(\m = \tan 60^\circ\)</h4>
+      <div class="calc">$$\m = \tan 60^\circ = \sqrt3,\quad \q = 0 \ (\text{Ursprung / origin}) \qquad\Rightarrow\qquad y = \sqrt3\,x$$</div></li>
+    <li class="step"><span class="nr">(b)</span><h4>\(\tan\alpha = -1\)</h4>
+      <div class="calc"><p><span data-l="de">Steigung −1: \(\tan\alpha = -1\), also \(\alpha = 135^\circ\) (oder \(-45^\circ\), dieselbe Gerade).</span><span data-l="en">Slope −1: \(\tan\alpha = -1\), so \(\alpha = 135^\circ\) (or \(-45^\circ\), the same line).</span></p></div></li>
+  </ol>
+</article>
+
+<footer><span data-l="de">Eigene Übungsaufgaben im Stil des Skripts, alle Lösungen nachgerechnet.</span><span data-l="en">Own practice exercises in the style of the script, all solutions double-checked.</span></footer>
+</main>
+</body>
+</html>

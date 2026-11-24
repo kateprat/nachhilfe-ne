@@ -115,6 +115,22 @@ button{border:2px solid var(--ink);font-weight:700}
 h1,.sub{padding-right:250px}
 @media(max-width:680px){.topctl{position:static;justify-content:flex-end;margin-bottom:12px}h1,.sub{padding-right:0}}
 </style>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<style>
+html[lang=de] [data-l=en],html[lang=en] [data-l=de]{display:none!important}
+.th2{font:800 clamp(26px,3.6vw,34px)/1.1 "Bricolage Grotesque",sans-serif;margin:64px 0 14px}
+.th2>span{background:linear-gradient(transparent 55%,light-dark(#ffe45c,#6b5a12) 55%,light-dark(#ffe45c,#6b5a12) 92%,transparent 92%);padding:0 4px}
+.theory{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:16px 0}
+.theory .tc{border:2px solid var(--line);border-radius:18px;padding:14px 16px;background:var(--card)}
+.theory .tc h3{margin:0 0 6px;font:800 19px "Bricolage Grotesque",sans-serif}
+.theory .tc p{font-size:16px;margin:0 0 6px}
+.theory .katex-display{margin:.4em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0}
+.tc.k-m{border-top:6px solid light-dark(#9fd0ff,#3d82d6)}.tc.k-y{border-top:6px solid light-dark(#ffe45c,#e8c728)}.tc.k-p{border-top:6px solid light-dark(#ffadc8,#d2507e)}.tc.k-g{border-top:6px solid light-dark(#8ee6c0,#2fae7d)}
+.mm{color:var(--blue);font-weight:700}.qq{color:var(--red);font-weight:700}
+.more{margin-top:12px}.more a{color:var(--blue)}
+</style>
 </head>
 <body>
 <main class="band">
@@ -201,6 +217,35 @@ h1,.sub{padding-right:250px}
     <p class="result hideable" data-tab="4" id="res4" data-reveal="ans"></p>
   </section>
 </div>
+<h2 class="th2" id="theorie"><span data-l="de">Die Theorie im Überblick</span><span data-l="en">The theory at a glance</span></h2>
+<div class="theory">
+  <div class="tc k-p"><h3><span data-l="de">Parabel</span><span data-l="en">Parabola</span></h3>
+    <p><span data-l="de">Alle Punkte, die gleich weit vom Brennpunkt F und von der Leitgeraden ℓ entfernt sind. Der Scheitel S liegt genau in der Mitte.</span><span data-l="en">All points that are equally far from the focus F and from the directrix ℓ. The vertex S is exactly in the middle.</span></p>
+    $$F = (0, p),\ \ \ell: y = -p$$
+    $$\Rightarrow\ y = \tfrac{1}{4p}\,x^2$$</div>
+  <div class="tc k-y"><h3><span data-l="de">Scheitelform</span><span data-l="en">Vertex form</span></h3>
+    $$f(x) = a\,(x - u)^2 + v$$
+    <p><span data-l="de">Scheitel \(S = (u, v)\). a &gt; 0: nach oben offen, a &lt; 0: nach unten. Grosses |a|: schmal.</span><span data-l="en">Vertex \(S = (u, v)\). a &gt; 0: opens upwards, a &lt; 0: downwards. Large |a|: narrow.</span></p></div>
+  <div class="tc k-m"><h3><span data-l="de">Gerade</span><span data-l="en">Line</span></h3>
+    $$g(x) = \m\,x + \q$$
+    <p><span data-l="de"><span class="mm">m</span> = Steigung (1 nach rechts → m nach oben), <span class="qq">q</span> = y-Achsenabschnitt.</span><span data-l="en"><span class="mm">m</span> = slope (1 to the right → m up), <span class="qq">q</span> = y-intercept.</span></p>
+    <p><span data-l="de">Punkt P liegt auf g ⇔ \(g(x_P) = y_P\).</span><span data-l="en">Point P lies on g ⇔ \(g(x_P) = y_P\).</span></p></div>
+  <div class="tc k-g"><h3><span data-l="de">Diskriminante</span><span data-l="en">Discriminant</span></h3>
+    $$\begin{aligned}ax^2 + bx + c &= 0\\ D &= b^2 - 4ac\end{aligned}$$
+    <p>D &gt; 0: <span data-l="de">2 Lösungen</span><span data-l="en">2 solutions</span> · D = 0: <span data-l="de">1 Lösung</span><span data-l="en">1 solution</span>, \(x = -\frac{b}{2a}\) · D &lt; 0: <span data-l="de">keine</span><span data-l="en">none</span></p></div>
+  <div class="tc k-y"><h3><span data-l="de">Tangente = D ist 0</span><span data-l="en">Tangent = D is 0</span></h3>
+    <p><span data-l="de">Ansatz \(t(x) = \m x + \q\) → Gegebenes einsetzen → \(f(x) = t(x)\) → Standardform → \(D = 0\) → lösen → Berührpunkt \(x = -\frac{b}{2a}\).</span><span data-l="en">Set-up \(t(x) = \m x + \q\) → substitute what's given → \(f(x) = t(x)\) → standard form → \(D = 0\) → solve → point of contact \(x = -\frac{b}{2a}\).</span></p></div>
+  <div class="tc k-p"><h3><span data-l="de">Abkürzung Normalparabel</span><span data-l="en">Shortcut for x²</span></h3>
+    <p><span data-l="de">Tangente an \(f(x) = x^2\) im Punkt \((p, p^2)\):</span><span data-l="en">Tangent to \(f(x) = x^2\) at the point \((p, p^2)\):</span></p>
+    $$t(x) = 2p\cdot x - p^2$$</div>
+  <div class="tc k-m"><h3><span data-l="de">Kreis</span><span data-l="en">Circle</span></h3>
+    $$(x - a)^2 + (y - b)^2 = r^2$$
+    <p><span data-l="de">Mittelpunkt \(M = (a, b)\), Radius r. Ausmultipliziert: Kreisgleichung in Standardform; durch quadratisches Ergänzen zurück.</span><span data-l="en">Centre \(M = (a, b)\), radius r. Expanded: general form; complete the square to get back.</span></p></div>
+  <div class="tc k-g"><h3><span data-l="de">Kreis und Gerade</span><span data-l="en">Circle and line</span></h3>
+    <p><span data-l="de">\(y = \m x + \q\) in die Kreisgleichung einsetzen → quadratische Gleichung in x → D entscheidet: 2, 1 (Tangente) oder 0 Schnittpunkte.</span><span data-l="en">Substitute \(y = \m x + \q\) into the circle equation → quadratic equation in x → D decides: 2, 1 (tangent) or 0 intersection points.</span></p>
+    <p><span data-l="de">Zwei Kreise: Gleichungen voneinander abziehen → Gerade.</span><span data-l="en">Two circles: subtract the equations → a line.</span></p></div>
+</div>
+<p class="more"><a href="spickzettel.html"><span data-l="de">Lücken-Spickzettel zu diesem Thema</span><span data-l="en">Fill-in cheat sheet for this topic</span></a> · <a href="../training/"><span data-l="de">Prüfungstraining</span><span data-l="en">Exam training</span></a></p>
 </main>
 <script>
 {
@@ -502,5 +547,6 @@ applyHash();
 draw();
 }
 </script>
+<script>window.addEventListener('DOMContentLoaded',()=>{if(window.renderMathInElement)renderMathInElement(document.querySelector('.theory'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],macros:{'\\m':'\\textcolor{#3b7be8}{m}','\\q':'\\textcolor{#e0475b}{q}'},ignoredClasses:['calc','result','help'],throwOnError:false})});</script>
 </body>
 </html>
