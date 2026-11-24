@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de" data-bilingual>
+<head>
+<meta charset="utf-8">
+<script src="../assets/theme.js?v=4"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Werkzeugkasten Algebra – Mathe 2cNP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/steps.js?v=4"></script>
+<link rel="stylesheet" href="../assets/style.css?v=4">
+</head>
+<body>
+<main class="wrap">
+<nav class="langsw" aria-label="Sprache / language"><button type="button" data-setlang="de">DE</button><button type="button" data-setlang="en">EN</button></nav>
+<p class="crumb"><a href="../" data-l="de">← Übersicht</a><a href="../en.html" data-l="en">← Overview</a></p>
+<h1><span data-l="de">Werkzeugkasten Algebra</span><span data-l="en">Algebra toolbox</span></h1>
+<p class="lead"><span data-l="de">Die Rechentricks, die in fast jeder Aufgabe vorkommen. Die meisten Punkte gehen nicht bei der Idee verloren, sondern hier: bei einer Klammer, einem Vorzeichen, einem Bruch.</span><span data-l="en">The calculation tricks that come up in almost every exercise. Most marks aren't lost on the idea but here: on a bracket, a sign, a fraction.</span></p>
+
+<nav class="nav" aria-label="Abschnitte"><ul>
+<li><a href="#klammern"><span data-l="de">Klammern</span><span data-l="en">Brackets</span></a></li><li><a href="#binom"><span data-l="de">Binome</span><span data-l="en">Binomials</span></a></li><li><a href="#brueche"><span data-l="de">Brüche</span><span data-l="en">Fractions</span></a></li>
+<li><a href="#mitternacht"><span data-l="de">Mitternachtsformel</span><span data-l="en">Quadratic formula</span></a></li><li><a href="#ergaenzen"><span data-l="de">Ergänzen</span><span data-l="en">Completing the square</span></a></li>
+<li><a href="#wurzeln"><span data-l="de">Wurzeln</span><span data-l="en">Roots</span></a></li><li><a href="#fehler"><span data-l="de">Typische Fehler</span><span data-l="en">Typical mistakes</span></a></li>
+</ul></nav>
+
+<h2 id="klammern"><span data-l="de">Klammern und Vorzeichen</span><span data-l="en">Brackets and signs</span></h2>
+<p><span data-l="de">Die Zahl vor der Klammer wird mit <b>jedem</b> Term in der Klammer multipliziert, mitsamt Vorzeichen. Ein Minus vor der Klammer dreht alle Vorzeichen um.</span><span data-l="en">The number in front of the bracket is multiplied with <b>every</b> term inside, including its sign. A minus in front of the bracket flips all the signs.</span></p>
+<div class="box">$$-4\cdot(3 - q) = -12 + 4q \qquad -(x - 5) = -x + 5$$
+<p class="try"><span data-l="de">Was ist \(-2(x - 5)\)?</span><span data-l="en">What is \(-2(x - 5)\)?</span> <button type="button" class="reveal" data-answer="c1"><span data-l="de">Antwort zeigen</span><span data-l="en">Show answer</span></button></p>
+<p id="c1"><span data-l="de">\(-2x + 10\). Minus mal minus gibt plus.</span><span data-l="en">\(-2x + 10\). Minus times minus is plus.</span></p>
+<p class="try"><span data-l="de">Was ist \(3 - (2 - m)\)?</span><span data-l="en">What is \(3 - (2 - m)\)?</span> <button type="button" class="reveal" data-answer="c2"><span data-l="de">Antwort zeigen</span><span data-l="en">Show answer</span></button></p>
+<p id="c2"><span data-l="de">\(3 - 2 + m = 1 + m\).</span><span data-l="en">\(3 - 2 + m = 1 + m\).</span></p></div>
+
+<h2 id="binom"><span data-l="de">Binomische Formeln</span><span data-l="en">Binomial formulas</span></h2>
+<div class="box">$$\begin{aligned} (a + b)^2 &= a^2 + 2ab + b^2 \\ (a - b)^2 &= a^2 - 2ab + b^2 \\ (a + b)(a - b) &= a^2 - b^2 \end{aligned}$$
+<p style="margin:0"><span data-l="de">Der Mittelteil \(2ab\) wird am häufigsten vergessen: \((x + 3)^2\) ist <b>nicht</b> \(x^2 + 9\).</span><span data-l="en">The middle term \(2ab\) is the one most often forgotten: \((x + 3)^2\) is <b>not</b> \(x^2 + 9\).</span></p>
+<p class="try"><span data-l="de">Was ist \((x + 3)^2\)?</span><span data-l="en">What is \((x + 3)^2\)?</span> <button type="button" class="reveal" data-answer="c3"><span data-l="de">Antwort zeigen</span><span data-l="en">Show answer</span></button></p>
+<p id="c3"><span data-l="de">\(x^2 + 6x + 9\)</span><span data-l="en">\(x^2 + 6x + 9\)</span></p>
+<p class="try"><span data-l="de">Was ist \(\left(\frac12 x + 1\right)^2\)?</span><span data-l="en">What is \(\left(\frac12 x + 1\right)^2\)?</span> <button type="button" class="reveal" data-answer="c4"><span data-l="de">Antwort zeigen</span><span data-l="en">Show answer</span></button></p>
+<p id="c4"><span data-l="de">\(\frac14 x^2 + x + 1\). Mittelteil: \(2\cdot\frac12 x\cdot 1 = x\).</span><span data-l="en">\(\frac14 x^2 + x + 1\). Middle term: \(2\cdot\frac12 x\cdot 1 = x\).</span></p>
+<p class="try"><span data-l="de">Was ist \((-2 - m)^2\)?</span><span data-l="en">What is \((-2 - m)^2\)?</span> <button type="button" class="reveal" data-answer="c5"><span data-l="de">Antwort zeigen</span><span data-l="en">Show answer</span></button></p>
+<p id="c5"><span data-l="de">\(4 + 4m + m^2\), dasselbe wie \((2 + m)^2\).</span><span data-l="en">\(4 + 4m + m^2\), the same as \((2 + m)^2\).</span></p></div>
+
+<h2 id="brueche"><span data-l="de">Brüche wegmultiplizieren</span><span data-l="en">Multiplying away fractions</span></h2>
+<p><span data-l="de">In einer <b>Gleichung</b> darfst du beide Seiten mit derselben Zahl multiplizieren. Wähle den Nenner, dann sind die Brüche weg. Aber: <b>jeden</b> Term multiplizieren.</span><span data-l="en">In an <b>equation</b> you may multiply both sides by the same number. Choose the denominator and the fractions are gone. But: multiply <b>every</b> term.</span></p>
+<div class="box">$$\tfrac14 x^2 + x + 1 = 25 \quad\mid\cdot 4 \qquad\Longrightarrow\qquad x^2 + 4x + 4 = 100$$
+<p class="try"><span data-l="de">Mach die Brüche weg: \(\frac12 x^2 - \frac13 x = 2\)</span><span data-l="en">Get rid of the fractions: \(\frac12 x^2 - \frac13 x = 2\)</span> <button type="button" class="reveal" data-answer="c6"><span data-l="de">Antwort zeigen</span><span data-l="en">Show answer</span></button></p>
+<p id="c6"><span data-l="de">Mal 6: \(3x^2 - 2x = 12\).</span><span data-l="en">Times 6: \(3x^2 - 2x = 12\).</span></p></div>
+
+<h2 id="mitternacht"><span data-l="de">Quadratische Gleichungen</span><span data-l="en">Quadratic equations</span></h2>
+<ol class="recipe">
+<li><div><b><span data-l="de">Standardform</span><span data-l="en">Standard form</span></b><span class="f">\(ax^2 + bx + c = 0\)</span><small><span data-l="de">Alles auf eine Seite, a, b, c mit Vorzeichen ablesen.</span><span data-l="en">Everything on one side, read off a, b, c with their signs.</span></small></div></li>
+<li><div><b><span data-l="de">Diskriminante</span><span data-l="en">Discriminant</span></b><span class="f">\(D = b^2 - 4ac\)</span><small><span data-l="de">D &gt; 0: zwei Lösungen, D = 0: eine, D &lt; 0: keine.</span><span data-l="en">D &gt; 0: two solutions, D = 0: one, D &lt; 0: none.</span></small></div></li>
+<li><div><b><span data-l="de">Mitternachtsformel</span><span data-l="en">Quadratic formula</span></b><span class="f">\(x_{1,2} = \dfrac{-b \pm \sqrt{D}}{2a}\)</span><small><span data-l="de">Das ± gibt zwei Lösungen. Beide aufschreiben!</span><span data-l="en">The ± gives two solutions. Write down both!</span></small></div></li>
+</ol>
+<div class="box">$$x^2 + x - 12 = 0:\quad D = 1 + 48 = 49,\quad x_{1,2} = \frac{-1 \pm 7}{2},\quad x_1 = 3,\ x_2 = -4$$
+<p><span data-l="de">Abkürzung: Steht schon eine binomische Formel da, z.B. \(m^2 - 2m + 1 = (m - 1)^2 = 0\), dann ist \(m = 1\) sofort klar.</span><span data-l="en">Shortcut: if a binomial formula is already there, e.g. \(m^2 - 2m + 1 = (m - 1)^2 = 0\), then \(m = 1\) straight away.</span></p>
+<p class="try"><span data-l="de">Löse \(x^2 - 4x - 12 = 0\).</span><span data-l="en">Solve \(x^2 - 4x - 12 = 0\).</span> <button type="button" class="reveal" data-answer="c7"><span data-l="de">Antwort zeigen</span><span data-l="en">Show answer</span></button></p>
+<p id="c7"><span data-l="de">\(D = 16 + 48 = 64\), \(x = \frac{{4 \pm 8}}{{2}}\), also \(x = 6\) oder \(x = -2\).</span><span data-l="en">\(D = 16 + 48 = 64\), \(x = \frac{{4 \pm 8}}{{2}}\), so \(x = 6\) or \(x = -2\).</span></p></div>
+
+<h2 id="ergaenzen"><span data-l="de">Quadratisch ergänzen</span><span data-l="en">Completing the square</span></h2>
+<p><span data-l="de">Damit machst du aus \(x^2 + s\,x\) eine Klammer im Quadrat. Du brauchst es für Kreise (A9) und für die Scheitelform.</span><span data-l="en">This turns \(x^2 + s\,x\) into a squared bracket. You need it for circles (A9) and for vertex form.</span></p>
+<div class="box">$$x^2 + s\,x = \left(x + \tfrac{s}{2}\right)^2 - \left(\tfrac{s}{2}\right)^2$$
+<p><span data-l="de">In Worten: Halbe Zahl vor x in die Klammer. Ihr Quadrat wieder abziehen, weil die Klammer es zu viel liefert.</span><span data-l="en">In words: half the number in front of x goes into the bracket. Subtract its square again, because the bracket adds it.</span></p>
+$$x^2 - 6x = (x - 3)^2 - 9 \qquad x^2 - 2x + 3 = (x - 1)^2 - 1 + 3 = (x - 1)^2 + 2$$
+<p><span data-l="de">Das zweite Beispiel ist die Scheitelform: Scheitel \(S = (1, 2)\).</span><span data-l="en">The second example is vertex form: vertex \(S = (1, 2)\).</span></p>
+<p class="try"><span data-l="de">Ergänze: \(x^2 + 8x\)</span><span data-l="en">Complete the square: \(x^2 + 8x\)</span> <button type="button" class="reveal" data-answer="c8"><span data-l="de">Antwort zeigen</span><span data-l="en">Show answer</span></button></p>
+<p id="c8"><span data-l="de">\((x + 4)^2 - 16\)</span><span data-l="en">\((x + 4)^2 - 16\)</span></p>
+<p class="try"><span data-l="de">Ergänze: \(y^2 - 5y\)</span><span data-l="en">Complete the square: \(y^2 - 5y\)</span> <button type="button" class="reveal" data-answer="c9"><span data-l="de">Antwort zeigen</span><span data-l="en">Show answer</span></button></p>
+<p id="c9"><span data-l="de">\(\left(y - \frac52\right)^2 - \frac{{25}}{{4}}\)</span><span data-l="en">\(\left(y - \frac52\right)^2 - \frac{{25}}{{4}}\)</span></p></div>
+
+<h2 id="wurzeln"><span data-l="de">Wurzeln vereinfachen</span><span data-l="en">Simplifying roots</span></h2>
+<p><span data-l="de">In der Prüfung müssen Wurzeln vereinfacht sein: keine Quadratzahl mehr unter der Wurzel, und Brüche gekürzt.</span><span data-l="en">In the exam, roots must be simplified: no square number left under the root, and fractions reduced.</span></p>
+<div class="box">$$\sqrt{3328} = \sqrt{256\cdot 13} = 16\sqrt{13} \qquad \sqrt{\tfrac34} = \tfrac{\sqrt3}{2} \qquad \tfrac{1}{\sqrt3} = \tfrac{\sqrt3}{3}$$
+<p><span data-l="de">Beim letzten: oben und unten mit \(\sqrt3\) multiplizieren, dann ist die Wurzel aus dem Nenner weg.</span><span data-l="en">For the last one: multiply top and bottom by \(\sqrt3\), then the root is out of the denominator.</span></p>
+<p class="try"><span data-l="de">Vereinfache \(\sqrt{{72}}\).</span><span data-l="en">Simplify \(\sqrt{{72}}\).</span> <button type="button" class="reveal" data-answer="c10"><span data-l="de">Antwort zeigen</span><span data-l="en">Show answer</span></button></p>
+<p id="c10"><span data-l="de">\(\sqrt{{36\cdot 2}} = 6\sqrt2\)</span><span data-l="en">\(\sqrt{{36\cdot 2}} = 6\sqrt2\)</span></p></div>
+
+<h2 id="fehler"><span data-l="de">Typische Fehler</span><span data-l="en">Typical mistakes</span></h2>
+<ul class="sub">
+<li><span data-l="de">\((a + b)^2 = a^2 + b^2\). <b>Falsch</b>, der Mittelteil \(2ab\) fehlt.</span><span data-l="en">\((a + b)^2 = a^2 + b^2\). <b>Wrong</b>, the middle term \(2ab\) is missing.</span></li>
+<li><span data-l="de">Minus vor der Klammer nur beim ersten Term umgedreht: \(-(x - 5) \neq -x - 5\).</span><span data-l="en">Minus in front of the bracket only applied to the first term: \(-(x - 5) \neq -x - 5\).</span></li>
+<li><span data-l="de">Beim Einsetzen die Klammer vergessen: für y = x + 1 heisst es \((x + 1)^2\), nicht \(x + 1^2\).</span><span data-l="en">Forgetting the bracket when substituting: for y = x + 1 it's \((x + 1)^2\), not \(x + 1^2\).</span></li>
+<li><span data-l="de">Beim Wegmultiplizieren eines Bruchs nur einen Term multipliziert.</span><span data-l="en">When multiplying away a fraction, only one term got multiplied.</span></li>
+<li><span data-l="de">Die zweite Lösung vergessen (das ± oder bei sin/cos der zweite Winkel).</span><span data-l="en">Forgetting the second solution (the ±, or the second angle with sin/cos).</span></li>
+<li><span data-l="de">Durch eine Variable geteilt: Aus \(x^2 = 3x\) wird nicht \(x = 3\). Auch \(x = 0\) ist eine Lösung.</span><span data-l="en">Dividing by a variable: \(x^2 = 3x\) does not just give \(x = 3\). \(x = 0\) is a solution too.</span></li>
+<li><span data-l="de">Vorzeichen beim Ablesen: \((y + 10)^2\) gehört zu \(b = -10\).</span><span data-l="en">Signs when reading off: \((y + 10)^2\) belongs to \(b = -10\).</span></li>
+<li><span data-l="de">Rechner auf RAD statt DEG (oder umgekehrt).</span><span data-l="en">Calculator on RAD instead of DEG (or the other way round).</span></li>
+<li><span data-l="de"><b>Keine Probe gemacht.</b> Einsetzen dauert 20 Sekunden und findet fast jeden Fehler.</span><span data-l="en"><b>No check.</b> Substituting takes 20 seconds and catches almost every mistake.</span></li>
+</ul>
+<footer><span data-l="de">Nach dem Skript «Quadratische Gleichungen und Funktionen» (Kapitel 14) und den Lernzielen.</span><span data-l="en">Based on the script “Quadratic equations and functions” (chapter 14) and the learning goals.</span></footer>
+</main>
+</body>
+</html>

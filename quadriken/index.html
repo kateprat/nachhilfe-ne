@@ -17,13 +17,13 @@
 <main class="wrap">
 <nav class="langsw" aria-label="Sprache / language"><a href="./" lang="de" aria-current="page">DE</a><a href="en.html" lang="en">EN</a></nav>
 <p class="crumb"><a href="../">← Übersicht</a></p>
-<h1>Quadriken: Tangenten an Parabeln</h1>
-<p class="lead">Skript Kapitel 17.2, Aufgaben A2–A8. Zuerst die Buchstaben, dann ein Kochrezept, das bei fast allen Aufgaben gleich bleibt.</p>
+<h1>Quadriken: Tangenten und Kreise</h1>
+<p class="lead">Skript Kapitel 17.2–17.5, Aufgaben A2–A12. Zuerst die Buchstaben, dann ein Kochrezept, das bei fast allen Aufgaben gleich bleibt.</p>
 
 <nav class="nav" aria-label="Abschnitte"><ul>
   <li><a href="#buchstaben">Buchstaben</a></li><li><a href="#rezept">Kochrezept</a></li>
   <li><a href="#a2">A2</a></li><li><a href="#a3">A3</a></li><li><a href="#a4">A4</a></li><li><a href="#a5">A5</a></li>
-  <li><a href="#a6">A6</a></li><li><a href="#a7">A7</a></li><li><a href="#a8">A8</a></li><li><a href="interaktiv.html#tangente">Interaktiv</a></li><li><a href="spickzettel.html">Spickzettel</a></li><li><a href="../training/">Prüfungstraining</a></li>
+  <li><a href="#a6">A6</a></li><li><a href="#a7">A7</a></li><li><a href="#a8">A8</a></li><li><a href="#kreise">Kreise</a></li><li><a href="#a9">A9</a></li><li><a href="#a10">A10</a></li><li><a href="#a11">A11</a></li><li><a href="#a12">A12</a></li><li><a href="interaktiv.html#tangente">Interaktiv</a></li><li><a href="spickzettel.html">Spickzettel</a></li><li><a href="../grundlagen/">Algebra</a></li><li><a href="../training/">Prüfungstraining</a></li>
 </ul></nav>
 
 <!-- ============ 1. Buchstaben ============ -->
@@ -306,6 +306,170 @@
       <p class="why">Der Berührpunkt muss A sein: \(x = 2\m - 3 = -1\) ✓ und \(t(-1) = 2\) ✓</p></li>
   </ol>
   <div class="done">\(t(x) = x + 3\), Berührpunkt \(A = (-1, 2)\).</div>
+</article>
+
+<!-- ============ 4. Kreise ============ -->
+<h2 id="kreise">4 · Kreise (A9–A12)</h2>
+<p>Ein Kreis ist die Menge aller Punkte, die von einem Mittelpunkt M genau den Abstand r haben. Mit Pythagoras wird daraus die <b>Kreisgleichung</b>:</p>
+<div class="box">$$(x - a)^2 + (y - b)^2 = r^2 \qquad M = (a, b),\ \text{Radius } r$$
+<p style="margin:0">Achtung Vorzeichen: \((y + 10)^2\) ist \((y - (-10))^2\), also ist \(b = -10\).</p></div>
+<p>Für A9 brauchst du das <b>quadratische Ergänzen</b>. Falls das nicht mehr sitzt: <a href="../grundlagen/#ergaenzen">Werkzeugkasten Algebra</a>.</p>
+
+<h3>Rezept A: Mittelpunkt und Radius ablesen</h3>
+<ol class="recipe">
+  <li><div><b>Sortieren</b><span class="f">\((x^2 + s\,x) + (y^2 + t\,y) + u = 0\)</span><small>x-Terme zusammen, y-Terme zusammen.</small></div></li>
+  <li><div><b>Quadratisch ergänzen</b><span class="f">\(x^2 + s\,x = \left(x + \tfrac{s}{2}\right)^2 - \left(\tfrac{s}{2}\right)^2\)</span><small>Halbe Zahl vor x, in die Klammer; ihr Quadrat wieder abziehen. Gleich für y.</small></div></li>
+  <li><div><b>Zahlen nach rechts</b><span class="f">\((x - a)^2 + (y - b)^2 = d\)</span></div></li>
+  <li><div><b>Ablesen</b><span class="f">\(M = (a, b),\ r = \sqrt{d}\)</span><small>Ist d = 0: nur ein Punkt. Ist d negativ: gar kein Punkt.</small></div></li>
+</ol>
+
+<h3>Rezept B: Kreis und Gerade schneiden</h3>
+<ol class="recipe">
+  <li><div><b>Gerade nach y auflösen</b><span class="f">\(y = \m x + \q\)</span></div></li>
+  <li><div><b>In die Kreisgleichung einsetzen</b><small>Überall, wo y steht, \((\m x + \q)\) in Klammern hinschreiben.</small></div></li>
+  <li><div><b>Standardform</b><span class="f">\(ax^2 + bx + c = 0\)</span><small>Binomische Formel, Brüche wegmultiplizieren.</small></div></li>
+  <li><div><b>Mitternachtsformel</b><small>D sagt wieder: 2 Schnittpunkte, 1 (Tangente) oder keiner. Wie bei den Parabeln!</small></div></li>
+  <li><div><b>y ausrechnen</b><small>Die x-Werte in die Geradengleichung einsetzen.</small></div></li>
+  <li><div><b>Probe</b><small>Beide Punkte in beide Gleichungen einsetzen.</small></div></li>
+</ol>
+
+<!-- A9 e -->
+<article class="ex" id="a9" data-mode="worked">
+  <div class="ex-head"><h3>A9 (a) e)</h3><span class="mode">vorgerechnet</span></div>
+  <div class="task">Finde Mittelpunkt und Radius des Kreises \(x^2 + y^2 - 6x + 20y + 73 = 0\).</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>Sortieren</h4>
+      <div class="calc">$$(x^2 - 6x) + (y^2 + 20y) + 73 = 0$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4>x ergänzen</h4>
+      <p class="why">Die Zahl vor x ist −6. Die Hälfte davon ist −3, das kommt in die Klammer. \((-3)^2 = 9\) zieht man wieder ab, damit sich nichts ändert.</p>
+      <div class="calc">$$x^2 - 6x = (x - 3)^2 - 9$$<p>Probe: \((x - 3)^2 = x^2 - 6x + 9\), minus 9 gibt wieder \(x^2 - 6x\) ✓</p></div></li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4>y ergänzen</h4>
+      <p class="why">Hälfte von 20 ist 10, \(10^2 = 100\).</p>
+      <div class="calc">$$y^2 + 20y = (y + 10)^2 - 100$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 4</span><h4>Einsetzen, Zahlen nach rechts</h4>
+      <div class="calc">$$\begin{aligned} (x - 3)^2 - 9 + (y + 10)^2 - 100 + 73 &= 0 \\ (x - 3)^2 + (y + 10)^2 &= 36 \end{aligned}$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 5</span><h4>Ablesen</h4>
+      <p class="why">\((y + 10)^2 = (y - (-10))^2\), also \(b = -10\).</p>
+      <div class="calc">$$M = (3, -10), \qquad r = \sqrt{36} = 6$$</div></li>
+  </ol>
+  <div class="done">Kreis um \((3, -10)\) mit Radius 6. <a href="interaktiv.html#kreis">Im Bild prüfen</a></div>
+</article>
+
+<!-- A9 rest -->
+<article class="ex" id="a9b" data-mode="faded">
+  <div class="ex-head"><h3>A9 (a) a)–d), f) und (b)</h3><span class="mode">selbst rechnen</span></div>
+  <div class="task">(a) Finde Mittelpunkt und Radius: a) \(x^2 + y^2 = 25\) &nbsp; b) \(x^2 + y^2 - 5 = 0\) &nbsp; c) \(x^2 - 2x + 1 + y^2 - \frac14 = 0\) &nbsp; d) \(x^2 + 2x + 1 + y^2 - \frac14 = 0\) &nbsp; f) \(x^2 + y^2 - 2\sqrt3 x + 4\sqrt2 y + 4 = 0\)<br>(b) Warum sind das keine Kreise? Was ist es dann? a) \(x^2 + y^2 + 25 = 0\) &nbsp; b) \(x^2 + y^2 = 0\) &nbsp; c) \(x^2 + \left(\frac{y}{2}\right)^2 - 1 = 0\)</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">a) b)</span><h4>Schon fast fertig</h4>
+      <p class="why">\(x^2 = (x - 0)^2\). Der Radius ist die Wurzel der rechten Seite.</p>
+      <div class="calc">$$\text{a) } M = (0, 0),\ r = 5 \qquad \text{b) } x^2 + y^2 = 5:\ M = (0, 0),\ r = \sqrt5$$</div></li>
+    <li class="step"><span class="nr">c) d)</span><h4>Binomische Formel erkennen</h4>
+      <p class="why">\(x^2 - 2x + 1\) ist schon \((x - 1)^2\). Ergänzen nicht nötig.</p>
+      <div class="calc">$$\text{c) } (x - 1)^2 + y^2 = \tfrac14:\ M = (1, 0),\ r = \tfrac12 \qquad \text{d) } (x + 1)^2 + y^2 = \tfrac14:\ M = (-1, 0),\ r = \tfrac12$$</div></li>
+    <li class="step"><span class="nr">f)</span><h4>Ergänzen mit Wurzeln</h4>
+      <p class="why">Genau wie bei e). Hälfte von \(-2\sqrt3\) ist \(-\sqrt3\), Quadrat 3. Hälfte von \(4\sqrt2\) ist \(2\sqrt2\), Quadrat 8.</p>
+      <div class="calc">$$\begin{aligned} (x - \sqrt3)^2 - 3 + (y + 2\sqrt2)^2 - 8 + 4 &= 0 \\ (x - \sqrt3)^2 + (y + 2\sqrt2)^2 &= 7 \end{aligned}$$
+      <p>\(M = (\sqrt3, -2\sqrt2)\), \(r = \sqrt7\).</p></div></li>
+    <li class="step"><span class="nr">(b)</span><h4>Wenn rechts keine positive Zahl steht</h4>
+      <p class="why">Quadrate sind nie negativ.</p>
+      <div class="calc"><ul class="sub">
+        <li>a) \(x^2 + y^2 = -25\): unmöglich, <b>leere Menge</b>.</li>
+        <li>b) \(x^2 + y^2 = 0\): nur wenn x = 0 und y = 0, also <b>nur der Punkt (0, 0)</b>.</li>
+        <li>c) \(x^2 + \left(\frac{y}{2}\right)^2 = 1\): ein in y-Richtung auf das Doppelte gestreckter Kreis, eine <b>Ellipse</b> mit Halbachsen 1 und 2.</li>
+      </ul></div></li>
+  </ol>
+</article>
+
+<!-- A10 -->
+<article class="ex" id="a10" data-mode="faded">
+  <div class="ex-head"><h3>A10</h3><span class="mode">selbst rechnen</span></div>
+  <div class="task">Die Nullstellenmengen dieser Funktionen sind keine Kreise, aber einfache Figuren. Skizziere sie: (a) \(y\) (b) \(y - 3\) (c) \(x\) (d) \(x + 4\) (e) \(x - y\) (f) \(x + y\) (g) \(\frac12 x - 3 - y\) (h) \(2x + 3y - 6\) (i) \(x^2 - y\) (j) \(x - y^2\) (k) \(xy\) (l) \((x + 4)(y - 3)\) (m) \(xy + 2x + 5y + 10\) (n) \(0\) (o) \(-2\) (p) \(xy(x - y)\) (q) \(x^3y - xy^3\); Zusatz (r), (s).</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">REGEL</span><h4>Gleich null setzen, nach y (oder x) auflösen</h4>
+      <p class="why">Die Nullstellenmenge von f(x, y) sind alle Punkte mit f(x, y) = 0. Wenn du nach y auflösen kannst, siehst du sofort eine bekannte Funktion.</p></li>
+    <li class="step"><span class="nr">(a)–(d)</span><h4>Waagrecht und senkrecht</h4>
+      <div class="calc"><p>(a) \(y = 0\): x-Achse · (b) \(y = 3\): waagrechte Gerade · (c) \(x = 0\): y-Achse · (d) \(x = -4\): senkrechte Gerade</p></div></li>
+    <li class="step"><span class="nr">(e)–(h)</span><h4>Schräge Geraden</h4>
+      <div class="calc"><p>(e) \(y = x\) · (f) \(y = -x\) · (g) \(y = \frac12 x - 3\) · (h) \(3y = -2x + 6 \iff y = -\frac23 x + 2\)</p></div></li>
+    <li class="step"><span class="nr">(i)(j)</span><h4>Parabeln</h4>
+      <div class="calc"><p>(i) \(y = x^2\): Normalparabel · (j) \(x = y^2\): dieselbe Parabel, nach rechts offen</p></div></li>
+    <li class="step"><span class="nr">(k)–(m)</span><h4>Ein Produkt ist null, wenn ein Faktor null ist</h4>
+      <div class="calc"><p>(k) \(xy = 0\): x = 0 oder y = 0, also <b>beide Achsen</b> · (l) \(x = -4\) oder \(y = 3\): zwei Geraden · (m) faktorisieren: \(xy + 2x + 5y + 10 = (x + 5)(y + 2)\), also \(x = -5\) oder \(y = -2\)</p></div></li>
+    <li class="step"><span class="nr">(n)(o)</span><h4>Spezialfälle</h4>
+      <div class="calc"><p>(n) \(0 = 0\) stimmt immer: die <b>ganze Ebene</b> · (o) \(-2 = 0\) stimmt nie: <b>leere Menge</b></p></div></li>
+    <li class="step"><span class="nr">(p)(q)</span><h4>Mehrere Faktoren</h4>
+      <div class="calc"><p>(p) \(x = 0\), \(y = 0\) oder \(y = x\) · (q) \(x^3y - xy^3 = xy(x - y)(x + y)\): dazu noch \(y = -x\)</p></div></li>
+    <li class="step"><span class="nr">(r)(s)</span><h4>Funktionsgraph als Nullstellenmenge</h4>
+      <div class="calc"><p>(r) \(y = x^3 \iff x^3 - y = 0\), also \(f(x, y) = x^3 - y\) · (s) allgemein \(f(x, y) = g(x) - y\)</p></div></li>
+  </ol>
+</article>
+
+<!-- A11 a -->
+<article class="ex" id="a11" data-mode="worked">
+  <div class="ex-head"><h3>A11 (a)</h3><span class="mode">vorgerechnet</span></div>
+  <div class="task">Berechne die Schnittpunkte der Geraden \(-x + y = 1\) mit dem Kreis \(x^2 + y^2 = 25\). (Zuerst zeichnen und ablesen, dann rechnen.)</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>Gerade nach y auflösen</h4>
+      <div class="calc">$$y = x + 1$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4>In die Kreisgleichung einsetzen</h4>
+      <p class="why">Statt y schreibst du \((x + 1)\), mit Klammer!</p>
+      <div class="calc">$$x^2 + (x + 1)^2 = 25$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4>Standardform</h4>
+      <div class="calc">$$\begin{aligned} x^2 + x^2 + 2x + 1 &= 25 \\ 2x^2 + 2x - 24 &= 0 \quad\mid :2 \\ x^2 + x - 12 &= 0 \end{aligned}$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 4</span><h4>Mitternachtsformel</h4>
+      <div class="calc">$$x_{1,2} = \frac{-1 \pm \sqrt{1 + 48}}{2} = \frac{-1 \pm 7}{2}, \qquad x_1 = 3,\ x_2 = -4$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 5</span><h4>y ausrechnen</h4>
+      <div class="calc">$$y_1 = 3 + 1 = 4, \qquad y_2 = -4 + 1 = -3$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 6</span><h4>Probe</h4>
+      <div class="calc"><p>\(3^2 + 4^2 = 25\) ✓ und \(-3 + 4 = 1\) ✓ · \((-4)^2 + (-3)^2 = 25\) ✓ und \(4 - 3 = 1\) ✓</p></div></li>
+  </ol>
+  <div class="done">Schnittpunkte \((3, 4)\) und \((-4, -3)\). <a href="interaktiv.html#kreis">Im Bild prüfen</a></div>
+</article>
+
+<!-- A11 b-d -->
+<article class="ex" id="a11b" data-mode="faded">
+  <div class="ex-head"><h3>A11 (b)–(d)</h3><span class="mode">selbst rechnen</span></div>
+  <div class="task">(b) Schnittpunkte von \(y = \frac12 x + 1\) mit \(x^2 + y^2 = 25\). (c) Schnittpunkte des Kreises um \((-2, 1)\) mit Radius 4 mit der Geraden durch den Mittelpunkt mit Steigung \(\frac32\). (d) freiwillig: \(3x + 4y = 327\) mit \((x - 5)^2 + (y - 3)^2 = 65^2\).</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">(b)</span><h4>Einsetzen, Bruch wegmultiplizieren</h4>
+      <div class="calc">$$\begin{aligned} x^2 + \left(\tfrac12 x + 1\right)^2 &= 25 \\ x^2 + \tfrac14 x^2 + x + 1 &= 25 \quad\mid\cdot 4 \\ 5x^2 + 4x - 96 &= 0 \end{aligned}$$</div></li>
+    <li class="step"><span class="nr">(b)</span><h4>Mitternachtsformel, dann y</h4>
+      <div class="calc">$$x_{1,2} = \frac{-4 \pm \sqrt{16 + 1920}}{10} = \frac{-4 \pm 44}{10}, \qquad x_1 = 4,\ x_2 = -\tfrac{24}{5}$$
+      <p>\(y_1 = 3\), \(y_2 = -\frac{12}{5} + 1 = -\frac75\). Punkte \((4, 3)\) und \(\left(-\frac{24}{5}, -\frac75\right) = (-4.8;\ -1.4)\).</p></div></li>
+    <li class="step"><span class="nr">(c)</span><h4>Zuerst Kreis und Gerade aufstellen</h4>
+      <p class="why">Kreisgleichung aus M und r. Gerade: Ansatz \(y = \frac32 x + \q\), M liegt darauf.</p>
+      <div class="calc">$$(x + 2)^2 + (y - 1)^2 = 16, \qquad \tfrac32\cdot(-2) + \q = 1 \iff \q = 4,\quad y = \tfrac32 x + 4$$</div></li>
+    <li class="step"><span class="nr">(c)</span><h4>Einsetzen und lösen</h4>
+      <div class="calc">$$\begin{aligned} (x + 2)^2 + \left(\tfrac32 x + 3\right)^2 &= 16 \quad\mid\cdot 4 \\ 13x^2 + 52x - 12 &= 0 \\ x_{1,2} &= \frac{-52 \pm \sqrt{3328}}{26} = -2 \pm \tfrac{8\sqrt{13}}{13} \end{aligned}$$
+      <p>\(y = 1 \pm \frac{12\sqrt{13}}{13}\). Ungefähr \((0.22;\ 4.33)\) und \((-4.22;\ -2.33)\). Die Gerade geht durch M, darum liegen die Punkte symmetrisch um M.</p>
+      <p style="color:var(--mute);font-size:15px">Hinweis: Im Skript steht bei (c) als Resultat \((4, 3)\) und \((-4.8, -1.4)\). Das sind die Punkte von (b), ein Versehen.</p></div></li>
+    <li class="step"><span class="nr">(d)</span><h4>Grosse Zahlen, gleiches Rezept</h4>
+      <p class="why">\(y = \frac{327 - 3x}{4}\), dann \(y - 3 = \frac{315 - 3x}{4}\). Mal 16, damit die Brüche weg sind.</p>
+      <div class="calc">$$\begin{aligned} 16(x - 5)^2 + (315 - 3x)^2 &= 67600 \\ 25x^2 - 2050x + 32025 &= 0 \quad\mid :25 \\ x^2 - 82x + 1281 &= 0,\quad x = \tfrac{82 \pm 40}{2} \end{aligned}$$
+      <p>\(x = 61\) oder \(x = 21\), dazu \(y = 36\) bzw. \(y = 66\). Punkte \((21, 66)\) und \((61, 36)\).</p></div></li>
+  </ol>
+</article>
+
+<!-- A12 -->
+<article class="ex" id="a12" data-mode="faded">
+  <div class="ex-head"><h3>A12</h3><span class="mode">für Tapfere</span></div>
+  <div class="task">Bestimme die Schnittpunkte des Kreises um \((0, 0)\) mit Radius 85 und des Kreises um \((140, 20)\) mit Radius 65.<br><small style="color:var(--mute)">Hier ein kürzerer Weg als im Skript: die Gleichungen voneinander abziehen. Dann fallen \(x^2\) und \(y^2\) weg, und es bleibt eine Gerade, also wieder A11.</small></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>Beide Kreisgleichungen</h4>
+      <div class="calc">$$\text{(I) } x^2 + y^2 = 7225 \qquad \text{(II) } (x - 140)^2 + (y - 20)^2 = 4225$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4>(II) ausmultiplizieren</h4>
+      <div class="calc">$$x^2 - 280x + 19600 + y^2 - 40y + 400 = 4225$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4>(I) minus (II)</h4>
+      <p class="why">\(x^2\) und \(y^2\) heben sich weg.</p>
+      <div class="calc">$$\begin{aligned} 280x + 40y - 20000 &= 3000 \\ 280x + 40y &= 23000 \quad\mid :40 \\ 7x + y &= 575 \iff y = 575 - 7x \end{aligned}$$
+      <p>Das ist die Gerade durch beide Schnittpunkte.</p></div></li>
+    <li class="step"><span class="nr">SCHRITT 4</span><h4>Jetzt Rezept B: in (I) einsetzen</h4>
+      <div class="calc">$$\begin{aligned} x^2 + (575 - 7x)^2 &= 7225 \\ 50x^2 - 8050x + 323400 &= 0 \quad\mid :50 \\ x^2 - 161x + 6468 &= 0,\quad x = \tfrac{161 \pm 7}{2} \end{aligned}$$
+      <p>\(x_1 = 84\), \(x_2 = 77\).</p></div></li>
+    <li class="step"><span class="nr">SCHRITT 5</span><h4>y aus der Geraden</h4>
+      <div class="calc">$$y_1 = 575 - 588 = -13, \qquad y_2 = 575 - 539 = 36$$</div></li>
+  </ol>
+  <div class="done">Schnittpunkte \((84, -13)\) und \((77, 36)\), wie im Skript. <a href="interaktiv.html#zwei-kreise">Im Bild prüfen</a></div>
 </article>
 
 <footer>Aufgaben und Lösungswege nach dem Skript «Quadriken: Ellipse, Hyperbel, Parabel» (Blöchliger, Schnürer, CC BY-SA). Farben: <span class="mm">m</span> immer blau, <span class="qq">q</span> immer rot.</footer>
