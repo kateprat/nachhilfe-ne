@@ -6,7 +6,7 @@
   const apply = p => { if (p === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', p); };
   apply(pref);
   document.addEventListener('DOMContentLoaded', () => {
-    const lang = document.querySelector('.langsw');
+    const lang = document.querySelector('.langsw, main > .lang');
     if (!lang) return;
     const en = document.documentElement.lang === 'en';
     const box = document.createElement('div'); box.className = 'topctl';

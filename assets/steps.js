@@ -3,9 +3,16 @@
 (function () {
   const EN = document.documentElement.lang === 'en';
   const L = EN
-    ? { show: 'Show working', next: 'Next step', all: 'Show all', reset: 'Start over', axis: 'on an axis', x: 'x-coordinate', y: 'y-coordinate', slope: 'slope', nd: 'not defined' }
-    : { show: 'Rechnung zeigen', next: 'Nächster Schritt', all: 'Alles zeigen', reset: 'Von vorn', axis: 'auf einer Achse', x: 'x-Koordinate', y: 'y-Koordinate', slope: 'Steigung', nd: 'nicht definiert' };
+    ? { show: 'Show working', next: 'Next step', all: 'Show all', reset: 'Start over', stamp: 'Done!', of: (a, b) => `${a} of ${b} done`, clear: 'Reset', axis: 'on an axis', x: 'x-coordinate', y: 'y-coordinate', slope: 'slope', nd: 'not defined' }
+    : { show: 'Rechnung zeigen', next: 'Nächster Schritt', all: 'Alles zeigen', reset: 'Von vorn', stamp: 'Geschafft!', of: (a, b) => `${a} von ${b} geschafft`, clear: 'Zurücksetzen', axis: 'auf einer Achse', x: 'x-Koordinate', y: 'y-Koordinate', slope: 'Steigung', nd: 'nicht definiert' };
   const MACROS = { '\\m': '\\textcolor{#3b7be8}{m}', '\\q': '\\textcolor{#e0475b}{q}' };
+
+  // progress per topic (same for DE and EN), kept only on this device
+  const PKEY = 'nachhilfe-done:' + location.pathname.replace(/(index|en|de)\.html$/, '');
+  let doneSet = new Set();
+  try { doneSet = new Set(JSON.parse(localStorage.getItem(PKEY) || '[]')); } catch (e) {}
+  const saveDone = () => { try { localStorage.setItem(PKEY, JSON.stringify([...doneSet])); } catch (e) {} };
+  let progressUpdate = () => {};
 
   function renderMath(root) {
     if (!window.renderMathInElement) return;
@@ -44,7 +51,14 @@
       if (done) done.hidden = shown < steps.length;
       next.hidden = shown >= steps.length;
       if (scroll) steps[shown - 1].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      if (scroll && shown >= steps.length && !doneSet.has(ex.id)) { doneSet.add(ex.id); saveDone(); stamp(true); progressUpdate(); }
     }
+    function stamp(pop) {
+      if (ex.querySelector('.stamp')) return;
+      const s = document.createElement('span'); s.className = 'stamp' + (pop ? ' pop' : ''); s.textContent = L.stamp;
+      ex.prepend(s);
+    }
+    if (doneSet.has(ex.id)) stamp(false);
     function hideCalcs() {
       if (!faded) return;
       steps.forEach(st => { const c = st.querySelector('.calc'); if (c && st._calcBtn) { c.hidden = true; c.before(st._calcBtn); } });
@@ -134,7 +148,24 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.langsw a:not([aria-current])').forEach(a => a.addEventListener('click', e => { e.preventDefault(); location.href = a.getAttribute('href') + location.hash; }));
-    document.querySelectorAll('.ex').forEach(setupExercise);
+    document.querySelectorAll('h2').forEach(h => { const sp = document.createElement('span'); sp.className = 'hl'; while (h.firstChild) sp.append(h.firstChild); h.append(sp); });
+    const exs = [...document.querySelectorAll('.ex')];
+    const nav = document.querySelector('.nav');
+    if (nav && exs.length) {
+      const pr = document.createElement('div'); pr.className = 'progress';
+      pr.innerHTML = '<span class="txt"></span><span class="bar"><i></i></span><button type="button"></button>';
+      nav.append(pr);
+      const btn = pr.querySelector('button'); btn.textContent = L.clear;
+      btn.addEventListener('click', () => { doneSet.clear(); saveDone(); document.querySelectorAll('.stamp').forEach(x => x.remove()); progressUpdate(); });
+      progressUpdate = () => {
+        const n = exs.filter(e => doneSet.has(e.id)).length;
+        pr.querySelector('.txt').textContent = L.of(n, exs.length);
+        pr.querySelector('i').style.width = (100 * n / exs.length) + '%';
+        nav.querySelectorAll('a[href^="#"]').forEach(a => a.classList.toggle('done', doneSet.has(a.getAttribute('href').slice(1))));
+      };
+    }
+    exs.forEach(setupExercise);
+    progressUpdate();
     setupReveals(document);
     setupPlay();
     setupCircle();
