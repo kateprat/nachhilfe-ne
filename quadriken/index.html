@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quadriken – Schritt für Schritt</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/steps.js"></script>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<main class="wrap">
+<p class="crumb"><a href="../">← Übersicht</a></p>
+<h1>Quadriken: Tangenten an Parabeln</h1>
+<p class="lead">Skript Kapitel 17.2, Aufgaben A2–A8. Zuerst die Buchstaben, dann ein Kochrezept, das bei fast allen Aufgaben gleich bleibt.</p>
+
+<nav class="nav" aria-label="Abschnitte"><ul>
+  <li><a href="#buchstaben">Buchstaben</a></li><li><a href="#rezept">Kochrezept</a></li>
+  <li><a href="#a2">A2</a></li><li><a href="#a3">A3</a></li><li><a href="#a4">A4</a></li><li><a href="#a5">A5</a></li>
+  <li><a href="#a6">A6</a></li><li><a href="#a7">A7</a></li><li><a href="#a8">A8</a></li><li><a href="interaktiv.html#tangente">Interaktiv</a></li>
+</ul></nav>
+
+<!-- ============ 1. Buchstaben ============ -->
+<h2 id="buchstaben">1 · Was bedeuten die Buchstaben?</h2>
+<p><b>Ein Buchstabe steht für eine Zahl</b>, die wir noch nicht kennen oder die sich ändern darf. Mehr ist es nicht. Man rechnet mit ihm genau wie mit einer Zahl.</p>
+
+<h3>x einsetzen</h3>
+<p>\(f(x) = x^2 - 2x + 3\) ist eine Rechenvorschrift: «Nimm eine Zahl x, rechne damit.» \(f(2)\) heisst: überall, wo x steht, 2 hinschreiben.</p>
+<div class="box">$$f(2) = 2^2 - 2\cdot 2 + 3 = 4 - 4 + 3 = 3$$
+<p style="margin:0">Probier selbst: Was ist \(f(-1)\)? <button type="button" class="reveal" data-answer="ans1">Antwort zeigen</button></p>
+<p id="ans1" style="margin:6px 0 0">\(f(-1) = (-1)^2 - 2\cdot(-1) + 3 = 1 + 2 + 3 = 6\). Achtung: Klammern um negative Zahlen!</p></div>
+
+<h3>Zwei Sorten Buchstaben</h3>
+<ul class="sub">
+  <li><b>x</b> wandert: Es steht für «irgendeine Stelle auf der x-Achse». Für jedes x gibt es einen anderen Funktionswert.</li>
+  <li><b>\(\m\) und \(\q\)</b> sind feste Zahlen. Für eine bestimmte Gerade haben sie einen Wert, wir kennen ihn nur noch nicht. <b>Genau diese Zahlen suchen wir</b> in den Tangenten-Aufgaben.</li>
+</ul>
+
+<h3>Die Gerade \(g(x) = \m\cdot x + \q\)</h3>
+<p><span class="mm">m = Steigung</span>: Gehst du 1 nach rechts, geht die Gerade m nach oben (bei negativem m nach unten).<br>
+<span class="qq">q = y-Achsenabschnitt</span>: Dort schneidet die Gerade die y-Achse, im Punkt \((0, \q)\).</p>
+<div class="box play">
+  <svg id="playSvg" viewBox="-5 -5 10 10" role="img" aria-label="Gerade mit Steigungsdreieck"></svg>
+  <div>
+    <div class="sl"><span class="mm">m</span><input id="mS" type="range" min="-3" max="3" step="0.5" value="1" aria-label="m"><b id="mV"></b></div>
+    <div class="sl"><span class="qq">q</span><input id="qS" type="range" min="-4" max="4" step="0.5" value="1" aria-label="q"><b id="qV"></b></div>
+    <p class="readout" id="gOut"></p>
+    <p class="small" style="color:var(--mute);font-size:15px;margin:0">Schieb an den Reglern: m dreht die Gerade, q schiebt sie hoch und runter.</p>
+  </div>
+</div>
+
+<h3>Liegt ein Punkt auf der Geraden? → Einsetzen</h3>
+<p>Ein Punkt \(P = (x_P, y_P)\) liegt auf g, wenn \(g(x_P) = y_P\) stimmt.</p>
+<div class="box">
+<p>Beispiel: \(g(x) = -3x + 5\) und \(P = (2, -1)\): \(g(2) = -3\cdot 2 + 5 = -1\). ✓ P liegt auf g.</p>
+<p style="margin:0">Liegt \((1, 1)\) auf g? <button type="button" class="reveal" data-answer="ans2">Antwort zeigen</button></p>
+<p id="ans2" style="margin:6px 0 0">\(g(1) = -3 + 5 = 2 \neq 1\). Nein.</p></div>
+
+<h3>Wenn m und q noch unbekannt sind</h3>
+<p>Dann gibt das Einsetzen eines Punktes eine <b>Gleichung zwischen m und q</b>. Die lösen wir nach q auf. Das ist Schritt 1 in fast jeder Aufgabe.</p>
+<div class="box">$$P = (1,-3) \text{ liegt auf } g:\qquad \m\cdot 1 + \q = -3 \iff \q = -\m - 3$$</div>
+
+<h3>Gleichsetzen und Diskriminante</h3>
+<p>Wo sich Parabel f und Gerade g treffen, sind beide gleich hoch: \(f(x) = g(x)\). Das gibt eine quadratische Gleichung \(ax^2 + bx + c = 0\). Ihre <b>Diskriminante</b> \(D = b^2 - 4ac\) sagt, wie viele Treffpunkte es gibt (Kapitel 14):</p>
+<ul class="sub">
+  <li>\(D \gt 0\): zwei Schnittpunkte. Die Gerade schneidet die Parabel.</li>
+  <li>\(D = 0\): genau ein Punkt. <b>Die Gerade ist eine Tangente.</b> Dann ist \(x = -\frac{b}{2a}\).</li>
+  <li>\(D \lt 0\): kein Punkt. Die Gerade geht vorbei.</li>
+</ul>
+<p><a href="interaktiv.html#tangente">Im interaktiven Bild ausprobieren →</a></p>
+
+<!-- ============ 2. Rezept ============ -->
+<h2 id="rezept">2 · Das Kochrezept für Tangenten</h2>
+<p>Fast alle Aufgaben A2–A8 gehen mit denselben 7 Schritten. Nur Schritt 1 ändert sich, je nachdem, was gegeben ist.</p>
+<ol class="recipe">
+  <li><div><b>Ansatz</b> \(t(x) = \m x + \q\). Das Gegebene einsetzen.<small>Steigung gegeben → m einsetzen. Punkt gegeben → einsetzen und nach q auflösen.</small></div></li>
+  <li><div><b>Gleichsetzen</b> \(f(x) = t(x)\)<small>Wo treffen sich Parabel und Gerade?</small></div></li>
+  <li><div><b>Standardform</b> \(ax^2 + bx + c = 0\)<small>Alles auf eine Seite, ordnen nach x², x, Zahl. a, b, c ablesen.</small></div></li>
+  <li><div><b>Diskriminante = 0</b> \(b^2 - 4ac = 0\)<small>Tangente heisst: genau ein Berührpunkt.</small></div></li>
+  <li><div><b>Lösen</b> nach der gesuchten Zahl (q oder m)<small>Oft wieder eine quadratische Gleichung → Mitternachtsformel.</small></div></li>
+  <li><div><b>Tangente hinschreiben</b><small>Gefundene Zahlen in \(t(x) = \m x + \q\) einsetzen.</small></div></li>
+  <li><div><b>Berührpunkt</b> \(x = -\frac{b}{2a}\), dann \(y = t(x)\)<small>Bei D = 0 gibt die Mitternachtsformel nur diese eine Lösung.</small></div></li>
+</ol>
+
+<table class="which">
+  <tr><th>Was ist gegeben?</th><th>Schritt 1</th><th>Aufgaben</th></tr>
+  <tr><td>die Steigung</td><td>m einsetzen, q bleibt gesucht</td><td><a href="#a2">A2</a></td></tr>
+  <tr><td>ein Punkt ausserhalb der Parabel</td><td>Punkt einsetzen, q durch m ausdrücken. Meist <b>2 Tangenten</b>.</td><td><a href="#a3">A3</a>, <a href="#a6">A6</a>, <a href="#a7">A7</a></td></tr>
+  <tr><td>der Berührpunkt (auf der Parabel)</td><td>genau gleich, aber nur <b>1 Tangente</b></td><td><a href="#a4">A4</a>, <a href="#a8">A8</a></td></tr>
+  <tr><td>Normalparabel \(f(x) = x^2\)</td><td>Abkürzung \(t(x) = 2p\cdot x - p^2\)</td><td><a href="#a5">A5</a></td></tr>
+</table>
+
+<div class="box exam"><b>So schreibst du es in der Prüfung auf</b>
+<p style="margin:4px 0 0">Wörter wie im Skript: «Ansatz: …», «Da P auf t liegt, gilt …», «⇔», «Also …», «Die gesuchte Tangente ist …». Kein Taschenrechner: Brüche stehen lassen. Probe: Berührpunkt auch in f einsetzen, es muss dasselbe y herauskommen.</p></div>
+
+<!-- ============ 3. Aufgaben ============ -->
+<h2 id="aufgaben">3 · Aufgaben</h2>
+<p>A2–A4 (a) sind <b>ganz vorgerechnet</b>: Klick dich Schritt für Schritt durch und überleg vor jedem Klick, was als Nächstes kommt. Ab A4 (b) <b>rechnest du selbst</b>: Du siehst den Schritt, die Rechnung erst auf Knopfdruck.</p>
+
+<!-- A2 -->
+<article class="ex" id="a2" data-mode="worked">
+  <div class="ex-head"><h3>A2</h3><span class="mode">vorgerechnet</span></div>
+  <div class="task">Bestimme die Tangente mit Steigung −3 an die Parabel \(f(x) = x^2 - 2x + 3\) und den Berührpunkt.</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>Ansatz</h4>
+      <p class="why">Die Steigung ist gegeben, also \(\m = -3\). Nur \(\q\) kennen wir noch nicht.</p>
+      <div class="calc">$$t(x) = -3x + \q$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4>Gleichsetzen</h4>
+      <p class="why">Wo sich Gerade und Parabel treffen, sind sie gleich hoch.</p>
+      <div class="calc">$$-3x + \q = x^2 - 2x + 3$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4>Standardform</h4>
+      <p class="why">Alles auf die Seite mit x² bringen (dort ist x² positiv), dann ordnen.</p>
+      <div class="calc">$$\begin{aligned} 0 &= x^2 - 2x + 3x + 3 - \q \\ 0 &= x^2 + 1\cdot x + (3 - \q) \end{aligned}$$
+      <p>Also \(a = 1\), \(b = 1\), \(c = 3 - \q\).</p></div></li>
+    <li class="step"><span class="nr">SCHRITT 4</span><h4>Diskriminante = 0</h4>
+      <p class="why">Tangente = genau ein Berührpunkt = genau eine Lösung = D ist 0.</p>
+      <div class="calc">$$D = b^2 - 4ac = 1^2 - 4\cdot 1\cdot(3 - \q) = 0$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 5</span><h4>Nach q auflösen</h4>
+      <p class="why">Klammer ausmultiplizieren: \(-4\cdot 3 = -12\) und \(-4\cdot(-\q) = +4\q\).</p>
+      <div class="calc">$$\begin{aligned} 1 - 12 + 4\q &= 0 \\ 4\q &= 11 \\ \q &= \tfrac{11}{4} \end{aligned}$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 6</span><h4>Tangente hinschreiben</h4>
+      <div class="calc">$$t(x) = -3x + \tfrac{11}{4}$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 7</span><h4>Berührpunkt</h4>
+      <p class="why">Aus Schritt 3: a = 1, b = 1. Bei D = 0 ist \(x = -\frac{b}{2a}\). Dann x in t einsetzen.</p>
+      <div class="calc">$$x = -\frac{1}{2\cdot 1} = -\tfrac12, \qquad y = t\!\left(-\tfrac12\right) = \tfrac32 + \tfrac{11}{4} = \tfrac{17}{4}$$
+      <p>Probe in f: \(f(-\tfrac12) = \tfrac14 + 1 + 3 = \tfrac{17}{4}\) ✓</p></div></li>
+  </ol>
+  <div class="done">Die Tangente ist \(t(x) = -3x + \frac{11}{4}\), Berührpunkt \(P = \left(-\frac12, \frac{17}{4}\right) = (-0.5;\ 4.25)\). <a href="interaktiv.html#tangente">Im Bild prüfen</a> (Beispiel «A2»).</div>
+</article>
+
+<!-- A3 -->
+<article class="ex" id="a3" data-mode="worked">
+  <div class="ex-head"><h3>A3</h3><span class="mode">vorgerechnet</span></div>
+  <div class="task">Bestimme alle Tangenten an die Parabel \(f(x) = x^2 - 2x + \frac{25}{16}\), die durch den Ursprung gehen; gib jeweils den Berührpunkt an.</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>Ansatz</h4>
+      <p class="why">Die Tangente geht durch \((0, 0)\). Einsetzen: \(t(0) = 0\). Damit ist \(\q\) erledigt, gesucht ist jetzt \(\m\).</p>
+      <div class="calc">$$\m\cdot 0 + \q = 0 \iff \q = 0, \qquad\text{also}\qquad t(x) = \m x$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4>Gleichsetzen</h4>
+      <div class="calc">$$\m x = x^2 - 2x + \tfrac{25}{16}$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4>Standardform</h4>
+      <p class="why">\(\m x\) nach rechts bringen und die zwei x-Terme zusammenfassen: \(-2x - \m x = (-2 - \m)\,x\). Klammer um b, weil m darin steckt.</p>
+      <div class="calc">$$0 = x^2 + (-2 - \m)\,x + \tfrac{25}{16}$$
+      <p>Also \(a = 1\), \(b = -2 - \m\), \(c = \frac{25}{16}\).</p></div></li>
+    <li class="step"><span class="nr">SCHRITT 4</span><h4>Diskriminante = 0</h4>
+      <div class="calc">$$D = (-2 - \m)^2 - 4\cdot 1\cdot \tfrac{25}{16} = (-2-\m)^2 - \tfrac{25}{4} = 0$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 5</span><h4>Nach m auflösen</h4>
+      <p class="why">\((-2-\m)^2 = 4 + 4\m + \m^2\) (binomische Formel). Mal 4, damit der Bruch weg ist. Dann Mitternachtsformel, diesmal für m.</p>
+      <div class="calc">$$\begin{aligned} \m^2 + 4\m + 4 - \tfrac{25}{4} &= 0 \quad \mid \cdot 4 \\ 4\m^2 + 16\m - 9 &= 0 \\ \m_{1,2} &= \frac{-16 \pm \sqrt{256 + 144}}{8} = \frac{-16 \pm 20}{8} \\ \m_1 = \tfrac12, &\quad \m_2 = -\tfrac92 \end{aligned}$$
+      <p>Zwei Werte für m → <b>zwei Tangenten</b>. Das passiert, wenn der Punkt ausserhalb der Parabel liegt.</p></div></li>
+    <li class="step"><span class="nr">SCHRITT 6</span><h4>Tangenten hinschreiben</h4>
+      <div class="calc">$$t_1(x) = \tfrac12 x, \qquad t_2(x) = -\tfrac92 x$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 7</span><h4>Berührpunkte</h4>
+      <p class="why">\(x = -\frac{b}{2a}\) mit \(b = -2 - \m\): das gibt \(x = \frac{2 + \m}{2}\). Für jedes m einzeln einsetzen.</p>
+      <div class="calc">$$\begin{aligned} \m_1 = \tfrac12: &\quad x = \tfrac{2 + 1/2}{2} = \tfrac54, \quad y = \tfrac12\cdot\tfrac54 = \tfrac58 \\ \m_2 = -\tfrac92: &\quad x = \tfrac{2 - 9/2}{2} = -\tfrac54, \quad y = -\tfrac92\cdot\left(-\tfrac54\right) = \tfrac{45}{8} \end{aligned}$$</div></li>
+  </ol>
+  <div class="done">\(t_1(x) = \frac12 x\) mit \(P_1 = \left(\frac54, \frac58\right) = (1.25;\ 0.625)\) und \(t_2(x) = -\frac92 x\) mit \(P_2 = \left(-\frac54, \frac{45}{8}\right) = (-1.25;\ 5.625)\).</div>
+</article>
+
+<!-- A4 a -->
+<article class="ex" id="a4" data-mode="worked">
+  <div class="ex-head"><h3>A4 (a)</h3><span class="mode">vorgerechnet</span></div>
+  <div class="task">Bestimme die Gleichung \(t(x) = \m x + \q\) der Tangente an \(f(x) = x^2\) im Punkt \(Q = \left(\frac12, \frac14\right)\).</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>Ansatz</h4>
+      <p class="why">Q liegt auf t, also \(t(\tfrac12) = \tfrac14\). Nach q auflösen.</p>
+      <div class="calc">$$\m\cdot\tfrac12 + \q = \tfrac14 \iff \q = \tfrac14 - \tfrac12\m$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4>Gleichsetzen</h4>
+      <div class="calc">$$x^2 = \m x + \q$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4>Standardform</h4>
+      <div class="calc">$$x^2 - \m x - \q = 0$$<p>Also \(a = 1\), \(b = -\m\), \(c = -\q\).</p></div></li>
+    <li class="step"><span class="nr">SCHRITT 4</span><h4>Diskriminante = 0</h4>
+      <div class="calc">$$D = (-\m)^2 - 4\cdot 1\cdot(-\q) = \m^2 + 4\q = 0$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 5</span><h4>q ersetzen und nach m auflösen</h4>
+      <p class="why">Jetzt kommt Schritt 1 zurück: Für q setzen wir \(\tfrac14 - \tfrac12\m\) ein. Dann gibt es nur noch eine Unbekannte.</p>
+      <div class="calc">$$\begin{aligned} \m^2 + 4\left(\tfrac14 - \tfrac12\m\right) &= 0 \\ \m^2 - 2\m + 1 &= 0 \\ (\m - 1)^2 &= 0 \iff \m = 1 \end{aligned}$$
+      <p>Und \(\q = \tfrac14 - \tfrac12\cdot 1 = -\tfrac14\).</p></div></li>
+    <li class="step"><span class="nr">SCHRITT 6</span><h4>Tangente hinschreiben</h4>
+      <div class="calc">$$t(x) = x - \tfrac14$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 7</span><h4>Berührpunkt</h4>
+      <p class="why">Hier gratis: Q selbst ist der Berührpunkt. Probe: \(t(\tfrac12) = \tfrac12 - \tfrac14 = \tfrac14\) ✓</p></li>
+  </ol>
+  <div class="done">\(t(x) = x - \frac14\).</div>
+</article>
+
+<!-- A4 b -->
+<article class="ex" id="a4b" data-mode="faded">
+  <div class="ex-head"><h3>A4 (b)</h3><span class="mode">selbst rechnen</span></div>
+  <div class="task">Allgemeiner Punkt \(P = (p, p^2)\) auf der Normalparabel \(f(x) = x^2\). Bestimme die Tangente \(t(x) = \m x + \q\) an f im Punkt P.<br><small style="color:var(--mute)">p ist einfach eine Zahl, die wir nicht festlegen. Rechne genau wie in (a), nur mit p statt ½.</small></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>Ansatz: P liegt auf t</h4>
+      <p class="why">Wie in (a): \(t(p) = p^2\), nach q auflösen.</p>
+      <div class="calc">$$\m p + \q = p^2 \iff \q = p^2 - \m p$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 2–4</span><h4>Gleichsetzen, Standardform, D = 0</h4>
+      <p class="why">Genau wie in (a), das ändert sich nicht.</p>
+      <div class="calc">$$x^2 - \m x - \q = 0, \qquad D = \m^2 + 4\q = 0$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 5</span><h4>q ersetzen, nach m auflösen</h4>
+      <p class="why">Tipp: Am Ende steht eine binomische Formel.</p>
+      <div class="calc">$$\begin{aligned} \m^2 + 4(p^2 - \m p) &= 0 \\ \m^2 - 4p\,\m + 4p^2 &= 0 \\ (\m - 2p)^2 &= 0 \iff \m = 2p \end{aligned}$$
+      <p>Und \(\q = p^2 - 2p\cdot p = -p^2\).</p></div></li>
+    <li class="step"><span class="nr">SCHRITT 6</span><h4>Tangente</h4>
+      <div class="calc">$$t(x) = 2p\cdot x - p^2$$</div></li>
+  </ol>
+  <div class="done">Das ist <b>Proposition 17.2.4</b>: Steigung = doppelte x-Koordinate, y-Achsenabschnitt = minus die y-Koordinate. Diese Abkürzung brauchst du in A5.</div>
+</article>
+
+<!-- A5 -->
+<article class="ex" id="a5" data-mode="faded">
+  <div class="ex-head"><h3>A5</h3><span class="mode">selbst rechnen</span></div>
+  <div class="task">Mit Proposition 17.2.4: Gib die Tangenten an die Normalparabel \(f(x) = x^2\) in den Punkten \(A = (-2, 4)\), \(B = (3, 9)\), \(C = (1, 1)\), \(D = (\frac12, \frac14)\), \(E = (-\frac32, \frac94)\), \(O = (0, 0)\) an.</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">REGEL</span><h4>Die Abkürzung</h4>
+      <p class="why">p ist die x-Koordinate des Punktes. Einsetzen in \(t(x) = 2p\cdot x - p^2\). Achtung bei negativem p: \((-2)^2 = 4\), also \(-p^2 = -4\).</p></li>
+    <li class="step"><span class="nr">A</span><h4>\(A = (-2, 4)\), also \(p = -2\)</h4>
+      <div class="calc">$$t_A(x) = 2\cdot(-2)\cdot x - (-2)^2 = -4x - 4$$</div></li>
+    <li class="step"><span class="nr">B</span><h4>\(B = (3, 9)\)</h4><div class="calc">$$t_B(x) = 6x - 9$$</div></li>
+    <li class="step"><span class="nr">C</span><h4>\(C = (1, 1)\)</h4><div class="calc">$$t_C(x) = 2x - 1$$</div></li>
+    <li class="step"><span class="nr">D</span><h4>\(D = (\frac12, \frac14)\)</h4><div class="calc">$$t_D(x) = x - \tfrac14 \quad\text{(wie in A4 (a)!)}$$</div></li>
+    <li class="step"><span class="nr">E</span><h4>\(E = (-\frac32, \frac94)\)</h4><div class="calc">$$t_E(x) = 2\cdot\left(-\tfrac32\right) x - \tfrac94 = -3x - \tfrac94$$</div></li>
+    <li class="step"><span class="nr">O</span><h4>\(O = (0, 0)\)</h4><div class="calc">$$t_O(x) = 0\cdot x - 0 = 0 \quad\text{(das ist die x-Achse)}$$</div></li>
+  </ol>
+  <div class="done">Skizziere die Normalparabel mit allen sechs Tangenten, oder zeichne sie in GeoGebra. Jede Gerade berührt die Parabel genau in ihrem Punkt.</div>
+</article>
+
+<!-- A6 -->
+<article class="ex" id="a6" data-mode="faded">
+  <div class="ex-head"><h3>A6</h3><span class="mode">selbst rechnen</span></div>
+  <div class="task">(a) Bestimme alle Tangenten an die Normalparabel \(f(x) = x^2\), die durch \(A = (1, -3)\) gehen. A liegt <b>nicht</b> auf der Parabel. (b) Gib die Berührpunkte an.<br><small style="color:var(--mute)">Hier der 2. Weg aus dem Skript = unser Kochrezept. Den 1. Weg findest du unten.</small></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>Ansatz: A liegt auf t</h4>
+      <p class="why">\(t(1) = -3\). Nach q auflösen.</p>
+      <div class="calc">$$\m\cdot 1 + \q = -3 \iff \q = -\m - 3$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 2–3</span><h4>Gleichsetzen, Standardform</h4>
+      <p class="why">Wie in A4.</p>
+      <div class="calc">$$x^2 = \m x + \q \iff x^2 - \m x - \q = 0$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 4</span><h4>Diskriminante = 0</h4>
+      <div class="calc">$$D = \m^2 + 4\q = 0$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 5</span><h4>q ersetzen, nach m auflösen</h4>
+      <div class="calc">$$\begin{aligned} \m^2 + 4(-\m - 3) &= 0 \\ \m^2 - 4\m - 12 &= 0 \\ \m_{1,2} &= \frac{4 \pm \sqrt{16 + 48}}{2} = \frac{4 \pm 8}{2} \\ \m_1 = 6, &\quad \m_2 = -2 \end{aligned}$$
+      <p>Dazu \(\q_1 = -6 - 3 = -9\) und \(\q_2 = 2 - 3 = -1\).</p></div></li>
+    <li class="step"><span class="nr">SCHRITT 6</span><h4>Tangenten</h4>
+      <div class="calc">$$t_1(x) = 6x - 9, \qquad t_2(x) = -2x - 1$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 7</span><h4>Berührpunkte (b)</h4>
+      <p class="why">\(b = -\m\), also \(x = -\frac{b}{2a} = \frac{\m}{2}\). Und y = x², weil der Punkt auf der Normalparabel liegt.</p>
+      <div class="calc">$$\m_1 = 6:\ x = 3,\ P_1 = (3, 9) \qquad \m_2 = -2:\ x = -1,\ P_2 = (-1, 1)$$</div></li>
+  </ol>
+  <div class="done">\(t_1(x) = 6x - 9\) berührt in \((3, 9)\), \(t_2(x) = -2x - 1\) berührt in \((-1, 1)\).
+    <p style="margin:8px 0 0;font-weight:400"><b>1. Weg</b> (mit der Abkürzung aus A4 (b)): Gesucht ist p mit \(t_p(1) = -3\): \(2p - p^2 = -3 \iff p^2 - 2p - 3 = 0 \iff p = 3\) oder \(p = -1\). Gleiche Tangenten, gleiche Berührpunkte.</p>
+    <p style="margin:6px 0 0;font-weight:400"><a href="interaktiv.html#tangente-punkt">Im Bild prüfen</a>: Beispiel «x²», Punkt A auf (1, −3) ziehen.</p></div>
+</article>
+
+<!-- A7 -->
+<article class="ex" id="a7" data-mode="faded">
+  <div class="ex-head"><h3>A7</h3><span class="mode">selbst rechnen</span></div>
+  <div class="task">(a) Bestimme alle Tangenten an \(f(x) = \frac14(x + 3)^2 + 1\), die durch \(P = (-2, -1)\) gehen. (b) Bestimme jeweils den Berührpunkt.</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>Ansatz: P liegt auf t</h4>
+      <div class="calc">$$\m\cdot(-2) + \q = -1 \iff \q = 2\m - 1$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4>Gleichsetzen</h4>
+      <div class="calc">$$\tfrac14(x + 3)^2 + 1 = \m x + \q$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4>Standardform</h4>
+      <p class="why">Tipp: Zuerst mal 4, dann ist der Bruch weg. \((x+3)^2 = x^2 + 6x + 9\) (binomische Formel). Die x-Terme zusammenfassen wie in A3.</p>
+      <div class="calc">$$\begin{aligned} (x + 3)^2 + 4 &= 4\m x + 4\q \\ x^2 + 6x + 13 &= 4\m x + 4\q \\ x^2 + (6 - 4\m)\,x + (13 - 4\q) &= 0 \end{aligned}$$
+      <p>Also \(a = 1\), \(b = 6 - 4\m\), \(c = 13 - 4\q\).</p></div></li>
+    <li class="step"><span class="nr">SCHRITT 4</span><h4>Diskriminante = 0</h4>
+      <p class="why">Ausmultiplizieren, dann alles durch 4 teilen: kleinere Zahlen.</p>
+      <div class="calc">$$\begin{aligned} (6 - 4\m)^2 - 4(13 - 4\q) &= 0 \\ 36 - 48\m + 16\m^2 - 52 + 16\q &= 0 \quad\mid :4 \\ 4\m^2 - 12\m - 4 + 4\q &= 0 \end{aligned}$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 5</span><h4>q ersetzen, nach m auflösen</h4>
+      <div class="calc">$$\begin{aligned} 4\m^2 - 12\m - 4 + 4(2\m - 1) &= 0 \\ 4\m^2 - 4\m - 8 &= 0 \quad\mid :4 \\ \m^2 - \m - 2 &= 0 \\ \m_{1,2} = \frac{1 \pm \sqrt{1 + 8}}{2} = \frac{1 \pm 3}{2}, &\quad \m_1 = 2,\ \m_2 = -1 \end{aligned}$$
+      <p>Dazu \(\q_1 = 2\cdot 2 - 1 = 3\) und \(\q_2 = 2\cdot(-1) - 1 = -3\).</p></div></li>
+    <li class="step"><span class="nr">SCHRITT 6</span><h4>Tangenten</h4>
+      <div class="calc">$$t_1(x) = 2x + 3, \qquad t_2(x) = -x - 3$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 7</span><h4>Berührpunkte (b)</h4>
+      <p class="why">\(x = -\frac{b}{2a} = -\frac{6 - 4\m}{2} = 2\m - 3\), dann y mit t ausrechnen.</p>
+      <div class="calc">$$\begin{aligned} \m_1 = 2: &\quad x = 1,\quad y = t_1(1) = 5 \\ \m_2 = -1: &\quad x = -5,\quad y = t_2(-5) = 2 \end{aligned}$$
+      <p>Probe: \(f(1) = \tfrac14\cdot 16 + 1 = 5\) ✓, \(f(-5) = \tfrac14\cdot 4 + 1 = 2\) ✓</p></div></li>
+  </ol>
+  <div class="done">\(t_1(x) = 2x + 3\) berührt in \((1, 5)\), \(t_2(x) = -x - 3\) berührt in \((-5, 2)\). (c) Zeichnung: Scheitel \(S = (-3, 1)\), Öffnungsfaktor ¼. <a href="interaktiv.html#tangente-punkt">Im Bild prüfen</a> (Beispiel «¼(x + 3)² + 1»).</div>
+</article>
+
+<!-- A8 -->
+<article class="ex" id="a8" data-mode="faded">
+  <div class="ex-head"><h3>A8</h3><span class="mode">selbst rechnen</span></div>
+  <div class="task">Bestimme die Tangente an \(f(x) = \frac14(x + 3)^2 + 1\) im Punkt \(A = (-1, f(-1))\).</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 0</span><h4>Den Punkt ausrechnen</h4>
+      <p class="why">f(−1) heisst: −1 für x einsetzen.</p>
+      <div class="calc">$$f(-1) = \tfrac14(-1 + 3)^2 + 1 = \tfrac14\cdot 4 + 1 = 2, \qquad A = (-1, 2)$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>Ansatz: A liegt auf t</h4>
+      <div class="calc">$$\m\cdot(-1) + \q = 2 \iff \q = \m + 2$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 2–4</span><h4>Gleichsetzen, Standardform, D = 0</h4>
+      <p class="why">Gleiche Parabel wie in A7, also genau dieselbe Rechnung bis hier.</p>
+      <div class="calc">$$x^2 + (6 - 4\m)\,x + (13 - 4\q) = 0, \qquad 4\m^2 - 12\m - 4 + 4\q = 0$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 5</span><h4>q ersetzen, nach m auflösen</h4>
+      <div class="calc">$$\begin{aligned} 4\m^2 - 12\m - 4 + 4(\m + 2) &= 0 \\ 4\m^2 - 8\m + 4 &= 0 \quad\mid :4 \\ \m^2 - 2\m + 1 = (\m - 1)^2 &= 0 \iff \m = 1 \end{aligned}$$
+      <p>Und \(\q = 1 + 2 = 3\). Nur <b>ein</b> m: A liegt auf der Parabel, also gibt es nur eine Tangente.</p></div></li>
+    <li class="step"><span class="nr">SCHRITT 6</span><h4>Tangente</h4>
+      <div class="calc">$$t(x) = x + 3$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 7</span><h4>Probe</h4>
+      <p class="why">Der Berührpunkt muss A sein: \(x = 2\m - 3 = -1\) ✓ und \(t(-1) = 2\) ✓</p></li>
+  </ol>
+  <div class="done">\(t(x) = x + 3\), Berührpunkt \(A = (-1, 2)\).</div>
+</article>
+
+<footer>Aufgaben und Lösungswege nach dem Skript «Quadriken: Ellipse, Hyperbel, Parabel» (Blöchliger, Schnürer, CC BY-SA). Farben: <span class="mm">m</span> immer blau, <span class="qq">q</span> immer rot.</footer>
+</main>
+</body>
+</html>
