@@ -4,6 +4,7 @@
 --bg:light-dark(#ffffff,#0f1520);--ink:light-dark(#141a24,#e8ecf3);--mute:light-dark(#5b6576,#9aa6b8);
 --line:light-dark(#e3e8ef,#263245);--card:light-dark(#f4f7fb,#161e2c);--grid:light-dark(#d6e4f7,#1f2b3d);
 --m:light-dark(#1c5fd4,#6ea4ff);--q:light-dark(#d4213a,#ff6b7d);--ok:light-dark(#0f7d55,#3ccf95);
+--cos:light-dark(#0f7d55,#3ccf95);--sin:light-dark(#c2570c,#ff9a4d);
 --hi:light-dark(#fff3c4,#3a3313);--tip:light-dark(#eef5ff,#15223a)}
 *{box-sizing:border-box;min-width:0}
 [hidden]{display:none!important}
@@ -85,3 +86,12 @@ input[type=range]{width:100%;height:36px}
 .readout{font-size:20px;font-weight:700;margin:6px 0}
 @media(max-width:640px){.play{grid-template-columns:minmax(0,1fr)}}
 footer{margin-top:64px;color:var(--mute);font-size:14px}
+.cc{color:var(--cos);font-weight:700}.ss{color:var(--sin);font-weight:700}.tt{color:var(--m);font-weight:700}
+#ucS{accent-color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chips button{min-height:36px;padding:0 10px;font-size:14px}
+#ucOut div{font-variant-numeric:tabular-nums;margin:2px 0}
+.tbl{overflow-x:auto;margin:10px 0}
+.tbl table{border-collapse:collapse;font-size:15px;white-space:nowrap}
+.tbl th,.tbl td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center}
+.tbl th:first-child,.tbl td:first-child{text-align:left;position:sticky;left:0;background:var(--bg)}

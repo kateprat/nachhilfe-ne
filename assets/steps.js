@@ -91,10 +91,48 @@
     draw();
   }
 
+  // unit circle: cos = x (green), sin = y (orange), tan = slope, drawn on x = 1 (blue, like m)
+  function setupCircle() {
+    const svg = document.getElementById('ucSvg');
+    if (!svg) return;
+    const s = document.getElementById('ucS');
+    const f = v => (Math.abs(v) < 5e-4 ? '0' : v.toFixed(3).replace('-', '−'));
+    function draw() {
+      const deg = +s.value, a = deg * Math.PI / 180, c = Math.cos(a), sn = Math.sin(a);
+      const tanOk = Math.abs(c) > 1e-6, t = tanOk ? sn / c : NaN, R = 1.6;
+      let h = '';
+      for (let i = -1.5; i <= 1.5; i += .5) h += `<line x1="${i}" y1="${-R}" x2="${i}" y2="${R}" stroke="var(--grid)" stroke-width=".01"/><line x1="${-R}" y1="${i}" x2="${R}" y2="${i}" stroke="var(--grid)" stroke-width=".01"/>`;
+      h += `<line x1="${-R}" y1="0" x2="${R}" y2="0" stroke="var(--ink)" stroke-width=".015"/><line x1="0" y1="${-R}" x2="0" y2="${R}" stroke="var(--ink)" stroke-width=".015"/>`;
+      h += `<circle cx="0" cy="0" r="1" fill="none" stroke="var(--ink)" stroke-width=".02"/>`;
+      h += `<line x1="1" y1="${-R}" x2="1" y2="${R}" stroke="var(--mute)" stroke-width=".01" stroke-dasharray=".04 .03"/>`;
+      // angle arc
+      const ar = .22, large = ((deg % 360) + 360) % 360 > 180 ? 1 : 0, sweep = deg >= 0 ? 0 : 1;
+      if (Math.abs(deg) % 360 > .5) h += `<path d="M${ar} 0 A${ar} ${ar} 0 ${deg >= 0 ? large : 1 - large} ${sweep} ${ar * c} ${-ar * sn}" fill="none" stroke="var(--ink)" stroke-width=".015"/>`;
+      if (tanOk && Math.abs(t) < 4) h += `<line x1="${-R * 2}" y1="${2 * R * t}" x2="${R * 2}" y2="${-2 * R * t}" stroke="var(--mute)" stroke-width=".012"/>`;
+      h += `<line x1="0" y1="0" x2="${c}" y2="${-sn}" stroke="var(--ink)" stroke-width=".02"/>`;
+      h += `<line x1="0" y1="0" x2="${c}" y2="0" stroke="var(--cos)" stroke-width=".045"/>`;
+      h += `<line x1="${c}" y1="0" x2="${c}" y2="${-sn}" stroke="var(--sin)" stroke-width=".045"/>`;
+      if (tanOk && Math.abs(t) < 1.6) h += `<line x1="1" y1="0" x2="1" y2="${-t}" stroke="var(--m)" stroke-width=".045"/>`;
+      h += `<circle cx="${c}" cy="${-sn}" r=".045" fill="var(--ink)"/><text x="${c + .07 * Math.sign(c || 1)}" y="${-sn - .06}" font-size=".13" font-weight="700" fill="var(--ink)" text-anchor="${c >= 0 ? 'start' : 'end'}">P</text>`;
+      svg.innerHTML = h;
+      const k = ((deg % 360) + 360) % 360;
+      const quad = [0, 90, 180, 270].includes(k) ? 'auf einer Achse' : 'Quadrant ' + ['I', 'II', 'III', 'IV'][Math.floor(k / 90)];
+      document.getElementById('ucOut').innerHTML =
+        `<div><b>α = ${String(deg).replace('-', '−')}°</b> = ${f(a)} rad · ${quad}</div>` +
+        `<div style="color:var(--cos)"><b>cos(α) = ${f(c)}</b> (x-Koordinate)</div>` +
+        `<div style="color:var(--sin)"><b>sin(α) = ${f(sn)}</b> (y-Koordinate)</div>` +
+        `<div style="color:var(--m)"><b>tan(α) = ${tanOk ? f(t) : 'nicht definiert'}</b> (Steigung)</div>`;
+    }
+    s.addEventListener('input', draw);
+    document.querySelectorAll('[data-deg]').forEach(b => b.addEventListener('click', () => { s.value = b.dataset.deg; draw(); }));
+    draw();
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.ex').forEach(setupExercise);
     setupReveals(document);
     setupPlay();
+    setupCircle();
     renderMath(document.body);
   });
 })();
