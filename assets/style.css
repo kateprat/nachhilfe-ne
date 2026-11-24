@@ -95,3 +95,10 @@ footer{margin-top:64px;color:var(--mute);font-size:14px}
 .tbl table{border-collapse:collapse;font-size:15px;white-space:nowrap}
 .tbl th,.tbl td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center}
 .tbl th:first-child,.tbl td:first-child{text-align:left;position:sticky;left:0;background:var(--bg)}
+.recipe .f{display:block;font-size:18px;margin:6px 0 2px}
+.recipe li>div>b{display:block}
+.langsw{position:absolute;top:clamp(20px,4vw,48px);right:max(4vw,16px);display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.langsw a{padding:6px 12px;font-weight:700;font-size:14px;text-decoration:none;color:var(--ink)}
+.langsw a[aria-current]{background:var(--ink);color:var(--bg)}
+main.wrap{position:relative}
+main.wrap>h1,main.wrap>.crumb{padding-right:96px}

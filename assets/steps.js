@@ -1,6 +1,10 @@
 // Step-by-step reveal for worked (data-mode="worked") and faded (data-mode="faded") exercises,
 // KaTeX rendering with colour macros, and the small m/q line playground.
 (function () {
+  const EN = document.documentElement.lang === 'en';
+  const L = EN
+    ? { show: 'Show working', next: 'Next step', all: 'Show all', reset: 'Start over', axis: 'on an axis', x: 'x-coordinate', y: 'y-coordinate', slope: 'slope', nd: 'not defined' }
+    : { show: 'Rechnung zeigen', next: 'Nächster Schritt', all: 'Alles zeigen', reset: 'Von vorn', axis: 'auf einer Achse', x: 'x-Koordinate', y: 'y-Koordinate', slope: 'Steigung', nd: 'nicht definiert' };
   const MACROS = { '\\m': '\\textcolor{#3b7be8}{m}', '\\q': '\\textcolor{#e0475b}{q}' };
 
   function renderMath(root) {
@@ -22,7 +26,7 @@
       const calc = st.querySelector('.calc');
       if (!calc) return;
       const b = document.createElement('button');
-      b.type = 'button'; b.className = 'reveal'; b.textContent = 'Rechnung zeigen';
+      b.type = 'button'; b.className = 'reveal'; b.textContent = L.show;
       b.addEventListener('click', () => { calc.hidden = false; b.remove(); });
       calc.before(b);
       st._calcBtn = b;
@@ -30,8 +34,8 @@
 
     const ctrl = document.createElement('div');
     ctrl.className = 'ctrl';
-    ctrl.innerHTML = '<button type="button" class="primary" data-a="next">Nächster Schritt</button>' +
-      '<button type="button" data-a="all">Alles zeigen</button><button type="button" data-a="reset">Von vorn</button>';
+    ctrl.innerHTML = `<button type="button" class="primary" data-a="next">${L.next}</button>` +
+      `<button type="button" data-a="all">${L.all}</button><button type="button" data-a="reset">${L.reset}</button>`;
     ex.querySelector('.steps').after(ctrl);
     const next = ctrl.querySelector('[data-a=next]');
 
@@ -69,7 +73,7 @@
     const svg = document.getElementById('playSvg');
     if (!svg) return;
     const mS = document.getElementById('mS'), qS = document.getElementById('qS');
-    const fmt = v => (v < 0 ? '−' : '') + String(Math.abs(v)).replace('.', ',');
+    const fmt = v => (v < 0 ? '−' : '') + String(Math.abs(v)).replace('.', EN ? '.' : ',');
     function draw() {
       const m = +mS.value, q = +qS.value, R = 5;
       let h = '';
@@ -116,12 +120,12 @@
       h += `<circle cx="${c}" cy="${-sn}" r=".045" fill="var(--ink)"/><text x="${c + .07 * Math.sign(c || 1)}" y="${-sn - .06}" font-size=".13" font-weight="700" fill="var(--ink)" text-anchor="${c >= 0 ? 'start' : 'end'}">P</text>`;
       svg.innerHTML = h;
       const k = ((deg % 360) + 360) % 360;
-      const quad = [0, 90, 180, 270].includes(k) ? 'auf einer Achse' : 'Quadrant ' + ['I', 'II', 'III', 'IV'][Math.floor(k / 90)];
+      const quad = [0, 90, 180, 270].includes(k) ? L.axis : 'Quadrant ' + ['I', 'II', 'III', 'IV'][Math.floor(k / 90)];
       document.getElementById('ucOut').innerHTML =
         `<div><b>α = ${String(deg).replace('-', '−')}°</b> = ${f(a)} rad · ${quad}</div>` +
-        `<div style="color:var(--cos)"><b>cos(α) = ${f(c)}</b> (x-Koordinate)</div>` +
-        `<div style="color:var(--sin)"><b>sin(α) = ${f(sn)}</b> (y-Koordinate)</div>` +
-        `<div style="color:var(--m)"><b>tan(α) = ${tanOk ? f(t) : 'nicht definiert'}</b> (Steigung)</div>`;
+        `<div style="color:var(--cos)"><b>cos(α) = ${f(c)}</b> (${L.x})</div>` +
+        `<div style="color:var(--sin)"><b>sin(α) = ${f(sn)}</b> (${L.y})</div>` +
+        `<div style="color:var(--m)"><b>tan(α) = ${tanOk ? f(t) : L.nd}</b> (${L.slope})</div>`;
     }
     s.addEventListener('input', draw);
     document.querySelectorAll('[data-deg]').forEach(b => b.addEventListener('click', () => { s.value = b.dataset.deg; draw(); }));
@@ -129,6 +133,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.langsw a:not([aria-current])').forEach(a => a.addEventListener('click', e => { e.preventDefault(); location.href = a.getAttribute('href') + location.hash; }));
     document.querySelectorAll('.ex').forEach(setupExercise);
     setupReveals(document);
     setupPlay();

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conics – step by step</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/steps.js"></script>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<main class="wrap">
+<nav class="langsw" aria-label="Sprache / language"><a href="./" lang="de">DE</a><a href="en.html" lang="en" aria-current="page">EN</a></nav>
+<p class="crumb"><a href="../en.html">← Overview</a></p>
+<h1>Conics: tangents to parabolas</h1>
+<p class="lead">Script chapter 17.2, exercises A2–A8. First the letters, then a recipe that stays the same for almost every exercise.</p>
+
+<nav class="nav" aria-label="Sections"><ul>
+  <li><a href="#buchstaben">Letters</a></li><li><a href="#rezept">Recipe</a></li>
+  <li><a href="#a2">A2</a></li><li><a href="#a3">A3</a></li><li><a href="#a4">A4</a></li><li><a href="#a5">A5</a></li>
+  <li><a href="#a6">A6</a></li><li><a href="#a7">A7</a></li><li><a href="#a8">A8</a></li><li><a href="interaktiv.html#tangente">Interactive</a></li>
+</ul></nav>
+
+<!-- ============ 1. Letters ============ -->
+<h2 id="buchstaben">1 · What do the letters mean?</h2>
+<p><b>A letter stands for a number</b> that we don't know yet, or that is allowed to change. That's all. You calculate with it exactly like with a number.</p>
+
+<h3>Substituting into x</h3>
+<p>\(f(x) = x^2 - 2x + 3\) is a rule: “Take a number x and calculate with it.” \(f(2)\) means: write 2 everywhere you see x.</p>
+<div class="box">$$f(2) = 2^2 - 2\cdot 2 + 3 = 4 - 4 + 3 = 3$$
+<p style="margin:0">Try it yourself: what is \(f(-1)\)? <button type="button" class="reveal" data-answer="ans1">Show answer</button></p>
+<p id="ans1" style="margin:6px 0 0">\(f(-1) = (-1)^2 - 2\cdot(-1) + 3 = 1 + 2 + 3 = 6\). Careful: brackets around negative numbers!</p></div>
+
+<h3>Two kinds of letters</h3>
+<ul class="sub">
+  <li><b>x</b> moves: it stands for “any position on the x-axis”. Each x gives a different function value.</li>
+  <li><b>\(\m\) and \(\q\)</b> are fixed numbers. For one particular line they have a value, we just don't know it yet. <b>These are exactly the numbers we are looking for</b> in the tangent exercises.</li>
+</ul>
+
+<h3>The line \(g(x) = \m\cdot x + \q\)</h3>
+<p><span class="mm">m = slope</span>: go 1 to the right and the line goes m up (down if m is negative).<br>
+<span class="qq">q = y-intercept</span>: where the line crosses the y-axis, at the point \((0, \q)\).</p>
+<div class="box play">
+  <svg id="playSvg" viewBox="-5 -5 10 10" role="img" aria-label="Line with slope triangle"></svg>
+  <div>
+    <div class="sl"><span class="mm">m</span><input id="mS" type="range" min="-3" max="3" step="0.5" value="1" aria-label="m"><b id="mV"></b></div>
+    <div class="sl"><span class="qq">q</span><input id="qS" type="range" min="-4" max="4" step="0.5" value="1" aria-label="q"><b id="qV"></b></div>
+    <p class="readout" id="gOut"></p>
+    <p class="small" style="color:var(--mute);font-size:15px;margin:0">Move the sliders: m turns the line, q moves it up and down.</p>
+  </div>
+</div>
+
+<h3>Does a point lie on the line? → Substitute</h3>
+<p>A point \(P = (x_P, y_P)\) lies on g if \(g(x_P) = y_P\) is true.</p>
+<div class="box">
+<p>Example: \(g(x) = -3x + 5\) and \(P = (2, -1)\): \(g(2) = -3\cdot 2 + 5 = -1\). ✓ P lies on g.</p>
+<p style="margin:0">Does \((1, 1)\) lie on g? <button type="button" class="reveal" data-answer="ans2">Show answer</button></p>
+<p id="ans2" style="margin:6px 0 0">\(g(1) = -3 + 5 = 2 \neq 1\). No.</p></div>
+
+<h3>When m and q are still unknown</h3>
+<p>Then substituting a point gives an <b>equation between m and q</b>. We solve it for q. This is step 1 in almost every exercise.</p>
+<div class="box">$$P = (1,-3) \text{ lies on } g:\qquad \m\cdot 1 + \q = -3 \iff \q = -\m - 3$$</div>
+
+<h3>Setting equal and the discriminant</h3>
+<p>Where parabola f and line g meet, they are at the same height: \(f(x) = g(x)\). This gives a quadratic equation \(ax^2 + bx + c = 0\). Its <b>discriminant</b> \(D = b^2 - 4ac\) tells you how many meeting points there are (chapter 14):</p>
+<ul class="sub">
+  <li>\(D \gt 0\): two intersection points. The line cuts the parabola.</li>
+  <li>\(D = 0\): exactly one point. <b>The line is a tangent.</b> Then \(x = -\frac{b}{2a}\).</li>
+  <li>\(D \lt 0\): no point. The line misses.</li>
+</ul>
+<p><a href="interaktiv.html#tangente">Try it in the interactive picture →</a></p>
+
+<!-- ============ 2. Recipe ============ -->
+<h2 id="rezept">2 · The recipe for tangents</h2>
+<p>Almost all exercises A2–A8 use the same 7 steps. Only step 1 changes, depending on what is given.</p>
+<ol class="recipe">
+  <li><div><b>Set-up (Ansatz)</b><span class="f">\(t(x) = \m x + \q\)</span>Substitute what is given.<small>Slope given → substitute m. Point given → substitute it and solve for q.</small></div></li>
+  <li><div><b>Set equal</b><span class="f">\(f(x) = t(x)\)</span><small>Where do parabola and line meet?</small></div></li>
+  <li><div><b>Standard form</b><span class="f">\(ax^2 + bx + c = 0\)</span><small>Everything on one side, ordered by x², x, number. Read off a, b, c.</small></div></li>
+  <li><div><b>Discriminant = 0</b><span class="f">\(b^2 - 4ac = 0\)</span><small>Tangent means: exactly one point of contact.</small></div></li>
+  <li><div><b>Solve</b> for the number you are looking for (q or m)<small>Often another quadratic equation → quadratic formula.</small></div></li>
+  <li><div><b>Write down the tangent</b><small>Put the numbers you found into \(t(x) = \m x + \q\).</small></div></li>
+  <li><div><b>Point of contact</b><span class="f">\(x = -\frac{b}{2a}\), then \(y = t(x)\)</span><small>With D = 0 the quadratic formula gives only this one solution.</small></div></li>
+</ol>
+
+<table class="which">
+  <tr><th>What is given?</th><th>Step 1</th><th>Exercises</th></tr>
+  <tr><td>the slope</td><td>substitute m, q is still unknown</td><td><a href="#a2">A2</a></td></tr>
+  <tr><td>a point outside the parabola</td><td>substitute the point, express q in terms of m. Usually <b>2 tangents</b>.</td><td><a href="#a3">A3</a>, <a href="#a6">A6</a>, <a href="#a7">A7</a></td></tr>
+  <tr><td>the point of contact (on the parabola)</td><td>exactly the same, but only <b>1 tangent</b></td><td><a href="#a4">A4</a>, <a href="#a8">A8</a></td></tr>
+  <tr><td>standard parabola \(f(x) = x^2\)</td><td>shortcut \(t(x) = 2p\cdot x - p^2\)</td><td><a href="#a5">A5</a></td></tr>
+</table>
+
+<div class="box exam"><b>How to write it down in the exam</b>
+<p style="margin:4px 0 0">Use the words from the script: “Ansatz: …”, “Since P lies on t, …”, “⇔”, “So …”, “The tangent we are looking for is …”. No calculator: leave fractions as they are. Check: substitute the point of contact into f as well, you must get the same y.</p></div>
+
+<!-- ============ 3. Exercises ============ -->
+<h2 id="aufgaben">3 · Exercises</h2>
+<p>A2–A4 (a) are <b>fully worked</b>: click through step by step and think about what comes next before each click. From A4 (b) on, <b>you calculate yourself</b>: you see the step, the working only when you press the button.</p>
+
+<!-- A2 -->
+<article class="ex" id="a2" data-mode="worked">
+  <div class="ex-head"><h3>A2</h3><span class="mode">worked</span></div>
+  <div class="task">Find the tangent with slope −3 to the parabola \(f(x) = x^2 - 2x + 3\) and its point of contact.</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">STEP 1</span><h4>Set-up</h4>
+      <p class="why">The slope is given, so \(\m = -3\). Only \(\q\) is still unknown.</p>
+      <div class="calc">$$t(x) = -3x + \q$$</div></li>
+    <li class="step"><span class="nr">STEP 2</span><h4>Set equal</h4>
+      <p class="why">Where line and parabola meet, they are at the same height.</p>
+      <div class="calc">$$-3x + \q = x^2 - 2x + 3$$</div></li>
+    <li class="step"><span class="nr">STEP 3</span><h4>Standard form</h4>
+      <p class="why">Bring everything to the side with x² (there x² is positive), then sort.</p>
+      <div class="calc">$$\begin{aligned} 0 &= x^2 - 2x + 3x + 3 - \q \\ 0 &= x^2 + 1\cdot x + (3 - \q) \end{aligned}$$
+      <p>So \(a = 1\), \(b = 1\), \(c = 3 - \q\).</p></div></li>
+    <li class="step"><span class="nr">STEP 4</span><h4>Discriminant = 0</h4>
+      <p class="why">Tangent = exactly one point of contact = exactly one solution = D is 0.</p>
+      <div class="calc">$$D = b^2 - 4ac = 1^2 - 4\cdot 1\cdot(3 - \q) = 0$$</div></li>
+    <li class="step"><span class="nr">STEP 5</span><h4>Solve for q</h4>
+      <p class="why">Expand the bracket: \(-4\cdot 3 = -12\) and \(-4\cdot(-\q) = +4\q\).</p>
+      <div class="calc">$$\begin{aligned} 1 - 12 + 4\q &= 0 \\ 4\q &= 11 \\ \q &= \tfrac{11}{4} \end{aligned}$$</div></li>
+    <li class="step"><span class="nr">STEP 6</span><h4>Write down the tangent</h4>
+      <div class="calc">$$t(x) = -3x + \tfrac{11}{4}$$</div></li>
+    <li class="step"><span class="nr">STEP 7</span><h4>Point of contact</h4>
+      <p class="why">From step 3: a = 1, b = 1. With D = 0, \(x = -\frac{b}{2a}\). Then substitute x into t.</p>
+      <div class="calc">$$x = -\frac{1}{2\cdot 1} = -\tfrac12, \qquad y = t\!\left(-\tfrac12\right) = \tfrac32 + \tfrac{11}{4} = \tfrac{17}{4}$$
+      <p>Check in f: \(f(-\tfrac12) = \tfrac14 + 1 + 3 = \tfrac{17}{4}\) ✓</p></div></li>
+  </ol>
+  <div class="done">The tangent is \(t(x) = -3x + \frac{11}{4}\), point of contact \(P = \left(-\frac12, \frac{17}{4}\right) = (-0.5;\ 4.25)\). <a href="interaktiv.html#tangente">Check it in the picture</a> (example “A2”).</div>
+</article>
+
+<!-- A3 -->
+<article class="ex" id="a3" data-mode="worked">
+  <div class="ex-head"><h3>A3</h3><span class="mode">worked</span></div>
+  <div class="task">Find all tangents to the parabola \(f(x) = x^2 - 2x + \frac{25}{16}\) that pass through the origin; give the point of contact for each.</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">STEP 1</span><h4>Set-up</h4>
+      <p class="why">The tangent passes through \((0, 0)\). Substitute: \(t(0) = 0\). That settles \(\q\); now \(\m\) is what we're looking for.</p>
+      <div class="calc">$$\m\cdot 0 + \q = 0 \iff \q = 0, \qquad\text{so}\qquad t(x) = \m x$$</div></li>
+    <li class="step"><span class="nr">STEP 2</span><h4>Set equal</h4>
+      <div class="calc">$$\m x = x^2 - 2x + \tfrac{25}{16}$$</div></li>
+    <li class="step"><span class="nr">STEP 3</span><h4>Standard form</h4>
+      <p class="why">Move \(\m x\) to the right and combine the two x-terms: \(-2x - \m x = (-2 - \m)\,x\). Brackets around b, because m is inside.</p>
+      <div class="calc">$$0 = x^2 + (-2 - \m)\,x + \tfrac{25}{16}$$
+      <p>So \(a = 1\), \(b = -2 - \m\), \(c = \frac{25}{16}\).</p></div></li>
+    <li class="step"><span class="nr">STEP 4</span><h4>Discriminant = 0</h4>
+      <div class="calc">$$D = (-2 - \m)^2 - 4\cdot 1\cdot \tfrac{25}{16} = (-2-\m)^2 - \tfrac{25}{4} = 0$$</div></li>
+    <li class="step"><span class="nr">STEP 5</span><h4>Solve for m</h4>
+      <p class="why">\((-2-\m)^2 = 4 + 4\m + \m^2\) (binomial formula). Multiply by 4 to get rid of the fraction. Then the quadratic formula, this time for m.</p>
+      <div class="calc">$$\begin{aligned} \m^2 + 4\m + 4 - \tfrac{25}{4} &= 0 \quad \mid \cdot 4 \\ 4\m^2 + 16\m - 9 &= 0 \\ \m_{1,2} &= \frac{-16 \pm \sqrt{256 + 144}}{8} = \frac{-16 \pm 20}{8} \\ \m_1 = \tfrac12, &\quad \m_2 = -\tfrac92 \end{aligned}$$
+      <p>Two values for m → <b>two tangents</b>. This happens when the point lies outside the parabola.</p></div></li>
+    <li class="step"><span class="nr">STEP 6</span><h4>Write down the tangents</h4>
+      <div class="calc">$$t_1(x) = \tfrac12 x, \qquad t_2(x) = -\tfrac92 x$$</div></li>
+    <li class="step"><span class="nr">STEP 7</span><h4>Points of contact</h4>
+      <p class="why">\(x = -\frac{b}{2a}\) with \(b = -2 - \m\) gives \(x = \frac{2 + \m}{2}\). Substitute each m separately.</p>
+      <div class="calc">$$\begin{aligned} \m_1 = \tfrac12: &\quad x = \tfrac{2 + 1/2}{2} = \tfrac54, \quad y = \tfrac12\cdot\tfrac54 = \tfrac58 \\ \m_2 = -\tfrac92: &\quad x = \tfrac{2 - 9/2}{2} = -\tfrac54, \quad y = -\tfrac92\cdot\left(-\tfrac54\right) = \tfrac{45}{8} \end{aligned}$$</div></li>
+  </ol>
+  <div class="done">\(t_1(x) = \frac12 x\) with \(P_1 = \left(\frac54, \frac58\right) = (1.25;\ 0.625)\) and \(t_2(x) = -\frac92 x\) with \(P_2 = \left(-\frac54, \frac{45}{8}\right) = (-1.25;\ 5.625)\).</div>
+</article>
+
+<!-- A4 a -->
+<article class="ex" id="a4" data-mode="worked">
+  <div class="ex-head"><h3>A4 (a)</h3><span class="mode">worked</span></div>
+  <div class="task">Find the equation \(t(x) = \m x + \q\) of the tangent to \(f(x) = x^2\) at the point \(Q = \left(\frac12, \frac14\right)\).</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">STEP 1</span><h4>Set-up</h4>
+      <p class="why">Q lies on t, so \(t(\tfrac12) = \tfrac14\). Solve for q.</p>
+      <div class="calc">$$\m\cdot\tfrac12 + \q = \tfrac14 \iff \q = \tfrac14 - \tfrac12\m$$</div></li>
+    <li class="step"><span class="nr">STEP 2</span><h4>Set equal</h4>
+      <div class="calc">$$x^2 = \m x + \q$$</div></li>
+    <li class="step"><span class="nr">STEP 3</span><h4>Standard form</h4>
+      <div class="calc">$$x^2 - \m x - \q = 0$$<p>So \(a = 1\), \(b = -\m\), \(c = -\q\).</p></div></li>
+    <li class="step"><span class="nr">STEP 4</span><h4>Discriminant = 0</h4>
+      <div class="calc">$$D = (-\m)^2 - 4\cdot 1\cdot(-\q) = \m^2 + 4\q = 0$$</div></li>
+    <li class="step"><span class="nr">STEP 5</span><h4>Replace q and solve for m</h4>
+      <p class="why">Now step 1 comes back: for q we put in \(\tfrac14 - \tfrac12\m\). Then only one unknown is left.</p>
+      <div class="calc">$$\begin{aligned} \m^2 + 4\left(\tfrac14 - \tfrac12\m\right) &= 0 \\ \m^2 - 2\m + 1 &= 0 \\ (\m - 1)^2 &= 0 \iff \m = 1 \end{aligned}$$
+      <p>And \(\q = \tfrac14 - \tfrac12\cdot 1 = -\tfrac14\).</p></div></li>
+    <li class="step"><span class="nr">STEP 6</span><h4>Write down the tangent</h4>
+      <div class="calc">$$t(x) = x - \tfrac14$$</div></li>
+    <li class="step"><span class="nr">STEP 7</span><h4>Point of contact</h4>
+      <p class="why">For free here: Q itself is the point of contact. Check: \(t(\tfrac12) = \tfrac12 - \tfrac14 = \tfrac14\) ✓</p></li>
+  </ol>
+  <div class="done">\(t(x) = x - \frac14\).</div>
+</article>
+
+<!-- A4 b -->
+<article class="ex" id="a4b" data-mode="faded">
+  <div class="ex-head"><h3>A4 (b)</h3><span class="mode">your turn</span></div>
+  <div class="task">General point \(P = (p, p^2)\) on the standard parabola \(f(x) = x^2\). Find the tangent \(t(x) = \m x + \q\) to f at the point P.<br><small style="color:var(--mute)">p is just a number we don't fix. Calculate exactly as in (a), only with p instead of ½.</small></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">STEP 1</span><h4>Set-up: P lies on t</h4>
+      <p class="why">As in (a): \(t(p) = p^2\), solve for q.</p>
+      <div class="calc">$$\m p + \q = p^2 \iff \q = p^2 - \m p$$</div></li>
+    <li class="step"><span class="nr">STEPS 2–4</span><h4>Set equal, standard form, D = 0</h4>
+      <p class="why">Exactly as in (a), this doesn't change.</p>
+      <div class="calc">$$x^2 - \m x - \q = 0, \qquad D = \m^2 + 4\q = 0$$</div></li>
+    <li class="step"><span class="nr">STEP 5</span><h4>Replace q, solve for m</h4>
+      <p class="why">Hint: at the end there's a binomial formula.</p>
+      <div class="calc">$$\begin{aligned} \m^2 + 4(p^2 - \m p) &= 0 \\ \m^2 - 4p\,\m + 4p^2 &= 0 \\ (\m - 2p)^2 &= 0 \iff \m = 2p \end{aligned}$$
+      <p>And \(\q = p^2 - 2p\cdot p = -p^2\).</p></div></li>
+    <li class="step"><span class="nr">STEP 6</span><h4>Tangent</h4>
+      <div class="calc">$$t(x) = 2p\cdot x - p^2$$</div></li>
+  </ol>
+  <div class="done">This is <b>Proposition 17.2.4</b>: slope = twice the x-coordinate, y-intercept = minus the y-coordinate. You need this shortcut in A5.</div>
+</article>
+
+<!-- A5 -->
+<article class="ex" id="a5" data-mode="faded">
+  <div class="ex-head"><h3>A5</h3><span class="mode">your turn</span></div>
+  <div class="task">Using Proposition 17.2.4: give the tangents to the standard parabola \(f(x) = x^2\) at the points \(A = (-2, 4)\), \(B = (3, 9)\), \(C = (1, 1)\), \(D = (\frac12, \frac14)\), \(E = (-\frac32, \frac94)\), \(O = (0, 0)\).</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">RULE</span><h4>The shortcut</h4>
+      <p class="why">p is the x-coordinate of the point. Substitute into \(t(x) = 2p\cdot x - p^2\). Careful with negative p: \((-2)^2 = 4\), so \(-p^2 = -4\).</p></li>
+    <li class="step"><span class="nr">A</span><h4>\(A = (-2, 4)\), so \(p = -2\)</h4>
+      <div class="calc">$$t_A(x) = 2\cdot(-2)\cdot x - (-2)^2 = -4x - 4$$</div></li>
+    <li class="step"><span class="nr">B</span><h4>\(B = (3, 9)\)</h4><div class="calc">$$t_B(x) = 6x - 9$$</div></li>
+    <li class="step"><span class="nr">C</span><h4>\(C = (1, 1)\)</h4><div class="calc">$$t_C(x) = 2x - 1$$</div></li>
+    <li class="step"><span class="nr">D</span><h4>\(D = (\frac12, \frac14)\)</h4><div class="calc">$$t_D(x) = x - \tfrac14 \quad\text{(same as in A4 (a)!)}$$</div></li>
+    <li class="step"><span class="nr">E</span><h4>\(E = (-\frac32, \frac94)\)</h4><div class="calc">$$t_E(x) = 2\cdot\left(-\tfrac32\right) x - \tfrac94 = -3x - \tfrac94$$</div></li>
+    <li class="step"><span class="nr">O</span><h4>\(O = (0, 0)\)</h4><div class="calc">$$t_O(x) = 0\cdot x - 0 = 0 \quad\text{(this is the x-axis)}$$</div></li>
+  </ol>
+  <div class="done">Sketch the standard parabola with all six tangents, or draw them in GeoGebra. Each line touches the parabola exactly at its point.</div>
+</article>
+
+<!-- A6 -->
+<article class="ex" id="a6" data-mode="faded">
+  <div class="ex-head"><h3>A6</h3><span class="mode">your turn</span></div>
+  <div class="task">(a) Find all tangents to the standard parabola \(f(x) = x^2\) that pass through \(A = (1, -3)\). A does <b>not</b> lie on the parabola. (b) Give the points of contact.<br><small style="color:var(--mute)">Here the 2nd method from the script = our recipe. The 1st method is below.</small></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">STEP 1</span><h4>Set-up: A lies on t</h4>
+      <p class="why">\(t(1) = -3\). Solve for q.</p>
+      <div class="calc">$$\m\cdot 1 + \q = -3 \iff \q = -\m - 3$$</div></li>
+    <li class="step"><span class="nr">STEPS 2–3</span><h4>Set equal, standard form</h4>
+      <p class="why">As in A4.</p>
+      <div class="calc">$$x^2 = \m x + \q \iff x^2 - \m x - \q = 0$$</div></li>
+    <li class="step"><span class="nr">STEP 4</span><h4>Discriminant = 0</h4>
+      <div class="calc">$$D = \m^2 + 4\q = 0$$</div></li>
+    <li class="step"><span class="nr">STEP 5</span><h4>Replace q, solve for m</h4>
+      <div class="calc">$$\begin{aligned} \m^2 + 4(-\m - 3) &= 0 \\ \m^2 - 4\m - 12 &= 0 \\ \m_{1,2} &= \frac{4 \pm \sqrt{16 + 48}}{2} = \frac{4 \pm 8}{2} \\ \m_1 = 6, &\quad \m_2 = -2 \end{aligned}$$
+      <p>And \(\q_1 = -6 - 3 = -9\), \(\q_2 = 2 - 3 = -1\).</p></div></li>
+    <li class="step"><span class="nr">STEP 6</span><h4>Tangents</h4>
+      <div class="calc">$$t_1(x) = 6x - 9, \qquad t_2(x) = -2x - 1$$</div></li>
+    <li class="step"><span class="nr">STEP 7</span><h4>Points of contact (b)</h4>
+      <p class="why">\(b = -\m\), so \(x = -\frac{b}{2a} = \frac{\m}{2}\). And y = x², because the point lies on the standard parabola.</p>
+      <div class="calc">$$\m_1 = 6:\ x = 3,\ P_1 = (3, 9) \qquad \m_2 = -2:\ x = -1,\ P_2 = (-1, 1)$$</div></li>
+  </ol>
+  <div class="done">\(t_1(x) = 6x - 9\) touches at \((3, 9)\), \(t_2(x) = -2x - 1\) touches at \((-1, 1)\).
+    <p style="margin:8px 0 0;font-weight:400"><b>1st method</b> (with the shortcut from A4 (b)): we need p with \(t_p(1) = -3\): \(2p - p^2 = -3 \iff p^2 - 2p - 3 = 0 \iff p = 3\) or \(p = -1\). Same tangents, same points of contact.</p>
+    <p style="margin:6px 0 0;font-weight:400"><a href="interaktiv.html#tangente-punkt">Check it in the picture</a>: example “x²”, point A at (1, −3).</p></div>
+</article>
+
+<!-- A7 -->
+<article class="ex" id="a7" data-mode="faded">
+  <div class="ex-head"><h3>A7</h3><span class="mode">your turn</span></div>
+  <div class="task">(a) Find all tangents to \(f(x) = \frac14(x + 3)^2 + 1\) that pass through \(P = (-2, -1)\). (b) Find each point of contact.</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">STEP 1</span><h4>Set-up: P lies on t</h4>
+      <div class="calc">$$\m\cdot(-2) + \q = -1 \iff \q = 2\m - 1$$</div></li>
+    <li class="step"><span class="nr">STEP 2</span><h4>Set equal</h4>
+      <div class="calc">$$\tfrac14(x + 3)^2 + 1 = \m x + \q$$</div></li>
+    <li class="step"><span class="nr">STEP 3</span><h4>Standard form</h4>
+      <p class="why">Hint: first multiply by 4, then the fraction is gone. \((x+3)^2 = x^2 + 6x + 9\) (binomial formula). Combine the x-terms as in A3.</p>
+      <div class="calc">$$\begin{aligned} (x + 3)^2 + 4 &= 4\m x + 4\q \\ x^2 + 6x + 13 &= 4\m x + 4\q \\ x^2 + (6 - 4\m)\,x + (13 - 4\q) &= 0 \end{aligned}$$
+      <p>So \(a = 1\), \(b = 6 - 4\m\), \(c = 13 - 4\q\).</p></div></li>
+    <li class="step"><span class="nr">STEP 4</span><h4>Discriminant = 0</h4>
+      <p class="why">Expand, then divide everything by 4: smaller numbers.</p>
+      <div class="calc">$$\begin{aligned} (6 - 4\m)^2 - 4(13 - 4\q) &= 0 \\ 36 - 48\m + 16\m^2 - 52 + 16\q &= 0 \quad\mid :4 \\ 4\m^2 - 12\m - 4 + 4\q &= 0 \end{aligned}$$</div></li>
+    <li class="step"><span class="nr">STEP 5</span><h4>Replace q, solve for m</h4>
+      <div class="calc">$$\begin{aligned} 4\m^2 - 12\m - 4 + 4(2\m - 1) &= 0 \\ 4\m^2 - 4\m - 8 &= 0 \quad\mid :4 \\ \m^2 - \m - 2 &= 0 \\ \m_{1,2} = \frac{1 \pm \sqrt{1 + 8}}{2} = \frac{1 \pm 3}{2}, &\quad \m_1 = 2,\ \m_2 = -1 \end{aligned}$$
+      <p>And \(\q_1 = 2\cdot 2 - 1 = 3\), \(\q_2 = 2\cdot(-1) - 1 = -3\).</p></div></li>
+    <li class="step"><span class="nr">STEP 6</span><h4>Tangents</h4>
+      <div class="calc">$$t_1(x) = 2x + 3, \qquad t_2(x) = -x - 3$$</div></li>
+    <li class="step"><span class="nr">STEP 7</span><h4>Points of contact (b)</h4>
+      <p class="why">\(x = -\frac{b}{2a} = -\frac{6 - 4\m}{2} = 2\m - 3\), then calculate y with t.</p>
+      <div class="calc">$$\begin{aligned} \m_1 = 2: &\quad x = 1,\quad y = t_1(1) = 5 \\ \m_2 = -1: &\quad x = -5,\quad y = t_2(-5) = 2 \end{aligned}$$
+      <p>Check: \(f(1) = \tfrac14\cdot 16 + 1 = 5\) ✓, \(f(-5) = \tfrac14\cdot 4 + 1 = 2\) ✓</p></div></li>
+  </ol>
+  <div class="done">\(t_1(x) = 2x + 3\) touches at \((1, 5)\), \(t_2(x) = -x - 3\) touches at \((-5, 2)\). (c) Drawing: vertex \(S = (-3, 1)\), stretch factor ¼. <a href="interaktiv.html#tangente-punkt">Check it in the picture</a> (example “¼(x + 3)² + 1”).</div>
+</article>
+
+<!-- A8 -->
+<article class="ex" id="a8" data-mode="faded">
+  <div class="ex-head"><h3>A8</h3><span class="mode">your turn</span></div>
+  <div class="task">Find the tangent to \(f(x) = \frac14(x + 3)^2 + 1\) at the point \(A = (-1, f(-1))\).</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">STEP 0</span><h4>Calculate the point</h4>
+      <p class="why">f(−1) means: substitute −1 for x.</p>
+      <div class="calc">$$f(-1) = \tfrac14(-1 + 3)^2 + 1 = \tfrac14\cdot 4 + 1 = 2, \qquad A = (-1, 2)$$</div></li>
+    <li class="step"><span class="nr">STEP 1</span><h4>Set-up: A lies on t</h4>
+      <div class="calc">$$\m\cdot(-1) + \q = 2 \iff \q = \m + 2$$</div></li>
+    <li class="step"><span class="nr">STEPS 2–4</span><h4>Set equal, standard form, D = 0</h4>
+      <p class="why">Same parabola as in A7, so exactly the same working up to here.</p>
+      <div class="calc">$$x^2 + (6 - 4\m)\,x + (13 - 4\q) = 0, \qquad 4\m^2 - 12\m - 4 + 4\q = 0$$</div></li>
+    <li class="step"><span class="nr">STEP 5</span><h4>Replace q, solve for m</h4>
+      <div class="calc">$$\begin{aligned} 4\m^2 - 12\m - 4 + 4(\m + 2) &= 0 \\ 4\m^2 - 8\m + 4 &= 0 \quad\mid :4 \\ \m^2 - 2\m + 1 = (\m - 1)^2 &= 0 \iff \m = 1 \end{aligned}$$
+      <p>And \(\q = 1 + 2 = 3\). Only <b>one</b> m: A lies on the parabola, so there is only one tangent.</p></div></li>
+    <li class="step"><span class="nr">STEP 6</span><h4>Tangent</h4>
+      <div class="calc">$$t(x) = x + 3$$</div></li>
+    <li class="step"><span class="nr">STEP 7</span><h4>Check</h4>
+      <p class="why">The point of contact must be A: \(x = 2\m - 3 = -1\) ✓ and \(t(-1) = 2\) ✓</p></li>
+  </ol>
+  <div class="done">\(t(x) = x + 3\), point of contact \(A = (-1, 2)\).</div>
+</article>
+
+<footer>Exercises and solutions based on the script “Quadriken: Ellipse, Hyperbel, Parabel” (Blöchliger, Schnürer, CC BY-SA). Colours: <span class="mm">m</span> always blue, <span class="qq">q</span> always red.</footer>
+</main>
+</body>
+</html>

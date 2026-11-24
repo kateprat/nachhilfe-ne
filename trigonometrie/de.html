@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trigonometrie – Schritt für Schritt</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="../assets/steps.js"></script>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<main class="wrap">
+<nav class="langsw" aria-label="Sprache / language"><a href="de.html" lang="de" aria-current="page">DE</a><a href="./" lang="en">EN</a></nav>
+<p class="crumb"><a href="../">← Übersicht</a></p>
+<h1>Trigonometrie</h1>
+<p class="lead">Skript Kapitel 15 (auf Englisch), Aufgaben E1–E7. Die ganze Trigonometrie steckt in einem einzigen Bild: dem Einheitskreis.</p>
+
+<nav class="nav" aria-label="Abschnitte"><ul>
+  <li><a href="#bogenmass">Bogenmass</a></li><li><a href="#kreis">Einheitskreis</a></li><li><a href="#rezepte">Rezepte</a></li>
+  <li><a href="#e1">E1</a></li><li><a href="#e2">E2</a></li><li><a href="#e3">E3</a></li><li><a href="#e4">E4</a></li>
+  <li><a href="#e5">E5</a></li><li><a href="#e6">E6</a></li><li><a href="#e7">E7</a></li>
+</ul></nav>
+
+<!-- ============ 1 Bogenmass ============ -->
+<h2 id="bogenmass">1 · Winkel im Bogenmass (radian)</h2>
+<p>Statt in Grad kann man einen Winkel als <b>Länge des Bogens auf dem Einheitskreis</b> (Radius 1) messen. Der ganze Kreis hat Umfang \(2\pi\), also:</p>
+<div class="box">$$360^\circ = 2\pi, \qquad 180^\circ = \pi, \qquad 90^\circ = \tfrac{\pi}{2}$$
+<p style="margin:0">Mehr musst du nicht auswendig wissen. <b>Alles andere rechnest du aus \(180^\circ = \pi\)</b> aus: durch 180 teilen, mal π (oder umgekehrt).</p></div>
+<p>Probier selbst: Wie viel ist 60° im Bogenmass? <button type="button" class="reveal" data-answer="t1">Antwort zeigen</button></p>
+<p id="t1">\(60^\circ = \frac{60}{180}\pi = \frac{\pi}{3}\)</p>
+<div class="box tip"><b>Taschenrechner</b> Der Rechner muss auf <b>DEG</b> stehen, wenn du in Grad rechnest, und auf <b>RAD</b> im Bogenmass. Test: \(\sin(90)\) gibt 1 → DEG. Gibt 0.89… → RAD.</div>
+
+<!-- ============ 2 Einheitskreis ============ -->
+<h2 id="kreis">2 · Der Einheitskreis: cos, sin, tan</h2>
+<p>Dreh einen Strahl um den Winkel α (gegen den Uhrzeigersinn, von der positiven x-Achse aus). Er trifft den Kreis im Punkt \(P_\alpha\). Dann ist:</p>
+<ul class="sub">
+  <li><span class="cc">cos(α)</span> = die <b>x-Koordinate</b> von P (wie weit rechts/links)</li>
+  <li><span class="ss">sin(α)</span> = die <b>y-Koordinate</b> von P (wie weit oben/unten)</li>
+  <li><span class="tt">tan(α)</span> = die <b>Steigung</b> des Strahls, also \(\frac{\sin(\alpha)}{\cos(\alpha)}\). Genau das m aus \(\m x + \q\)! Man sieht sie an der Linie \(x = 1\).</li>
+</ul>
+<div class="box play">
+  <svg id="ucSvg" viewBox="-1.6 -1.6 3.2 3.2" role="img" aria-label="Einheitskreis"></svg>
+  <div>
+    <div class="sl" style="grid-template-columns:1.6em minmax(0,1fr)"><span>α</span><input id="ucS" type="range" min="-360" max="360" step="1" value="35" aria-label="Winkel α in Grad"></div>
+    <div id="ucOut"></div>
+    <div class="chips"><button type="button" data-deg="30">30°</button><button type="button" data-deg="45">45°</button><button type="button" data-deg="60">60°</button><button type="button" data-deg="120">120°</button><button type="button" data-deg="207">207°</button><button type="button" data-deg="290">290°</button><button type="button" data-deg="-190">−190°</button></div>
+  </div>
+</div>
+<p>Zwei Dinge, die man aus dem Bild direkt sieht:</p>
+<ul class="sub">
+  <li>cos und sin liegen immer zwischen −1 und 1. P ist ja auf dem Kreis mit Radius 1.</li>
+  <li><b>Pythagoras</b>: Das Dreieck aus <span class="cc">cos</span>, <span class="ss">sin</span> und Radius 1 ist rechtwinklig, also \(\sin^2(\alpha) + \cos^2(\alpha) = 1\).</li>
+</ul>
+
+<!-- ============ 3 Rezepte ============ -->
+<h2 id="rezepte">3 · Die Rezepte</h2>
+<ol class="recipe">
+  <li><div><b>Grad ↔ Bogenmass</b><span class="f">\(r = \frac{\pi}{180}\cdot d, \quad d = \frac{180}{\pi}\cdot r\)</span><small>Immer von \(180^\circ = \pi\) aus denken.</small></div></li>
+  <li><div><b>Vorzeichen</b>In welchem Viertel (Quadrant) liegt P?<small>cos + rechts, sin + oben. tan + wenn beide gleiches Vorzeichen haben (I und III).</small></div></li>
+  <li><div><b>Gleichung \(\sin(\alpha) = c\)</b>waagrechte Linie \(y = c\), trifft den Kreis 2×<small>\(\alpha_1\) vom Rechner, \(\alpha_2 = 180^\circ - \alpha_1\). Dann \(+\,k\cdot 360^\circ\).</small></div></li>
+  <li><div><b>Gleichung \(\cos(\alpha) = c\)</b>senkrechte Linie \(x = c\), trifft den Kreis 2×<small>\(\alpha_1\) vom Rechner, \(\alpha_2 = -\alpha_1\). Dann \(+\,k\cdot 360^\circ\).</small></div></li>
+  <li><div><b>Gleichung \(\tan(\alpha) = c\)</b>Gerade durch O mit Steigung c<small>\(\alpha_1\) vom Rechner, dann \(+\,k\cdot 180^\circ\) (die Gerade geht durch zwei gegenüberliegende Punkte).</small></div></li>
+  <li><div><b>Eins bekannt → die anderen zwei</b><small>\(\sin^2 + \cos^2 = 1\) und \(\tan = \frac{\sin}{\cos}\). Vorzeichen aus dem Quadranten.</small></div></li>
+</ol>
+
+<!-- ============ 4 Aufgaben ============ -->
+<h2 id="aufgaben">4 · Aufgaben</h2>
+<p>E1, E3 und E5 sind <b>ganz vorgerechnet</b>. Bei E2, E4, E6 und E7 <b>rechnest du selbst</b>: Die Rechnung kommt erst auf Knopfdruck.</p>
+
+<!-- E1 -->
+<article class="ex" id="e1" data-mode="worked">
+  <div class="ex-head"><h3>E1</h3><span class="mode">vorgerechnet</span></div>
+  <div class="task">(a) Rechne die Winkel 0°, 360°, 180°, 90°, 60°, 30°, −90°, 45°, 1° exakt ins Bogenmass um, und \(1\) rad in Grad. (b) Finde die Umrechnungsfunktionen \(d(r)\) (Bogenmass → Grad) und \(r(d)\) (Grad → Bogenmass).</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>Die eine Sache, die du wissen musst</h4>
+      <p class="why">Halber Kreis: Der halbe Umfang des Einheitskreises ist π.</p>
+      <div class="calc">$$180^\circ = \pi$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4>Grad → Bogenmass: durch 180, mal π</h4>
+      <p class="why">Wie viele «180°» sind es? So viele π.</p>
+      <div class="calc">$$\begin{aligned} 360^\circ &= 2\pi & 90^\circ &= \tfrac{90}{180}\pi = \tfrac{\pi}{2} & 60^\circ &= \tfrac{\pi}{3} \\ 30^\circ &= \tfrac{\pi}{6} & -90^\circ &= -\tfrac{\pi}{2} & 45^\circ &= \tfrac{\pi}{4} \\ 1^\circ &= \tfrac{\pi}{180} & 0^\circ &= 0 \end{aligned}$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4>Bogenmass → Grad: durch π, mal 180</h4>
+      <div class="calc">$$1 = \tfrac{180^\circ}{\pi} \approx 57.3^\circ$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 4</span><h4>(b) Als Funktionen aufschreiben</h4>
+      <p class="why">Die Rechnungen aus Schritt 2 und 3, nur mit einem Buchstaben statt einer Zahl: r = Winkel im Bogenmass, d = Winkel in Grad.</p>
+      <div class="calc">$$d(r) = \frac{180}{\pi}\cdot r, \qquad r(d) = \frac{\pi}{180}\cdot d$$
+      <p>Probe: \(d(\pi) = 180\) ✓, \(r(180) = \pi\) ✓</p></div></li>
+  </ol>
+  <div class="done">Merke nur \(180^\circ = \pi\). Den Rest rechnest du jedes Mal aus.</div>
+</article>
+
+<!-- E2 -->
+<article class="ex" id="e2" data-mode="faded">
+  <div class="ex-head"><h3>E2</h3><span class="mode">selbst rechnen</span></div>
+  <div class="task">Zeichne einen Einheitskreis mit 8 cm Durchmesser. (a)–(c) Markiere \(P_{55^\circ}, P_{290^\circ}, P_{-190^\circ}, P_{380^\circ}\), miss cos, sin und tan und prüfe mit dem Rechner. (d)–(h) Für welche α gilt \(\sin(\alpha) = 0.8\), \(\cos(\alpha) = -0.2\), \(\tan(\alpha) = -2\), \(\sin(\alpha) = 4.2\), \(\cos(\alpha) = -2\)?</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">TIPP</span><h4>Messen in Einheiten, nicht in cm</h4>
+      <p class="why">8 cm Durchmesser = 4 cm Radius = 1 Einheit. Gemessene cm also durch 4 teilen. Im <a href="#kreis">Einheitskreis oben</a> kannst du jeden Winkel einstellen und vergleichen.</p></li>
+    <li class="step"><span class="nr">(a)(b)</span><h4>cos = x, sin = y ablesen</h4>
+      <p class="why">Achtung: 380° = 360° + 20°, das ist derselbe Punkt wie 20°. −190° heisst: 190° im Uhrzeigersinn.</p>
+      <div class="calc">$$\begin{aligned} \cos 55^\circ &\approx 0.574, & \sin 55^\circ &\approx 0.819 \\ \cos 290^\circ &\approx 0.342, & \sin 290^\circ &\approx -0.940 \\ \cos(-190^\circ) &\approx -0.985, & \sin(-190^\circ) &\approx 0.174 \\ \cos 380^\circ &\approx 0.940, & \sin 380^\circ &\approx 0.342 \end{aligned}$$</div></li>
+    <li class="step"><span class="nr">(c)</span><h4>tan auf der Linie x = 1 ablesen</h4>
+      <div class="calc">$$\tan 55^\circ \approx 1.428,\quad \tan 290^\circ \approx -2.747,\quad \tan(-190^\circ) \approx -0.176,\quad \tan 380^\circ \approx 0.364$$</div></li>
+    <li class="step"><span class="nr">(d)</span><h4>\(\sin(\alpha) = 0.8\)</h4>
+      <p class="why">Zeichne die waagrechte Linie y = 0.8. Sie trifft den Kreis zweimal, links und rechts gespiegelt.</p>
+      <div class="calc">$$\alpha_1 \approx 53.1^\circ, \quad \alpha_2 = 180^\circ - 53.1^\circ \approx 126.9^\circ, \qquad \alpha = \alpha_{1,2} + k\cdot 360^\circ,\ k \in \mathbb{Z}$$
+      <p>\(k\cdot 360^\circ\): Jede volle Umdrehung mehr oder weniger landet wieder im gleichen Punkt. Deshalb unendlich viele Lösungen.</p></div></li>
+    <li class="step"><span class="nr">(e)</span><h4>\(\cos(\alpha) = -0.2\)</h4>
+      <p class="why">Senkrechte Linie x = −0.2. Die zwei Punkte sind oben und unten gespiegelt.</p>
+      <div class="calc">$$\alpha \approx \pm 101.5^\circ + k\cdot 360^\circ \quad(\text{also auch } 258.5^\circ)$$</div></li>
+    <li class="step"><span class="nr">(f)</span><h4>\(\tan(\alpha) = -2\)</h4>
+      <p class="why">Gerade durch O mit Steigung −2. Sie trifft den Kreis in zwei gegenüberliegenden Punkten, 180° auseinander.</p>
+      <div class="calc">$$\alpha \approx 116.6^\circ + k\cdot 180^\circ \quad(\text{der Rechner gibt } -63.4^\circ\text{, das ist dieselbe Familie})$$</div></li>
+    <li class="step"><span class="nr">(g)(h)</span><h4>\(\sin(\alpha) = 4.2\), \(\cos(\alpha) = -2\)</h4>
+      <div class="calc"><p>Keine Lösung: cos und sin liegen immer zwischen −1 und 1.</p></div></li>
+  </ol>
+</article>
+
+<!-- E3 -->
+<article class="ex" id="e3" data-mode="worked">
+  <div class="ex-head"><h3>E3</h3><span class="mode">vorgerechnet</span></div>
+  <div class="task">Gib für jedes Winkelintervall an, ob cos, sin und tan positiv (+) oder negativ (−) sind. Ohne Taschenrechner, mit dem Einheitskreis.</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>cos = x</h4>
+      <p class="why">P rechts von der y-Achse → cos positiv. Das ist zwischen −90° und 90°.</p></li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4>sin = y</h4>
+      <p class="why">P oberhalb der x-Achse → sin positiv. Das ist zwischen 0° und 180°.</p></li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4>tan = sin / cos</h4>
+      <p class="why">Gleiche Vorzeichen geteilt → +, verschiedene → −. Also tan positiv in Quadrant I und III.</p></li>
+    <li class="step"><span class="nr">SCHRITT 4</span><h4>Tabelle füllen</h4>
+      <p class="why">Negative Winkel: Zähl im Uhrzeigersinn. \((-180^\circ, -90^\circ)\) ist dasselbe Viertel wie \((180^\circ, 270^\circ)\).</p>
+      <div class="calc"><div class="tbl"><table>
+        <tr><th>Intervall</th><th>(0°, 90°)</th><th>(90°, 180°)</th><th>(180°, 270°)</th><th>(270°, 360°)</th><th>(−180°, −90°)</th><th>(−90°, 0°)</th></tr>
+        <tr><td>Quadrant</td><td>I</td><td>II</td><td>III</td><td>IV</td><td>III</td><td>IV</td></tr>
+        <tr><td><span class="cc">cos</span></td><td>+</td><td>−</td><td>−</td><td>+</td><td>−</td><td>+</td></tr>
+        <tr><td><span class="ss">sin</span></td><td>+</td><td>+</td><td>−</td><td>−</td><td>−</td><td>−</td></tr>
+        <tr><td><span class="tt">tan</span></td><td>+</td><td>−</td><td>+</td><td>−</td><td>+</td><td>−</td></tr>
+      </table></div></div></li>
+  </ol>
+  <div class="done">Merksatz: In Quadrant I ist alles positiv, in II nur sin, in III nur tan, in IV nur cos.</div>
+</article>
+
+<!-- E4 -->
+<article class="ex" id="e4" data-mode="faded">
+  <div class="ex-head"><h3>E4</h3><span class="mode">selbst rechnen</span></div>
+  <div class="task">(a) Gib die Ecken eines regelmässigen Fünfecks ABCDE auf dem Einheitskreis exakt an, mit \(A = (1, 0)\). (b) Dasselbe auf einem Kreis mit Radius 4 cm, auf zwei Stellen gerundet. (c) Ecken eines regelmässigen n-Ecks mit Umkreisradius r?</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>Wie weit liegen die Ecken auseinander?</h4>
+      <p class="why">5 gleiche Stücke vom ganzen Kreis.</p>
+      <div class="calc">$$360^\circ : 5 = 72^\circ$$</div></li>
+    <li class="step"><span class="nr">(a)</span><h4>Jede Ecke ist ein Punkt \(P_\alpha = (\cos\alpha, \sin\alpha)\)</h4>
+      <div class="calc">$$\begin{aligned} A &= (\cos 0^\circ, \sin 0^\circ) = (1, 0) & B &= (\cos 72^\circ, \sin 72^\circ) \\ C &= (\cos 144^\circ, \sin 144^\circ) & D &= (\cos 216^\circ, \sin 216^\circ) \\ E &= (\cos 288^\circ, \sin 288^\circ) \end{aligned}$$</div></li>
+    <li class="step"><span class="nr">(b)</span><h4>Radius 4: alles mal 4</h4>
+      <p class="why">Ein 4-mal grösserer Kreis streckt jeden Punkt um den Faktor 4.</p>
+      <div class="calc">$$A = (4, 0),\ B \approx (1.24, 3.80),\ C \approx (-3.24, 2.35),\ D \approx (-3.24, -2.35),\ E \approx (1.24, -3.80)$$</div></li>
+    <li class="step"><span class="nr">(c)</span><h4>Allgemein: n Ecken, Radius r</h4>
+      <p class="why">Abstand \(\frac{360^\circ}{n}\), Ecke Nummer k beim Winkel \(k\cdot\frac{360^\circ}{n}\), alles mal r.</p>
+      <div class="calc">$$\left(r\cos\!\left(k\cdot\tfrac{360^\circ}{n}\right),\ r\sin\!\left(k\cdot\tfrac{360^\circ}{n}\right)\right), \qquad k = 0, 1, \dots, n-1$$</div></li>
+  </ol>
+</article>
+
+<!-- E5 -->
+<article class="ex" id="e5" data-mode="worked">
+  <div class="ex-head"><h3>E5</h3><span class="mode">vorgerechnet</span></div>
+  <div class="task">Bestimme cos, sin und tan von 30° und 45° exakt, ohne Rechner. Erstelle dann eine Tabelle für alle Vielfachen von 30° und 45° zwischen 0° und 360°.</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>30°: das halbe gleichseitige Dreieck</h4>
+      <p class="why">Spiegelt man das Dreieck O, P, Fusspunkt an der x-Achse, entsteht ein gleichseitiges Dreieck mit Seite 1 (alle Winkel 60°). Die y-Koordinate von P ist die Hälfte davon.</p>
+      <div class="calc">$$\sin 30^\circ = \tfrac12$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4>cos 30° mit Pythagoras</h4>
+      <div class="calc">$$\begin{aligned}\cos 30^\circ &= \sqrt{1 - \left(\tfrac12\right)^2} = \sqrt{\tfrac34} = \tfrac{\sqrt3}{2} \\ \tan 30^\circ &= \frac{1/2}{\sqrt3/2} = \tfrac{1}{\sqrt3} = \tfrac{\sqrt3}{3}\end{aligned}$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4>45°: das halbe Quadrat</h4>
+      <p class="why">Bei 45° sind x und y gleich lang. Pythagoras: \(x^2 + x^2 = 1\).</p>
+      <div class="calc">$$\begin{aligned}\cos 45^\circ = \sin 45^\circ &= \tfrac{1}{\sqrt2} = \tfrac{\sqrt2}{2} \\ \tan 45^\circ &= 1\end{aligned}$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 4</span><h4>60°: wie 30°, nur x und y vertauscht</h4>
+      <div class="calc">$$\begin{aligned}\cos 60^\circ &= \tfrac12 \\ \sin 60^\circ &= \tfrac{\sqrt3}{2} \\ \tan 60^\circ &= \sqrt3\end{aligned}$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 5</span><h4>Alle anderen Winkel: spiegeln + Vorzeichen</h4>
+      <p class="why">Zum Beispiel 150° = 180° − 30°: Der Punkt ist der von 30°, links gespiegelt. Gleiche Zahlen, aber cos wird negativ (Quadrant II). Vorzeichen wie in <a href="#e3">E3</a>.</p>
+      <div class="calc"><div class="tbl"><table><tr><th>α</th><th>0°</th><th>30°</th><th>45°</th><th>60°</th><th>90°</th><th>120°</th><th>135°</th><th>150°</th><th>180°</th><th>210°</th><th>225°</th><th>240°</th><th>270°</th><th>300°</th><th>315°</th><th>330°</th></tr><tr><td><span class="cc">cos(α)</span></td><td>\(1\)</td><td>\(\tfrac{\sqrt{3}}{2}\)</td><td>\(\tfrac{\sqrt{2}}{2}\)</td><td>\(\tfrac{1}{2}\)</td><td>\(0\)</td><td>\(- \tfrac{1}{2}\)</td><td>\(- \tfrac{\sqrt{2}}{2}\)</td><td>\(- \tfrac{\sqrt{3}}{2}\)</td><td>\(-1\)</td><td>\(- \tfrac{\sqrt{3}}{2}\)</td><td>\(- \tfrac{\sqrt{2}}{2}\)</td><td>\(- \tfrac{1}{2}\)</td><td>\(0\)</td><td>\(\tfrac{1}{2}\)</td><td>\(\tfrac{\sqrt{2}}{2}\)</td><td>\(\tfrac{\sqrt{3}}{2}\)</td></tr><tr><td><span class="ss">sin(α)</span></td><td>\(0\)</td><td>\(\tfrac{1}{2}\)</td><td>\(\tfrac{\sqrt{2}}{2}\)</td><td>\(\tfrac{\sqrt{3}}{2}\)</td><td>\(1\)</td><td>\(\tfrac{\sqrt{3}}{2}\)</td><td>\(\tfrac{\sqrt{2}}{2}\)</td><td>\(\tfrac{1}{2}\)</td><td>\(0\)</td><td>\(- \tfrac{1}{2}\)</td><td>\(- \tfrac{\sqrt{2}}{2}\)</td><td>\(- \tfrac{\sqrt{3}}{2}\)</td><td>\(-1\)</td><td>\(- \tfrac{\sqrt{3}}{2}\)</td><td>\(- \tfrac{\sqrt{2}}{2}\)</td><td>\(- \tfrac{1}{2}\)</td></tr><tr><td><span class="tt">tan(α)</span></td><td>\(0\)</td><td>\(\tfrac{\sqrt{3}}{3}\)</td><td>\(1\)</td><td>\(\sqrt{3}\)</td><td>n.d.</td><td>\(- \sqrt{3}\)</td><td>\(-1\)</td><td>\(- \tfrac{\sqrt{3}}{3}\)</td><td>\(0\)</td><td>\(\tfrac{\sqrt{3}}{3}\)</td><td>\(1\)</td><td>\(\sqrt{3}\)</td><td>n.d.</td><td>\(- \sqrt{3}\)</td><td>\(-1\)</td><td>\(- \tfrac{\sqrt{3}}{3}\)</td></tr></table></div><p>n.d. = nicht definiert (der Strahl ist senkrecht).</p></div></li>
+  </ol>
+  <div class="done">Merkhilfe für die sin-Zeile bei 0°, 30°, 45°, 60°, 90°: \(\frac{\sqrt0}{2}, \frac{\sqrt1}{2}, \frac{\sqrt2}{2}, \frac{\sqrt3}{2}, \frac{\sqrt4}{2}\). Die cos-Zeile ist dieselbe, rückwärts.</div>
+</article>
+
+<!-- E6 -->
+<article class="ex" id="e6" data-mode="faded">
+  <div class="ex-head"><h3>E6</h3><span class="mode">selbst rechnen</span></div>
+  <div class="task">(a) Welche der Werte \(\pm\sin(\pm\alpha)\), \(\pm\cos(\pm\alpha)\) sind gleich? (b) Welche von \(\sin\alpha\), \(\sin(\alpha + 90^\circ)\), \(-\sin(\alpha + 180^\circ)\), \(\sin(\alpha + 360^\circ)\), \(\cos\alpha\), \(-\cos(\alpha + 90^\circ)\), \(-\cos(\alpha + 180^\circ)\), \(\cos(\alpha + 360^\circ)\) sind gleich? (c) Was ist mit \(\tan\alpha\), \(\sin^2\alpha + \cos^2\alpha\), 1, \(\frac{\sin\alpha}{\cos\alpha}\)?</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">TIPP</span><h4>Zeichnen, nicht rechnen</h4>
+      <p class="why">Zeichne \(P_\alpha\) und den gedrehten oder gespiegelten Punkt. Dann vergleiche x und y. Im <a href="#kreis">Einheitskreis oben</a> kannst du z.B. 30° und −30° nacheinander einstellen.</p></li>
+    <li class="step"><span class="nr">(a)</span><h4>−α: an der x-Achse gespiegelt</h4>
+      <p class="why">x bleibt gleich, y wechselt das Vorzeichen.</p>
+      <div class="calc">$$\cos(-\alpha) = \cos(\alpha), \qquad \sin(-\alpha) = -\sin(\alpha)$$</div></li>
+    <li class="step"><span class="nr">(b)</span><h4>+90°, +180°, +360° drehen</h4>
+      <p class="why">+360°: gleicher Punkt. +180°: Punkt gegenüber, beide Koordinaten wechseln das Vorzeichen. +90°: aus (x, y) wird (−y, x).</p>
+      <div class="calc">$$\begin{aligned} \sin\alpha &= -\sin(\alpha + 180^\circ) = \sin(\alpha + 360^\circ) = -\cos(\alpha + 90^\circ) \\ \cos\alpha &= \sin(\alpha + 90^\circ) = -\cos(\alpha + 180^\circ) = \cos(\alpha + 360^\circ) \end{aligned}$$</div></li>
+    <li class="step"><span class="nr">(c)</span><h4>Zwei Paare</h4>
+      <div class="calc">$$\tan\alpha = \frac{\sin\alpha}{\cos\alpha} \quad(\text{Definition}), \qquad \sin^2\alpha + \cos^2\alpha = 1 \quad(\text{Pythagoras})$$</div></li>
+  </ol>
+</article>
+
+<!-- E7 -->
+<article class="ex" id="e7" data-mode="faded">
+  <div class="ex-head"><h3>E7</h3><span class="mode">selbst rechnen</span></div>
+  <div class="task">Wenn man eine der Zahlen \(\cos\alpha\), \(\sin\alpha\), \(\tan\alpha\) kennt, kann man die anderen zwei bis aufs Vorzeichen bestimmen. Benutze \(\tan\alpha = \frac{\sin\alpha}{\cos\alpha}\) und \(\sin^2\alpha + \cos^2\alpha = 1\). (a) cos bekannt, (b) sin bekannt, (c) tan bekannt.</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">(a)</span><h4>cos bekannt → sin</h4>
+      <p class="why">Pythagoras nach \(\sin\) auflösen. Die Wurzel gibt zwei Möglichkeiten: ±.</p>
+      <div class="calc">$$\sin^2\alpha = 1 - \cos^2\alpha \iff \sin\alpha = \pm\sqrt{1 - \cos^2\alpha}$$</div></li>
+    <li class="step"><span class="nr">(a)</span><h4>cos bekannt → tan</h4>
+      <div class="calc">$$\tan\alpha = \frac{\sin\alpha}{\cos\alpha} = \pm\frac{\sqrt{1 - \cos^2\alpha}}{\cos\alpha}$$</div></li>
+    <li class="step"><span class="nr">(a)</span><h4>Vorzeichen für \(\alpha \in \left(\frac{\pi}{2}, \pi\right)\)</h4>
+      <p class="why">Das ist 90° bis 180°, also Quadrant II: sin positiv, cos negativ, tan negativ.</p>
+      <div class="calc">$$\sin\alpha = +\sqrt{1 - \cos^2\alpha}, \qquad \tan\alpha = \frac{\sqrt{1 - \cos^2\alpha}}{\cos\alpha}\ (\text{negativ, weil } \cos\alpha \lt 0)$$
+      <p>Beispiel: \(\cos\alpha = -\frac35\) → \(\sin\alpha = \sqrt{1 - \frac{9}{25}} = \frac45\), \(\tan\alpha = \frac{4/5}{-3/5} = -\frac43\).</p></div></li>
+    <li class="step"><span class="nr">(b)</span><h4>sin bekannt</h4>
+      <p class="why">Genau gleich, nur sin und cos vertauscht.</p>
+      <div class="calc">$$\cos\alpha = \pm\sqrt{1 - \sin^2\alpha}, \qquad \tan\alpha = \pm\frac{\sin\alpha}{\sqrt{1 - \sin^2\alpha}}$$</div></li>
+    <li class="step"><span class="nr">(c)</span><h4>tan bekannt</h4>
+      <p class="why">Trick: \(\sin\alpha = \tan\alpha\cdot\cos\alpha\) in Pythagoras einsetzen. Dann steht nur noch cos drin.</p>
+      <div class="calc">$$\begin{aligned} \tan^2\alpha\cdot\cos^2\alpha + \cos^2\alpha &= 1 \\ \cos^2\alpha\,(\tan^2\alpha + 1) &= 1 \\ \cos\alpha &= \pm\frac{1}{\sqrt{1 + \tan^2\alpha}}, \qquad \sin\alpha = \tan\alpha\cdot\cos\alpha = \pm\frac{\tan\alpha}{\sqrt{1 + \tan^2\alpha}} \end{aligned}$$</div></li>
+  </ol>
+  <div class="done">Im Skript fehlt die Musterlösung zu E7 noch. Diese Lösung ist selbst hergeleitet, also im Zweifel mit der Lehrperson abgleichen.</div>
+</article>
+
+<footer>Aufgaben nach dem Skript «Trigonometry» (Blöchliger, Schnürer, CC BY-SA). Farben: <span class="cc">cos</span> grün, <span class="ss">sin</span> orange, <span class="tt">tan</span> blau wie die Steigung m.</footer>
+</main>
+</body>
+</html>
