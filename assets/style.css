@@ -208,3 +208,8 @@ ol.puzzle li.no{animation:shake .3s}
   .predict{font-size:15px;margin-top:10px}
   .task{padding:10px 12px}
 }
+.nav a{transition:background .2s,border-color .2s}
+.nav a.active{background:var(--mark);border-color:var(--ink);color:var(--ink)}
+.nav a.done.active{background:var(--mint);border-color:var(--ink)}
+.nav ul{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){.nav a{transition:none}.nav ul{scroll-behavior:auto}}

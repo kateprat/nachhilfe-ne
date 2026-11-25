@@ -269,6 +269,26 @@
       const setNavH = () => document.documentElement.style.setProperty('--navh', (nav.offsetHeight + 16) + 'px');
       setNavH(); window.addEventListener('resize', setNavH);
       if (location.hash) requestAnimationFrame(() => { const t = document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView(); });
+      // scroll spy: highlight the pill of the section currently on screen and keep it visible in the pill row
+      const ul = nav.querySelector('ul');
+      const links = [...nav.querySelectorAll('a[href^="#"]')].map(a => [a, document.getElementById(a.getAttribute('href').slice(1))]).filter(([, t]) => t);
+      let current = null, ticking = false;
+      const spy = () => {
+        ticking = false;
+        const line = nav.offsetHeight + 40;
+        let hit = null;
+        for (const [a, t] of links) if (t.getBoundingClientRect().top <= line) hit = a;
+        if (hit === current) return;
+        if (current) current.classList.remove('active');
+        current = hit;
+        if (hit) {
+          hit.classList.add('active');
+          const l = hit.offsetLeft - ul.offsetLeft, r = l + hit.offsetWidth;
+          if (l < ul.scrollLeft || r > ul.scrollLeft + ul.clientWidth) ul.scrollTo({ left: l - 12, behavior: 'smooth' });
+        }
+      };
+      window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });
+      spy();
     }
     setupReveals(document);
     setupPlay();
