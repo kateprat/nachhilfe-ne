@@ -217,9 +217,9 @@
             li.classList.add('ok'); li.dataset.n = ++next;
             // keep solved ones on top, in order
             const solved = items.filter(x => x.classList.contains('ok')).sort((a, b) => a.dataset.n - b.dataset.n);
-            solved.forEach(x => ol.insertBefore(x, ol.children[solved.indexOf(x)]));
+            solved.forEach((x, k) => { if (ol.children[k] !== x) ol.insertBefore(x, ol.children[k]); });
             if (next === items.length && msg) msg.hidden = false;
-          } else { li.classList.remove('no'); void li.offsetWidth; li.classList.add('no'); }
+          } else { li.classList.remove('no'); void li.offsetWidth; li.classList.add('no'); clearTimeout(li._t); li._t = setTimeout(() => li.classList.remove('no'), 700); }
         };
         li.addEventListener('click', pick);
         li.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
