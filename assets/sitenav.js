@@ -47,15 +47,20 @@ html .topctl .langsw button[aria-current]{background:var(--ink);color:var(--bg)}
   const urlOf = (k, l) => N[k].url ? N[k].url[l] : N[chap].url[l].replace(/[^/]*$/, '') + N[k].file;
   const both = f => `<span data-l="de">${f('de')}</span><span data-l="en">${f('en')}</span>`;
 
-  // remember the chapter you came from when opening Prüfungstraining / Algebra
+  // remember where you left a chapter for Prüfungstraining / Algebra (chapter + exercise), so "zurück" lands on that spot
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href]'); if (!a || !chap) return;
+    const m = new URL(a.href, location.href).pathname.match(/\/(training|grundlagen)\//); if (!m) return;
+    const act = document.querySelector('.nav a.active');
+    const sec = act && (act.getAttribute('href') || '').startsWith('#') ? act.getAttribute('href') : '';
+    const label = sec ? act.textContent.replace(/^\d+/, '').trim() : '';
+    try { sessionStorage.setItem('nachhilfe-from:' + (m[1] === 'training' ? 'train' : 'alg'), JSON.stringify({ c: chap, url: location.pathname + sec, label })); } catch (err) {}
+  });
+  // arriving from the start page (or anywhere outside a chapter) forgets the old way back
   if (page === 'train' || page === 'alg') {
     try {
       const r = document.referrer && new URL(document.referrer);
-      if (r && r.origin === location.origin) {
-        const c = r.pathname.includes('/trigonometrie/') ? 'trig' : r.pathname.includes('/quadriken/') ? 'quad' : null;
-        if (c) sessionStorage.setItem('nachhilfe-from:' + page, c);
-        else if (!/\/(training|grundlagen)\//.test(r.pathname)) sessionStorage.removeItem('nachhilfe-from:' + page);
-      }
+      if (r && r.origin === location.origin && !/\/(trigonometrie|quadriken|training|grundlagen)\//.test(r.pathname)) sessionStorage.removeItem('nachhilfe-from:' + page);
     } catch (e) {}
   }
 
@@ -72,8 +77,8 @@ html .topctl .langsw button[aria-current]{background:var(--ink);color:var(--bg)}
         (last ? `<span class="here" aria-current="page">${both(l => N[k][l])}</span>`
               : both(l => `<a href="${urlOf(k, l)}">${N[k][l]}</a>`));
     }).join('');
-    let from = null; try { from = sessionStorage.getItem('nachhilfe-from:' + page); } catch (e) {}
-    if (from && N[from]) el.insertAdjacentHTML('beforeend', `<span class="back">${both(l => `<a href="${N[from].url[l]}">← ${l === 'de' ? 'zurück zu' : 'back to'} ${N[from][l]}</a>`)}</span>`);
+    let from = null; try { from = JSON.parse(sessionStorage.getItem('nachhilfe-from:' + page)); } catch (e) {}
+    if (from && N[from.c]) el.insertAdjacentHTML('beforeend', `<span class="back">${both(l => `<a href="${from.url}">← ${l === 'de' ? 'zurück zu' : 'back to'} ${N[from.c][l]}${from.label ? ' · ' + from.label : ''}</a>`)}</span>`);
     return el;
   }
 

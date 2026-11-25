@@ -219,3 +219,4 @@ ol.puzzle li.no{animation:shake .3s;border-color:color-mix(in srgb,var(--q) 55%,
 
 /* KaTeX \m and \q follow the theme colours (readable in light and dark) */
 .katex [style*="#3b7be8"],.katex [style*="rgb(59, 123, 232)"]{color:var(--m)!important}.katex [style*="#e0475b"],.katex [style*="rgb(224, 71, 91)"]{color:var(--q)!important}
+.nextcard{margin:36px 0 8px;border-style:dashed}
