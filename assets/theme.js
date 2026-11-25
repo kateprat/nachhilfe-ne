@@ -5,7 +5,7 @@
   try { pref = localStorage.getItem(KEY) || 'auto'; } catch (e) {}
   const apply = p => { if (p === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', p); };
   apply(pref);
-  document.addEventListener('DOMContentLoaded', () => {
+  function build() {
     const lang = document.querySelector('.langsw, main > .lang');
     if (!lang) return;
     const en = document.documentElement.lang === 'en';
@@ -28,5 +28,33 @@
     main.insertBefore(bar, main.firstChild);
     if (crumb) bar.append(crumb); else bar.append(document.createElement('span'));
     bar.append(box);
+  }
+  document.addEventListener('DOMContentLoaded', build);
+
+  // DE/EN on pages that exist as two files: load the other file and swap the content in place,
+  // so the browser does not reload (Safari would show the address bar again) and the scroll position stays.
+  document.addEventListener('click', async e => {
+    const a = e.target.closest('.langsw a[href]');
+    if (!a || a.hasAttribute('aria-current') || e.metaKey || e.ctrlKey) return;
+    e.preventDefault();
+    const url = new URL(a.getAttribute('href'), location.href);
+    const nav = document.querySelector('.nav'), line = (nav ? nav.offsetHeight : 0) + 8;
+    let anchor = null, off = 0;
+    if (scrollY > 0) document.querySelectorAll('main [id]').forEach(el => { const t = el.getBoundingClientRect().top; if (t <= line && !el.closest('svg')) { anchor = el.id; off = t; } });
+    try {
+      const r = await fetch(url, { credentials: 'same-origin' });
+      if (!r.ok || r.redirected) throw 0;
+      const doc = new DOMParser().parseFromString(await r.text(), 'text/html');
+      if (!doc.body.querySelector('main')) throw 0;
+      const y = scrollY;
+      document.title = doc.title;
+      document.documentElement.lang = doc.documentElement.lang;
+      document.body.replaceWith(document.adoptNode(doc.body));
+      history.replaceState(history.state, '', url.pathname + location.hash);
+      build();
+      if (window.nachhilfeInit) window.nachhilfeInit({ swap: true });
+      const t = anchor && document.getElementById(anchor);
+      if (t) scrollBy(0, t.getBoundingClientRect().top - off); else scrollTo(0, y);
+    } catch (err) { location.href = url.pathname + location.hash; }
   });
 })();

@@ -243,9 +243,13 @@
   document.addEventListener('click', refit);
   document.addEventListener('langchange', refit);
 
-  document.addEventListener('DOMContentLoaded', () => {
+  // init runs on load and again after the language switch swaps the page content in place (see theme.js)
+  let pageCtl = null;
+  function init(opts = {}) {
+    if (pageCtl) pageCtl.abort();
+    pageCtl = new AbortController(); const sig = { signal: pageCtl.signal };
+    progressUpdate = () => {};
     setupBilingual(); setupGaps(); setupPuzzles();
-    document.querySelectorAll('.langsw a:not([aria-current])').forEach(a => a.addEventListener('click', e => { e.preventDefault(); location.href = a.getAttribute('href') + location.hash; }));
     document.querySelectorAll('h2').forEach(h => { const sp = document.createElement('span'); sp.className = 'hl'; while (h.firstChild) sp.append(h.firstChild); h.append(sp); });
     const exs = [...document.querySelectorAll('.ex')];
     const nav = document.querySelector('.nav');
@@ -267,8 +271,8 @@
     // jump targets land below the sticky nav (its height changes with the progress bar and screen size)
     if (nav) {
       const setNavH = () => document.documentElement.style.setProperty('--navh', (nav.offsetHeight + 16) + 'px');
-      setNavH(); window.addEventListener('resize', setNavH);
-      if (location.hash) requestAnimationFrame(() => { const t = document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView(); });
+      setNavH(); window.addEventListener('resize', setNavH, sig);
+      if (location.hash && !opts.swap) requestAnimationFrame(() => { const t = document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView(); });
       // scroll spy: highlight the pill of the section currently on screen and keep it visible in the pill row
       const ul = nav.querySelector('ul');
       const links = [...nav.querySelectorAll('a[href^="#"]')].map(a => [a, document.getElementById(a.getAttribute('href').slice(1))]).filter(([, t]) => t);
@@ -287,7 +291,7 @@
           if (l < ul.scrollLeft || r > ul.scrollLeft + ul.clientWidth) ul.scrollTo({ left: l - 12, behavior: 'smooth' });
         }
       };
-      window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });
+      window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true, signal: pageCtl.signal });
       spy();
     }
     setupReveals(document);
@@ -295,5 +299,7 @@
     setupCircle();
     renderMath(document.body);
     refit();
-  });
+  }
+  window.nachhilfeInit = init;
+  document.addEventListener('DOMContentLoaded', () => init());
 })();
