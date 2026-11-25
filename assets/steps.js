@@ -69,11 +69,12 @@
     if (!faded) ctrl.before(pred);
     const next = ctrl.querySelector('[data-a=next]');
 
-    function update(scroll) {
+    function update(scroll, y0) {
       steps.forEach((st, i) => { st.hidden = i >= shown; st.classList.toggle('on', i === shown - 1); });
       if (done) done.hidden = shown < steps.length;
       next.hidden = shown >= steps.length; pred.hidden = shown >= steps.length;
-      if (scroll) steps[shown - 1].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      // the new step opens above the buttons; keep the buttons where they were, so the thumb stays on "Next step"
+      if (scroll && y0 != null) scrollBy({ top: ctrl.getBoundingClientRect().top - y0, behavior: 'instant' });
       if (scroll && shown >= steps.length && !doneSet.has(ex.id)) { doneSet.add(ex.id); saveDone(); stamp(true); progressUpdate(); }
     }
     function stamp(pop) {
@@ -88,7 +89,7 @@
     }
     ctrl.addEventListener('click', e => {
       const a = (e.target.closest('button') || {}).dataset?.a;
-      if (a === 'next') { shown = Math.min(steps.length, shown + 1); update(true); }
+      if (a === 'next') { const y0 = ctrl.getBoundingClientRect().top; shown = Math.min(steps.length, shown + 1); update(true, y0); }
       if (a === 'all') { shown = steps.length; steps.forEach(st => { const c = st.querySelector('.calc'); if (c) c.hidden = false; st._calcBtn && st._calcBtn.remove(); }); update(false); steps.forEach(st => st.classList.remove('on')); }
       if (a === 'reset') { shown = 1; hideCalcs(); update(false); if (doneSet.has(ex.id)) { doneSet.delete(ex.id); saveDone(); progressUpdate(); } const sp = ex.querySelector('.stamp'); if (sp) sp.remove(); ex.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
     });
