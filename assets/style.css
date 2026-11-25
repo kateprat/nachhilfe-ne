@@ -235,3 +235,10 @@ ol.puzzle li.no{animation:shake .3s;border-color:color-mix(in srgb,var(--q) 55%,
 .helper .hic{flex:none;width:40px;height:40px;border-radius:10px;background:var(--lilac);display:grid;place-items:center}
 .helper .hic svg{width:28px;height:28px;stroke:#1f2340;fill:none;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
 @media(max-width:520px){.path>li:not(:last-child)::after{left:38px}}
+.ex-head .orig{margin-left:auto;font-size:14px;font-weight:700}
+.selfcheck{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px;padding-top:12px;border-top:2px dashed var(--line)}
+.selfcheck>span{font-weight:700;margin-right:4px}
+.selfcheck button{min-height:36px;padding:4px 14px}
+.selfcheck button[data-k=ok][aria-pressed]{background:var(--mint);color:#10241b}
+.selfcheck button[data-k=part][aria-pressed]{background:var(--mark)}
+.selfcheck button[data-k=no][aria-pressed]{background:var(--pink);color:#3a0f20}

@@ -2,7 +2,7 @@
 <html lang="de" data-bilingual>
 <head>
 <meta charset="utf-8">
-<script src="../assets/theme.js?v=30"></script>
+<script src="../assets/theme.js?v=31"></script>
 <script src="../assets/sitenav.js?v=12"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prüfungstraining – Mathe 2cNP</title>
@@ -12,20 +12,22 @@
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/steps.js?v=30"></script>
-<link rel="stylesheet" href="../assets/style.css?v=30">
+<script defer src="../assets/steps.js?v=31"></script>
+<link rel="stylesheet" href="../assets/style.css?v=31">
 </head>
 <body>
 <main class="wrap">
 <nav class="langsw" aria-label="Sprache / language"><button type="button" data-setlang="de">DE</button><button type="button" data-setlang="en">EN</button></nav>
 <p class="crumb"><a href="../" data-l="de">← Übersicht</a><a href="../en.html" data-l="en">← Overview</a></p>
 <h1><span data-l="de">Prüfungstraining</span><span data-l="en">Exam training</span></h1>
-<p class="lead"><span data-l="de">Neue Aufgaben, bunt gemischt aus Trigonometrie und Quadriken, wie in der Prüfung. Bei jeder Aufgabe zuerst: Welches Rezept passt? Ohne Taschenrechner, und schreib den Lösungsweg ganz auf.</span><span data-l="en">New exercises, mixed from trigonometry and conics, like in the exam. For each one, first ask: which recipe fits? No calculator, and write the full working down.</span></p>
+<p class="lead"><span data-l="de">Zwei Teile. Zuerst Zwillingsaufgaben: wie die Aufgaben im Skript, nur mit neuen Zahlen und gleich erklärt. Dann eine Prüfungssimulation mit gemischten Aufgaben, ohne Hinweis, aus welchem Kapitel sie kommen.</span><span data-l="en">Two parts. First twin exercises: like the exercises in the script, just with new numbers and explained the same way. Then a test simulation with mixed tasks, with no hint which chapter they come from.</span></p>
 
 <nav class="nav" aria-label="Aufgaben"><ul>
   <li><a href="#warmup"><span data-l="de">Aufwärmen</span><span data-l="en">Warm-up</span></a></li>
-  <li><a href="#p1">1</a></li><li><a href="#p2">2</a></li><li><a href="#p3">3</a></li><li><a href="#p4">4</a></li><li><a href="#p5">5</a></li>
-  <li><a href="#p6">6</a></li><li><a href="#p7">7</a></li><li><a href="#p8">8</a></li><li><a href="#p9">9</a></li>
+  <li><a href="#zw-trig"><span data-l="de">Zwillinge Trigonometrie</span><span data-l="en">Twins trigonometry</span></a></li>
+  <li><a href="#zw-quad"><span data-l="de">Zwillinge Quadriken</span><span data-l="en">Twins conics</span></a></li>
+  <li><a href="#simulation"><span data-l="de">Prüfungssimulation</span><span data-l="en">Test simulation</span></a></li>
+  <li><a href="#bilanz"><span data-l="de">Bilanz</span><span data-l="en">Results</span></a></li>
 </ul></nav>
 
 <h2 id="warmup"><span data-l="de">Aufwärmen: aus dem Kopf</span><span data-l="en">Warm-up: from memory</span></h2>
@@ -44,11 +46,287 @@
   <button type="button" data-puzzle-again><span data-l="de">Neu mischen</span><span data-l="en">Shuffle again</span></button>
 </div>
 
-<h2 id="aufgaben"><span data-l="de">Aufgaben</span><span data-l="en">Exercises</span></h2>
-<p><span data-l="de">Löse zuerst auf Papier. Dann geh die Lösung mit «Nächster Schritt» durch und vergleiche, ein Schritt nach dem anderen.</span><span data-l="en">Solve on paper first. Then go through the solution with “Next step” and compare, one step at a time.</span></p>
+<h2 id="zw-trig">1 · <span data-l="de">Zwillingsaufgaben: Trigonometrie</span><span data-l="en">Twin exercises: trigonometry</span></h2>
+<p><span data-l="de">Jede Aufgabe ist der Zwilling einer Aufgabe aus dem Kapitel: gleicher Typ, gleiche Schritte, neue Zahlen. Wenn du hängst, schau das Original an.</span><span data-l="en">Each exercise is the twin of an exercise from the chapter: same type, same steps, new numbers. If you get stuck, look at the original.</span></p>
+
+<article class="ex" id="z-e1">
+  <div class="ex-head"><h3><span data-l="de">Zwilling zu E1</span><span data-l="en">Twin of E1</span></h3><a class="orig" href="../trigonometrie/#e1"><span data-l="de">Original E1 ansehen ↗</span><span data-l="en">See original E1 ↗</span></a></div>
+  <div class="task"><span data-l="de">Rechne exakt ins Bogenmass um: 120°, 270°, 15°, −45°. Und in Grad: \(\frac{7\pi}{4}\), \(\frac{\pi}{9}\).</span><span data-l="en">Convert exactly into radians: 120°, 270°, 15°, −45°. And into degrees: \(\frac{7\pi}{4}\), \(\frac{\pi}{9}\).</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4><span data-l="de">Die eine Sache, die du wissen musst</span><span data-l="en">The one thing you need to know</span></h4>
+      <p class="why"><span data-l="de">Ein halber Kreis:</span><span data-l="en">Half a circle:</span></p>
+      <div class="calc">$$180^\circ = \pi$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4><span data-l="de">Grad → Bogenmass: durch 180, mal π</span><span data-l="en">Degrees → radians: divide by 180, times π</span></h4>
+      <div class="calc">$$\begin{aligned} 120^\circ &= \tfrac{120}{180}\pi = \tfrac{2\pi}{3} & 270^\circ &= \tfrac{3\pi}{2} \\ 15^\circ &= \tfrac{15}{180}\pi = \tfrac{\pi}{12} & -45^\circ &= -\tfrac{\pi}{4} \end{aligned}$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4><span data-l="de">Bogenmass → Grad: durch π, mal 180</span><span data-l="en">Radians → degrees: divide by π, times 180</span></h4>
+      <div class="calc">$$\tfrac{7\pi}{4} = \tfrac{7}{4}\cdot 180^\circ = 315^\circ \qquad \tfrac{\pi}{9} = \tfrac{180^\circ}{9} = 20^\circ$$</div>
+    </li>
+  </ol>
+  <div class="done"><span data-l="de">\(\frac{2\pi}{3},\ \frac{3\pi}{2},\ \frac{\pi}{12},\ -\frac{\pi}{4}\) und 315°, 20°.</span><span data-l="en">\(\frac{2\pi}{3},\ \frac{3\pi}{2},\ \frac{\pi}{12},\ -\frac{\pi}{4}\) and 315°, 20°.</span></div>
+</article>
+
+<article class="ex" id="z-e2">
+  <div class="ex-head"><h3><span data-l="de">Zwilling zu E2</span><span data-l="en">Twin of E2</span></h3><a class="orig" href="../trigonometrie/#e2"><span data-l="de">Original E2 ansehen ↗</span><span data-l="en">See original E2 ↗</span></a></div>
+  <div class="task"><span data-l="de">Für welche Winkel zwischen 0° und 360° gilt (a) \(\sin\alpha = -\frac12\), (b) \(\cos\alpha = \frac{\sqrt2}{2}\), (c) \(\tan\alpha = -1\)? Ohne Taschenrechner.</span><span data-l="en">For which angles between 0° and 360° is (a) \(\sin\alpha = -\frac12\), (b) \(\cos\alpha = \frac{\sqrt2}{2}\), (c) \(\tan\alpha = -1\)? Without a calculator.</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">(a)</span><h4><span data-l="de">sin = y: waagrechte Linie bei y = −½</span><span data-l="en">sin = y: horizontal line at y = −½</span></h4>
+      <p class="why"><span data-l="de">Sie schneidet den Kreis zweimal, unten links und unten rechts. Der Referenzwinkel ist 30°, weil sin 30° = ½.</span><span data-l="en">It meets the circle twice, bottom left and bottom right. The reference angle is 30°, because sin 30° = ½.</span></p>
+      <div class="calc">$$\alpha_1 = 180^\circ + 30^\circ = 210^\circ \qquad \alpha_2 = 360^\circ - 30^\circ = 330^\circ$$</div>
+    </li>
+    <li class="step"><span class="nr">(b)</span><h4><span data-l="de">cos = x: senkrechte Linie bei x = √2/2</span><span data-l="en">cos = x: vertical line at x = √2/2</span></h4>
+      <p class="why"><span data-l="de">Rechts oben und rechts unten. Referenzwinkel 45°.</span><span data-l="en">Top right and bottom right. Reference angle 45°.</span></p>
+      <div class="calc">$$\alpha_1 = 45^\circ \qquad \alpha_2 = 360^\circ - 45^\circ = 315^\circ$$</div>
+    </li>
+    <li class="step"><span class="nr">(c)</span><h4><span data-l="de">tan = Steigung: Gerade durch O mit Steigung −1</span><span data-l="en">tan = slope: line through O with slope −1</span></h4>
+      <p class="why"><span data-l="de">Sie trifft den Kreis an zwei gegenüberliegenden Punkten, 180° auseinander.</span><span data-l="en">It meets the circle at two opposite points, 180° apart.</span></p>
+      <div class="calc">$$\alpha_1 = 135^\circ \qquad \alpha_2 = 135^\circ + 180^\circ = 315^\circ$$</div>
+    </li>
+  </ol>
+  <div class="done"><span data-l="de">(a) 210°, 330° · (b) 45°, 315° · (c) 135°, 315°</span><span data-l="en">(a) 210°, 330° · (b) 45°, 315° · (c) 135°, 315°</span></div>
+</article>
+
+<article class="ex" id="z-e3">
+  <div class="ex-head"><h3><span data-l="de">Zwilling zu E3</span><span data-l="en">Twin of E3</span></h3><a class="orig" href="../trigonometrie/#e3"><span data-l="de">Original E3 ansehen ↗</span><span data-l="en">See original E3 ↗</span></a></div>
+  <div class="task"><span data-l="de">Gib ohne Rechner an, ob cos, sin und tan positiv oder negativ sind: α = 100°, 200°, 310°.</span><span data-l="en">Without a calculator, say whether cos, sin and tan are positive or negative: α = 100°, 200°, 310°.</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4><span data-l="de">Quadrant bestimmen</span><span data-l="en">Find the quadrant</span></h4>
+      <p class="why"><span data-l="de">100° liegt in II, 200° in III, 310° in IV.</span><span data-l="en">100° is in II, 200° in III, 310° in IV.</span></p>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4><span data-l="de">cos = x, sin = y</span><span data-l="en">cos = x, sin = y</span></h4>
+      <p class="why"><span data-l="de">Links: cos −. Unten: sin −.</span><span data-l="en">Left: cos −. Below: sin −.</span></p>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4><span data-l="de">tan = sin / cos</span><span data-l="en">tan = sin / cos</span></h4>
+      <p class="why"><span data-l="de">Gleiche Vorzeichen: tan +. Verschiedene: tan −.</span><span data-l="en">Same signs: tan +. Different: tan −.</span></p>
+      <div class="calc">$$\begin{array}{c|ccc} & \cos & \sin & \tan \\ \hline 100^\circ & - & + & - \\ 200^\circ & - & - & + \\ 310^\circ & + & - & - \end{array}$$</div>
+    </li>
+  </ol>
+  <div class="done"><span data-l="de">100°: − + − · 200°: − − + · 310°: + − −</span><span data-l="en">100°: − + − · 200°: − − + · 310°: + − −</span></div>
+</article>
+
+<article class="ex" id="z-e4">
+  <div class="ex-head"><h3><span data-l="de">Zwilling zu E4</span><span data-l="en">Twin of E4</span></h3><a class="orig" href="../trigonometrie/#e4"><span data-l="de">Original E4 ansehen ↗</span><span data-l="en">See original E4 ↗</span></a></div>
+  <div class="task"><span data-l="de">Gib die Ecken eines regelmässigen Sechsecks ABCDEF auf dem Einheitskreis exakt an, mit \(A = (1, 0)\).</span><span data-l="en">Give the vertices of a regular hexagon ABCDEF on the unit circle exactly, with \(A = (1, 0)\).</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4><span data-l="de">Wie weit liegen die Ecken auseinander?</span><span data-l="en">How far apart are the vertices?</span></h4>
+      <p class="why"><span data-l="de">6 gleiche Stücke des vollen Kreises.</span><span data-l="en">6 equal pieces of the full circle.</span></p>
+      <div class="calc">$$360^\circ : 6 = 60^\circ$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4><span data-l="de">Jede Ecke ist \(P_\alpha = (\cos\alpha, \sin\alpha)\)</span><span data-l="en">Each vertex is \(P_\alpha = (\cos\alpha, \sin\alpha)\)</span></h4>
+      <p class="why"><span data-l="de">Winkel 0°, 60°, 120°, 180°, 240°, 300°. Die Werte von 60° kennst du, die anderen durch Spiegeln.</span><span data-l="en">Angles 0°, 60°, 120°, 180°, 240°, 300°. You know the values of 60°, the others by mirroring.</span></p>
+      <div class="calc">$$\begin{aligned} A &= (1, 0) & B &= \left(\tfrac12, \tfrac{\sqrt3}{2}\right) & C &= \left(-\tfrac12, \tfrac{\sqrt3}{2}\right) \\ D &= (-1, 0) & E &= \left(-\tfrac12, -\tfrac{\sqrt3}{2}\right) & F &= \left(\tfrac12, -\tfrac{\sqrt3}{2}\right) \end{aligned}$$</div>
+    </li>
+  </ol>
+  <div class="done"><span data-l="de">Ecken bei 0°, 60°, …, 300°: \((\cos\alpha, \sin\alpha)\).</span><span data-l="en">Vertices at 0°, 60°, …, 300°: \((\cos\alpha, \sin\alpha)\).</span></div>
+</article>
+
+<article class="ex" id="z-e5">
+  <div class="ex-head"><h3><span data-l="de">Zwilling zu E5</span><span data-l="en">Twin of E5</span></h3><a class="orig" href="../trigonometrie/#e5"><span data-l="de">Original E5 ansehen ↗</span><span data-l="en">See original E5 ↗</span></a></div>
+  <div class="task"><span data-l="de">Bestimme cos, sin und tan von 150°, 225° und 300° exakt, ohne Rechner.</span><span data-l="en">Find cos, sin and tan of 150°, 225° and 300° exactly, without a calculator.</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4><span data-l="de">Referenzwinkel finden</span><span data-l="en">Find the reference angle</span></h4>
+      <p class="why"><span data-l="de">Wie weit ist der Winkel von der x-Achse weg?</span><span data-l="en">How far is the angle from the x-axis?</span></p>
+      <div class="calc">$$150^\circ \to 30^\circ \qquad 225^\circ \to 45^\circ \qquad 300^\circ \to 60^\circ$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4><span data-l="de">Werte vom Referenzwinkel nehmen</span><span data-l="en">Take the values of the reference angle</span></h4>
+      <p class="why"><span data-l="de">Aus der Tabelle (E5).</span><span data-l="en">From the table (E5).</span></p>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4><span data-l="de">Vorzeichen aus dem Quadranten</span><span data-l="en">Signs from the quadrant</span></h4>
+      <p class="why"><span data-l="de">150° in II, 225° in III, 300° in IV.</span><span data-l="en">150° in II, 225° in III, 300° in IV.</span></p>
+      <div class="calc">$$\begin{array}{c|ccc} & \cos & \sin & \tan \\ \hline 150^\circ & -\tfrac{\sqrt3}{2} & \tfrac12 & -\tfrac{\sqrt3}{3} \\ 225^\circ & -\tfrac{\sqrt2}{2} & -\tfrac{\sqrt2}{2} & 1 \\ 300^\circ & \tfrac12 & -\tfrac{\sqrt3}{2} & -\sqrt3 \end{array}$$</div>
+    </li>
+  </ol>
+  <div class="done"><span data-l="de">Gleiche Zahlen wie bei 30°, 45°, 60°, nur die Vorzeichen ändern sich.</span><span data-l="en">Same numbers as for 30°, 45°, 60°, only the signs change.</span></div>
+</article>
+
+<article class="ex" id="z-e7">
+  <div class="ex-head"><h3><span data-l="de">Zwilling zu E7</span><span data-l="en">Twin of E7</span></h3><a class="orig" href="../trigonometrie/#e7"><span data-l="de">Original E7 ansehen ↗</span><span data-l="en">See original E7 ↗</span></a></div>
+  <div class="task"><span data-l="de">Für einen Winkel α zwischen 180° und 270° gilt \(\cos\alpha = -\frac35\). Bestimme \(\sin\alpha\) und \(\tan\alpha\) exakt.</span><span data-l="en">For an angle α between 180° and 270°, \(\cos\alpha = -\frac35\). Find \(\sin\alpha\) and \(\tan\alpha\) exactly.</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4><span data-l="de">cos bekannt → sin mit Pythagoras</span><span data-l="en">cos known → sin with Pythagoras</span></h4>
+      <div class="calc">$$\sin^2\alpha = 1 - \left(-\tfrac35\right)^2 = 1 - \tfrac{9}{25} = \tfrac{16}{25} \quad\Rightarrow\quad \sin\alpha = \pm\tfrac45$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4><span data-l="de">Vorzeichen aus dem Quadranten</span><span data-l="en">Sign from the quadrant</span></h4>
+      <p class="why"><span data-l="de">Zwischen 180° und 270° (III) liegt P unten links: sin ist negativ.</span><span data-l="en">Between 180° and 270° (III), P is bottom left: sin is negative.</span></p>
+      <div class="calc">$$\sin\alpha = -\tfrac45$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4><span data-l="de">tan = sin / cos</span><span data-l="en">tan = sin / cos</span></h4>
+      <div class="calc">$$\tan\alpha = \frac{-\tfrac45}{-\tfrac35} = \tfrac43$$</div>
+    </li>
+  </ol>
+  <div class="done"><span data-l="de">\(\sin\alpha = -\frac45\), \(\tan\alpha = \frac43\).</span><span data-l="en">\(\sin\alpha = -\frac45\), \(\tan\alpha = \frac43\).</span></div>
+</article>
+
+<h2 id="zw-quad">2 · <span data-l="de">Zwillingsaufgaben: Quadriken</span><span data-l="en">Twin exercises: conics</span></h2>
+
+<article class="ex" id="z-a2">
+  <div class="ex-head"><h3><span data-l="de">Zwilling zu A2</span><span data-l="en">Twin of A2</span></h3><a class="orig" href="../quadriken/#a2"><span data-l="de">Original A2 ansehen ↗</span><span data-l="en">See original A2 ↗</span></a></div>
+  <div class="task"><span data-l="de">Bestimme die Tangente mit Steigung 4 an die Parabel \(f(x) = x^2 - 2x + 5\) und den Berührpunkt.</span><span data-l="en">Find the tangent with slope 4 to the parabola \(f(x) = x^2 - 2x + 5\) and the point of contact.</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4><span data-l="de">Ansatz</span><span data-l="en">Set-up</span></h4>
+      <p class="why"><span data-l="de">Die Steigung ist gegeben, also \(\m = 4\). Gesucht ist \(\q\).</span><span data-l="en">The slope is given, so \(\m = 4\). We look for \(\q\).</span></p>
+      <div class="calc">$$t(x) = 4x + \q$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4><span data-l="de">Gleichsetzen und Standardform</span><span data-l="en">Set equal and standard form</span></h4>
+      <div class="calc">$$\begin{aligned} x^2 - 2x + 5 &= 4x + \q \\ x^2 - 6x + (5 - \q) &= 0 \end{aligned}$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4><span data-l="de">D = 0 und nach q auflösen</span><span data-l="en">D = 0 and solve for q</span></h4>
+      <div class="calc">$$D = 36 - 4(5 - \q) = 16 + 4\q = 0 \iff \q = -4$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 4</span><h4><span data-l="de">Tangente und Berührpunkt</span><span data-l="en">Tangent and point of contact</span></h4>
+      <div class="calc">$$t(x) = 4x - 4 \qquad x = -\tfrac{b}{2a} = 3,\ \ y = t(3) = 8$$</div>
+    </li>
+  </ol>
+  <div class="done"><span data-l="de">\(t(x) = 4x - 4\), Berührpunkt \((3, 8)\).</span><span data-l="en">\(t(x) = 4x - 4\), point of contact \((3, 8)\).</span></div>
+</article>
+
+<article class="ex" id="z-a3">
+  <div class="ex-head"><h3><span data-l="de">Zwilling zu A3</span><span data-l="en">Twin of A3</span></h3><a class="orig" href="../quadriken/#a3"><span data-l="de">Original A3 ansehen ↗</span><span data-l="en">See original A3 ↗</span></a></div>
+  <div class="task"><span data-l="de">Bestimme alle Tangenten an \(f(x) = x^2 + 2x + 4\), die durch den Ursprung gehen, und die Berührpunkte.</span><span data-l="en">Find all tangents to \(f(x) = x^2 + 2x + 4\) that pass through the origin, and the points of contact.</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4><span data-l="de">Ansatz</span><span data-l="en">Set-up</span></h4>
+      <p class="why"><span data-l="de">Durch (0, 0): \(t(0) = 0\), also \(\q = 0\). Gesucht ist \(\m\).</span><span data-l="en">Through (0, 0): \(t(0) = 0\), so \(\q = 0\). We look for \(\m\).</span></p>
+      <div class="calc">$$t(x) = \m x$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4><span data-l="de">Gleichsetzen und Standardform</span><span data-l="en">Set equal and standard form</span></h4>
+      <div class="calc">$$x^2 + (2 - \m)x + 4 = 0$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4><span data-l="de">D = 0 und nach m auflösen</span><span data-l="en">D = 0 and solve for m</span></h4>
+      <div class="calc">$$(2 - \m)^2 - 16 = 0 \iff 2 - \m = \pm 4 \iff \m = -2 \text{ oder } \m = 6$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 4</span><h4><span data-l="de">Zwei Tangenten, zwei Berührpunkte</span><span data-l="en">Two tangents, two points of contact</span></h4>
+      <p class="why"><span data-l="de">Berührpunkt: \(x = -\frac{b}{2a} = \frac{\m - 2}{2}\).</span><span data-l="en">Point of contact: \(x = -\frac{b}{2a} = \frac{\m - 2}{2}\).</span></p>
+      <div class="calc">$$t_1(x) = 6x,\ (2, 12) \qquad t_2(x) = -2x,\ (-2, 4)$$</div>
+    </li>
+  </ol>
+  <div class="done"><span data-l="de">\(t_1(x) = 6x\) berührt in \((2, 12)\), \(t_2(x) = -2x\) in \((-2, 4)\).</span><span data-l="en">\(t_1(x) = 6x\) touches at \((2, 12)\), \(t_2(x) = -2x\) at \((-2, 4)\).</span></div>
+</article>
+
+<article class="ex" id="z-a4">
+  <div class="ex-head"><h3><span data-l="de">Zwilling zu A4</span><span data-l="en">Twin of A4</span></h3><a class="orig" href="../quadriken/#a4"><span data-l="de">Original A4 ansehen ↗</span><span data-l="en">See original A4 ↗</span></a></div>
+  <div class="task"><span data-l="de">Bestimme die Tangente an \(f(x) = x^2\) im Punkt \(Q = (-1, 1)\).</span><span data-l="en">Find the tangent to \(f(x) = x^2\) at the point \(Q = (-1, 1)\).</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4><span data-l="de">Ansatz: Q liegt auf t</span><span data-l="en">Set-up: Q lies on t</span></h4>
+      <div class="calc">$$\m\cdot(-1) + \q = 1 \iff \q = 1 + \m$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4><span data-l="de">Gleichsetzen und Standardform</span><span data-l="en">Set equal and standard form</span></h4>
+      <div class="calc">$$x^2 - \m x - (1 + \m) = 0$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4><span data-l="de">D = 0</span><span data-l="en">D = 0</span></h4>
+      <div class="calc">$$D = \m^2 + 4\m + 4 = (\m + 2)^2 = 0 \iff \m = -2$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 4</span><h4><span data-l="de">Tangente</span><span data-l="en">Tangent</span></h4>
+      <p class="why"><span data-l="de">Kontrolle mit der Abkürzung (17.2.4): t(x) = 2p·x − p² mit p = −1.</span><span data-l="en">Check with the shortcut (17.2.4): t(x) = 2p·x − p² with p = −1.</span></p>
+      <div class="calc">$$\q = 1 + (-2) = -1 \qquad t(x) = -2x - 1$$</div>
+    </li>
+  </ol>
+  <div class="done"><span data-l="de">\(t(x) = -2x - 1\).</span><span data-l="en">\(t(x) = -2x - 1\).</span></div>
+</article>
+
+<article class="ex" id="z-a6">
+  <div class="ex-head"><h3><span data-l="de">Zwilling zu A6</span><span data-l="en">Twin of A6</span></h3><a class="orig" href="../quadriken/#a6"><span data-l="de">Original A6 ansehen ↗</span><span data-l="en">See original A6 ↗</span></a></div>
+  <div class="task"><span data-l="de">Bestimme alle Tangenten an \(f(x) = x^2\), die durch \(A = (2, 3)\) gehen, und die Berührpunkte. A liegt nicht auf der Parabel.</span><span data-l="en">Find all tangents to \(f(x) = x^2\) that pass through \(A = (2, 3)\), and the points of contact. A is not on the parabola.</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4><span data-l="de">Ansatz: A liegt auf t</span><span data-l="en">Set-up: A lies on t</span></h4>
+      <div class="calc">$$2\m + \q = 3 \iff \q = 3 - 2\m$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4><span data-l="de">Gleichsetzen und Standardform</span><span data-l="en">Set equal and standard form</span></h4>
+      <div class="calc">$$x^2 - \m x - 3 + 2\m = 0$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4><span data-l="de">D = 0 und nach m auflösen</span><span data-l="en">D = 0 and solve for m</span></h4>
+      <div class="calc">$$\m^2 - 8\m + 12 = (\m - 2)(\m - 6) = 0 \iff \m = 2 \text{ oder } \m = 6$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 4</span><h4><span data-l="de">Zwei Tangenten, zwei Berührpunkte</span><span data-l="en">Two tangents, two points of contact</span></h4>
+      <p class="why"><span data-l="de">Berührpunkt: \(x = \frac{\m}{2}\).</span><span data-l="en">Point of contact: \(x = \frac{\m}{2}\).</span></p>
+      <div class="calc">$$t_1(x) = 2x - 1,\ (1, 1) \qquad t_2(x) = 6x - 9,\ (3, 9)$$</div>
+    </li>
+  </ol>
+  <div class="done"><span data-l="de">\(t_1(x) = 2x - 1\) berührt in \((1, 1)\), \(t_2(x) = 6x - 9\) in \((3, 9)\).</span><span data-l="en">\(t_1(x) = 2x - 1\) touches at \((1, 1)\), \(t_2(x) = 6x - 9\) at \((3, 9)\).</span></div>
+</article>
+
+<article class="ex" id="z-a7">
+  <div class="ex-head"><h3><span data-l="de">Zwilling zu A7</span><span data-l="en">Twin of A7</span></h3><a class="orig" href="../quadriken/#a7"><span data-l="de">Original A7 ansehen ↗</span><span data-l="en">See original A7 ↗</span></a></div>
+  <div class="task"><span data-l="de">Bestimme alle Tangenten an \(f(x) = \frac12(x - 1)^2 + 2\), die durch \(P = (1, 0)\) gehen, und die Berührpunkte.</span><span data-l="en">Find all tangents to \(f(x) = \frac12(x - 1)^2 + 2\) that pass through \(P = (1, 0)\), and the points of contact.</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4><span data-l="de">Ansatz: P liegt auf t</span><span data-l="en">Set-up: P lies on t</span></h4>
+      <div class="calc">$$\m + \q = 0 \iff \q = -\m$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4><span data-l="de">Gleichsetzen, mal 2, Standardform</span><span data-l="en">Set equal, times 2, standard form</span></h4>
+      <p class="why"><span data-l="de">Den Bruch zuerst wegmultiplizieren.</span><span data-l="en">Get rid of the fraction first.</span></p>
+      <div class="calc">$$\begin{aligned} \tfrac12(x^2 - 2x + 1) + 2 &= \m x - \m \quad\mid\cdot 2 \\ x^2 - (2 + 2\m)x + 5 + 2\m &= 0 \end{aligned}$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4><span data-l="de">D = 0 und nach m auflösen</span><span data-l="en">D = 0 and solve for m</span></h4>
+      <div class="calc">$$(2 + 2\m)^2 - 4(5 + 2\m) = 4\m^2 - 16 = 0 \iff \m = \pm 2$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 4</span><h4><span data-l="de">Zwei Tangenten, zwei Berührpunkte</span><span data-l="en">Two tangents, two points of contact</span></h4>
+      <p class="why"><span data-l="de">Berührpunkt: \(x = 1 + \m\).</span><span data-l="en">Point of contact: \(x = 1 + \m\).</span></p>
+      <div class="calc">$$t_1(x) = 2x - 2,\ (3, 4) \qquad t_2(x) = -2x + 2,\ (-1, 4)$$</div>
+    </li>
+  </ol>
+  <div class="done"><span data-l="de">\(t_1(x) = 2x - 2\) berührt in \((3, 4)\), \(t_2(x) = -2x + 2\) in \((-1, 4)\).</span><span data-l="en">\(t_1(x) = 2x - 2\) touches at \((3, 4)\), \(t_2(x) = -2x + 2\) at \((-1, 4)\).</span></div>
+</article>
+
+<article class="ex" id="z-a9">
+  <div class="ex-head"><h3><span data-l="de">Zwilling zu A9</span><span data-l="en">Twin of A9</span></h3><a class="orig" href="../quadriken/#a9"><span data-l="de">Original A9 ansehen ↗</span><span data-l="en">See original A9 ↗</span></a></div>
+  <div class="task"><span data-l="de">Finde Mittelpunkt und Radius des Kreises \(x^2 + y^2 + 8x - 4y - 5 = 0\).</span><span data-l="en">Find the centre and radius of the circle \(x^2 + y^2 + 8x - 4y - 5 = 0\).</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4><span data-l="de">Sortieren</span><span data-l="en">Sort</span></h4>
+      <div class="calc">$$(x^2 + 8x) + (y^2 - 4y) - 5 = 0$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4><span data-l="de">Quadratisch ergänzen</span><span data-l="en">Complete the square</span></h4>
+      <p class="why"><span data-l="de">Halbe Zahl vor x bzw. y, ins Quadrat, und wieder abziehen.</span><span data-l="en">Half the number in front of x or y, squared, and subtract it again.</span></p>
+      <div class="calc">$$(x + 4)^2 - 16 + (y - 2)^2 - 4 - 5 = 0$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4><span data-l="de">Kreisgleichung ablesen</span><span data-l="en">Read off the circle equation</span></h4>
+      <p class="why"><span data-l="de">Vorsicht: (x + 4) heisst a = −4.</span><span data-l="en">Careful: (x + 4) means a = −4.</span></p>
+      <div class="calc">$$(x + 4)^2 + (y - 2)^2 = 25 \qquad M = (-4, 2),\ r = 5$$</div>
+    </li>
+  </ol>
+  <div class="done"><span data-l="de">Kreis um \((-4, 2)\) mit Radius 5.</span><span data-l="en">Circle around \((-4, 2)\) with radius 5.</span></div>
+</article>
+
+<article class="ex" id="z-a11">
+  <div class="ex-head"><h3><span data-l="de">Zwilling zu A11</span><span data-l="en">Twin of A11</span></h3><a class="orig" href="../quadriken/#a11"><span data-l="de">Original A11 ansehen ↗</span><span data-l="en">See original A11 ↗</span></a></div>
+  <div class="task"><span data-l="de">Berechne die Schnittpunkte der Geraden \(y = x - 1\) mit dem Kreis \(x^2 + y^2 = 13\).</span><span data-l="en">Find the intersection points of the line \(y = x - 1\) with the circle \(x^2 + y^2 = 13\).</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4><span data-l="de">Gerade in den Kreis einsetzen</span><span data-l="en">Substitute the line into the circle</span></h4>
+      <div class="calc">$$x^2 + (x - 1)^2 = 13$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4><span data-l="de">Ausmultiplizieren, Standardform</span><span data-l="en">Expand, standard form</span></h4>
+      <div class="calc">$$2x^2 - 2x - 12 = 0 \iff x^2 - x - 6 = 0$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4><span data-l="de">Lösen</span><span data-l="en">Solve</span></h4>
+      <div class="calc">$$(x - 3)(x + 2) = 0 \iff x = 3 \text{ oder } x = -2$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 4</span><h4><span data-l="de">y dazu ausrechnen</span><span data-l="en">Work out y</span></h4>
+      <p class="why"><span data-l="de">In die Gerade einsetzen, nicht in den Kreis.</span><span data-l="en">Substitute into the line, not the circle.</span></p>
+      <div class="calc">$$(3, 2) \qquad (-2, -3)$$</div>
+    </li>
+  </ol>
+  <div class="done"><span data-l="de">Schnittpunkte \((3, 2)\) und \((-2, -3)\).</span><span data-l="en">Intersection points \((3, 2)\) and \((-2, -3)\).</span></div>
+</article>
+
+<article class="ex" id="z-a12">
+  <div class="ex-head"><h3><span data-l="de">Zwilling zu A12</span><span data-l="en">Twin of A12</span></h3><a class="orig" href="../quadriken/#a12"><span data-l="de">Original A12 ansehen ↗</span><span data-l="en">See original A12 ↗</span></a></div>
+  <div class="task"><span data-l="de">Bestimme die Schnittpunkte der Kreise \(x^2 + y^2 = 25\) und \((x - 6)^2 + y^2 = 13\).</span><span data-l="en">Find the intersection points of the circles \(x^2 + y^2 = 25\) and \((x - 6)^2 + y^2 = 13\).</span></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4><span data-l="de">Die Gleichungen voneinander abziehen</span><span data-l="en">Subtract the equations</span></h4>
+      <p class="why"><span data-l="de">\(y^2\) fällt weg, es bleibt eine Gerade.</span><span data-l="en">\(y^2\) cancels, a line is left.</span></p>
+      <div class="calc">$$x^2 - (x - 6)^2 = 25 - 13 \iff 12x - 36 = 12 \iff x = 4$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4><span data-l="de">In einen Kreis einsetzen</span><span data-l="en">Substitute into one circle</span></h4>
+      <div class="calc">$$16 + y^2 = 25 \iff y = \pm 3$$</div>
+    </li>
+  </ol>
+  <div class="done"><span data-l="de">Schnittpunkte \((4, 3)\) und \((4, -3)\).</span><span data-l="en">Intersection points \((4, 3)\) and \((4, -3)\).</span></div>
+</article>
+
+<h2 id="simulation">3 · <span data-l="de">Prüfungssimulation</span><span data-l="en">Test simulation</span></h2>
+<div class="box exam"><p style="margin:0"><span data-l="de"><b>So wie in der Prüfung:</b> Stell einen Timer auf 45 Minuten. Löse alle 9 Aufgaben zuerst auf Papier, ohne Taschenrechner und ohne nachzuschauen. Erst danach vergleichst du Schritt für Schritt und bewertest dich bei jeder Aufgabe selbst.</span><span data-l="en"><b>Like in the test:</b> set a timer for 45 minutes. Solve all 9 tasks on paper first, without a calculator and without looking anything up. Only then compare step by step and rate yourself on each task.</span></p></div>
 
 <!-- 1 -->
-<article class="ex" id="p1" data-mode="faded">
+<article class="ex" id="p1" data-selfcheck>
   <div class="ex-head"><h3><span data-l="de">Aufgabe 1</span><span data-l="en">Exercise 1</span></h3></div>
   <div class="task"><span data-l="de">Bestimme die Tangente mit Steigung 2 an die Parabel \(f(x) = x^2 + 4x + 1\) und ihren Berührpunkt.</span><span data-l="en">Find the tangent with slope 2 to the parabola \(f(x) = x^2 + 4x + 1\) and its point of contact.</span></div>
   <ol class="steps">
@@ -66,7 +344,7 @@
 </article>
 
 <!-- 2 -->
-<article class="ex" id="p2" data-mode="faded">
+<article class="ex" id="p2" data-selfcheck>
   <div class="ex-head"><h3><span data-l="de">Aufgabe 2</span><span data-l="en">Exercise 2</span></h3></div>
   <div class="task"><span data-l="de">Bestimme \(\sin 240^\circ\), \(\cos 240^\circ\) und \(\tan 240^\circ\) exakt, ohne Taschenrechner.</span><span data-l="en">Find \(\sin 240^\circ\), \(\cos 240^\circ\) and \(\tan 240^\circ\) exactly, without a calculator.</span></div>
   <ol class="steps">
@@ -82,7 +360,7 @@
 </article>
 
 <!-- 3 -->
-<article class="ex" id="p3" data-mode="faded">
+<article class="ex" id="p3" data-selfcheck>
   <div class="ex-head"><h3><span data-l="de">Aufgabe 3</span><span data-l="en">Exercise 3</span></h3></div>
   <div class="task"><span data-l="de">Bestimme alle Tangenten an die Normalparabel \(f(x) = x^2\), die durch den Punkt \(P = (0, -4)\) gehen, und ihre Berührpunkte.</span><span data-l="en">Find all tangents to the standard parabola \(f(x) = x^2\) that pass through \(P = (0, -4)\), and their points of contact.</span></div>
   <ol class="steps">
@@ -101,7 +379,7 @@
 </article>
 
 <!-- 4 -->
-<article class="ex" id="p4" data-mode="faded">
+<article class="ex" id="p4" data-selfcheck>
   <div class="ex-head"><h3><span data-l="de">Aufgabe 4</span><span data-l="en">Exercise 4</span></h3></div>
   <div class="task"><span data-l="de">Für welche Winkel α gilt \(\sin\alpha = \frac12\)? Gib alle Lösungen in Grad an.</span><span data-l="en">For which angles α is \(\sin\alpha = \frac12\)? Give all solutions in degrees.</span></div>
   <ol class="steps">
@@ -117,7 +395,7 @@
 </article>
 
 <!-- 5 -->
-<article class="ex" id="p5" data-mode="faded">
+<article class="ex" id="p5" data-selfcheck>
   <div class="ex-head"><h3><span data-l="de">Aufgabe 5</span><span data-l="en">Exercise 5</span></h3></div>
   <div class="task"><span data-l="de">(a) Gib 135° im Bogenmass an. (b) Gib \(\frac{5\pi}{6}\) in Grad an.</span><span data-l="en">(a) Give 135° in radians. (b) Give \(\frac{5\pi}{6}\) in degrees.</span></div>
   <ol class="steps">
@@ -131,7 +409,7 @@
 </article>
 
 <!-- 6 -->
-<article class="ex" id="p6" data-mode="faded">
+<article class="ex" id="p6" data-selfcheck>
   <div class="ex-head"><h3><span data-l="de">Aufgabe 6</span><span data-l="en">Exercise 6</span></h3></div>
   <div class="task"><span data-l="de">Bestimme die Tangente an \(f(x) = \frac12 x^2 + 1\) im Punkt \(A = (2, f(2))\).</span><span data-l="en">Find the tangent to \(f(x) = \frac12 x^2 + 1\) at the point \(A = (2, f(2))\).</span></div>
   <ol class="steps">
@@ -151,7 +429,7 @@
 </article>
 
 <!-- 7 -->
-<article class="ex" id="p7" data-mode="faded">
+<article class="ex" id="p7" data-selfcheck>
   <div class="ex-head"><h3><span data-l="de">Aufgabe 7</span><span data-l="en">Exercise 7</span></h3></div>
   <div class="task"><span data-l="de">Für einen Winkel α zwischen 90° und 180° gilt \(\sin\alpha = \frac{5}{13}\). Bestimme \(\cos\alpha\) und \(\tan\alpha\) exakt.</span><span data-l="en">For an angle α between 90° and 180°, \(\sin\alpha = \frac{5}{13}\). Find \(\cos\alpha\) and \(\tan\alpha\) exactly.</span></div>
   <ol class="steps">
@@ -167,7 +445,7 @@
 </article>
 
 <!-- 8 -->
-<article class="ex" id="p8" data-mode="faded">
+<article class="ex" id="p8" data-selfcheck>
   <div class="ex-head"><h3><span data-l="de">Aufgabe 8</span><span data-l="en">Exercise 8</span></h3></div>
   <div class="task"><span data-l="de">Gib die Tangente an \(f(x) = x^2\) im Punkt \((-3, 9)\) an.</span><span data-l="en">Give the tangent to \(f(x) = x^2\) at the point \((-3, 9)\).</span></div>
   <ol class="steps">
@@ -180,7 +458,7 @@
 </article>
 
 <!-- 9 -->
-<article class="ex" id="p9" data-mode="faded">
+<article class="ex" id="p9" data-selfcheck>
   <div class="ex-head"><h3><span data-l="de">Aufgabe 9</span><span data-l="en">Exercise 9</span></h3></div>
   <div class="task"><span data-l="de">(a) Eine Gerade geht durch den Ursprung und bildet mit der positiven x-Achse einen Winkel von 60°. Gib ihre Gleichung an. (b) Welchen Winkel bildet \(y = -x\) mit der positiven x-Achse?</span><span data-l="en">(a) A line passes through the origin and makes an angle of 60° with the positive x-axis. Give its equation. (b) What angle does \(y = -x\) make with the positive x-axis?</span></div>
   <ol class="steps">
@@ -192,6 +470,9 @@
       <div class="calc"><p><span data-l="de">Steigung −1: \(\tan\alpha = -1\), also \(\alpha = 135^\circ\) (oder \(-45^\circ\), dieselbe Gerade).</span><span data-l="en">Slope −1: \(\tan\alpha = -1\), so \(\alpha = 135^\circ\) (or \(-45^\circ\), the same line).</span></p></div></li>
   </ol>
 </article>
+
+<h2 id="bilanz">4 · <span data-l="de">Bilanz</span><span data-l="en">Results</span></h2>
+<div class="box" id="bilanzbox"></div>
 
 <footer><span data-l="de">Eigene Übungsaufgaben im Stil des Skripts, alle Lösungen nachgerechnet.</span><span data-l="en">Own practice exercises in the style of the script, all solutions double-checked.</span></footer>
 <p class="lic" style="margin-top:28px;color:var(--mute);font-size:14px;max-width:70ch"><span data-l="de">Inhalte unter <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de">CC BY-SA 4.0</a>. Basierend auf den <a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025">Skripten «Mathematik 2cNP»</a> von Ivo Blöchliger und Olaf Schnürer (CC BY-SA), verändert und ergänzt mit eigenen Erklärungen, Lösungswegen und Aufgaben. Code: MIT.</span><span data-l="en">Content licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Based on the <a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025">“Mathematik 2cNP” scripts</a> by Ivo Blöchliger and Olaf Schnürer (CC BY-SA), changed and extended with own explanations, solutions and exercises. Code: MIT.</span></p>

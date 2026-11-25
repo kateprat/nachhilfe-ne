@@ -262,7 +262,7 @@
       if (m && !a.querySelector('.pn')) a.insertAdjacentHTML('afterbegin', `<span class="pn">${m[1]}</span>`);
     });
     // the bar in three phases: understand → practise → consolidate
-    if (nav && !nav.querySelector('.ph')) {
+    if (nav && !nav.querySelector('.ph') && nav.querySelector('a[href="#e1"], a[href="#a1"]')) {
       const en = document.documentElement.lang === 'en';
       const mark = (sel, de, enl) => { const a = nav.querySelector(sel); if (!a) return; const li = document.createElement('li'); li.className = 'ph'; li.textContent = en ? enl : de; a.closest('li').before(li); };
       mark('a[href^="#"]', 'Verstehen', 'Understand');
@@ -332,6 +332,40 @@
       window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true, signal: pageCtl.signal });
       spy();
     }
+    // test simulation: rate yourself per task, results add up in "Bilanz"
+    const SKEY = 'nachhilfe-self:' + TOPIC;
+    let self = {}; try { self = JSON.parse(localStorage.getItem(SKEY) || '{}'); } catch (e) {}
+    const en = () => document.documentElement.lang === 'en';
+    const OPTS = [['ok', 'Richtig', 'Right'], ['part', 'Teilweise', 'Partly'], ['no', 'Falsch', 'Wrong']];
+    const bilanz = () => {
+      const box = document.getElementById('bilanzbox'); if (!box) return;
+      const sims = [...document.querySelectorAll('.ex[data-selfcheck]')];
+      const name = ex => ex.querySelector('h3').innerHTML;
+      const by = k => sims.filter(x => self[x.id] === k);
+      const rated = sims.filter(x => self[x.id]).length;
+      const redo = [...by('no'), ...by('part')];
+      box.innerHTML = rated === 0
+        ? `<p style="margin:0"><span data-l="de">Noch keine Aufgabe bewertet. Bewerte dich nach jeder Aufgabe der Simulation.</span><span data-l="en">No task rated yet. Rate yourself after each task of the simulation.</span></p>`
+        : `<p style="margin:0 0 8px"><b>${by('ok').length}</b> <span data-l="de">richtig</span><span data-l="en">right</span> · <b>${by('part').length}</b> <span data-l="de">teilweise</span><span data-l="en">partly</span> · <b>${by('no').length}</b> <span data-l="de">falsch</span><span data-l="en">wrong</span> · ${rated}/${sims.length}</p>` +
+          (redo.length ? `<p style="margin:0"><span data-l="de">Nochmals üben:</span><span data-l="en">Practise again:</span> ${redo.map(x => `<a href="#${x.id}">${name(x)}</a>`).join(', ')}</p>`
+                       : `<p style="margin:0"><span data-l="de">Alles richtig bewertet. Stark!</span><span data-l="en">Everything rated right. Great!</span></p>`) +
+          `<p style="margin:10px 0 0"><button type="button" data-selfreset><span data-l="de">Bewertung löschen</span><span data-l="en">Clear ratings</span></button></p>`;
+      const r = box.querySelector('[data-selfreset]');
+      if (r) r.addEventListener('click', () => { self = {}; try { localStorage.removeItem(SKEY); } catch (e) {} document.querySelectorAll('.selfcheck button').forEach(b => b.removeAttribute('aria-pressed')); bilanz(); });
+    };
+    document.querySelectorAll('.ex[data-selfcheck]').forEach(ex => {
+      if (ex.querySelector('.selfcheck')) return;
+      const d = document.createElement('div'); d.className = 'selfcheck';
+      d.innerHTML = `<span><span data-l="de">Wie lief es?</span><span data-l="en">How did it go?</span></span>` +
+        OPTS.map(([k, de, enl]) => `<button type="button" data-k="${k}"${self[ex.id] === k ? ' aria-pressed="true"' : ''}><span data-l="de">${de}</span><span data-l="en">${enl}</span></button>`).join('');
+      d.addEventListener('click', e => {
+        const b = e.target.closest('[data-k]'); if (!b) return;
+        self[ex.id] = b.dataset.k; try { localStorage.setItem(SKEY, JSON.stringify(self)); } catch (err) {}
+        d.querySelectorAll('[data-k]').forEach(x => x.toggleAttribute('aria-pressed', x === b)); bilanz();
+      });
+      ex.append(d);
+    });
+    bilanz();
     setupReveals(document);
     setupPlay();
     setupCircle();
