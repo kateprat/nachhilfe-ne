@@ -47,7 +47,7 @@ html.embed .topbar,html.embed .topctl,html.embed .crumb,html.embed .lang,html.em
 html.embed .fig{position:relative!important;top:auto!important;will-change:transform;z-index:3}
 html.embed .fig>svg{background:var(--card)}
 
-@media(min-width:900px){iframe.embedded[data-mode]{width:min(1080px,calc(100vw - 2*max(4vw,16px)));margin-left:50%;transform:translateX(-50%)}}
+@media(min-width:900px) and (max-width:1099px){iframe.embedded[data-mode]{width:min(1080px,calc(100vw - 2*max(4vw,16px)));margin-left:50%;transform:translateX(-50%)}}
 html.embed .ilay,html.embed main>.wrap{margin-top:0}
 @media(min-width:821px){html.embed .ilay,html.embed main>.wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:32px!important}html.embed .fig{margin:0!important}}
 html.onemode .tabs,html.onemode #theorie,html.onemode .theory,html.onemode main>.lead,html.onemode main>.sub,html.onemode p.more,html.onemode main>p.noprint{display:none!important}
