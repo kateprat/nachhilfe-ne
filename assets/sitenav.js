@@ -265,8 +265,12 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
       if (!total && !last) return;
       const en = document.documentElement.lang === 'en';
       let html = total ? `<i><b style="width:${Math.round(100 * done / total)}%"></b></i>${done}/${total}` : '';
-      if (last && last.id) { a.href = a.getAttribute('href').replace(/#.*$/, '') + '#' + last.id; html += ` <span class="go">${en ? 'Continue at' : 'Weiter bei'} ${last.label}</span>`; }
+      // the card opens the chapter at the top; only "Weiter bei …" jumps to where you were
+      if (last && last.id) html += ` <span class="go" role="link" tabindex="0" data-to="${a.getAttribute('href').replace(/#.*$/, '')}#${last.id}">${en ? 'Continue at' : 'Weiter bei'} ${last.label}</span>`;
       box.innerHTML = html;
+      const go = box.querySelector('.go');
+      if (go) { const jump = e => { e.preventDefault(); e.stopPropagation(); location.href = go.dataset.to; };
+        go.addEventListener('click', jump); go.addEventListener('keydown', e => { if (e.key === 'Enter') jump(e); }); }
     });
     chapnav();
     if (!observing && (page === 'inter' || page === 'sheet')) {
