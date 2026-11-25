@@ -46,7 +46,7 @@
   function setupExercise(ex) {
     const steps = [...ex.querySelectorAll('.step')];
     const done = ex.querySelector('.done');
-    const faded = ex.dataset.mode === 'faded';
+    const faded = false; // all exercises use the same flow: step by step with "Next step"
     let shown = 1;
 
     // faded mode: each calculation hides behind its own button
@@ -90,7 +90,7 @@
       const a = (e.target.closest('button') || {}).dataset?.a;
       if (a === 'next') { shown = Math.min(steps.length, shown + 1); update(true); }
       if (a === 'all') { shown = steps.length; steps.forEach(st => { const c = st.querySelector('.calc'); if (c) c.hidden = false; st._calcBtn && st._calcBtn.remove(); }); update(false); steps.forEach(st => st.classList.remove('on')); }
-      if (a === 'reset') { shown = 1; hideCalcs(); update(false); ex.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
+      if (a === 'reset') { shown = 1; hideCalcs(); update(false); if (doneSet.has(ex.id)) { doneSet.delete(ex.id); saveDone(); progressUpdate(); } const sp = ex.querySelector('.stamp'); if (sp) sp.remove(); ex.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
     });
     hideCalcs();
     update(false);
