@@ -269,7 +269,7 @@
       const en = document.documentElement.lang === 'en';
       const mark = (sel, de, enl) => { const a = nav.querySelector(sel); if (!a) return; const li = document.createElement('li'); li.className = 'ph'; li.textContent = en ? enl : de; a.closest('li').before(li); };
       mark('a[href^="#"]', 'Verstehen', 'Understand');
-      mark('a[href="#e1"], a[href="#a1"]', 'Üben', 'Practise');
+      mark('a[href="#aufgaben"], a[href="#e1"], a[href="#a1"]', 'Üben', 'Practise');
       mark('a[href="#spickzettel"]', 'Festigen', 'Consolidate');
     }
     if (nav && exs.length) {
