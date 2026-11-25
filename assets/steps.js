@@ -15,7 +15,8 @@
   const MACROS = { '\\m': '\\textcolor{#3b7be8}{m}', '\\q': '\\textcolor{#e0475b}{q}' };
 
   // progress per topic (same for DE and EN), kept only on this device
-  const PKEY = 'nachhilfe-done:' + location.pathname.replace(/(index|en|de)(\.html)?$/, '');
+  const TOPIC = location.pathname.replace(/(index|en|de)(\.html)?$/, '');
+  const PKEY = 'nachhilfe-done:' + TOPIC;
   let doneSet = new Set();
   try { doneSet = new Set(JSON.parse(localStorage.getItem(PKEY) || '[]')); } catch (e) {}
   const saveDone = () => { try { localStorage.setItem(PKEY, JSON.stringify([...doneSet])); } catch (e) {} };
@@ -260,6 +261,14 @@
       const m = t && t.tagName === 'H2' && t.textContent.match(/^\s*(\d+)\s*·/);
       if (m && !a.querySelector('.pn')) a.insertAdjacentHTML('afterbegin', `<span class="pn">${m[1]}</span>`);
     });
+    // the bar in three phases: understand → practise → consolidate
+    if (nav && !nav.querySelector('.ph')) {
+      const en = document.documentElement.lang === 'en';
+      const mark = (sel, de, enl) => { const a = nav.querySelector(sel); if (!a) return; const li = document.createElement('li'); li.className = 'ph'; li.textContent = en ? enl : de; a.closest('li').before(li); };
+      mark('a[href^="#"]', 'Verstehen', 'Understand');
+      mark('a[href="#e1"], a[href="#a1"]', 'Üben', 'Practise');
+      mark('a[href="#spickzettel"]', 'Festigen', 'Consolidate');
+    }
     if (nav && exs.length) {
       const pr = document.createElement('div'); pr.className = 'progress';
       pr.innerHTML = '<span class="txt"></span><span class="bar"><i></i></span><button type="button"></button>';
@@ -274,6 +283,7 @@
       };
     }
     exs.forEach(setupExercise);
+    try { if (exs.length) localStorage.setItem('nachhilfe-total:' + TOPIC, exs.length); } catch (e) {}
     progressUpdate();
     // jump targets land below the sticky nav (its height changes with the progress bar and screen size)
     if (nav) {
@@ -310,6 +320,7 @@
         let hit = null;
         for (const [a, t] of links) if (t.getBoundingClientRect().top <= line) hit = a;
         if (hit === current) return;
+        if (hit) try { localStorage.setItem('nachhilfe-last:' + TOPIC, JSON.stringify({ id: hit.getAttribute('href').slice(1), label: hit.textContent.replace(/^\d+/, '').replace(/ ✓$/, '').trim() })); } catch (e) {}
         if (current) current.classList.remove('active');
         current = hit;
         if (hit) {

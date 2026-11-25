@@ -2,59 +2,42 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<script src="assets/theme.js?v=28"></script>
-<script src="assets/sitenav.js?v=8"></script>
+<script src="assets/theme.js?v=30"></script>
+<script src="assets/sitenav.js?v=12"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mathe 2cNP</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="Mathe 2cNP">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=28">
+<link rel="stylesheet" href="assets/style.css?v=30">
 </head>
 <body>
 <main class="wrap">
 <nav class="langsw" aria-label="Sprache / language"><a href="index.html" lang="de" aria-current="page">DE</a><a href="en.html" lang="en">EN</a></nav>
   <h1>Mathe 2cNP</h1>
-  <p class="lead">Die Themen in der Reihenfolge eures Skripts. Zu jedem Thema: ein kurzer Einstieg, ein «Kochrezept» und die Aufgaben.</p>
+  <p class="lead">Dein Weg durch die Prüfungsvorbereitung, in der Reihenfolge eures Skripts. Jedes Kapitel: verstehen, üben, festigen.</p>
 
-  <div class="cards">
-    <a class="card c-peach" href="trigonometrie/">
+  <ol class="path">
+    <li><a class="card c-peach" href="trigonometrie/" data-topic="/trigonometrie/">
       <div class="doodle"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M6 32h52M32 6v52" stroke-width="2"/><circle cx="32" cy="32" r="22"/><path d="M32 32L50 19.5"/><path d="M43 32a11 11 0 0 0-1.9-6.2"/><circle cx="50" cy="19.5" r="2.5" fill="#1f2340"/></svg></div>
-      <div><span class="n">Kapitel 15</span>
+      <div><span class="n">Schritt 1 · Kapitel 15</span>
       <b>Trigonometrie</b>
-      <span>Bogenmass, Einheitskreis, Rezepte und die Aufgaben E1–E7.</span></div>
-    </a>
-    <a class="card c-peach" href="trigonometrie/#interaktiv">
-      <div class="doodle"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="6" fill="#1f2340"/><path d="M32 8v14M32 42v14M8 32h14M42 32h14"/><path d="M27 13l5-5 5 5M27 51l5 5 5-5M13 27l-5 5 5 5M51 27l5 5-5 5"/></svg></div>
-      <div><span class="n">Zum Ausprobieren</span>
-      <b>Trigonometrie interaktiv</b>
-      <span>Punkt P um den Einheitskreis ziehen, Gleichungen lösen, Bogenmass sehen. Mit Theorie-Überblick.</span></div>
-    </a>
-    <a class="card c-sky" href="quadriken/">
+      <span>Bogenmass, Einheitskreis, Rezepte und die Aufgaben E1–E7.</span><span class="cprog"></span></div>
+    </a></li>
+    <li><a class="card c-sky" href="quadriken/" data-topic="/quadriken/">
       <div class="doodle"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 10Q32 78 54 10"/><path d="M8 44h48"/><circle cx="32" cy="44" r="3" fill="#1f2340"/></svg></div>
-      <div><span class="n">Kapitel 17</span>
+      <div><span class="n">Schritt 2 · Kapitel 17</span>
       <b>Quadriken</b>
-      <span>Was bedeuten die Buchstaben? Das Tangenten-Rezept, Kreise und die Aufgaben A1–A12.</span></div>
-    </a>
-    <a class="card c-sky" href="quadriken/#interaktiv">
-      <div class="doodle"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="6" fill="#1f2340"/><path d="M32 8v14M32 42v14M8 32h14M42 32h14"/><path d="M27 13l5-5 5 5M27 51l5 5 5-5M13 27l-5 5 5 5M51 27l5 5-5 5"/></svg></div>
-      <div><span class="n">Zum Ausprobieren</span>
-      <b>Quadriken interaktiv</b>
-      <span>Parabeln, Tangenten und Kreise zum Ziehen. Mit Theorie-Überblick.</span></div>
-    </a>
-    <a class="card c-lilac" href="grundlagen/">
-      <div class="doodle"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 22h44v30H10z"/><path d="M24 22v-8h16v8"/><path d="M10 34h44"/></svg></div>
-      <div><span class="n">Grundlagen</span>
-      <b>Werkzeugkasten Algebra</b>
-      <span>Klammern, binomische Formeln, Brüche, Mitternachtsformel, quadratisch ergänzen und typische Fehler.</span></div>
-    </a>
-    <a class="card c-mint" href="training/">
+      <span>Was bedeuten die Buchstaben? Das Tangenten-Rezept, Kreise und die Aufgaben A1–A12.</span><span class="cprog"></span></div>
+    </a></li>
+    <li><a class="card c-mint" href="training/" data-topic="/training/">
       <div class="doodle"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 10h36v44H14z"/><path d="M22 24l5 5 9-10M22 40h20"/></svg></div>
-      <div><span class="n">Für die Prüfung</span>
+      <div><span class="n">Schritt 3 · Zum Schluss</span>
       <b>Prüfungstraining</b>
-      <span>Neue, gemischte Aufgaben aus beiden Themen. Zuerst erkennen, welches Rezept passt.</span></div>
-    </a>
-  </div>
+      <span>Zwillingsaufgaben zu jedem Kapitel und eine Prüfungssimulation mit gemischten Aufgaben.</span><span class="cprog"></span></div>
+    </a></li>
+  </ol>
+  <p class="helper"><span class="hic"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 22h44v30H10z"/><path d="M24 22v-8h16v8"/><path d="M10 34h44"/></svg></span><span>Hängst du bei Klammern, Brüchen oder der Mitternachtsformel? <a href="grundlagen/">Werkzeugkasten Algebra ↗</a></span></p>
 
   <div class="box exam" style="margin-top:28px">
     <b>Für die Prüfung</b>

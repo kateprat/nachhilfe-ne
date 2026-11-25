@@ -12,6 +12,7 @@
   if (QS.get('lang')) document.documentElement.lang = QS.get('lang');
   if (EMBED) {
     document.documentElement.classList.add('embed');
+    if (QS.has('one')) document.documentElement.classList.add('onemode');
     addEventListener('storage', e => { if (e.key === KEY) { pref = e.newValue || 'auto'; apply(pref); } });
     const report = () => parent.postMessage({ nachhilfe: 'height', h: Math.ceil(document.documentElement.getBoundingClientRect().height) }, location.origin);
     document.addEventListener('DOMContentLoaded', () => { new ResizeObserver(report).observe(document.documentElement); report(); });

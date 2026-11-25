@@ -43,8 +43,9 @@ html.embed main{padding:0!important;max-width:none!important}
 html.embed .topbar,html.embed .topctl,html.embed .crumb,html.embed .lang,html.embed .langsw,html.embed main>h1,html.embed footer,html.embed .lic,html.embed .chapnav{display:none!important}
 html.embed .fig{position:relative!important;top:auto!important;will-change:transform}
 @media(max-width:820px){html.embed .fig{width:min(100%,620px)!important;max-width:620px}}
-@media(min-width:900px){iframe.embedded[data-part=interaktiv]{width:min(1180px,calc(100vw - 2*max(4vw,16px)));margin-left:50%;transform:translateX(-50%)}}
+@media(min-width:900px){iframe.embedded[data-mode]{width:min(1180px,calc(100vw - 2*max(4vw,16px)));margin-left:50%;transform:translateX(-50%)}}
 html.embed .ilay,html.embed main>.wrap{margin-top:0}
+html.onemode .tabs,html.onemode #theorie,html.onemode .theory,html.onemode main>.lead,html.onemode main>.sub,html.onemode p.more,html.onemode main>p.noprint{display:none!important}
 iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px;background:transparent;color-scheme:normal}
 @media(min-width:821px){html.has-chapnav .fig{top:calc(var(--chaph,64px) + 12px)!important}}`;
 
@@ -163,36 +164,43 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
     if (e.origin !== location.origin || !e.data || e.data.nachhilfe !== 'height') return;
     document.querySelectorAll('iframe.embedded').forEach(f => { if (f.contentWindow === e.source) f.style.height = e.data.h + 'px'; });
   });
+  const frameFor = h => {
+    const mode = (h || '').replace(/^#/, '').replace(/-punkt$/, '');
+    return document.querySelector(`iframe.embedded[data-mode="${mode}"]`) || document.querySelector('iframe.embedded[data-mode]');
+  };
+  // scroll to the frame and keep it there while frames above it finish loading and change height
+  let keepRun = 0;
+  const keepAt = f => {
+    const run = ++keepRun; let n = 0;
+    const stop = () => { keepRun++; };
+    addEventListener('touchstart', stop, { once: true, passive: true }); addEventListener('wheel', stop, { once: true, passive: true });
+    const go = () => {
+      if (run !== keepRun || n++ > 60) return;
+      const nav = document.querySelector('.nav'), d = f.getBoundingClientRect().top - ((nav ? nav.offsetHeight : 0) + 12);
+      if (Math.abs(d) > 2) scrollBy(0, d);
+      setTimeout(go, 50);
+    };
+    go();
+  };
+  // a frame that hasn't loaded yet gets the mode in its address; a loaded one just switches
+  const setHash = (f, h) => {
+    if (!h) return;
+    let loaded = false; try { loaded = /interaktiv/.test(f.contentWindow.location.pathname); } catch (e) {}
+    if (loaded) { try { f.contentWindow.location.hash = h; } catch (e) {} }
+    else { f.loading = 'eager'; f.src = f.getAttribute('src').replace(/#.*$/, '') + h; }
+  };
   document.addEventListener('click', e => {
     const a = e.target.closest('a[href]'); if (!a || EMBED) return;
-    const href = a.getAttribute('href'), m = href.match(/^interaktiv\.html(#.*)?$/);
-    const f = m && document.querySelector('iframe.embedded[data-part=interaktiv]'); if (!f) return;
+    const m = a.getAttribute('href').match(/^interaktiv\.html(#.*)?$/);
+    const f = m && frameFor(m[1]); if (!f) return;
     e.preventDefault();
-    try { if (m[1]) f.contentWindow.location.hash = m[1]; } catch (err) {}
-    document.getElementById('interaktiv').scrollIntoView({ behavior: 'smooth' });
+    setHash(f, m[1]);
+    keepAt(f);
   });
-  // laptop: the tool is two columns wide; keep its graph in view next to the controls while the chapter page scrolls
-  // (sticky positioning can't reach out of a frame, so the chapter page moves the graph itself)
-  const keepGraph = () => document.querySelectorAll('iframe.embedded[data-part=interaktiv]').forEach(f => {
-    let d; try { d = f.contentDocument; } catch (e) { return; }
-    const fig = d && d.querySelector('.fig'); if (!fig) return;
-    if (f.clientWidth <= 820) { fig.style.transform = ''; fig.style.width = ''; return; }
-    const nav = document.querySelector('.nav'), navh = nav ? nav.offsetHeight : 0;
-    fig.style.width = Math.round(Math.min(620, Math.max(320, innerHeight - navh - 32), f.clientWidth * 0.52)) + 'px';
-    fig.style.transform = '';
-    const box = fig.parentElement.getBoundingClientRect(), r = fig.getBoundingClientRect();
-    const want = navh + 12 - f.getBoundingClientRect().top;
-    const y = Math.max(r.top, Math.min(want, box.bottom - r.height));
-    fig.style.transform = `translateY(${y - r.top}px)`;
-  });
-  let kgTick = false;
-  addEventListener('scroll', () => { if (!kgTick) { kgTick = true; requestAnimationFrame(() => { kgTick = false; keepGraph(); }); } }, { passive: true });
-  addEventListener('resize', keepGraph);
-  addEventListener('message', e => { if (e.origin === location.origin && e.data && e.data.nachhilfe === 'height') requestAnimationFrame(keepGraph); });
   document.addEventListener('DOMContentLoaded', () => {
     let h = null; try { h = sessionStorage.getItem('nachhilfe-embedhash'); sessionStorage.removeItem('nachhilfe-embedhash'); } catch (e) {}
-    const f = h && document.querySelector('iframe.embedded[data-part=interaktiv]');
-    if (f) f.addEventListener('load', () => { try { f.contentWindow.location.hash = h; } catch (e) {} }, { once: true });
+    const f = h && frameFor(h);
+    if (f) { setHash(f, h); setTimeout(() => keepAt(f), 300); }
   });
 
   let styled = false, observing = false;
@@ -205,6 +213,17 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
       if (c) { if (old) old.replaceWith(c); else main.prepend(c); }
     }
     document.querySelectorAll('.nav ul').forEach(markOut);
+    // start page: progress per step and "continue where you were"
+    document.querySelectorAll('.path a[data-topic]').forEach(a => {
+      const t = a.dataset.topic, box = a.querySelector('.cprog'); if (!box) return;
+      let done = 0, total = { '/trigonometrie/': 7, '/quadriken/': 16 }[t] || 0, last = null;
+      try { done = JSON.parse(localStorage.getItem('nachhilfe-done:' + t) || '[]').length; total = +localStorage.getItem('nachhilfe-total:' + t) || total; last = JSON.parse(localStorage.getItem('nachhilfe-last:' + t) || 'null'); } catch (e) {}
+      if (!total && !last) return;
+      const en = document.documentElement.lang === 'en';
+      let html = total ? `<i><b style="width:${Math.round(100 * done / total)}%"></b></i>${done}/${total}` : '';
+      if (last && last.id) { a.href = a.getAttribute('href').replace(/#.*$/, '') + '#' + last.id; html += ` <span class="go">${en ? 'Continue at' : 'Weiter bei'} ${last.label}</span>`; }
+      box.innerHTML = html;
+    });
     chapnav();
     if (!observing && (page === 'inter' || page === 'sheet')) {
       observing = true; let last = lang();

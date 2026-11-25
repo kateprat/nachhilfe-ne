@@ -49,6 +49,8 @@ p{margin:0 0 12px;max-width:66ch}
   border-bottom:2px solid var(--ink);margin:18px calc(-1*max(4vw,16px)) 0;padding:10px max(4vw,16px)}
 .nav ul{list-style:none;margin:0;padding:0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
 .nav li{flex:none}
+.nav li.ph{align-self:center;font:700 12px "Bricolage Grotesque",system-ui,sans-serif;color:var(--mute);padding:0 0 0 10px;letter-spacing:.02em}
+.nav li.ph:first-child{padding-left:0}
 .nav .pn{opacity:.5;margin-right:5px}
 .nav a{display:block;white-space:nowrap;padding:5px 12px;border-radius:999px;border:2px solid var(--line);background:var(--card);text-decoration:none;color:var(--ink);font-size:15px;font-weight:700}
 .nav a.done{margin:0;padding:5px 12px;font-weight:700;background:var(--mint);border-color:var(--mint);color:#10241b}
@@ -220,3 +222,16 @@ ol.puzzle li.no{animation:shake .3s;border-color:color-mix(in srgb,var(--q) 55%,
 /* KaTeX \m and \q follow the theme colours (readable in light and dark) */
 .katex [style*="#3b7be8"],.katex [style*="rgb(59, 123, 232)"]{color:var(--m)!important}.katex [style*="#e0475b"],.katex [style*="rgb(224, 71, 91)"]{color:var(--q)!important}
 .nextcard{margin:36px 0 8px;border-style:dashed}
+/* start page: the learning path */
+.path{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:16px;counter-reset:none;position:relative}
+.path>li{position:relative}
+.path>li:not(:last-child)::after{content:"";position:absolute;left:66px;bottom:-16px;height:16px;border-left:3px dotted var(--ink);opacity:.35}
+.cprog{display:flex!important;align-items:center;gap:10px;margin-top:8px;font:700 14px "Bricolage Grotesque",system-ui,sans-serif;color:var(--mute)}
+.cprog:empty{display:none!important}
+.cprog i{flex:1;max-width:160px;height:8px;border-radius:99px;background:var(--line);overflow:hidden;display:block}
+.cprog i b{display:block;height:100%;background:var(--ok);border-radius:99px;margin:0;font-size:0}
+.cprog .go{color:var(--link);text-decoration:underline;text-underline-offset:3px}
+.helper{display:flex;align-items:center;gap:12px;margin:22px 0 0;padding:12px 16px;border:2px dashed var(--line);border-radius:16px;color:var(--mute)}
+.helper .hic{flex:none;width:40px;height:40px;border-radius:10px;background:var(--lilac);display:grid;place-items:center}
+.helper .hic svg{width:28px;height:28px;stroke:#1f2340;fill:none;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:520px){.path>li:not(:last-child)::after{left:38px}}

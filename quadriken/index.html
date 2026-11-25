@@ -2,8 +2,8 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<script src="../assets/theme.js?v=28"></script>
-<script src="../assets/sitenav.js?v=8"></script>
+<script src="../assets/theme.js?v=30"></script>
+<script src="../assets/sitenav.js?v=12"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Quadriken</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="Mathe 2cNP">
@@ -12,8 +12,8 @@
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/steps.js?v=28"></script>
-<link rel="stylesheet" href="../assets/style.css?v=28">
+<script defer src="../assets/steps.js?v=30"></script>
+<link rel="stylesheet" href="../assets/style.css?v=30">
 </head>
 <body>
 <main class="wrap">
@@ -25,7 +25,7 @@
 <nav class="nav" aria-label="Abschnitte"><ul>
   <li><a href="#buchstaben">Buchstaben</a></li><li><a href="#rezept">Kochrezept</a></li>
   <li><a href="#a1">A1</a></li><li><a href="#a2">A2</a></li><li><a href="#a3">A3</a></li><li><a href="#a4">A4</a></li><li><a href="#a5">A5</a></li>
-  <li><a href="#a6">A6</a></li><li><a href="#a7">A7</a></li><li><a href="#a8">A8</a></li><li><a href="#kreise">Kreise</a></li><li><a href="#a9">A9</a></li><li><a href="#a10">A10</a></li><li><a href="#a11">A11</a></li><li><a href="#a12">A12</a></li><li><a href="#interaktiv">Interaktiv</a></li><li><a href="#spickzettel">Spickzettel</a></li><li><a href="../grundlagen/">Algebra</a></li>
+  <li><a href="#a6">A6</a></li><li><a href="#a7">A7</a></li><li><a href="#a8">A8</a></li><li><a href="#kreise">Kreise</a></li><li><a href="#a9">A9</a></li><li><a href="#a10">A10</a></li><li><a href="#a11">A11</a></li><li><a href="#a12">A12</a></li><li><a href="#spickzettel">Spickzettel</a></li><li><a href="../grundlagen/">Algebra</a></li>
 </ul></nav>
 
 <!-- ============ 1. Buchstaben ============ -->
@@ -75,7 +75,7 @@
   <li>\(D = 0\): genau ein Punkt. <b>Die Gerade ist eine Tangente.</b> Dann ist \(x = -\frac{b}{2a}\).</li>
   <li>\(D \lt 0\): kein Punkt. Die Gerade geht vorbei.</li>
 </ul>
-<p><a href="interaktiv.html#tangente">Im interaktiven Bild ausprobieren →</a></p>
+<iframe class="embedded" data-mode="tangente" src="interaktiv.html?embed=1&amp;one=1&amp;lang=de#tangente" title="Ausprobieren" loading="lazy"></iframe>
 
 <!-- ============ 2. Rezept ============ -->
 <h2 id="rezept">2 · Das Kochrezept für Tangenten</h2>
@@ -106,6 +106,8 @@
 <p>So funktionieren alle Aufgaben: Lies die Aufgabe und überleg zuerst selbst, wie du anfangen würdest. Dann klickst du dich mit <b>«Nächster Schritt»</b> durch die Lösung, ein Schritt nach dem anderen. Überleg vor jedem Klick, was als Nächstes kommt.</p>
 
 <!-- A1 -->
+<iframe class="embedded" data-mode="brennpunkt" src="interaktiv.html?embed=1&amp;one=1&amp;lang=de#brennpunkt" title="Ausprobieren" loading="lazy"></iframe>
+
 <article class="ex" id="a1" data-mode="worked">
   <div class="ex-head"><h3>A1 (a)</h3></div>
   <div class="task">Beschreibe die Parabel zum Brennpunkt \(F = (2, 1)\) und zur Leitgeraden \(\ell: y = -1\) als Graph einer Funktion.<br><small style="color:var(--mute)">Eine Parabel ist die Menge aller Punkte P, die von F und von ℓ gleich weit entfernt sind (17.1.1).</small></div>
@@ -373,6 +375,8 @@
 </ol>
 
 <!-- A9 e -->
+<iframe class="embedded" data-mode="kreis" src="interaktiv.html?embed=1&amp;one=1&amp;lang=de#kreis" title="Ausprobieren" loading="lazy"></iframe>
+
 <article class="ex" id="a9" data-mode="worked">
   <div class="ex-head"><h3>A9 (a) e)</h3></div>
   <div class="task">Finde Mittelpunkt und Radius des Kreises \(x^2 + y^2 - 6x + 20y + 73 = 0\).</div>
@@ -490,6 +494,8 @@
 </article>
 
 <!-- A12 -->
+<iframe class="embedded" data-mode="zwei-kreise" src="interaktiv.html?embed=1&amp;one=1&amp;lang=de#zwei-kreise" title="Ausprobieren" loading="lazy"></iframe>
+
 <article class="ex" id="a12" data-mode="faded">
   <div class="ex-head"><h3>A12</h3></div>
   <div class="task">Bestimme die Schnittpunkte des Kreises um \((0, 0)\) mit Radius 85 und des Kreises um \((140, 20)\) mit Radius 65.<br><small style="color:var(--mute)">Hier ein kürzerer Weg als im Skript: die Gleichungen voneinander abziehen. Dann fallen \(x^2\) und \(y^2\) weg, und es bleibt eine Gerade, also wieder A11.</small></div>
@@ -511,10 +517,7 @@
   <div class="done">Schnittpunkte \((84, -13)\) und \((77, 36)\), wie im Skript. <a href="interaktiv.html#zwei-kreise">Im Bild prüfen</a></div>
 </article>
 
-<h2 id="interaktiv">5 · Interaktiv</h2>
-<iframe class="embedded" data-part="interaktiv" src="interaktiv.html?embed=1&amp;lang=de" title="Interaktiv"></iframe>
-
-<h2 id="spickzettel">6 · Spickzettel</h2>
+<h2 id="spickzettel">5 · Spickzettel</h2>
 <iframe class="embedded" data-part="spickzettel" src="spickzettel.html?embed=1&amp;lang=de" title="Spickzettel"></iframe>
 
 <a class="card c-mint nextcard" href="../training/"><div class="doodle"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 10h36v44H14z"/><path d="M22 24l5 5 9-10M22 40h20"/></svg></div><div><span class="n">Fertig mit dem Kapitel?</span><b>Weiter zum Prüfungstraining ↗</b><span>Gemischte Aufgaben aus beiden Kapiteln, wie in der Prüfung. Du kannst jederzeit hierher zurück.</span></div></a>
