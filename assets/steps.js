@@ -89,7 +89,7 @@
     ctrl.addEventListener('click', e => {
       const a = (e.target.closest('button') || {}).dataset?.a;
       if (a === 'next') { shown = Math.min(steps.length, shown + 1); update(true); }
-      if (a === 'all') { shown = steps.length; steps.forEach(st => { const c = st.querySelector('.calc'); if (c) c.hidden = false; st._calcBtn && st._calcBtn.remove(); }); update(false); }
+      if (a === 'all') { shown = steps.length; steps.forEach(st => { const c = st.querySelector('.calc'); if (c) c.hidden = false; st._calcBtn && st._calcBtn.remove(); }); update(false); steps.forEach(st => st.classList.remove('on')); }
       if (a === 'reset') { shown = 1; hideCalcs(); update(false); ex.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
     });
     hideCalcs();
@@ -253,6 +253,12 @@
     document.querySelectorAll('h2').forEach(h => { const sp = document.createElement('span'); sp.className = 'hl'; while (h.firstChild) sp.append(h.firstChild); h.append(sp); });
     const exs = [...document.querySelectorAll('.ex')];
     const nav = document.querySelector('.nav');
+    // section pills carry the number of their heading ("1 · Radians" -> pill "1 Radians")
+    if (nav) nav.querySelectorAll('a[href^="#"]').forEach(a => {
+      const t = document.getElementById(a.getAttribute('href').slice(1));
+      const m = t && t.tagName === 'H2' && t.textContent.match(/^\s*(\d+)\s*·/);
+      if (m && !a.querySelector('.pn')) a.insertAdjacentHTML('afterbegin', `<span class="pn">${m[1]}</span>`);
+    });
     if (nav && exs.length) {
       const pr = document.createElement('div'); pr.className = 'progress';
       pr.innerHTML = '<span class="txt"></span><span class="bar"><i></i></span><button type="button"></button>';
