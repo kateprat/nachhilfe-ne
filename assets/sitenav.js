@@ -38,6 +38,12 @@ html.has-chapnav{scroll-padding-top:calc(var(--chaph,64px) + 12px)}
 html .topctl .langsw button{border:0;border-radius:0;box-shadow:none;margin:0;min-height:0;padding:6px 11px;background:transparent;color:var(--ink);font:700 14px "Bricolage Grotesque",system-ui,sans-serif;cursor:pointer}
 html .topctl .langsw button[aria-current]{background:var(--ink);color:var(--bg)}
 @media(max-width:520px){html .topctl .langsw button{padding:5px 8px;font-size:13px}}
+html.embed,html.embed body{background:transparent!important}
+html.embed main{padding:0!important;max-width:none!important}
+html.embed .topbar,html.embed .topctl,html.embed .crumb,html.embed .lang,html.embed .langsw,html.embed main>h1,html.embed footer,html.embed .lic,html.embed .chapnav{display:none!important}
+html.embed .fig{position:relative!important;top:auto!important;width:min(100%,620px)!important;max-width:620px}
+html.embed .ilay,html.embed main>.wrap{margin-top:0}
+iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px;background:transparent;color-scheme:normal}
 @media(min-width:821px){html.has-chapnav .fig{top:calc(var(--chaph,64px) + 12px)!important}}`;
 
   const P = location.pathname;
@@ -128,9 +134,44 @@ html .topctl .langsw button[aria-current]{background:var(--ink);color:var(--bg)}
     const act = ul.querySelector('.active'); if (act) ul.scrollLeft = act.offsetLeft - ul.offsetLeft - (ul.clientWidth - act.offsetWidth) / 2;
   }
 
+  const QS = new URLSearchParams(location.search);
+  const EMBED = QS.has('embed') && window.parent !== window;
+  // Interaktiv and Spickzettel now live as sections 5 and 6 of the chapter page; opening them on their own
+  // (old link or bookmark) goes to that section instead. "?solo" keeps the page on its own (used for printing).
+  if (!EMBED && !QS.has('solo') && (page === 'inter' || page === 'sheet')) {
+    const l = QS.get('lang') || (document.documentElement.lang === 'en' ? 'en' : 'de');
+    try { if (location.hash) sessionStorage.setItem('nachhilfe-embedhash', location.hash); } catch (e) {}
+    location.replace(N[chap].url[chap === 'trig' && !QS.get('lang') ? 'en' : l] + (page === 'inter' ? '#interaktiv' : '#spickzettel'));
+  }
+  // printing from inside the chapter page: open the cheat sheet on its own in a new tab, where printing works normally
+  if (EMBED && page === 'sheet') document.addEventListener('click', e => {
+    const b = e.target.closest('button[onclick*="print"]'); if (!b) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    window.open(location.pathname + '?solo=1&lang=' + lang(), '_blank');
+  }, true);
+  // chapter page: size the embedded frames, and open "Im Bild prüfen" links inside the embedded tool
+  addEventListener('message', e => {
+    if (e.origin !== location.origin || !e.data || e.data.nachhilfe !== 'height') return;
+    document.querySelectorAll('iframe.embedded').forEach(f => { if (f.contentWindow === e.source) f.style.height = e.data.h + 'px'; });
+  });
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href]'); if (!a || EMBED) return;
+    const href = a.getAttribute('href'), m = href.match(/^interaktiv\.html(#.*)?$/);
+    const f = m && document.querySelector('iframe.embedded[data-part=interaktiv]'); if (!f) return;
+    e.preventDefault();
+    try { if (m[1]) f.contentWindow.location.hash = m[1]; } catch (err) {}
+    document.getElementById('interaktiv').scrollIntoView({ behavior: 'smooth' });
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    let h = null; try { h = sessionStorage.getItem('nachhilfe-embedhash'); sessionStorage.removeItem('nachhilfe-embedhash'); } catch (e) {}
+    const f = h && document.querySelector('iframe.embedded[data-part=interaktiv]');
+    if (f) f.addEventListener('load', () => { try { f.contentWindow.location.hash = h; } catch (e) {} }, { once: true });
+  });
+
   let styled = false, observing = false;
   window.siteNav = function () {
     if (!styled) { const s = document.createElement('style'); s.textContent = css; document.head.append(s); styled = true; }
+    if (EMBED) return;
     const main = document.querySelector('main');
     if (main && !main.querySelector(':scope > .bc')) {
       const c = crumb(), old = main.querySelector(':scope > .crumb, .topbar > .crumb');

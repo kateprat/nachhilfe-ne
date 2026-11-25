@@ -5,8 +5,21 @@
   try { pref = localStorage.getItem(KEY) || 'auto'; } catch (e) {}
   const apply = p => { if (p === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', p); };
   apply(pref);
+  // embedded as a section of the chapter page (?embed=1&lang=..): no own header, follow the chapter page's colours,
+  // and tell the chapter page how tall we are so the frame grows with the content
+  const QS = new URLSearchParams(location.search);
+  const EMBED = QS.has('embed') && window.parent !== window;
+  if (QS.get('lang')) document.documentElement.lang = QS.get('lang');
+  if (EMBED) {
+    document.documentElement.classList.add('embed');
+    addEventListener('storage', e => { if (e.key === KEY) { pref = e.newValue || 'auto'; apply(pref); } });
+    const report = () => parent.postMessage({ nachhilfe: 'height', h: Math.ceil(document.documentElement.getBoundingClientRect().height) }, location.origin);
+    document.addEventListener('DOMContentLoaded', () => { new ResizeObserver(report).observe(document.documentElement); report(); });
+    addEventListener('load', report);
+  }
   function build() {
     if (window.siteNav) window.siteNav();
+    if (EMBED) return;
     const lang = document.querySelector('.langsw, main > .lang');
     if (!lang) return;
     const en = document.documentElement.lang === 'en';

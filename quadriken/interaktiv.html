@@ -7,8 +7,8 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="Mathe 2cNP">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap">
-<script src="../assets/theme.js?v=26"></script>
-<script src="../assets/sitenav.js?v=5"></script>
+<script src="../assets/theme.js?v=27"></script>
+<script src="../assets/sitenav.js?v=6"></script>
 <style>
 /* VOICE: calm maths notebook, same family as the Einheitskreis page
    IDEA: squared exercise paper with coloured-pencil constructions
@@ -256,6 +256,7 @@ const $=id=>document.getElementById(id);
 const svg=$('fig');
 const st={tab:1,u:0,f:1,d:0,px:2,a:1,b:-2,c:3,sub:'line',m2:-3,q2:2.75,ax:0,ay:0,ca:0,cb:0,r:5,m3:1,q3:1,quiz:false,lang:'de',a1:0,b1:0,r1:85,a2:140,b2:20,r2:65};
 try{const s=JSON.parse(localStorage.getItem('quadriken')||'null');if(s)Object.assign(st,s)}catch(e){}
+{const ql=new URLSearchParams(location.search).get('lang');if(ql==='de'||ql==='en')st.lang=ql;}
 const save=()=>{try{localStorage.setItem('quadriken',JSON.stringify(st))}catch(e){}};
 const I18N={
 de:{title:'Quadriken zum Ziehen',sub:'Parabeln, Tangenten und Kreise aus Kapitel 17. Zieh die farbigen Punkte oder stell die Werte rechts ein. Die Rechnung läuft live mit.',
