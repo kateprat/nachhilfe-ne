@@ -247,10 +247,15 @@ ol.puzzle li.no{animation:shake .3s;border-color:color-mix(in srgb,var(--q) 55%,
    wider screens get a wider page and side-by-side cards */
 .box p,.ex p,.step p,.tc p,.sheet p,.recipe p,.play p,.calc p,.done,.task,.sub li,.box li{max-width:none}
 p,li,.task,.done,.why{text-wrap:pretty}
-h1,h2,h3,h4,.card b{text-wrap:balance}
+h1,h2,h3,h4,.card b,.lead{text-wrap:balance}
+.nav ul.more{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 48px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 48px),transparent)}
 @media(min-width:1100px){
   .wrap{max-width:1120px}
   main>p,main>ul:not(.sub),main>ol:not(.path){max-width:72ch}
   ul.sub{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
   .path,.helper,main>.box.exam{max-width:880px}
 }
+.katex.nw{white-space:nowrap}
+table .katex.nw{white-space:normal}
+@media(max-width:520px){table.which{table-layout:fixed;width:100%;font-size:14px}table.which td,table.which th{overflow-wrap:anywhere;padding-left:6px;padding-right:6px}}
+.katex .katex-mathml{max-width:100%;overflow:hidden}

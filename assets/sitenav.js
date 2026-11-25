@@ -20,6 +20,8 @@ html,body{touch-action:manipulation}
 .nav .navback{display:none;flex:none;white-space:nowrap;padding:5px 12px;border-radius:999px;border:2px solid var(--ink);background:var(--card);color:var(--ink);text-decoration:none;font:700 15px "Bricolage Grotesque",system-ui,sans-serif}
 @media(min-width:700px){.nav .navback{display:block;max-width:0;padding-left:0;padding-right:0;border-width:0;margin-right:-10px;opacity:0;overflow:hidden;transition:max-width .25s,opacity .2s,padding .25s,margin .25s}.nav.stuck .navback{max-width:140px;padding:5px 12px;border-width:2px;margin-right:0;opacity:1}}
 @media(prefers-reduced-motion:reduce){.navback{transition:none!important}}
+/* app on the home screen (no browser back button): the phone gets a small ← in the bar too */
+@media(max-width:699px) and (display-mode:standalone){.nav .navback{display:block;max-width:0;padding-left:0;padding-right:0;border-width:0;margin-right:-10px;opacity:0;overflow:hidden;transition:max-width .25s,opacity .2s,padding .25s,margin .25s}.nav.stuck .navback{max-width:48px;padding:5px 12px;border-width:2px;margin-right:0;opacity:1}.navback .nbt{display:none}}
 .bc{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 6px;margin:0;font:700 15px/1.35 "Bricolage Grotesque",system-ui,sans-serif;min-width:0}
 .bc a{color:light-dark(#1e5e4f,#7ed9b4);text-decoration:underline;text-underline-offset:3px}
 .bc .sep{color:var(--mute);font-weight:400}
@@ -248,8 +250,14 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
       if (ul.parentElement.querySelector('.navback')) return;
       const l = lang(), row = document.createElement('div'); row.className = 'navrow';
       ul.before(row);
-      row.innerHTML = `<a class="navback" href="${N.home.url[l]}">← ${N.home[l]}</a>`;
+      row.innerHTML = `<a class="navback" href="${N.home.url[l]}" aria-label="${N.home[l]}">←<span class="nbt"> ${N.home[l]}</span></a>`;
       row.append(ul);
+    });
+    // a pill row that runs off to the right fades out there, so it's clear there is more
+    document.querySelectorAll('.nav ul').forEach(ul => {
+      if (ul.dataset.fade) return; ul.dataset.fade = 1;
+      const f = () => ul.classList.toggle('more', ul.scrollLeft + ul.clientWidth < ul.scrollWidth - 4);
+      ul.addEventListener('scroll', f, { passive: true }); addEventListener('resize', f); setTimeout(f, 300); f();
     });
     // only one way home at a time: the bar's button appears once the path at the top has scrolled away
     const bc = document.querySelector('.bc'), navs = document.querySelectorAll('.nav');

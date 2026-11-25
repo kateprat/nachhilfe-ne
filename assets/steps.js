@@ -244,6 +244,7 @@
   window.addEventListener('resize', refit);
   document.addEventListener('click', refit);
   document.addEventListener('langchange', refit);
+  document.addEventListener('langchange', () => requestAnimationFrame(() => unorphan(document)));
 
   // init runs on load and again after the language switch swaps the page content in place (see theme.js)
   let pageCtl = null;
@@ -370,7 +371,40 @@
     setupPlay();
     setupCircle();
     renderMath(document.body);
+    unorphan(document);
     refit();
+  }
+
+  // no lonely last words: glue the last short words (or a trailing "(17.1.2)." to its formula) with non-breaking spaces
+  function unorphan(root) {
+    const glue = el => {
+      const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentElement.closest('.katex, .katex-display, button, script, style') ? 2 : 1 });
+      let last = null, n; while ((n = w.nextNode())) if (n.nodeValue.trim()) last = n;
+      if (!last || last.parentElement.closest('[data-l]') !== el.closest('[data-l]') && el.querySelector('[data-l]')) return;
+      let v = last.nodeValue;
+      // glue up to two spaces at the end while the glued tail stays short
+      for (let k = 0; k < 2; k++) {
+        const i = v.search(/\s(?=\S*$)/); if (i < 0) break;
+        if (v.length - i > 22) break;
+        v = v.slice(0, i) + '\u00A0' + v.slice(i + 1);
+      }
+      // text that starts with a space right after a formula ("x = 1 (17.1.2).") sticks to the formula
+      if (/^\s\S{1,14}$/.test(v) && last.previousSibling && last.previousSibling.nodeType === 1) v = '\u00A0' + v.slice(1);
+      last.nodeValue = v;
+      // ends with a formula plus a little punctuation ("… O = (0, 0)."): keep the word before the formula with it
+      const prev = last.previousSibling;
+      if (/^[\s.,;:!?)]{0,4}$/.test(last.nodeValue) && prev && prev.nodeType === 1 && prev.classList.contains('katex')) {
+        const t = prev.previousSibling;
+        if (t && t.nodeType === 3) t.nodeValue = t.nodeValue.replace(/\s+$/, '\u00A0');
+      }
+    };
+    // short inline formulas never break in the middle ("g(x) =" / "y"); long ones still may, so nothing runs off a phone
+    root.querySelectorAll('.katex').forEach(k => { if (k.closest('.katex-display') || !k.offsetParent) return; const box = k.closest('p, li, td, th, div, span[data-l]') || k.parentElement; const w = [...k.querySelector('.katex-html').getClientRects()].reduce((a, r) => a + r.width, 0); if (w < Math.min(220, box.clientWidth * 0.55)) k.classList.add('nw'); });
+    root.querySelectorAll('main p, main li, .lead, .task, .done, .why').forEach(el => {
+      if (el.closest('.nav')) return;
+      const parts = el.querySelectorAll(':scope > [data-l]');
+      if (parts.length) parts.forEach(glue); else glue(el);
+    });
   }
   window.nachhilfeInit = init;
   document.addEventListener('DOMContentLoaded', () => init());
