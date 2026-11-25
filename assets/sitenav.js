@@ -17,8 +17,9 @@
   const css = `
 html,body{touch-action:manipulation}
 .navrow{display:flex;align-items:center;gap:10px}.navrow>ul{flex:1;min-width:0}
-.navback{display:none;flex:none;white-space:nowrap;padding:5px 12px;border-radius:999px;border:2px solid var(--ink);background:var(--card);color:var(--ink);text-decoration:none;font:700 15px "Bricolage Grotesque",system-ui,sans-serif}
-@media(min-width:700px){.navback{display:block}}
+.nav .navback{display:none;flex:none;white-space:nowrap;padding:5px 12px;border-radius:999px;border:2px solid var(--ink);background:var(--card);color:var(--ink);text-decoration:none;font:700 15px "Bricolage Grotesque",system-ui,sans-serif}
+@media(min-width:700px){.nav .navback{display:block;max-width:0;padding-left:0;padding-right:0;border-width:0;margin-right:-10px;opacity:0;overflow:hidden;transition:max-width .25s,opacity .2s,padding .25s,margin .25s}.nav.stuck .navback{max-width:140px;padding:5px 12px;border-width:2px;margin-right:0;opacity:1}}
+@media(prefers-reduced-motion:reduce){.navback{transition:none!important}}
 .bc{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 6px;margin:0;font:700 15px/1.35 "Bricolage Grotesque",system-ui,sans-serif;min-width:0}
 .bc a{color:light-dark(#1e5e4f,#7ed9b4);text-decoration:underline;text-underline-offset:3px}
 .bc .sep{color:var(--mute);font-weight:400}
@@ -250,6 +251,12 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
       row.innerHTML = `<a class="navback" href="${N.home.url[l]}">← ${N.home[l]}</a>`;
       row.append(ul);
     });
+    // only one way home at a time: the bar's button appears once the path at the top has scrolled away
+    const bc = document.querySelector('.bc'), navs = document.querySelectorAll('.nav');
+    if (navs.length) {
+      if (!bc) navs.forEach(n => n.classList.add('stuck'));
+      else new IntersectionObserver(([e]) => navs.forEach(n => n.classList.toggle('stuck', !e.isIntersecting)), { threshold: 0 }).observe(bc);
+    }
     // start page: progress per step and "continue where you were"
     document.querySelectorAll('.path a[data-topic]').forEach(a => {
       const t = a.dataset.topic, box = a.querySelector('.cprog'); if (!box) return;
