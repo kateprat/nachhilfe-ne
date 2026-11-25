@@ -7,6 +7,7 @@
     show: ['Rechnung zeigen', 'Show working'], next: ['Nächster Schritt', 'Next step'], all: ['Alles zeigen', 'Show all'],
     reset: ['Von vorn', 'Start over'], stamp: ['Geschafft!', 'Done!'], clear: ['Zurücksetzen', 'Reset'],
     predict: ['Was kommt als Nächstes? Erst überlegen, dann klicken.', 'What comes next? Think first, then click.'],
+    start: ['Wie würdest du anfangen? Erst überlegen, dann klicken.', 'How would you start? Think first, then click.'],
     axis: ['auf einer Achse', 'on an axis'], x: ['x-Koordinate', 'x-coordinate'], y: ['y-Koordinate', 'y-coordinate'],
     slope: ['Steigung', 'slope'], nd: ['nicht definiert', 'not defined']
   };
@@ -48,7 +49,7 @@
     const steps = [...ex.querySelectorAll('.step')];
     const done = ex.querySelector('.done');
     const faded = false; // all exercises use the same flow: step by step with "Next step"
-    let shown = 1;
+    let shown = 0; // no step open at first: the student opens them one by one
 
     // faded mode: each calculation hides behind its own button
     if (faded) steps.forEach(st => {
@@ -75,6 +76,7 @@
       if (done) done.hidden = shown < steps.length;
       next.hidden = shown >= steps.length; pred.hidden = shown >= steps.length;
       // the new step opens above the buttons; keep the buttons where they were, so the thumb stays on "Next step"
+      pred.innerHTML = D(shown === 0 ? 'start' : 'predict');
       if (scroll && y0 != null) scrollBy({ top: ctrl.getBoundingClientRect().top - y0, behavior: 'instant' });
       if (scroll && shown >= steps.length && !doneSet.has(ex.id)) { doneSet.add(ex.id); saveDone(); stamp(true); progressUpdate(); }
     }
@@ -92,7 +94,7 @@
       const a = (e.target.closest('button') || {}).dataset?.a;
       if (a === 'next') { const y0 = ctrl.getBoundingClientRect().top; shown = Math.min(steps.length, shown + 1); update(true, y0); }
       if (a === 'all') { shown = steps.length; steps.forEach(st => { const c = st.querySelector('.calc'); if (c) c.hidden = false; st._calcBtn && st._calcBtn.remove(); }); update(false); steps.forEach(st => st.classList.remove('on')); }
-      if (a === 'reset') { shown = 1; hideCalcs(); update(false); if (doneSet.has(ex.id)) { doneSet.delete(ex.id); saveDone(); progressUpdate(); } const sp = ex.querySelector('.stamp'); if (sp) sp.remove(); ex.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
+      if (a === 'reset') { shown = 0; hideCalcs(); update(false); if (doneSet.has(ex.id)) { doneSet.delete(ex.id); saveDone(); progressUpdate(); } const sp = ex.querySelector('.stamp'); if (sp) sp.remove(); ex.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
     });
     hideCalcs();
     update(false);
