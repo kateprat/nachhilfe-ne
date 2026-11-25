@@ -5,10 +5,10 @@
 --ink:light-dark(#1f2340,#f6efe4);--mute:light-dark(#5a5f80,#c2b5a5);
 --line:light-dark(#e2e4ee,#3d332c);--card:light-dark(#ffffff,#2a221d);--soft:light-dark(#f4f2ff,#31281f);
 --margin:light-dark(#f2a7b6,#8a4a4f);
---yellow:light-dark(#ffe45c,#e8c728);--mint:light-dark(#8ee6c0,#2fae7d);--sky:light-dark(#9fd0ff,#3d82d6);--pink:light-dark(#ffadc8,#d2507e);
---m:light-dark(#2d6be6,#7aa8ff);--q:light-dark(#e23d6d,#ff7aa0);--ok:light-dark(#11865a,#5be0a6);
---cos:light-dark(#11865a,#5be0a6);--sin:light-dark(#d4620e,#ffa25c);
---hi:light-dark(#fff3a8,#4d3f1a);--mark:light-dark(#ffe45c,#8a6a10);--tip:light-dark(#e9f4ff,#2b3036);
+--yellow:light-dark(#ffe45c,#e8c728);--mint:light-dark(#8ee6c0,#2fae7d);--sky:light-dark(#9fd0ff,#3d82d6);--pink:light-dark(#ffadc8,#e36d96);
+--m:light-dark(#2458c8,#7aa8ff);--q:light-dark(#c92a55,#ff7aa0);--ok:light-dark(#0b7449,#5be0a6);
+--cos:light-dark(#0b7449,#5be0a6);--sin:light-dark(#b0500a,#ffa25c);
+--hi:light-dark(#fff3a8,#4d3f1a);--mark:light-dark(#ffe45c,#7a5c0c);--tip:light-dark(#e9f4ff,#2b3036);
 --shadow:light-dark(#1f2340,#000);
 --peach:light-dark(#ffcdb5,#e58a5f);--lilac:light-dark(#cfc8ff,#8c7fe6);--rose:light-dark(#e2567a,#ff7aa0);--link:light-dark(#1e5e4f,#7ed9b4)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
@@ -214,3 +214,6 @@ ol.puzzle li.no{animation:shake .3s}
 .nav a.done.active{background:var(--mint);border-color:var(--ink)}
 .nav ul{scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){.nav a{transition:none}.nav ul{scroll-behavior:auto}}
+
+/* KaTeX \m and \q follow the theme colours (readable in light and dark) */
+.katex [style*="#3b7be8"],.katex [style*="rgb(59, 123, 232)"]{color:var(--m)!important}.katex [style*="#e0475b"],.katex [style*="rgb(224, 71, 91)"]{color:var(--q)!important}

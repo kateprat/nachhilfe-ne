@@ -7,7 +7,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="Mathe 2cNP">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap">
-<script src="../assets/theme.js?v=14"></script>
+<script src="../assets/theme.js?v=15"></script>
 <style>
 /* VOICE: calm maths notebook, same family as the Einheitskreis page
    IDEA: squared exercise paper with coloured-pencil constructions
@@ -95,7 +95,7 @@ h1,.sub{padding-right:120px}
 /* same look as the rest of the site: exercise-book paper, ink, highlighters */
 :root{--bg:light-dark(#fffdf8,#1f1a17);--ink:light-dark(#1f2340,#f6efe4);--mute:light-dark(#5a5f80,#c2b5a5);
 --grid:light-dark(#dfe8f6,#352c26);--line:light-dark(#e2e4ee,#3d332c);--card:light-dark(#ffffff,#2a221d);
---red:light-dark(#e23d6d,#ff7aa0);--blue:light-dark(#2d6be6,#7aa8ff);--green:light-dark(#11865a,#5be0a6);
+--red:light-dark(#c92a55,#ff7aa0);--blue:light-dark(#2458c8,#7aa8ff);--green:light-dark(#0b7449,#5be0a6);
 --hi:light-dark(#fff3a8,#4d3f1a);--sol:#ffd43b}
 body{font-family:"Atkinson Hyperlegible",system-ui,sans-serif;background-color:var(--bg);
   background-image:linear-gradient(light-dark(#e3ecf8,#2e2723) 1px,transparent 1px),linear-gradient(90deg,light-dark(#e3ecf8,#2e2723) 1px,transparent 1px);background-size:24px 24px}
@@ -105,7 +105,7 @@ h1{font-weight:800;letter-spacing:-.02em}
 .box{background:var(--card);border:2px solid var(--line);border-radius:18px}
 .calc{background:var(--card);border:2px solid var(--line)}
 .tabs{background:var(--card);border:2px solid var(--ink)}
-.tabs button[aria-selected=true]{background:light-dark(#ffe45c,#8a6a10);color:var(--ink);box-shadow:none}
+.tabs button[aria-selected=true]{background:light-dark(#ffe45c,#7a5c0c);color:var(--ink);box-shadow:none}
 button{border:2px solid var(--ink);font-weight:700}
 .quizbtn[aria-pressed=true]{background:light-dark(#ffadc8,#d2507e)}
 .topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 18px;flex-wrap:wrap}.topbar .crumb{margin:0}.topctl{display:flex;gap:8px;margin-left:auto}
@@ -122,7 +122,7 @@ h1,.sub{padding-right:0!important}
 <style>
 html[lang=de] [data-l=en],html[lang=en] [data-l=de]{display:none!important}
 .th2{font:800 clamp(26px,3.6vw,34px)/1.1 "Bricolage Grotesque",sans-serif;margin:64px 0 14px}
-.th2>span{background:linear-gradient(transparent 55%,light-dark(#ffe45c,#8a6a10) 55%,light-dark(#ffe45c,#8a6a10) 92%,transparent 92%);padding:0 4px}
+.th2>span{background:linear-gradient(transparent 55%,light-dark(#ffe45c,#7a5c0c) 55%,light-dark(#ffe45c,#7a5c0c) 92%,transparent 92%);padding:0 4px}
 .theory{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:16px 0}
 .theory .tc{border:2px solid var(--line);border-radius:18px;padding:14px 16px;background:var(--card)}
 .theory .tc h3{margin:0 0 6px;font:800 19px "Bricolage Grotesque",sans-serif}
