@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<script src="../assets/theme.js?v=49"></script>
+<script src="../assets/theme.js?v=50"></script>
 <script src="../assets/sitenav.js?v=24"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Quadriken: Parabeln, Tangenten und Kreise</title>
@@ -12,8 +12,8 @@
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/steps.js?v=49"></script>
-<link rel="stylesheet" href="../assets/style.css?v=49">
+<script defer src="../assets/steps.js?v=50"></script>
+<link rel="stylesheet" href="../assets/style.css?v=50">
 </head>
 <body>
 <main class="wrap">
@@ -154,7 +154,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 
 <article class="ex" id="a1b" data-mode="faded">
   <div class="ex-head"><h3>A1 (b) und (c)</h3></div>
-  <div class="task">(b) Sei \(a \neq 0\) (du darfst \(a \gt 0\) annehmen). Beschreibe die Parabel zu \(F = (0, a)\) und \(\ell: y = -a\) als Graph einer Funktion. (c) Finde F und ℓ so, dass die Parabel der Graph von \(f(x) = x^2\) ist.</div>
+  <div class="task">(b) Sei \(a \neq 0\) (du darfst \(a \gt 0\) annehmen). Beschreibe die Parabel zu \(F = (0, a)\) und \(\ell: y = -a\) als Graph einer Funktion.<br>(c) Finde F und ℓ so, dass die Parabel der Graph von \(f(x) = x^2\) ist.</div>
   <ol class="steps">
     <li class="step"><span class="nr">(b)</span><h4>Genau wie (a), nur mit a statt Zahlen</h4>
       <p class="why">a ist ein Parameter: eine feste Zahl, die wir nicht festlegen.</p>
@@ -294,7 +294,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <!-- A6 -->
 <article class="ex" id="a6" data-mode="faded">
   <div class="ex-head"><h3>A6</h3></div>
-  <div class="task">(a) Bestimme alle Tangenten an die Normalparabel \(f(x) = x^2\), die durch \(A = (1, -3)\) gehen. A liegt <b>nicht</b> auf der Parabel. (b) Gib die Berührpunkte an.<br><small style="color:var(--mute)">Hier der 2. Weg aus dem Skript = unser Kochrezept. Den 1. Weg findest du unten.</small></div>
+  <div class="task">(a) Bestimme alle Tangenten an die Normalparabel \(f(x) = x^2\), die durch \(A = (1, -3)\) gehen. A liegt <b>nicht</b> auf der Parabel.<br>(b) Gib die Berührpunkte an.<br><small style="color:var(--mute)">Hier der 2. Weg aus dem Skript = unser Kochrezept. Den 1. Weg findest du unten.</small></div>
   <ol class="steps">
     <li class="step"><span class="nr">SCHRITT 1</span><h4>Ansatz: A liegt auf t</h4>
       <p class="why">\(t(1) = -3\). Nach q auflösen.</p>
@@ -321,7 +321,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <!-- A7 -->
 <article class="ex" id="a7" data-mode="faded">
   <div class="ex-head"><h3>A7</h3></div>
-  <div class="task">(a) Bestimme alle Tangenten an \(f(x) = \frac14(x + 3)^2 + 1\), die durch \(P = (-2, -1)\) gehen. (b) Bestimme jeweils den Berührpunkt.</div>
+  <div class="task">(a) Bestimme alle Tangenten an \(f(x) = \frac14(x + 3)^2 + 1\), die durch \(P = (-2, -1)\) gehen.<br>(b) Bestimme jeweils den Berührpunkt.</div>
   <ol class="steps">
     <li class="step"><span class="nr">SCHRITT 1</span><h4>Ansatz: P liegt auf t</h4>
       <div class="calc">$$\m\cdot(-2) + \q = -1 \iff \q = 2\m - 1$$</div></li>
@@ -380,14 +380,22 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 
 <h3>Kreisgleichung lesen und schreiben</h3>
 <p>Im Skript schreibt man den Kreis mit Mittelpunkt M und Radius r als \(K_r(M)\). Zum Beispiel ist \(K_1(0, 0)\) der Kreis um den Ursprung mit Radius 1. Drei Fallen beim Ablesen:</p>
-<ul class="sub">
-  <li><b>1. Rechts steht \(r^2\), nicht r.</b> Der Radius ist die Wurzel der rechten Seite. \(x^2 + y^2 = 1\): \(r = \sqrt1 = 1\), also \(K_1(0, 0)\).</li>
-  <li><b>2. Vorzeichen umdrehen.</b> In \((x - a)^2\) steht a mit Minus. \((y + 7)^2 = (y - (-7))^2\), also \(b = -7\). Und \((3 - x)^2 = (x - 3)^2\), weil ein Quadrat nie negativ ist, egal in welcher Reihenfolge.</li>
-  <li><b>3. Rechte Seite prüfen.</b> Positiv: ein Kreis. Null: nur der Punkt M. Negativ: gar kein Punkt, weil \((\ldots)^2 + (\ldots)^2\) nie negativ wird.</li>
-</ul>
-<div class="box">
-<table class="which"><thead><tr><th>Gleichung</th><th>Was sie beschreibt</th></tr></thead><tbody><tr><td>\(x^2 + y^2 = 1\)</td><td>\(r^2 = 1\), also \(r = 1\): \(K_1(0, 0)\)</td></tr><tr><td>\((3 - x)^2 + (y + 7)^2 = \sqrt5\)</td><td>\(M = (3, -7)\), \(r^2 = \sqrt5\), also \(r = \sqrt{\sqrt5} = \sqrt[4]{5} \approx 1.5\): \(K_{\sqrt[4]{5}}(3, -7)\)</td></tr><tr><td>\(x^2 + y^2 = 0\)</td><td>nur der Punkt \((0, 0)\): \(K_0(0, 0) = \{(0, 0)\}\)</td></tr><tr><td>\(x^2 + y^2 = -1\)</td><td>kein Punkt, die leere Menge \(\emptyset\)</td></tr></tbody></table>
-<p style="margin:0"><b>Rückwärts</b> geht es genauso: Kreis mit Radius \(\sqrt3\) und Mittelpunkt \((2, -1)\): \((x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3\).</p></div>
+<div class="traps">
+  <div class="box"><p style="margin:0 0 4px"><b>1. Rechts steht r², nicht r.</b></p><p style="margin:0">Der Radius ist die Wurzel der rechten Seite.</p>
+  $$x^2 + y^2 = 1 \;\Rightarrow\; r = \sqrt1 = 1$$</div>
+  <div class="box"><p style="margin:0 0 4px"><b>2. Vorzeichen umdrehen.</b></p><p style="margin:0">In der Klammer steht der Mittelpunkt mit Minus. Und die Reihenfolge im Quadrat ist egal.</p>
+  $$\begin{aligned} (y + 7)^2 &= (y - (-7))^2 \;\Rightarrow\; b = -7 \\ (3 - x)^2 &= (x - 3)^2 \;\Rightarrow\; a = 3 \end{aligned}$$</div>
+  <div class="box"><p style="margin:0 0 4px"><b>3. Rechte Seite prüfen.</b></p><p style="margin:0">Ein Quadrat ist nie negativ. Darum:</p><ul style="margin:6px 0 0"><li>Positiv: ein Kreis</li><li>Null: nur der Punkt M</li><li>Negativ: gar kein Punkt</li></ul></div>
+</div>
+<p style="margin:18px 0 8px"><b>Die Aufgaben von deinem Blatt</b></p>
+<div class="exlist">
+  <div class="exitem">$$x^2 + y^2 = 1$$<ul><li>Mittelpunkt \((0, 0)\)</li><li>\(r^2 = 1\), also \(r = 1\)</li></ul><p class="exres">Ergebnis: \(K_1(0, 0)\)</p></div>
+  <div class="exitem">$$(3 - x)^2 + (y + 7)^2 = \sqrt5$$<ul><li>Mittelpunkt \((3, -7)\)</li><li>\(r^2 = \sqrt5\), also \(r = \sqrt{\sqrt5} = \sqrt[4]{5} \approx 1.5\)</li></ul><p class="exres">Ergebnis: \(K_{\sqrt[4]{5}}(3, -7)\)</p></div>
+  <div class="exitem">$$x^2 + y^2 = 0$$<ul><li>Rechts steht 0</li><li>Nur \((0, 0)\) erfüllt die Gleichung</li></ul><p class="exres">Ergebnis: \(K_0(0, 0) = \{(0, 0)\}\)</p></div>
+  <div class="exitem">$$x^2 + y^2 = -1$$<ul><li>Rechts steht etwas Negatives</li><li>Kein Punkt erfüllt die Gleichung</li></ul><p class="exres">Ergebnis: \(\emptyset \text{ (leere Menge)}\)</p></div>
+</div>
+<div class="box"><p style="margin:0"><b>Rückwärts</b> geht es genauso: Kreis mit Radius \(\sqrt3\) und Mittelpunkt \((2, -1)\):</p>
+$$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 <div class="box">
 <p><b>Probier selbst:</b> Was beschreiben diese Gleichungen?</p>
 <p style="margin:0 0 4px">a) \(x^2 + (y - 2)^2 = 9\)<br>b) \((x + 1)^2 + y^2 = 7\)<br>c) \((5 - x)^2 + y^2 = 0\)<br>d) \(x^2 + y^2 + 4 = 0\)</p><p style="margin:0 0 6px"><button type="button" class="reveal" data-answer="kq1">Antwort zeigen</button></p>
@@ -440,7 +448,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <!-- A9 rest -->
 <article class="ex" id="a9b" data-mode="faded">
   <div class="ex-head"><h3>A9 (a) a)–d), f) und (b)</h3></div>
-  <div class="task">(a) Finde Mittelpunkt und Radius: a) \(x^2 + y^2 = 25\) &nbsp; b) \(x^2 + y^2 - 5 = 0\) &nbsp; c) \(x^2 - 2x + 1 + y^2 - \frac14 = 0\) &nbsp; d) \(x^2 + 2x + 1 + y^2 - \frac14 = 0\) &nbsp; f) \(x^2 + y^2 - 2\sqrt3 x + 4\sqrt2 y + 4 = 0\)<br>(b) Warum sind das keine Kreise? Was ist es dann? a) \(x^2 + y^2 + 25 = 0\) &nbsp; b) \(x^2 + y^2 = 0\) &nbsp; c) \(x^2 + \left(\frac{y}{2}\right)^2 - 1 = 0\)</div>
+  <div class="task">(a) Finde Mittelpunkt und Radius:<br>a) \(x^2 + y^2 = 25\)<br>b) \(x^2 + y^2 - 5 = 0\)<br>c) \(x^2 - 2x + 1 + y^2 - \frac14 = 0\)<br>d) \(x^2 + 2x + 1 + y^2 - \frac14 = 0\)<br>f) \(x^2 + y^2 - 2\sqrt3 x + 4\sqrt2 y + 4 = 0\)<br>(b) Warum sind das keine Kreise? Was ist es dann?<br>a) \(x^2 + y^2 + 25 = 0\)<br>b) \(x^2 + y^2 = 0\)<br>c) \(x^2 + \left(\frac{y}{2}\right)^2 - 1 = 0\)</div>
   <ol class="steps">
     <li class="step"><span class="nr">a) b)</span><h4>Schon fast fertig</h4>
       <p class="why">\(x^2 = (x - 0)^2\). Der Radius ist die Wurzel der rechten Seite.</p>
@@ -465,7 +473,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <!-- A10 -->
 <article class="ex" id="a10" data-mode="faded">
   <div class="ex-head"><h3>A10</h3></div>
-  <div class="task">Die Nullstellenmengen dieser Funktionen sind keine Kreise, aber einfache Figuren. Skizziere sie: (a) \(y\) (b) \(y - 3\) (c) \(x\) (d) \(x + 4\) (e) \(x - y\) (f) \(x + y\) (g) \(\frac12 x - 3 - y\) (h) \(2x + 3y - 6\) (i) \(x^2 - y\) (j) \(x - y^2\) (k) \(xy\) (l) \((x + 4)(y - 3)\) (m) \(xy + 2x + 5y + 10\) (n) \(0\) (o) \(-2\) (p) \(xy(x - y)\) (q) \(x^3y - xy^3\); Zusatz (r), (s).</div>
+  <div class="task">Die Nullstellenmengen dieser Funktionen sind keine Kreise, aber einfache Figuren. Skizziere sie:<br>(a) \(y\)<br>(b) \(y - 3\)<br>(c) \(x\)<br>(d) \(x + 4\)<br>(e) \(x - y\)<br>(f) \(x + y\)<br>(g) \(\frac12 x - 3 - y\)<br>(h) \(2x + 3y - 6\)<br>(i) \(x^2 - y\)<br>(j) \(x - y^2\)<br>(k) \(xy\)<br>(l) \((x + 4)(y - 3)\)<br>(m) \(xy + 2x + 5y + 10\)<br>(n) \(0\)<br>(o) \(-2\)<br>(p) \(xy(x - y)\)<br>(q) \(x^3y - xy^3\); Zusatz (r), (s).</div>
   <ol class="steps">
     <li class="step"><span class="nr">REGEL</span><h4>Gleich null setzen, nach y (oder x) auflösen</h4>
       <p class="why">Die Nullstellenmenge von f(x, y) sind alle Punkte mit f(x, y) = 0. Wenn du nach y auflösen kannst, siehst du sofort eine bekannte Funktion.</p></li>
@@ -511,7 +519,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <!-- A11 b-d -->
 <article class="ex" id="a11b" data-mode="faded">
   <div class="ex-head"><h3>A11 (b)–(d)</h3></div>
-  <div class="task">(b) Schnittpunkte von \(y = \frac12 x + 1\) mit \(x^2 + y^2 = 25\). (c) Schnittpunkte des Kreises um \((-2, 1)\) mit Radius 4 mit der Geraden durch den Mittelpunkt mit Steigung \(\frac32\). (d) freiwillig: \(3x + 4y = 327\) mit \((x - 5)^2 + (y - 3)^2 = 65^2\).</div>
+  <div class="task">(b) Schnittpunkte von \(y = \frac12 x + 1\) mit \(x^2 + y^2 = 25\).<br>(c) Schnittpunkte des Kreises um \((-2, 1)\) mit Radius 4 mit der Geraden durch den Mittelpunkt mit Steigung \(\frac32\).<br>(d) freiwillig: \(3x + 4y = 327\) mit \((x - 5)^2 + (y - 3)^2 = 65^2\).</div>
   <ol class="steps">
     <li class="step"><span class="nr">(b)</span><h4>Einsetzen, Bruch wegmultiplizieren</h4>
       <div class="calc">$$\begin{aligned} x^2 + \left(\tfrac12 x + 1\right)^2 &= 25 \\ x^2 + \tfrac14 x^2 + x + 1 &= 25 \quad\mid\cdot 4 \\ 5x^2 + 4x - 96 &= 0 \end{aligned}$$</div></li>
