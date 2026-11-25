@@ -67,7 +67,7 @@ a.card:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--shadow)}
 .card span:last-child{display:block}
 @media(max-width:520px){
   .cards{gap:12px;margin-top:20px}
-  .card{grid-template-columns:48px minmax(0,1fr);gap:12px;padding:12px 14px;align-items:start;border-radius:16px;box-shadow:3px 3px 0 var(--shadow)}
+  .card{grid-template-columns:48px minmax(0,1fr);gap:12px;padding:12px 14px;align-items:center;border-radius:16px;box-shadow:3px 3px 0 var(--shadow)}
   .card .doodle{width:48px;height:48px;border-radius:12px}
   .card .doodle svg{width:34px;height:34px;stroke-width:3.5}
   .card .n{font-size:13px}
