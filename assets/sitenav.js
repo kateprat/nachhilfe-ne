@@ -16,6 +16,9 @@
   };
   const css = `
 html,body{touch-action:manipulation}
+.navrow{display:flex;align-items:center;gap:10px}.navrow>ul{flex:1;min-width:0}
+.navback{display:none;flex:none;white-space:nowrap;padding:5px 12px;border-radius:999px;border:2px solid var(--ink);background:var(--card);color:var(--ink);text-decoration:none;font:700 15px "Bricolage Grotesque",system-ui,sans-serif}
+@media(min-width:700px){.navback{display:block}}
 .bc{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 6px;margin:0;font:700 15px/1.35 "Bricolage Grotesque",system-ui,sans-serif;min-width:0}
 .bc a{color:light-dark(#1e5e4f,#7ed9b4);text-decoration:underline;text-underline-offset:3px}
 .bc .sep{color:var(--mute);font-weight:400}
@@ -238,6 +241,15 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
       if (c) { if (old) old.replaceWith(c); else main.prepend(c); }
     }
     document.querySelectorAll('.nav ul').forEach(markOut);
+    // laptop: once the page is scrolled, the path at the top is gone; the sticky bar gets its own way back (it stays put,
+    // outside the pill row that scrolls sideways)
+    document.querySelectorAll('.nav > ul').forEach(ul => {
+      if (ul.parentElement.querySelector('.navback')) return;
+      const l = lang(), row = document.createElement('div'); row.className = 'navrow';
+      ul.before(row);
+      row.innerHTML = `<a class="navback" href="${N.home.url[l]}">← ${N.home[l]}</a>`;
+      row.append(ul);
+    });
     // start page: progress per step and "continue where you were"
     document.querySelectorAll('.path a[data-topic]').forEach(a => {
       const t = a.dataset.topic, box = a.querySelector('.cprog'); if (!box) return;
