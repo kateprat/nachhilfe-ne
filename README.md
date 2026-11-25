@@ -10,3 +10,7 @@ Static site (no build step), deployed by Cloudflare on every push.
 - `assets/` – shared CSS, `steps.js` (step reveal, progress, bilingual blocks, gaps, puzzle), `theme.js` (Auto/light/dark), vendored KaTeX
 
 Bilingual single-file pages use `<html data-bilingual>` and `data-l="de|en"` blocks.
+
+## Credits
+
+Built by kateprat with the help of Claude (Anthropic) as a coding and writing assistant.
