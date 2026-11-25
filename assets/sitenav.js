@@ -41,7 +41,9 @@ html .topctl .langsw button[aria-current]{background:var(--ink);color:var(--bg)}
 html.embed,html.embed body{background:transparent!important}
 html.embed main{padding:0!important;max-width:none!important}
 html.embed .topbar,html.embed .topctl,html.embed .crumb,html.embed .lang,html.embed .langsw,html.embed main>h1,html.embed footer,html.embed .lic,html.embed .chapnav{display:none!important}
-html.embed .fig{position:relative!important;top:auto!important;width:min(100%,620px)!important;max-width:620px}
+html.embed .fig{position:relative!important;top:auto!important;will-change:transform}
+@media(max-width:820px){html.embed .fig{width:min(100%,620px)!important;max-width:620px}}
+@media(min-width:900px){iframe.embedded[data-part=interaktiv]{width:min(1180px,calc(100vw - 2*max(4vw,16px)));margin-left:50%;transform:translateX(-50%)}}
 html.embed .ilay,html.embed main>.wrap{margin-top:0}
 iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px;background:transparent;color-scheme:normal}
 @media(min-width:821px){html.has-chapnav .fig{top:calc(var(--chaph,64px) + 12px)!important}}`;
@@ -149,6 +151,13 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
     e.preventDefault(); e.stopImmediatePropagation();
     window.open(location.pathname + '?solo=1&lang=' + lang(), '_blank');
   }, true);
+  if (EMBED) document.addEventListener('click', e => {
+    const a = e.target.closest('a[href]'); if (!a || a.getAttribute('href').startsWith('#') || e.defaultPrevented) return;
+    e.preventDefault();
+    const u = new URL(a.href, location.href), m = u.pathname.match(/\/(interaktiv|spickzettel)(\.html)?$/);
+    const t = m && parent.document.getElementById(m[1]);
+    if (t) t.scrollIntoView({ behavior: 'smooth' }); else parent.location.href = u.href;
+  });
   // chapter page: size the embedded frames, and open "Im Bild prüfen" links inside the embedded tool
   addEventListener('message', e => {
     if (e.origin !== location.origin || !e.data || e.data.nachhilfe !== 'height') return;
@@ -162,6 +171,24 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
     try { if (m[1]) f.contentWindow.location.hash = m[1]; } catch (err) {}
     document.getElementById('interaktiv').scrollIntoView({ behavior: 'smooth' });
   });
+  // laptop: the tool is two columns wide; keep its graph in view next to the controls while the chapter page scrolls
+  // (sticky positioning can't reach out of a frame, so the chapter page moves the graph itself)
+  const keepGraph = () => document.querySelectorAll('iframe.embedded[data-part=interaktiv]').forEach(f => {
+    let d; try { d = f.contentDocument; } catch (e) { return; }
+    const fig = d && d.querySelector('.fig'); if (!fig) return;
+    if (f.clientWidth <= 820) { fig.style.transform = ''; fig.style.width = ''; return; }
+    const nav = document.querySelector('.nav'), navh = nav ? nav.offsetHeight : 0;
+    fig.style.width = Math.round(Math.min(620, Math.max(320, innerHeight - navh - 32), f.clientWidth * 0.52)) + 'px';
+    fig.style.transform = '';
+    const box = fig.parentElement.getBoundingClientRect(), r = fig.getBoundingClientRect();
+    const want = navh + 12 - f.getBoundingClientRect().top;
+    const y = Math.max(r.top, Math.min(want, box.bottom - r.height));
+    fig.style.transform = `translateY(${y - r.top}px)`;
+  });
+  let kgTick = false;
+  addEventListener('scroll', () => { if (!kgTick) { kgTick = true; requestAnimationFrame(() => { kgTick = false; keepGraph(); }); } }, { passive: true });
+  addEventListener('resize', keepGraph);
+  addEventListener('message', e => { if (e.origin === location.origin && e.data && e.data.nachhilfe === 'height') requestAnimationFrame(keepGraph); });
   document.addEventListener('DOMContentLoaded', () => {
     let h = null; try { h = sessionStorage.getItem('nachhilfe-embedhash'); sessionStorage.removeItem('nachhilfe-embedhash'); } catch (e) {}
     const f = h && document.querySelector('iframe.embedded[data-part=interaktiv]');
