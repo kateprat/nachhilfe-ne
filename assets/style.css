@@ -259,3 +259,17 @@ h1,h2,h3,h4,.card b,.lead{text-wrap:balance}
 table .katex.nw{white-space:normal}
 @media(max-width:520px){table.which{table-layout:fixed;width:100%;font-size:14px}table.which td,table.which th{overflow-wrap:anywhere;padding-left:6px;padding-right:6px}}
 .katex .katex-mathml{max-width:100%;overflow:hidden}
+
+/* ⋯ menu for colours and language */
+.topctl{position:relative}
+.menubtn{min-height:0;width:44px;height:38px;padding:0;border-radius:999px;border:2px solid var(--ink);background:var(--card);color:var(--ink);font:800 20px/1 "Bricolage Grotesque",system-ui,sans-serif;cursor:pointer;box-shadow:none}
+.menubtn[aria-expanded=true]{background:var(--mark)}
+.tmenu{position:absolute;right:0;top:calc(100% + 8px);z-index:60;min-width:230px;padding:12px 14px 14px;background:var(--card);border:2px solid var(--ink);border-radius:16px;box-shadow:4px 4px 0 var(--shadow)}
+.tmenu>p{margin:0 0 6px;font:700 13px "Bricolage Grotesque",system-ui,sans-serif;color:var(--mute)}
+.tmenu>p+.langsw,.tmenu>.langsw{width:max-content}
+.tmenu>.langsw+p{margin-top:12px}
+/* home-screen app: content keeps clear of the notch and the home bar, bar sits under the status bar */
+body{padding-top:env(safe-area-inset-top,0px)}
+.nav{top:env(safe-area-inset-top,0px)}
+.wrap{padding-left:max(4vw,16px,env(safe-area-inset-left,0px));padding-right:max(4vw,16px,env(safe-area-inset-right,0px));padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+@media(max-width:520px){.wrap{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}}

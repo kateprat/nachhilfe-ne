@@ -23,20 +23,31 @@
     if (EMBED) return;
     const lang = document.querySelector('.langsw, main > .lang');
     if (!lang) return;
-    const en = document.documentElement.lang === 'en';
+    // colours and language live in a ⋯ menu: you set them once, so they don't need a whole row on every page
+    const L = (de, en) => `<span data-l="de">${de}</span><span data-l="en">${en}</span>`;
     const box = document.createElement('div'); box.className = 'topctl';
     lang.before(box);
+    const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'menubtn'; btn.textContent = '⋯';
+    btn.setAttribute('aria-haspopup', 'true'); btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', document.documentElement.lang === 'en' ? 'Colours and language' : 'Farben und Sprache');
+    const menu = document.createElement('div'); menu.className = 'tmenu'; menu.hidden = true;
+    menu.innerHTML = `<p>${L('Farben', 'Colours')}</p>`;
     const sw = document.createElement('div'); sw.className = 'langsw'; sw.setAttribute('role', 'group');
-    sw.setAttribute('aria-label', en ? 'Colour mode' : 'Farbmodus');
-    const opts = [['auto', 'Auto', en ? 'Like the device' : 'Wie das Gerät'], ['light', '☀', en ? 'Light' : 'Hell'], ['dark', '☾', en ? 'Dark' : 'Dunkel']];
-    opts.forEach(([v, t, label]) => {
-      const b = document.createElement('button'); b.type = 'button'; b.textContent = t; b.title = label; b.setAttribute('aria-label', label); b.dataset.theme = v;
-      b.addEventListener('click', e => { pref = v; try { localStorage.setItem(KEY, v); } catch (err) {} apply(v); mark(); });
+    [['auto', 'Auto', 'Auto'], ['light', 'Hell', 'Light'], ['dark', 'Dunkel', 'Dark']].forEach(([v, de, en]) => {
+      const b = document.createElement('button'); b.type = 'button'; b.innerHTML = L(de, en); b.dataset.theme = v;
+      b.addEventListener('click', () => { pref = v; try { localStorage.setItem(KEY, v); } catch (err) {} apply(v); mark(); });
       sw.append(b);
     });
     const mark = () => sw.querySelectorAll('button').forEach(a => a.toggleAttribute('aria-current', a.dataset.theme === pref));
     mark();
-    box.append(sw, lang);
+    menu.append(sw);
+    menu.insertAdjacentHTML('beforeend', `<p>${L('Sprache', 'Language')}</p>`);
+    menu.append(lang);
+    box.append(btn, menu);
+    const close = () => { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); };
+    btn.addEventListener('click', e => { e.stopPropagation(); menu.hidden = !menu.hidden; btn.setAttribute('aria-expanded', String(!menu.hidden)); });
+    document.addEventListener('click', e => { if (!menu.hidden && !box.contains(e.target)) close(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
     // standard header row: back link on the left, settings on the right (same row on phone and laptop)
     const main = box.parentElement, crumb = main.querySelector(':scope > .crumb');
     const bar = document.createElement('div'); bar.className = 'topbar';
