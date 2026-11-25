@@ -7,6 +7,25 @@
   apply(pref);
   // embedded as a section of the chapter page (?embed=1&lang=..): no own header, follow the chapter page's colours,
   // and tell the chapter page how tall we are so the frame grows with the content
+  // one language for the whole site: German by default, and whatever you pick stays picked on every page
+  const LKEY = 'nachhilfe-lang';
+  let wantLang = 'de'; try { wantLang = localStorage.getItem(LKEY) || 'de'; } catch (e) {}
+  window.nachhilfeSetLang = l => { try { localStorage.setItem(LKEY, l); } catch (e) {} };
+  const PAIRS = [['/', 'de', '/en.html', 'en'], ['/trigonometrie/de.html', 'de', '/trigonometrie/', 'en'], ['/quadriken/', 'de', '/quadriken/en.html', 'en']];
+  const norm = u => u.replace(/\.html$/, '').replace(/\/index$/, '/');
+  if (!new URLSearchParams(location.search).has('embed')) {
+    const here = norm(location.pathname);
+    for (const [a, la, b, lb] of PAIRS) {
+      const [mine, other, otherUrl] = here === norm(a) ? [la, lb, b] : here === norm(b) ? [lb, la, a] : [];
+      if (mine && mine !== wantLang && other === wantLang) { location.replace(otherUrl + location.search + location.hash); break; }
+    }
+    if (document.documentElement.hasAttribute('data-bilingual')) document.documentElement.lang = wantLang;
+    // remember every switch, whichever kind of switch it was
+    document.addEventListener('click', e => {
+      const t = e.target.closest('[data-setlang], .langsw a[lang]');
+      if (t) window.nachhilfeSetLang(t.dataset.setlang || t.getAttribute('lang'));
+    }, true);
+  }
   const QS = new URLSearchParams(location.search);
   const EMBED = QS.has('embed') && window.parent !== window;
   if (QS.get('lang')) document.documentElement.lang = QS.get('lang');
