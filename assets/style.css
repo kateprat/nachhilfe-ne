@@ -176,3 +176,5 @@ ol.puzzle li.no{animation:shake .3s}
   .gap>span{visibility:hidden!important}
   body.print-answers .gap>span{visibility:visible!important}
 }
+.katex-display{overflow-x:auto;overflow-y:hidden;padding:2px 0;max-width:100%}
+@media(max-width:520px){.katex-display>.katex{font-size:1.02em}.box,.ex{padding-left:14px;padding-right:14px}}
