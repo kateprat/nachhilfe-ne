@@ -9,7 +9,8 @@
 --m:light-dark(#2d6be6,#7aa8ff);--q:light-dark(#e23d6d,#ff7aa0);--ok:light-dark(#11865a,#5be0a6);
 --cos:light-dark(#11865a,#5be0a6);--sin:light-dark(#d4620e,#ffa25c);
 --hi:light-dark(#fff3a8,#4d3f1a);--mark:light-dark(#ffe45c,#8a6a10);--tip:light-dark(#e9f4ff,#2b3036);
---shadow:light-dark(#1f2340,#000)}
+--shadow:light-dark(#1f2340,#000);
+--peach:light-dark(#ffcdb5,#e58a5f);--lilac:light-dark(#cfc8ff,#8c7fe6);--rose:light-dark(#e2567a,#ff7aa0);--link:light-dark(#1e5e4f,#7ed9b4)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 [hidden]{display:none!important}
@@ -18,7 +19,7 @@ body{margin:0;color:var(--ink);font:18px/1.6 "Atkinson Hyperlegible",system-ui,s
   background-color:var(--bg);
   background-image:linear-gradient(var(--paper-grid) 1px,transparent 1px),linear-gradient(90deg,var(--paper-grid) 1px,transparent 1px);
   background-size:24px 24px}
-a{color:var(--m);text-underline-offset:3px}
+a{color:var(--link);text-underline-offset:3px}
 .wrap{max-width:880px;margin:0 auto;padding:clamp(20px,4vw,48px) max(4vw,16px) 96px;position:relative}
 h1,h2,h3,h4,.card b,.recipe b,.nav a,button,.mode,.stamp,.progress{font-family:"Bricolage Grotesque",system-ui,sans-serif}
 h1{font-size:clamp(34px,6vw,58px);line-height:1;margin:0 0 14px;font-weight:800;letter-spacing:-.02em;text-wrap:balance}
@@ -61,7 +62,7 @@ a.card:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--shadow)}
 a.card:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--shadow)}
 .card .doodle{width:88px;height:88px;border-radius:16px;display:grid;place-items:center}
 .card .doodle svg{width:64px;height:64px;stroke:#1f2340;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
-.card.c-mint .doodle{background:var(--mint)}.card.c-sky .doodle{background:var(--sky)}.card.c-pink .doodle{background:var(--pink)}
+.card.c-mint .doodle{background:var(--mint)}.card.c-sky .doodle{background:var(--sky)}.card.c-pink .doodle{background:var(--pink)}.card.c-peach .doodle{background:var(--peach)}.card.c-lilac .doodle{background:var(--lilac)}
 .card .n{color:var(--mute);font-size:15px;font-weight:700}
 .card b{font-size:25px;display:block;margin:0 0 4px;line-height:1.1}
 .card span:last-child{display:block}
@@ -100,7 +101,7 @@ table.which{border-collapse:collapse;width:100%;margin:12px 0;font-size:17px;bac
 .ex::before{content:"";position:absolute;top:0;bottom:0;left:clamp(14px,3vw,30px);width:2px;background:var(--margin)}
 .ex-head{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;margin-bottom:6px}
 .ex-head h3{margin:0;font-size:26px}
-.mode{font-size:14px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--sky);color:#14213d}
+.mode{font-size:14px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--lilac);color:#1f1a40}
 .ex[data-mode=faded] .mode{background:var(--pink);color:#3a0f20}
 .task{padding:12px 14px;border-radius:14px;background:var(--soft);margin:10px 0 16px}
 .steps{list-style:none;margin:0;padding:0;display:grid;gap:12px}
@@ -120,7 +121,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 button.reveal{min-height:38px;font-size:15px;margin-top:8px;background:var(--soft);border-color:var(--line)}
 
 /* the one celebratory moment: a stamp when the last step is reached */
-.stamp{position:absolute;top:14px;right:16px;padding:6px 14px;border:3px solid var(--ok);color:var(--ok);border-radius:12px;font-weight:800;font-size:18px;transform:rotate(-8deg);background:var(--card)}
+.stamp{position:absolute;top:14px;right:16px;padding:6px 14px;border:3px solid var(--rose);color:var(--rose);border-radius:12px;font-weight:800;font-size:18px;transform:rotate(-8deg);background:var(--card)}
 .stamp.pop{animation:pop .45s cubic-bezier(.2,1.6,.4,1)}
 @keyframes pop{from{transform:rotate(-8deg) scale(2.2);opacity:0}to{transform:rotate(-8deg) scale(1);opacity:1}}
 @media(prefers-reduced-motion:reduce){.stamp.pop{animation:none}.progress .bar i,.card{transition:none}}
