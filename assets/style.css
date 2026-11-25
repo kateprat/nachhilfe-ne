@@ -270,7 +270,7 @@ table .katex.nw{white-space:normal}
 .tmenu>.langsw+p{margin-top:12px}
 /* home-screen app: content keeps clear of the notch and the home bar, bar sits under the status bar */
 body{padding-top:env(safe-area-inset-top,0px)}
-.nav{top:env(safe-area-inset-top,0px)}
+.nav{top:0;padding-top:calc(10px + env(safe-area-inset-top,0px))} /* the bar reaches up under the status bar, so nothing shows through above it */
 .wrap{padding-left:max(4vw,16px,env(safe-area-inset-left,0px));padding-right:max(4vw,16px,env(safe-area-inset-right,0px));padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
 @media(max-width:520px){.wrap{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}}
 .h1row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.h1row>h1{margin-top:0}.h1row>.topctl{flex:none;margin-top:4px}
