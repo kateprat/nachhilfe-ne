@@ -34,12 +34,13 @@ p{margin:0 0 12px;max-width:66ch}
 .cc{color:var(--cos);font-weight:700}.ss{color:var(--sin);font-weight:700}.tt{color:var(--m);font-weight:700}
 
 /* top controls: colour mode + language */
-.topctl{position:absolute;top:clamp(20px,4vw,48px);right:max(4vw,16px);display:flex;gap:8px;z-index:6}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 22px;flex-wrap:wrap}
+.topbar .crumb{margin:0}
+.topctl{display:flex;gap:8px;margin-left:auto}
 .langsw{display:flex;border:2px solid var(--ink);border-radius:12px;overflow:hidden;background:var(--card)}
 .langsw a{padding:6px 11px;font:700 14px "Bricolage Grotesque",system-ui,sans-serif;text-decoration:none;color:var(--ink)}
 .langsw a[aria-current]{background:var(--ink);color:var(--bg)}
-main.wrap>h1,main.wrap>.crumb{padding-right:240px}
-@media(max-width:680px){.topctl{position:static;justify-content:flex-end;margin-bottom:14px}main.wrap>h1,main.wrap>.crumb{padding-right:0}}
+@media(max-width:520px){.langsw a,.langsw button{padding:5px 8px;font-size:13px}.topbar{margin-bottom:16px}}
 
 /* sticky chapter nav + progress */
 .nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(6px);
@@ -178,3 +179,6 @@ ol.puzzle li.no{animation:shake .3s}
 }
 .katex-display{overflow-x:auto;overflow-y:hidden;padding:2px 0;max-width:100%}
 @media(max-width:520px){.katex-display>.katex{font-size:1.02em}.box,.ex{padding-left:14px;padding-right:14px}}
+@media(max-width:520px){.langsw a,.langsw button{padding:5px 8px;font-size:13px}}
+/* KaTeX hides its MathML copy with position:absolute; keep it inside scroll boxes so it cannot widen the page */
+.tbl,.calc,.katex-display,.task,.box,.tc,.sheet,.step{position:relative}

@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<script src="../assets/theme.js?v=4"></script>
+<script src="../assets/theme.js?v=6"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Trigonometrie – Schritt für Schritt</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/steps.js?v=4"></script>
-<link rel="stylesheet" href="../assets/style.css?v=5">
+<script defer src="../assets/steps.js?v=6"></script>
+<link rel="stylesheet" href="../assets/style.css?v=6">
 </head>
 <body>
 <main class="wrap">
@@ -105,7 +105,7 @@
       <p class="why">Achtung: 380° = 360° + 20°, das ist derselbe Punkt wie 20°. −190° heisst: 190° im Uhrzeigersinn.</p>
       <div class="calc">$$\begin{aligned} \cos 55^\circ &\approx 0.574, & \sin 55^\circ &\approx 0.819 \\ \cos 290^\circ &\approx 0.342, & \sin 290^\circ &\approx -0.940 \\ \cos(-190^\circ) &\approx -0.985, & \sin(-190^\circ) &\approx 0.174 \\ \cos 380^\circ &\approx 0.940, & \sin 380^\circ &\approx 0.342 \end{aligned}$$</div></li>
     <li class="step"><span class="nr">(c)</span><h4>tan auf der Linie x = 1 ablesen</h4>
-      <div class="calc">$$\tan 55^\circ \approx 1.428,\quad \tan 290^\circ \approx -2.747,\quad \tan(-190^\circ) \approx -0.176,\quad \tan 380^\circ \approx 0.364$$</div></li>
+      <div class="calc">$$\begin{aligned} \tan 55^\circ &\approx 1.428 & \tan 290^\circ &\approx -2.747 \\ \tan(-190^\circ) &\approx -0.176 & \tan 380^\circ &\approx 0.364 \end{aligned}$$</div></li>
     <li class="step"><span class="nr">(d)</span><h4>\(\sin(\alpha) = 0.8\)</h4>
       <p class="why">Zeichne die waagrechte Linie y = 0.8. Sie trifft den Kreis zweimal, links und rechts gespiegelt.</p>
       <div class="calc">$$\alpha_1 \approx 53.1^\circ, \quad \alpha_2 = 180^\circ - 53.1^\circ \approx 126.9^\circ, \qquad \alpha = \alpha_{1,2} + k\cdot 360^\circ,\ k \in \mathbb{Z}$$
@@ -115,7 +115,7 @@
       <div class="calc">$$\alpha \approx \pm 101.5^\circ + k\cdot 360^\circ \quad(\text{also auch } 258.5^\circ)$$</div></li>
     <li class="step"><span class="nr">(f)</span><h4>\(\tan(\alpha) = -2\)</h4>
       <p class="why">Gerade durch O mit Steigung −2. Sie trifft den Kreis in zwei gegenüberliegenden Punkten, 180° auseinander.</p>
-      <div class="calc">$$\alpha \approx 116.6^\circ + k\cdot 180^\circ \quad(\text{der Rechner gibt } -63.4^\circ\text{, das ist dieselbe Familie})$$</div></li>
+      <div class="calc">$$\alpha \approx 116.6^\circ + k\cdot 180^\circ$$<p>Der Rechner gibt \(-63.4^\circ\): dieselbe Familie (\(-63.4^\circ + 180^\circ = 116.6^\circ\)).</p></div></li>
     <li class="step"><span class="nr">(g)(h)</span><h4>\(\sin(\alpha) = 4.2\), \(\cos(\alpha) = -2\)</h4>
       <div class="calc"><p>Keine Lösung: cos und sin liegen immer zwischen −1 und 1.</p></div></li>
   </ol>
@@ -157,7 +157,7 @@
       <div class="calc">$$\begin{aligned} A &= (\cos 0^\circ, \sin 0^\circ) = (1, 0) & B &= (\cos 72^\circ, \sin 72^\circ) \\ C &= (\cos 144^\circ, \sin 144^\circ) & D &= (\cos 216^\circ, \sin 216^\circ) \\ E &= (\cos 288^\circ, \sin 288^\circ) \end{aligned}$$</div></li>
     <li class="step"><span class="nr">(b)</span><h4>Radius 4: alles mal 4</h4>
       <p class="why">Ein 4-mal grösserer Kreis streckt jeden Punkt um den Faktor 4.</p>
-      <div class="calc">$$A = (4, 0),\ B \approx (1.24, 3.80),\ C \approx (-3.24, 2.35),\ D \approx (-3.24, -2.35),\ E \approx (1.24, -3.80)$$</div></li>
+      <div class="calc">$$\begin{aligned} A &= (4, 0) & B &\approx (1.24,\ 3.80) \\ C &\approx (-3.24,\ 2.35) & D &\approx (-3.24,\ -2.35) \\ E &\approx (1.24,\ -3.80) \end{aligned}$$</div></li>
     <li class="step"><span class="nr">(c)</span><h4>Allgemein: n Ecken, Radius r</h4>
       <p class="why">Abstand \(\frac{360^\circ}{n}\), Ecke Nummer k beim Winkel \(k\cdot\frac{360^\circ}{n}\), alles mal r.</p>
       <div class="calc">$$\left(r\cos\!\left(k\cdot\tfrac{360^\circ}{n}\right),\ r\sin\!\left(k\cdot\tfrac{360^\circ}{n}\right)\right), \qquad k = 0, 1, \dots, n-1$$</div></li>
@@ -198,7 +198,7 @@
       <div class="calc">$$\cos(-\alpha) = \cos(\alpha), \qquad \sin(-\alpha) = -\sin(\alpha)$$</div></li>
     <li class="step"><span class="nr">(b)</span><h4>+90°, +180°, +360° drehen</h4>
       <p class="why">+360°: gleicher Punkt. +180°: Punkt gegenüber, beide Koordinaten wechseln das Vorzeichen. +90°: aus (x, y) wird (−y, x).</p>
-      <div class="calc">$$\begin{aligned} \sin\alpha &= -\sin(\alpha + 180^\circ) = \sin(\alpha + 360^\circ) = -\cos(\alpha + 90^\circ) \\ \cos\alpha &= \sin(\alpha + 90^\circ) = -\cos(\alpha + 180^\circ) = \cos(\alpha + 360^\circ) \end{aligned}$$</div></li>
+      <div class="calc">$$\begin{aligned} \sin\alpha &= -\sin(\alpha + 180^\circ) \\ &= \sin(\alpha + 360^\circ) \\ &= -\cos(\alpha + 90^\circ) \\[6pt] \cos\alpha &= \sin(\alpha + 90^\circ) \\ &= -\cos(\alpha + 180^\circ) \\ &= \cos(\alpha + 360^\circ) \end{aligned}$$</div></li>
     <li class="step"><span class="nr">(c)</span><h4>Zwei Paare</h4>
       <div class="calc">$$\tan\alpha = \frac{\sin\alpha}{\cos\alpha} \quad(\text{Definition}), \qquad \sin^2\alpha + \cos^2\alpha = 1 \quad(\text{Pythagoras})$$</div></li>
   </ol>
@@ -223,7 +223,7 @@
       <div class="calc">$$\cos\alpha = \pm\sqrt{1 - \sin^2\alpha}, \qquad \tan\alpha = \pm\frac{\sin\alpha}{\sqrt{1 - \sin^2\alpha}}$$</div></li>
     <li class="step"><span class="nr">(c)</span><h4>tan bekannt</h4>
       <p class="why">Trick: \(\sin\alpha = \tan\alpha\cdot\cos\alpha\) in Pythagoras einsetzen. Dann steht nur noch cos drin.</p>
-      <div class="calc">$$\begin{aligned} \tan^2\alpha\cdot\cos^2\alpha + \cos^2\alpha &= 1 \\ \cos^2\alpha\,(\tan^2\alpha + 1) &= 1 \\ \cos\alpha &= \pm\frac{1}{\sqrt{1 + \tan^2\alpha}}, \qquad \sin\alpha = \tan\alpha\cdot\cos\alpha = \pm\frac{\tan\alpha}{\sqrt{1 + \tan^2\alpha}} \end{aligned}$$</div></li>
+      <div class="calc">$$\begin{aligned} \tan^2\alpha\cdot\cos^2\alpha + \cos^2\alpha &= 1 \\ \cos^2\alpha\,(\tan^2\alpha + 1) &= 1 \\ \cos\alpha &= \pm\frac{1}{\sqrt{1 + \tan^2\alpha}} \\ \sin\alpha &= \tan\alpha\cdot\cos\alpha \\ &= \pm\frac{\tan\alpha}{\sqrt{1 + \tan^2\alpha}} \end{aligned}$$</div></li>
   </ol>
   <div class="done">Im Skript fehlt die Musterlösung zu E7 noch. Diese Lösung ist selbst hergeleitet, also im Zweifel mit der Lehrperson abgleichen.</div>
 </article>

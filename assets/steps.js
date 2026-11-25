@@ -21,8 +21,22 @@
   const saveDone = () => { try { localStorage.setItem(PKEY, JSON.stringify([...doneSet])); } catch (e) {} };
   let progressUpdate = () => {};
 
+  // on narrow screens, split display formulas at \qquad into stacked lines so nothing runs off the card
+  function splitWide(root) {
+    if (window.innerWidth > 700) return;
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    const nodes = []; while (w.nextNode()) if (w.currentNode.nodeValue.includes('$$')) nodes.push(w.currentNode);
+    nodes.forEach(n => {
+      n.nodeValue = n.nodeValue.replace(/\$\$([\s\S]*?)\$\$/g, (all, tex) => {
+        if (/\\begin/.test(tex) || !tex.includes('\\qquad')) return all;
+        return tex.split('\\qquad').map(t => t.trim().replace(/^,|,$/g, '').trim()).filter(t => t && t !== '\\Rightarrow').map(t => '$$' + t + '$$').join('');
+      });
+    });
+  }
+
   function renderMath(root) {
     if (!window.renderMathInElement) return;
+    splitWide(root);
     window.renderMathInElement(root, {
       delimiters: [{ left: '$$', right: '$$', display: true }, { left: '\\(', right: '\\)', display: false }],
       macros: MACROS, throwOnError: false
@@ -216,6 +230,19 @@
     });
   }
 
+  // shrink a display formula (down to 70 %) when it is wider than its box, e.g. on phones
+  function fitWide() {
+    document.querySelectorAll('.katex-display').forEach(d => {
+      if (!d.offsetParent) return;
+      d.style.fontSize = '';
+      if (d.scrollWidth > d.clientWidth + 1) d.style.fontSize = Math.max(.7, d.clientWidth / d.scrollWidth - .01) + 'em';
+    });
+  }
+  const refit = () => requestAnimationFrame(fitWide);
+  window.addEventListener('resize', refit);
+  document.addEventListener('click', refit);
+  document.addEventListener('langchange', refit);
+
   document.addEventListener('DOMContentLoaded', () => {
     setupBilingual(); setupGaps(); setupPuzzles();
     document.querySelectorAll('.langsw a:not([aria-current])').forEach(a => a.addEventListener('click', e => { e.preventDefault(); location.href = a.getAttribute('href') + location.hash; }));
@@ -247,5 +274,6 @@
     setupPlay();
     setupCircle();
     renderMath(document.body);
+    refit();
   });
 })();
