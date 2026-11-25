@@ -15,6 +15,7 @@
     alg: { de: 'Werkzeugkasten Algebra', en: 'Algebra toolbox', url: { de: '/grundlagen/', en: '/grundlagen/' } }
   };
   const css = `
+html,body{touch-action:manipulation}
 .bc{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 6px;margin:0;font:700 15px/1.35 "Bricolage Grotesque",system-ui,sans-serif;min-width:0}
 .bc a{color:light-dark(#1e5e4f,#7ed9b4);text-decoration:underline;text-underline-offset:3px}
 .bc .sep{color:var(--mute);font-weight:400}

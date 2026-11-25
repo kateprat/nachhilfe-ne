@@ -1,5 +1,6 @@
 /* Nachhilfe NE — "Heft mit Leuchtstift": squared exercise-book paper, ink, highlighters.
    Semantic colours stay fixed everywhere: m blue, q pink-red, cos mint-green, sin orange, tan = m blue. */
+html{touch-action:manipulation}
 :root{color-scheme:light dark;
 --bg:light-dark(#fffdf8,#1f1a17);--paper-grid:light-dark(#e3ecf8,#2e2723);
 --ink:light-dark(#1f2340,#f6efe4);--mute:light-dark(#5a5f80,#c2b5a5);
