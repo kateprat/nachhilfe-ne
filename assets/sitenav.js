@@ -45,9 +45,11 @@ html .topctl .langsw button{border:0;border-radius:0;box-shadow:none;margin:0;mi
 html .topctl .langsw button[aria-current]{background:var(--ink);color:var(--bg)}
 @media(max-width:520px){html .topctl .langsw button{padding:5px 8px;font-size:13px}}
 html.embed,html.embed body{background:transparent!important}
+html.embed .panel,html.embed .panel>*{min-width:0;max-width:100%}html.embed .seg{flex-wrap:wrap;width:auto!important;max-width:100%}html.embed .seg button{flex:1 1 auto}
 html.embed main{padding:0!important;max-width:none!important}
 html.embed .topbar,html.embed .topctl,html.embed .crumb,html.embed .lang,html.embed .langsw,html.embed main>h1,html.embed footer,html.embed .lic,html.embed .chapnav{display:none!important}
 html.embed .fig{position:relative!important;top:auto!important;will-change:transform;z-index:3}
+@media(max-width:820px){html.embed .fig{width:min(100%,620px)!important;margin:0 auto!important}}
 html.embed .fig>svg{background:var(--card)}
 
 @media(min-width:900px) and (max-width:1099px){iframe.embedded[data-mode]{width:min(1080px,calc(100vw - 2*max(4vw,16px)));margin-left:50%;transform:translateX(-50%)}}
@@ -184,7 +186,7 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
     addEventListener('touchstart', stop, { once: true, passive: true }); addEventListener('wheel', stop, { once: true, passive: true });
     const go = () => {
       if (run !== keepRun || n++ > 60) return;
-      const nav = document.querySelector('.nav'), d = f.getBoundingClientRect().top - ((nav ? nav.offsetHeight : 0) + 12);
+      const nav = document.querySelector('.nav'), d = f.getBoundingClientRect().top - ((nav ? nav.offsetHeight + (parseFloat(getComputedStyle(nav).top) || 0) : 0) + 12);
       if (Math.abs(d) > 2) scrollBy(0, d);
       setTimeout(go, 50);
     };
@@ -217,10 +219,9 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
     let d; try { d = f.contentDocument; } catch (e) { return; }
     const fig = d && d.querySelector('.fig'); if (!fig) return;
     const nav = document.querySelector('.nav'), navh = nav ? nav.offsetHeight : 0;
-    const narrow = f.clientWidth <= 820;
-    // phone: the controls sit below the graph, so the graph stays pinned (a bit smaller) while you move the sliders
-    fig.style.width = narrow ? `min(100%, ${Math.round(Math.max(220, (innerHeight - navh) * 0.46))}px)` : `min(100%, ${Math.max(320, innerHeight - navh - 32)}px)`;
-    if (narrow) { fig.style.marginLeft = 'auto'; fig.style.marginRight = 'auto'; fig.style.zIndex = 3; }
+    // phone: graph above, controls below, no following (moving it while the page scrolls made it tremble on iPhone)
+    if (f.clientWidth <= 820) { fig.style.transform = ''; fig.style.width = ''; fig.style.marginLeft = ''; fig.style.marginRight = ''; return; }
+    fig.style.width = `min(100%, ${Math.max(320, innerHeight - navh - 32)}px)`;
     fig.style.transform = '';
     const box = fig.parentElement.getBoundingClientRect(), r = fig.getBoundingClientRect();
     const want = navh + 12 - f.getBoundingClientRect().top;

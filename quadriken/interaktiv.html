@@ -7,8 +7,8 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="Mathe 2cNP"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="theme-color" content="#fffdf8" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#1f1a17" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap">
-<script src="../assets/theme.js?v=52"></script>
-<script src="../assets/sitenav.js?v=24"></script>
+<script src="../assets/theme.js?v=53"></script>
+<script src="../assets/sitenav.js?v=27"></script>
 <style>
 /* VOICE: calm maths notebook, same family as the Einheitskreis page
    IDEA: squared exercise paper with coloured-pencil constructions
@@ -165,16 +165,7 @@ html[lang=de] [data-l=en],html[lang=en] [data-l=de]{display:none!important}
     <p class="result hideable" data-tab="1" id="res1" data-reveal="ans"></p>
 
     <!-- Tab 2 -->
-    <div class="box" data-tab="2">
-      <div class="chips" id="presets"></div>
-      <div class="row">
-        <span>f(x) =</span>
-        <label><input id="pa" type="text" inputmode="decimal" aria-label="a">x²</label>
-        <label>+<input id="pb" type="text" inputmode="decimal" aria-label="b">x</label>
-        <label>+<input id="pc" type="text" inputmode="decimal" aria-label="c"></label>
-      </div>
-      <div class="seg" role="group"><button id="s2a" type="button" data-t="s2a"></button><button id="s2b" type="button" data-t="s2b"></button></div>
-    </div>
+    <div class="seg" role="group" data-tab="2" style="margin-bottom:12px"><button id="s2a" type="button" data-t="s2a"></button><button id="s2b" type="button" data-t="s2b"></button></div>
     <div class="box" data-tab="2" data-sub="line">
       <p class="help" data-t="mqHelp"></p>
       <div class="slab"><span>m</span><input id="m2" type="range" min="-8" max="8" step="0.25" aria-label="m"><b id="m2v"></b></div>
@@ -184,6 +175,15 @@ html[lang=de] [data-l=en],html[lang=en] [data-l=de]{display:none!important}
     <div class="box" data-tab="2" data-sub="point">
       <div class="row"><label>A = (<input id="ax" type="text" inputmode="decimal" aria-label="A x">,<input id="ay" type="text" inputmode="decimal" aria-label="A y">)</label></div>
       <p class="small" data-t="dragA"></p>
+    </div>
+    <div class="box" data-tab="2">
+      <div class="chips" id="presets"></div>
+      <div class="row">
+        <span>f(x) =</span>
+        <label><input id="pa" type="text" inputmode="decimal" aria-label="a">x²</label>
+        <label>+<input id="pb" type="text" inputmode="decimal" aria-label="b">x</label>
+        <label>+<input id="pc" type="text" inputmode="decimal" aria-label="c"></label>
+      </div>
     </div>
     <div class="calc hideable" data-tab="2" id="calc2"></div>
     <p class="result hideable" data-tab="2" id="res2" data-reveal="ans"></p>
