@@ -15,11 +15,11 @@
     sw.setAttribute('aria-label', en ? 'Colour mode' : 'Farbmodus');
     const opts = [['auto', 'Auto', en ? 'Like the device' : 'Wie das Gerät'], ['light', '☀', en ? 'Light' : 'Hell'], ['dark', '☾', en ? 'Dark' : 'Dunkel']];
     opts.forEach(([v, t, label]) => {
-      const b = document.createElement('a'); b.href = '#'; b.textContent = t; b.title = label; b.setAttribute('aria-label', label); b.dataset.theme = v;
-      b.addEventListener('click', e => { e.preventDefault(); pref = v; try { localStorage.setItem(KEY, v); } catch (err) {} apply(v); mark(); });
+      const b = document.createElement('button'); b.type = 'button'; b.textContent = t; b.title = label; b.setAttribute('aria-label', label); b.dataset.theme = v;
+      b.addEventListener('click', e => { pref = v; try { localStorage.setItem(KEY, v); } catch (err) {} apply(v); mark(); });
       sw.append(b);
     });
-    const mark = () => sw.querySelectorAll('a').forEach(a => a.toggleAttribute('aria-current', a.dataset.theme === pref));
+    const mark = () => sw.querySelectorAll('button').forEach(a => a.toggleAttribute('aria-current', a.dataset.theme === pref));
     mark();
     box.append(sw, lang);
     // standard header row: back link on the left, settings on the right (same row on phone and laptop)
