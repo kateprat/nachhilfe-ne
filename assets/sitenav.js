@@ -269,22 +269,9 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
     // start page: progress per step and "continue where you were"
     document.querySelectorAll('.path a[data-topic]').forEach(a => {
       const t = a.dataset.topic, box = a.querySelector('.cprog'); if (!box) return;
-      let done = 0, total = { '/trigonometrie/': 7, '/quadriken/': 16 }[t] || 0, last = null;
-      try { done = JSON.parse(localStorage.getItem('nachhilfe-done:' + t) || '[]').length; total = +localStorage.getItem('nachhilfe-total:' + t) || total; last = JSON.parse(localStorage.getItem('nachhilfe-last:' + t) || 'null'); } catch (e) {}
-      if (!total && !last) return;
-      const en = document.documentElement.lang === 'en';
-      let html = total ? `<i><b style="width:${Math.round(100 * done / total)}%"></b></i>${done}/${total}` : '';
-      // the card opens the chapter at the top; only "Weiter bei …" jumps to where you were
-      const NAMES = { parabel: ['Parabel', 'Parabola'], buchstaben: ['Buchstaben', 'Letters'], rezept: ['Kochrezept', 'Recipe'], kreise: ['Kreise', 'Circles'],
-        bogenmass: ['Bogenmass', 'Radians'], kreis: ['Einheitskreis', 'Unit circle'], rezepte: ['Rezepte', 'Recipes'], spickzettel: ['Spickzettel', 'Cheat sheet'],
-        warmup: ['Aufwärmen', 'Warm-up'], 'zw-trig': ['Zusatzaufgaben Trigonometrie', 'Additional exercises trigonometry'], 'zw-quad': ['Zusatzaufgaben Quadriken', 'Additional exercises conics'],
-        simulation: ['Prüfungssimulation', 'Test simulation'], bilanz: ['Bilanz', 'Results'] };
-      const label = id => NAMES[id] ? NAMES[id][en ? 1 : 0] : /^[ea]\d/.test(id) ? id.toUpperCase().replace(/B$/, ' (b)') : (last.label || id);
-      if (last && last.id) html += ` <span class="go" role="link" tabindex="0" data-to="${a.getAttribute('href').replace(/#.*$/, '')}#${last.id}">${en ? 'Continue at' : 'Weiter bei'} ${label(last.id)}</span>`;
-      box.innerHTML = html;
-      const go = box.querySelector('.go');
-      if (go) { const jump = e => { e.preventDefault(); e.stopPropagation(); location.href = go.dataset.to; };
-        go.addEventListener('click', jump); go.addEventListener('keydown', e => { if (e.key === 'Enter') jump(e); }); }
+      let done = 0, total = { '/trigonometrie/': 7, '/quadriken/': 16 }[t] || 0;
+      try { done = JSON.parse(localStorage.getItem('nachhilfe-done:' + t) || '[]').length; total = +localStorage.getItem('nachhilfe-total:' + t) || total; } catch (e) {}
+      if (total) box.innerHTML = `<i><b style="width:${Math.round(100 * done / total)}%"></b></i>${done}/${total}`;
     });
     chapnav();
     if (!observing && (page === 'inter' || page === 'sheet')) {
