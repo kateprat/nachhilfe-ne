@@ -6,6 +6,7 @@
   const apply = p => { if (p === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', p); };
   apply(pref);
   function build() {
+    if (window.siteNav) window.siteNav();
     const lang = document.querySelector('.langsw, main > .lang');
     if (!lang) return;
     const en = document.documentElement.lang === 'en';

@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<script src="../assets/theme.js?v=22"></script>
+<script src="../assets/theme.js?v=23"></script>
+<script src="../assets/sitenav.js?v=2"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Trigonometry</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="Mathe 2cNP">
@@ -11,8 +12,8 @@
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/steps.js?v=22"></script>
-<link rel="stylesheet" href="../assets/style.css?v=22">
+<script defer src="../assets/steps.js?v=23"></script>
+<link rel="stylesheet" href="../assets/style.css?v=23">
 </head>
 <body>
 <main class="wrap">
@@ -24,7 +25,7 @@
 <nav class="nav" aria-label="Sections"><ul>
   <li><a href="#bogenmass">Radians</a></li><li><a href="#kreis">Unit circle</a></li><li><a href="#rezepte">Recipes</a></li>
   <li><a href="#e1">E1</a></li><li><a href="#e2">E2</a></li><li><a href="#e3">E3</a></li><li><a href="#e4">E4</a></li>
-  <li><a href="#e5">E5</a></li><li><a href="#e6">E6</a></li><li><a href="#e7">E7</a></li><li><a href="interaktiv.html">Interactive</a></li><li><a href="spickzettel.html">Cheat sheet</a></li><li><a href="../training/">Exam training</a></li>
+  <li><a href="#e5">E5</a></li><li><a href="#e6">E6</a></li><li><a href="#e7">E7</a></li><li><a href="interaktiv.html">Interactive</a></li><li><a href="spickzettel.html">Cheat sheet</a></li><li><a href="../grundlagen/">Algebra</a></li><li><a href="../training/">Exam training</a></li>
 </ul></nav>
 
 <!-- ============ 1 Radians ============ -->
@@ -34,6 +35,7 @@
 <p style="margin:0">That's all you need to memorise. <b>Work everything else out from \(180^\circ = \pi\)</b>: divide by 180, multiply by π (or the other way round).</p></div>
 <p>Try it yourself: what is 60° in radians? <button type="button" class="reveal" data-answer="t1">Show answer</button></p>
 <p id="t1">\(60^\circ = \frac{60}{180}\pi = \frac{\pi}{3}\)</p>
+<p><a href="interaktiv.html#bogenmass">Try it out: arc length and sector →</a></p>
 <div class="box tip"><b>Calculator</b> The calculator must be set to <b>DEG</b> when you work in degrees and to <b>RAD</b> for radians. Test: \(\sin(90)\) gives 1 → DEG. Gives 0.89… → RAD.</div>
 
 <!-- ============ 2 Unit circle ============ -->
@@ -52,7 +54,7 @@
     <div class="chips"><button type="button" data-deg="30">30°</button><button type="button" data-deg="45">45°</button><button type="button" data-deg="60">60°</button><button type="button" data-deg="120">120°</button><button type="button" data-deg="207">207°</button><button type="button" data-deg="290">290°</button><button type="button" data-deg="-190">−190°</button></div>
   </div>
 </div>
-<p><a href="interaktiv.html">Bigger version with equations and radians →</a></p>
+<p><a href="interaktiv.html#einheitskreis">Try it out: drag P around the unit circle →</a></p>
 <p>Two things you can see straight from the picture:</p>
 <ul class="sub">
   <li>cos and sin are always between −1 and 1. P is on a circle of radius 1, after all.</li>
@@ -71,6 +73,8 @@
 </ol>
 
 <!-- ============ 4 Exercises ============ -->
+<p><a href="interaktiv.html#gleichungen">Try it out: solve sin, cos, tan = c on the circle →</a></p>
+
 <h2 id="aufgaben">4 · Exercises</h2>
 <p>Every exercise works the same way: read the task and first think about how you would start. Then click through the solution with <b>“Next step”</b>, one step at a time. Before each click, think about what comes next.</p>
 
