@@ -50,6 +50,9 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
     // standard header row: back link on the left, settings on the right (same row on phone and laptop)
     const main = box.parentElement, crumb = main.querySelector(':scope > .crumb');
+    // no path (start page): the ⋯ sits on the title line instead of a row of its own
+    const h1 = main.querySelector(':scope > h1');
+    if (!crumb && h1) { const row = document.createElement('div'); row.className = 'h1row'; h1.before(row); row.append(h1, box); return; }
     const bar = document.createElement('div'); bar.className = 'topbar';
     main.insertBefore(bar, main.firstChild);
     if (crumb) bar.append(crumb); else bar.append(document.createElement('span'));

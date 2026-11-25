@@ -274,7 +274,12 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
       const en = document.documentElement.lang === 'en';
       let html = total ? `<i><b style="width:${Math.round(100 * done / total)}%"></b></i>${done}/${total}` : '';
       // the card opens the chapter at the top; only "Weiter bei …" jumps to where you were
-      if (last && last.id) html += ` <span class="go" role="link" tabindex="0" data-to="${a.getAttribute('href').replace(/#.*$/, '')}#${last.id}">${en ? 'Continue at' : 'Weiter bei'} ${last.label}</span>`;
+      const NAMES = { parabel: ['Parabel', 'Parabola'], buchstaben: ['Buchstaben', 'Letters'], rezept: ['Kochrezept', 'Recipe'], kreise: ['Kreise', 'Circles'],
+        bogenmass: ['Bogenmass', 'Radians'], kreis: ['Einheitskreis', 'Unit circle'], rezepte: ['Rezepte', 'Recipes'], spickzettel: ['Spickzettel', 'Cheat sheet'],
+        warmup: ['Aufwärmen', 'Warm-up'], 'zw-trig': ['Zusatzaufgaben Trigonometrie', 'Additional exercises trigonometry'], 'zw-quad': ['Zusatzaufgaben Quadriken', 'Additional exercises conics'],
+        simulation: ['Prüfungssimulation', 'Test simulation'], bilanz: ['Bilanz', 'Results'] };
+      const label = id => NAMES[id] ? NAMES[id][en ? 1 : 0] : /^[ea]\d/.test(id) ? id.toUpperCase().replace(/B$/, ' (b)') : (last.label || id);
+      if (last && last.id) html += ` <span class="go" role="link" tabindex="0" data-to="${a.getAttribute('href').replace(/#.*$/, '')}#${last.id}">${en ? 'Continue at' : 'Weiter bei'} ${label(last.id)}</span>`;
       box.innerHTML = html;
       const go = box.querySelector('.go');
       if (go) { const jump = e => { e.preventDefault(); e.stopPropagation(); location.href = go.dataset.to; };
