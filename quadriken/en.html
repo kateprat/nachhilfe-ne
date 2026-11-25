@@ -2,34 +2,58 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<script src="../assets/theme.js?v=31"></script>
+<script src="../assets/theme.js?v=32"></script>
 <script src="../assets/sitenav.js?v=14"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Conics</title>
+<title>Conics: parabolas, tangents and circles</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="Mathe 2cNP">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap">
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/steps.js?v=31"></script>
-<link rel="stylesheet" href="../assets/style.css?v=31">
+<script defer src="../assets/steps.js?v=32"></script>
+<link rel="stylesheet" href="../assets/style.css?v=32">
 </head>
 <body>
 <main class="wrap">
 <nav class="langsw" aria-label="Sprache / language"><a href="./" lang="de">DE</a><a href="en.html" lang="en" aria-current="page">EN</a></nav>
 <p class="crumb"><a href="../en.html">← Overview</a></p>
-<h1>Conics: tangents and circles</h1>
-<p class="lead">Script chapter 17.2–17.5, exercises A1–A12. First the letters, then a recipe that stays the same for almost every exercise.</p>
+<h1>Conics: parabolas, tangents and circles</h1>
+<p class="lead">Script chapter 17, exercises A1–A12. First: what is a parabola? Then the letters and a recipe that stays the same for almost every exercise.</p>
 
 <nav class="nav" aria-label="Sections"><ul>
-  <li><a href="#buchstaben">Letters</a></li><li><a href="#rezept">Recipe</a></li>
+  <li><a href="#parabel">Parabola</a></li><li><a href="#buchstaben">Letters</a></li><li><a href="#rezept">Recipe</a></li>
   <li><a href="#a1">A1</a></li><li><a href="#a2">A2</a></li><li><a href="#a3">A3</a></li><li><a href="#a4">A4</a></li><li><a href="#a5">A5</a></li>
   <li><a href="#a6">A6</a></li><li><a href="#a7">A7</a></li><li><a href="#a8">A8</a></li><li><a href="#kreise">Circles</a></li><li><a href="#a9">A9</a></li><li><a href="#a10">A10</a></li><li><a href="#a11">A11</a></li><li><a href="#a12">A12</a></li><li><a href="#spickzettel">Cheat sheet</a></li><li><a href="../grundlagen/">Algebra</a></li>
 </ul></nav>
 
-<!-- ============ 1. Letters ============ -->
-<h2 id="buchstaben">1 · What do the letters mean?</h2>
+<!-- ============ 1. Parabola ============ -->
+<h2 id="parabel">1 · What is a parabola?</h2>
+<p><b>Conics</b> (Quadriken) are curves whose equation contains x and y at most squared: parabolas, circles, ellipses and hyperbolas. This chapter is about <b>parabolas</b> and <b>circles</b>.</p>
+
+<h3>The definition (17.1.1)</h3>
+<div class="box"><p style="margin:0">Given a point F, the <b>focus</b>, and a line ℓ, the <b>directrix</b>. The <b>parabola</b> is the set of all points P that are the same distance from F and from ℓ:</p>
+$$\overline{PF} = \overline{P\ell}$$</div>
+
+<h3>From the definition to the function</h3>
+<p>The example from the script: \(F = (0, 1)\), ℓ is the x-axis. For a point \(P = (x, y)\), “same distance” means:</p>
+<div class="calc">$$\begin{aligned} \overline{P\ell} &= \overline{PF} \\ |y| &= \sqrt{x^2 + (y - 1)^2} \quad\mid\ (\ )^2 \\ y^2 &= x^2 + y^2 - 2y + 1 \\ 2y &= x^2 + 1 \\ y &= \tfrac12 x^2 + \tfrac12 \end{aligned}$$</div>
+<p>So the parabola is the graph of a quadratic function. That is no coincidence:</p>
+<div class="box"><b>Theorem 17.1.3</b><p style="margin:4px 0 0">The graph of every quadratic function \(f(x) = ax^2 + bx + c\) with \(a \neq 0\) is a parabola.</p></div>
+
+<h3>Vertex form</h3>
+<p>\(f(x) = a(x - u)^2 + v\). From it you read off directly:</p>
+<ul>
+  <li>the <b>vertex</b> is \(S = (u, v)\), the lowest (or highest) point;</li>
+  <li>\(a > 0\): opens upwards, \(a < 0\): downwards; large \(|a|\): narrow, small \(|a|\): wide;</li>
+  <li>for \(f(x) = ax^2\) the focus is at \(F = \left(0, \tfrac{1}{4a}\right)\) and the directrix at \(y = -\tfrac{1}{4a}\) (17.1.2).</li>
+</ul>
+<p>Drag F, the directrix or P in the picture: the red and the blue segment always stay the same length.</p>
+<iframe class="embedded" data-mode="brennpunkt" src="interaktiv.html?embed=1&amp;one=1&amp;lang=en#brennpunkt" title="Try it out" loading="lazy"></iframe>
+
+<!-- ============ 2. Letters ============ -->
+<h2 id="buchstaben">2 · What do the letters mean?</h2>
 <p><b>A letter stands for a number</b> that we don't know yet, or that is allowed to change. That's all. You calculate with it exactly like with a number.</p>
 
 <h3>Substituting into x</h3>
@@ -78,7 +102,7 @@
 <iframe class="embedded" data-mode="tangente" src="interaktiv.html?embed=1&amp;one=1&amp;lang=en#tangente" title="Try it out" loading="lazy"></iframe>
 
 <!-- ============ 2. Recipe ============ -->
-<h2 id="rezept">2 · The recipe for tangents</h2>
+<h2 id="rezept">3 · The recipe for tangents</h2>
 <p>Almost all exercises A2–A8 use the same 7 steps. Only step 1 changes, depending on what is given.</p>
 <ol class="recipe">
   <li><div><b>Set-up (Ansatz)</b><span class="f">\(t(x) = \m x + \q\)</span>Substitute what is given.<small>Slope given → substitute m. Point given → substitute it and solve for q.</small></div></li>
@@ -102,12 +126,10 @@
 <p style="margin:4px 0 0">Use the words from the script: “Ansatz: …”, “Since P lies on t, …”, “⇔”, “So …”, “The tangent we are looking for is …”. No calculator: leave fractions as they are. Check: substitute the point of contact into f as well, you must get the same y.</p></div>
 
 <!-- ============ 3. Exercises ============ -->
-<h2 id="aufgaben">3 · Exercises</h2>
+<h2 id="aufgaben">4 · Exercises</h2>
 <p>Every exercise works the same way: read the task and first think about how you would start. Then click through the solution with <b>“Next step”</b>, one step at a time. Before each click, think about what comes next.</p>
 
 <!-- A1 -->
-<iframe class="embedded" data-mode="brennpunkt" src="interaktiv.html?embed=1&amp;one=1&amp;lang=en#brennpunkt" title="Try it out" loading="lazy"></iframe>
-
 <article class="ex" id="a1" data-mode="worked">
   <div class="ex-head"><h3>A1 (a)</h3></div>
   <div class="task">Describe the parabola with focus \(F = (2, 1)\) and directrix \(\ell: y = -1\) as the graph of a function.<br><small style="color:var(--mute)">A parabola is the set of all points P that are equally far from F and from ℓ (17.1.1).</small></div>
@@ -350,7 +372,7 @@
 </article>
 
 <!-- ============ 4. Circles ============ -->
-<h2 id="kreise">4 · Circles (A9–A12)</h2>
+<h2 id="kreise">5 · Circles (A9–A12)</h2>
 <p>A circle is the set of all points at exactly distance r from a centre M. Pythagoras turns this into the <b>circle equation</b>:</p>
 <div class="box">$$(x - a)^2 + (y - b)^2 = r^2 \qquad M = (a, b),\ \text{radius } r$$
 <p style="margin:0">Careful with signs: \((y + 10)^2\) is \((y - (-10))^2\), so \(b = -10\).</p></div>
@@ -517,7 +539,7 @@
   <div class="done">Intersection points \((84, -13)\) and \((77, 36)\), as in the script. <a href="interaktiv.html#zwei-kreise">Check it in the picture</a></div>
 </article>
 
-<h2 id="spickzettel">5 · Cheat sheet</h2>
+<h2 id="spickzettel">6 · Cheat sheet</h2>
 <iframe class="embedded" data-part="spickzettel" src="spickzettel.html?embed=1&amp;lang=en" title="Cheat sheet"></iframe>
 
 <a class="card c-mint nextcard" href="../training/"><div class="doodle"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 10h36v44H14z"/><path d="M22 24l5 5 9-10M22 40h20"/></svg></div><div><span class="n">Done with this chapter?</span><b>On to exam training ↗</b><span>Mixed tasks from both chapters, like in the test. You can come back here any time.</span></div></a>

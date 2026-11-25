@@ -7,7 +7,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="Mathe 2cNP">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap">
-<script src="../assets/theme.js?v=31"></script>
+<script src="../assets/theme.js?v=32"></script>
 <script src="../assets/sitenav.js?v=14"></script>
 <style>
 /* VOICE: calm maths notebook, same family as the Einheitskreis page
@@ -260,7 +260,7 @@ try{const s=JSON.parse(localStorage.getItem('quadriken')||'null');if(s)Object.as
 const save=()=>{try{localStorage.setItem('quadriken',JSON.stringify(st))}catch(e){}};
 const I18N={
 de:{title:'Quadriken zum Ziehen',sub:'Parabeln, Tangenten und Kreise aus Kapitel 17. Zieh die farbigen Punkte oder stell die Werte rechts ein. Die Rechnung läuft live mit.',
-t1:'Brennpunkt',t2:'Tangente',t3:'Kreis & Gerade',t4:'Zwei Kreise',quiz:'Erst selbst rechnen',dirLbl:'Leitgerade y =',s2a:'Gerade verschieben',s2b:'Tangente durch Punkt A',
+t1:'Brennpunkt',t2:'Tangente',t3:'Kreis & Gerade',t4:'Zwei Kreise',quiz:'Erst selbst rechnen',quizOff:'Alles wieder zeigen',dirLbl:'Leitgerade y =',s2a:'Gerade verschieben',s2b:'Tangente durch Punkt A',
 snap:'q so wählen, dass D = 0 (Tangente)',dragA:'Den gelben Punkt A kannst du auch im Bild ziehen.',
 mqHelp:'g(x) = m·x + q.  m = Steigung: gehst du 1 nach rechts, geht die Gerade m nach oben (bei m < 0 nach unten).  q = y-Achsenabschnitt: hier schneidet die Gerade die y-Achse, im Punkt (0, q). Beides siehst du am roten Dreieck. Wird die Gerade grün, ist sie eine Tangente.',
 method4:'Rechenweg hier: beide Kreisgleichungen ausmultiplizieren und voneinander abziehen. Dann fallen x² und y² weg und es bleibt eine Gerade durch beide Schnittpunkte. Das Skript (A12) löst nach y auf und quadriert zweimal: gleiche Punkte, aber viel mehr Rechnung.',
@@ -268,7 +268,7 @@ help:{1:'Eine Parabel ist die Menge aller Punkte P, die gleich weit vom Brennpun
 2:'Eine Gerade ist Tangente, wenn f(x) = g(x) genau eine Lösung hat, also D = 0 (17.2, A2–A8). Verschieb die Gerade oder zieh einen Punkt A und schau, wie viele Tangenten es gibt.',
 3:'Kreisgleichung (x − a)² + (y − b)² = r² und Schnitt mit einer Geraden per Einsetzen (17.3–17.4, A9, A11). Zieh den Mittelpunkt M oder verändere die Gerade.',
 4:'Schnittpunkte zweier Kreise (17.5, A12). Zieh die Mittelpunkte M₁ und M₂ oder gib Mittelpunkte und Radien ein.'},
-quizHint:' Rechnung und Resultat sind verborgen: erst selbst rechnen, dann antippen.',
+quizHint:' Rechnung und Resultat sind verborgen: erst selbst rechnen, dann antippen. Nochmals tippen versteckt es wieder.',
 vertex:'Scheitel',mid:'(Mitte zwischen F und ℓ)',dist:'Abstand',down:' (F unter ℓ: Parabel nach unten offen)',vform:'Scheitelform',expanded:'ausmultipliziert',factor:'Faktor',
 equal:'gleich lang',func:'Funktion',line:'Gerade',disc:'Diskriminante',ansatz:'Ansatz',aOnT:'A liegt auf t',sols:'Lösungen',none:'keine',tangent:'Tangente',touches:'berührt in',
 circle:'Kreis',subst:'Einsetzen',order:'Ordnen',aZero:'a darf nicht 0 sein.',
@@ -277,7 +277,7 @@ d0c:p=>`D = 0: genau ein Punkt → die Gerade ist Tangente. Berührpunkt ${p}`,d
 two:'Zwei Tangenten: A liegt ausserhalb der Parabel.',one:'Genau eine Tangente: A liegt auf der Parabel.',zero:'Keine Tangente: A liegt innerhalb der Parabel.',
 k1k2:'K₁ − K₂',solveY:'nach y aufgelöst',into:'in K₁ einsetzen',same:'Gleicher Mittelpunkt: die Kreise sind gleich oder schneiden sich nie.',touch4:p=>`Die Kreise berühren sich in ${p}.`,two4:p=>`Zwei Schnittpunkte: ${p}`,zero4:'Kein Schnittpunkt: die Kreise liegen ausein­ander oder ineinander.',ex4:'Beispiel'},
 en:{title:'Interactive conics',sub:'Parabolas, tangents and circles from chapter 17. Drag the coloured points or set the values on the right. The working updates live.',
-t1:'Focus',t2:'Tangent',t3:'Circle & line',t4:'Two circles',quiz:'Try it first',dirLbl:'Directrix y =',s2a:'Move the line',s2b:'Tangent through point A',
+t1:'Focus',t2:'Tangent',t3:'Circle & line',t4:'Two circles',quiz:'Try it first',quizOff:'Show everything again',dirLbl:'Directrix y =',s2a:'Move the line',s2b:'Tangent through point A',
 snap:'Choose q so that D = 0 (tangent)',dragA:'You can also drag the yellow point A in the picture.',
 mqHelp:'g(x) = m·x + q.  m = slope: go 1 to the right and the line goes m up (down if m < 0).  q = y-intercept: where the line crosses the y-axis, at the point (0, q). The red triangle shows both. When the line turns green, it is a tangent.',
 method4:'Method used here: expand both circle equations and subtract one from the other. x² and y² cancel, leaving a line through both intersection points. The handout (A12) solves for y and squares twice: same points, much more work.',
@@ -285,7 +285,7 @@ help:{1:'A parabola is the set of all points P that are equally far from the foc
 2:'A line is a tangent when f(x) = g(x) has exactly one solution, i.e. D = 0 (17.2, A2–A8). Move the line, or drag a point A and see how many tangents there are.',
 3:'Circle equation (x − a)² + (y − b)² = r² and intersection with a line by substitution (17.3–17.4, A9, A11). Drag the centre M or change the line.',
 4:'Intersection points of two circles (17.5, A12). Drag the centres M₁ and M₂ or type in centres and radii.'},
-quizHint:' Working and result are hidden: work it out first, then tap to reveal.',
+quizHint:' Working and result are hidden: work it out first, then tap to reveal. Tap again to hide it.',
 vertex:'Vertex',mid:'(halfway between F and ℓ)',dist:'Distance',down:' (F below ℓ: parabola opens downwards)',vform:'Vertex form',expanded:'expanded',factor:'Factor',
 equal:'equal',func:'Function',line:'Line',disc:'Discriminant',ansatz:'Set up',aOnT:'A lies on t',sols:'Solutions',none:'none',tangent:'Tangent',touches:'touches at',
 circle:'Circle',subst:'Substitute',order:'Rearrange',aZero:'a must not be 0.',
@@ -490,6 +490,7 @@ function draw(){
   document.body.classList.toggle('quiz',st.quiz);document.body.classList.remove('ansshown');
   document.querySelectorAll('.hideable.shown').forEach(el=>el.classList.remove('shown'));
   $('quizBtn').setAttribute('aria-pressed',st.quiz);
+  $('quizBtn').textContent=st.quiz?T('quizOff'):T('quiz');
   const hn=HASH[st.tab===2&&st.sub==='point'?5:st.tab];try{if(location.hash!=='#'+hn)history.replaceState(null,'','#'+hn)}catch(e){}
   if(st.tab===1)tab1();else if(st.tab===2)tab2();else if(st.tab===3)tab3();else tab4();
   if(st.tab===2)document.querySelectorAll('[data-sub]').forEach(el=>el.hidden=el.dataset.sub!==st.sub);
@@ -544,7 +545,7 @@ $('presets4').addEventListener('click',e=>{const bt=e.target.closest('[data-i]')
 $('quizBtn').addEventListener('click',()=>{st.quiz=!st.quiz;draw()});
 $('lDe').addEventListener('click',()=>{st.lang='de';draw()});
 $('lEn').addEventListener('click',()=>{st.lang='en';draw()});
-document.addEventListener('click',e=>{if(!st.quiz)return;const h=e.target.closest('.hideable');if(h){h.classList.add('shown');if(h.dataset.reveal==='ans')document.body.classList.add('ansshown')}});
+document.addEventListener('click',e=>{if(!st.quiz)return;const h=e.target.closest('.hideable');if(h){const on=h.classList.toggle('shown');if(h.dataset.reveal==='ans')document.body.classList.toggle('ansshown',on)}});
 const applyHash=()=>{const m=(location.hash||'').slice(1);if(m==='brennpunkt')st.tab=1;else if(m==='tangente'){st.tab=2;st.sub='line'}else if(m==='tangente-punkt'){st.tab=2;st.sub='point'}else if(m==='kreis')st.tab=3;else if(m==='zwei-kreise'){st.tab=4;fitMap()}else return false;return true};
 window.addEventListener('hashchange',()=>{if(applyHash())draw()});
 applyHash();
