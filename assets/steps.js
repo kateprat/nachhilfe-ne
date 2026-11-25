@@ -279,7 +279,27 @@
     if (nav) {
       const setNavH = () => document.documentElement.style.setProperty('--navh', (nav.offsetHeight + 16) + 'px');
       setNavH(); window.addEventListener('resize', setNavH, sig);
-      if (location.hash && !opts.swap) requestAnimationFrame(() => { const t = document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView(); });
+      // jump to a section and keep it in place for a moment: on a fresh visit, fonts and formulas finish loading after
+      // the jump and push the content down (Safari doesn't compensate), so the jump would land one section too early
+      let pinRun = 0;
+      const pin = t => {
+        const run = ++pinRun; let n = 0;
+        const stop = () => { pinRun++; };
+        addEventListener('touchstart', stop, { once: true, passive: true }); addEventListener('wheel', stop, { once: true, passive: true });
+        const go = () => {
+          if (run !== pinRun || n++ > 40) return;
+          const d = t.getBoundingClientRect().top - (nav.offsetHeight + 16);
+          if (Math.abs(d) > 2) scrollBy(0, d);
+          setTimeout(go, 50);
+        };
+        go();
+      };
+      nav.addEventListener('click', e => {
+        const a = e.target.closest('a[href^="#"]'); if (!a) return;
+        const t = document.getElementById(a.getAttribute('href').slice(1)); if (!t) return;
+        e.preventDefault(); history.replaceState(history.state, '', '#' + t.id); pin(t);
+      }, sig);
+      if (location.hash && !opts.swap) requestAnimationFrame(() => { const t = document.getElementById(location.hash.slice(1)); if (t) pin(t); });
       // scroll spy: highlight the pill of the section currently on screen and keep it visible in the pill row
       const ul = nav.querySelector('ul');
       const links = [...nav.querySelectorAll('a[href^="#"]')].map(a => [a, document.getElementById(a.getAttribute('href').slice(1))]).filter(([, t]) => t);
