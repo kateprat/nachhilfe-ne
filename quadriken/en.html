@@ -378,6 +378,23 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <p style="margin:0">Careful with signs: \((y + 10)^2\) is \((y - (-10))^2\), so \(b = -10\).</p></div>
 <p>For A9 you need <b>completing the square</b>. If that's rusty: <a href="../grundlagen/#ergaenzen">Algebra toolbox</a>.</p>
 
+<h3>Reading and writing the circle equation</h3>
+<p>The script writes the circle with centre M and radius r as \(K_r(M)\). For example, \(K_1(0, 0)\) is the circle around the origin with radius 1. Three traps when reading it off:</p>
+<ul class="sub">
+  <li><b>1. The right side is \(r^2\), not r.</b> The radius is the square root of the right side. \(x^2 + y^2 = 1\): \(r = \sqrt1 = 1\), so \(K_1(0, 0)\).</li>
+  <li><b>2. Flip the signs.</b> In \((x - a)^2\), a comes with a minus. \((y + 7)^2 = (y - (-7))^2\), so \(b = -7\). And \((3 - x)^2 = (x - 3)^2\), because a square is never negative, whatever the order.</li>
+  <li><b>3. Check the right side.</b> Positive: a circle. Zero: only the point M. Negative: no point at all, because \((\ldots)^2 + (\ldots)^2\) is never negative.</li>
+</ul>
+<div class="box">
+<table class="which"><thead><tr><th>Equation</th><th>What it describes</th></tr></thead><tbody><tr><td>\(x^2 + y^2 = 1\)</td><td>\(r^2 = 1\), so \(r = 1\): \(K_1(0, 0)\)</td></tr><tr><td>\((3 - x)^2 + (y + 7)^2 = \sqrt5\)</td><td>\(M = (3, -7)\), \(r^2 = \sqrt5\), so \(r = \sqrt{\sqrt5} = \sqrt[4]{5} \approx 1.5\): \(K_{\sqrt[4]{5}}(3, -7)\)</td></tr><tr><td>\(x^2 + y^2 = 0\)</td><td>only the point \((0, 0)\): \(K_0(0, 0) = \{(0, 0)\}\)</td></tr><tr><td>\(x^2 + y^2 = -1\)</td><td>no point, the empty set \(\emptyset\)</td></tr></tbody></table>
+<p style="margin:0"><b>Backwards</b> works the same way: circle with radius \(\sqrt3\) and centre \((2, -1)\): \((x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3\).</p></div>
+<div class="box">
+<p><b>Try it yourself:</b> what do these equations describe?</p>
+<p style="margin:0 0 4px">a) \(x^2 + (y - 2)^2 = 9\)<br>b) \((x + 1)^2 + y^2 = 7\)<br>c) \((5 - x)^2 + y^2 = 0\)<br>d) \(x^2 + y^2 + 4 = 0\)</p><p style="margin:0 0 6px"><button type="button" class="reveal" data-answer="kq1">Show answer</button></p>
+<p id="kq1" style="margin:0">a) \(K_3(0, 2)\)<br>b) \(K_{\sqrt7}(-1, 0)\)<br>c) only the point \((5, 0)\)<br>d) \(x^2 + y^2 = -4\): empty set</p>
+<p style="margin:8px 0 0">e) Write the equation of the circle with centre \((-3, 4)\) and radius \(\sqrt2\). <button type="button" class="reveal" data-answer="kq2">Show answer</button></p>
+<p id="kq2" style="margin:0">\((x + 3)^2 + (y - 4)^2 = 2\)</p></div>
+
 <h3>Recipe A: read off centre and radius</h3>
 <ol class="recipe">
   <li><div><b>Sort</b><span class="f">\((x^2 + s\,x) + (y^2 + t\,y) + u = 0\)</span><small>x-terms together, y-terms together.</small></div></li>

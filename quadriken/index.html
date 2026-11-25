@@ -378,6 +378,23 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <p style="margin:0">Achtung Vorzeichen: \((y + 10)^2\) ist \((y - (-10))^2\), also ist \(b = -10\).</p></div>
 <p>Für A9 brauchst du das <b>quadratische Ergänzen</b>. Falls das nicht mehr sitzt: <a href="../grundlagen/#ergaenzen">Werkzeugkasten Algebra</a>.</p>
 
+<h3>Kreisgleichung lesen und schreiben</h3>
+<p>Im Skript schreibt man den Kreis mit Mittelpunkt M und Radius r als \(K_r(M)\). Zum Beispiel ist \(K_1(0, 0)\) der Kreis um den Ursprung mit Radius 1. Drei Fallen beim Ablesen:</p>
+<ul class="sub">
+  <li><b>1. Rechts steht \(r^2\), nicht r.</b> Der Radius ist die Wurzel der rechten Seite. \(x^2 + y^2 = 1\): \(r = \sqrt1 = 1\), also \(K_1(0, 0)\).</li>
+  <li><b>2. Vorzeichen umdrehen.</b> In \((x - a)^2\) steht a mit Minus. \((y + 7)^2 = (y - (-7))^2\), also \(b = -7\). Und \((3 - x)^2 = (x - 3)^2\), weil ein Quadrat nie negativ ist, egal in welcher Reihenfolge.</li>
+  <li><b>3. Rechte Seite prüfen.</b> Positiv: ein Kreis. Null: nur der Punkt M. Negativ: gar kein Punkt, weil \((\ldots)^2 + (\ldots)^2\) nie negativ wird.</li>
+</ul>
+<div class="box">
+<table class="which"><thead><tr><th>Gleichung</th><th>Was sie beschreibt</th></tr></thead><tbody><tr><td>\(x^2 + y^2 = 1\)</td><td>\(r^2 = 1\), also \(r = 1\): \(K_1(0, 0)\)</td></tr><tr><td>\((3 - x)^2 + (y + 7)^2 = \sqrt5\)</td><td>\(M = (3, -7)\), \(r^2 = \sqrt5\), also \(r = \sqrt{\sqrt5} = \sqrt[4]{5} \approx 1.5\): \(K_{\sqrt[4]{5}}(3, -7)\)</td></tr><tr><td>\(x^2 + y^2 = 0\)</td><td>nur der Punkt \((0, 0)\): \(K_0(0, 0) = \{(0, 0)\}\)</td></tr><tr><td>\(x^2 + y^2 = -1\)</td><td>kein Punkt, die leere Menge \(\emptyset\)</td></tr></tbody></table>
+<p style="margin:0"><b>Rückwärts</b> geht es genauso: Kreis mit Radius \(\sqrt3\) und Mittelpunkt \((2, -1)\): \((x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3\).</p></div>
+<div class="box">
+<p><b>Probier selbst:</b> Was beschreiben diese Gleichungen?</p>
+<p style="margin:0 0 4px">a) \(x^2 + (y - 2)^2 = 9\)<br>b) \((x + 1)^2 + y^2 = 7\)<br>c) \((5 - x)^2 + y^2 = 0\)<br>d) \(x^2 + y^2 + 4 = 0\)</p><p style="margin:0 0 6px"><button type="button" class="reveal" data-answer="kq1">Antwort zeigen</button></p>
+<p id="kq1" style="margin:0">a) \(K_3(0, 2)\)<br>b) \(K_{\sqrt7}(-1, 0)\)<br>c) nur der Punkt \((5, 0)\)<br>d) \(x^2 + y^2 = -4\): leere Menge</p>
+<p style="margin:8px 0 0">e) Schreib die Gleichung des Kreises mit Mittelpunkt \((-3, 4)\) und Radius \(\sqrt2\). <button type="button" class="reveal" data-answer="kq2">Antwort zeigen</button></p>
+<p id="kq2" style="margin:0">\((x + 3)^2 + (y - 4)^2 = 2\)</p></div>
+
 <h3>Rezept A: Mittelpunkt und Radius ablesen</h3>
 <ol class="recipe">
   <li><div><b>Sortieren</b><span class="f">\((x^2 + s\,x) + (y^2 + t\,y) + u = 0\)</span><small>x-Terme zusammen, y-Terme zusammen.</small></div></li>
