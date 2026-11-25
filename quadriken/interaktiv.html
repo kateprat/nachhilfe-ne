@@ -306,7 +306,7 @@ function parseNum(t){t=String(t).trim().replace(',','.').replace(/−/g,'-');con
 const snapH=v=>Math.round(v*2)/2;
 const HASH={1:'brennpunkt',2:'tangente',3:'kreis',4:'zwei-kreise',5:'tangente-punkt'};
 const VB={1:[-6.5,6.5,-6.5,6.5],2:[-6.5,6.5,-3.5,9.5],3:[-6.5,6.5,-6.5,6.5],4:[-6.5,6.5,-6.5,6.5]};
-const PRE=[{n:'x²',a:1,b:0,c:0,ax:1,ay:-3,m:2,s:'A6'},{n:'x² − 2x + 3',a:1,b:-2,c:3,ax:0,ay:0,m:-3,s:'A2'},{n:'x² − 2x + 25/16',a:1,b:-2,c:25/16,ax:0,ay:0,m:0.5,s:'A3'},{n:'¼(x + 3)² + 1',a:.25,b:1.5,c:3.25,ax:-2,ay:-1,m:1,s:'A7, A8'}];
+const PRE=[{n:'x² − 2x + 3',a:1,b:-2,c:3,ax:0,ay:0,m:-3,s:'A2'},{n:'x² − 2x + 25/16',a:1,b:-2,c:25/16,ax:0,ay:0,m:0.5,s:'A3'},{n:'x², Q = (½, ¼)',a:1,b:0,c:0,ax:.5,ay:.25,m:1,s:'A4'},{n:'x², A = (−2, 4)',a:1,b:0,c:0,ax:-2,ay:4,m:-4,s:'A5'},{n:'x², A = (1, −3)',a:1,b:0,c:0,ax:1,ay:-3,m:6,s:'A6'},{n:'¼(x + 3)² + 1, P = (−2, −1)',a:.25,b:1.5,c:3.25,ax:-2,ay:-1,m:2,s:'A7'},{n:'¼(x + 3)² + 1, A = (−1, 2)',a:.25,b:1.5,c:3.25,ax:-1,ay:2,m:1,s:'A8'}];
 const PRE4=[{l:'A12',a1:0,b1:0,r1:85,a2:140,b2:20,r2:65},{l:'ex',a1:0,b1:0,r1:5,a2:7,b2:1,r2:5}];
 let world=VB[1];
 function base(){
@@ -535,7 +535,7 @@ $('s2a').addEventListener('click',()=>{st.sub='line';draw()});
 $('s2b').addEventListener('click',()=>{st.sub='point';draw()});
 $('snap2').addEventListener('click',()=>{const B=st.b-st.m2;st.q2=st.c-B*B/(4*st.a);draw()});
 $('snap3').addEventListener('click',()=>{const {ca:a,cb:b,r,m3:m}=st,s=r*Math.sqrt(1+m*m),ks=[-a*m+s,-a*m-s];const cur=st.q3-b;const k=Math.abs(ks[0]-cur)<Math.abs(ks[1]-cur)?ks[0]:ks[1];st.q3=b+k;draw()});
-$('presets').innerHTML=PRE.map((p,i)=>`<button type="button" data-i="${i}">${p.n} <span class="small">(${p.s})</span></button>`).join('');
+$('presets').innerHTML=PRE.map((p,i)=>`<button type="button" data-i="${i}"><b>${p.s}</b> ${p.n}</button>`).join('');
 $('presets').addEventListener('click',e=>{const bt=e.target.closest('[data-i]');if(!bt)return;const p=PRE[+bt.dataset.i];Object.assign(st,{a:p.a,b:p.b,c:p.c,ax:p.ax,ay:p.ay,m2:p.m});const B=p.b-p.m;st.q2=p.c-B*B/(4*p.a);draw()});
 $('presets4').addEventListener('click',e=>{const bt=e.target.closest('[data-i]');if(!bt)return;const p=PRE4[+bt.dataset.i];['a1','b1','r1','a2','b2','r2'].forEach(k=>st[k]=p[k]);fitMap();draw()});
 $('quizBtn').addEventListener('click',()=>{st.quiz=!st.quiz;draw()});
