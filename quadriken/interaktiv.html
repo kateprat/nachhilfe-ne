@@ -7,8 +7,8 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="Mathe 2cNP">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap">
-<script src="../assets/theme.js?v=24"></script>
-<script src="../assets/sitenav.js?v=3"></script>
+<script src="../assets/theme.js?v=25"></script>
+<script src="../assets/sitenav.js?v=4"></script>
 <style>
 /* VOICE: calm maths notebook, same family as the Einheitskreis page
    IDEA: squared exercise paper with coloured-pencil constructions
@@ -551,5 +551,17 @@ draw();
 }
 </script>
 <script>window.addEventListener('DOMContentLoaded',()=>{if(window.renderMathInElement)renderMathInElement(document.querySelector('.theory'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],macros:{'\\m':'\\textcolor{#3b7be8}{m}','\\q':'\\textcolor{#e0475b}{q}'},ignoredClasses:['calc','result','help'],throwOnError:false})});</script>
+<script>
+// highlight the example (A2, A3 …) you picked; it clears as soon as you drag or type something else
+(()=>{const ids=['presets','presets4'];const sel={};
+const paint=id=>{const c=document.getElementById(id);if(!c)return;c.querySelectorAll('[data-i]').forEach(b=>{const on=+b.dataset.i===sel[id];b.classList.toggle('sel',on);b.setAttribute('aria-pressed',on)})};
+ids.forEach(id=>{const c=document.getElementById(id);if(!c)return;
+  c.addEventListener('click',e=>{const b=e.target.closest('[data-i]');if(!b)return;sel[id]=+b.dataset.i;setTimeout(()=>paint(id))});
+  new MutationObserver(()=>paint(id)).observe(c,{childList:true})});
+const clear=()=>{ids.forEach(id=>{delete sel[id];paint(id)})};
+document.getElementById('fig').addEventListener('pointerdown',clear);
+document.addEventListener('input',e=>{if(!e.target.closest('#presets,#presets4'))clear()});})();
+</script>
+<style>.chips button.sel{background:light-dark(#ffe45c,#7a5c0c)!important;border-color:var(--ink)!important;color:var(--ink)!important}</style>
 </body>
 </html>

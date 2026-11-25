@@ -15,7 +15,7 @@
   const MACROS = { '\\m': '\\textcolor{#3b7be8}{m}', '\\q': '\\textcolor{#e0475b}{q}' };
 
   // progress per topic (same for DE and EN), kept only on this device
-  const PKEY = 'nachhilfe-done:' + location.pathname.replace(/(index|en|de)\.html$/, '');
+  const PKEY = 'nachhilfe-done:' + location.pathname.replace(/(index|en|de)(\.html)?$/, '');
   let doneSet = new Set();
   try { doneSet = new Set(JSON.parse(localStorage.getItem(PKEY) || '[]')); } catch (e) {}
   const saveDone = () => { try { localStorage.setItem(PKEY, JSON.stringify([...doneSet])); } catch (e) {} };
@@ -294,8 +294,8 @@
         current = hit;
         if (hit) {
           hit.classList.add('active');
-          const l = hit.offsetLeft - ul.offsetLeft, r = l + hit.offsetWidth;
-          if (l < ul.scrollLeft || r > ul.scrollLeft + ul.clientWidth) ul.scrollTo({ left: l - 12, behavior: 'smooth' });
+          // keep the current pill in the middle of the row, so you see what comes before and after
+          ul.scrollTo({ left: hit.offsetLeft - ul.offsetLeft - (ul.clientWidth - hit.offsetWidth) / 2, behavior: 'smooth' });
         }
       };
       window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true, signal: pageCtl.signal });

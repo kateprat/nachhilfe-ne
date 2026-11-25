@@ -63,11 +63,11 @@ html .topctl .langsw button[aria-current]{background:var(--ink);color:var(--bg)}
     if (page === 'home') return null;
     const chain = ['home'];
     if (chap) chain.push(chap);
-    if (page !== 'chap') chain.push(page);
+    if (page === 'train' || page === 'alg') chain.push(page); // Interaktiv and Spickzettel are part of the chapter, not a level below it
     const el = document.createElement('nav');
     el.className = 'crumb bc'; el.setAttribute('aria-label', 'Pfad / path');
     el.innerHTML = chain.map((k, i) => {
-      const last = i === chain.length - 1;
+      const last = i === chain.length - 1 && (page === 'chap' || page === 'train' || page === 'alg' || page === 'home');
       return (i ? '<span class="sep" aria-hidden="true">›</span>' : '') +
         (last ? `<span class="here" aria-current="page">${both(l => N[k][l])}</span>`
               : both(l => `<a href="${urlOf(k, l)}">${N[k][l]}</a>`));
@@ -98,7 +98,7 @@ html .topctl .langsw button[aria-current]{background:var(--ink);color:var(--bg)}
     const src = doc.querySelector('.nav ul'); if (!src) return;
     const baseURL = new URL(base, location.href);
     const ul = document.createElement('ul');
-    let done = new Set(); try { done = new Set(JSON.parse(localStorage.getItem('nachhilfe-done:' + baseURL.pathname.replace(/(index|en|de)\.html$/, '')) || '[]')); } catch (e) {}
+    let done = new Set(); try { done = new Set(JSON.parse(localStorage.getItem('nachhilfe-done:' + baseURL.pathname.replace(/(index|en|de)(\.html)?$/, '')) || '[]')); } catch (e) {}
     src.querySelectorAll('li').forEach(li => {
       const a = li.querySelector('a'); if (!a) return;
       const href = a.getAttribute('href'), abs = new URL(href, baseURL);
@@ -109,7 +109,8 @@ html .topctl .langsw button[aria-current]{background:var(--ink);color:var(--bg)}
         if (m) n.insertAdjacentHTML('afterbegin', `<span class="pn">${m[1]}</span>`);
         if (done.has(href.slice(1))) n.classList.add('done');
       }
-      if (abs.pathname === location.pathname) { n.classList.add('active'); n.setAttribute('aria-current', 'page'); }
+      const norm = u => u.replace(/\.html$/, '').replace(/\/index$/, '/');
+      if (norm(abs.pathname) === norm(location.pathname)) { n.classList.add('active'); n.setAttribute('aria-current', 'page'); }
       const nl = document.createElement('li'); nl.append(n); ul.append(nl);
     });
     markOut(ul);
@@ -119,7 +120,7 @@ html .topctl .langsw button[aria-current]{background:var(--ink);color:var(--bg)}
     else { const h1 = document.querySelector('main h1'); const after = h1 && h1.nextElementSibling && /^(P)$/.test(h1.nextElementSibling.tagName) ? h1.nextElementSibling : h1; (after || document.querySelector('main').firstChild).after(nav); }
     document.documentElement.classList.add('has-chapnav');
     const setH = () => document.documentElement.style.setProperty('--chaph', nav.offsetHeight + 'px'); setH();
-    const act = ul.querySelector('.active'); if (act) ul.scrollLeft = act.offsetLeft - ul.offsetLeft - 40;
+    const act = ul.querySelector('.active'); if (act) ul.scrollLeft = act.offsetLeft - ul.offsetLeft - (ul.clientWidth - act.offsetWidth) / 2;
   }
 
   let styled = false, observing = false;
