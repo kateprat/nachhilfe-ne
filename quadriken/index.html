@@ -387,13 +387,76 @@ $$\overline{PF} = \overline{P\ell}$$</div>
   $$\begin{aligned} (y + 7)^2 &= (y - (-7))^2 \;\Rightarrow\; b = -7 \\ (3 - x)^2 &= (x - 3)^2 \;\Rightarrow\; a = 3 \end{aligned}$$</div>
   <div class="box"><p style="margin:0 0 4px"><b>3. Rechte Seite prüfen.</b></p><p style="margin:0">Ein Quadrat ist nie negativ. Darum:</p><ul style="margin:6px 0 0"><li>Positiv: ein Kreis</li><li>Null: nur der Punkt M</li><li>Negativ: gar kein Punkt</li></ul></div>
 </div>
-<p style="margin:18px 0 8px"><b>Die Aufgaben von deinem Blatt</b></p>
-<div class="exlist">
-  <div class="exitem">$$x^2 + y^2 = 1$$<ul><li>Mittelpunkt \((0, 0)\)</li><li>\(r^2 = 1\), also \(r = 1\)</li></ul><p class="exres">Ergebnis: \(K_1(0, 0)\)</p></div>
-  <div class="exitem">$$(3 - x)^2 + (y + 7)^2 = \sqrt5$$<ul><li>Mittelpunkt \((3, -7)\)</li><li>\(r^2 = \sqrt5\), also \(r = \sqrt{\sqrt5} = \sqrt[4]{5} \approx 1.5\)</li></ul><p class="exres">Ergebnis: \(K_{\sqrt[4]{5}}(3, -7)\)</p></div>
-  <div class="exitem">$$x^2 + y^2 = 0$$<ul><li>Rechts steht 0</li><li>Nur \((0, 0)\) erfüllt die Gleichung</li></ul><p class="exres">Ergebnis: \(K_0(0, 0) = \{(0, 0)\}\)</p></div>
-  <div class="exitem">$$x^2 + y^2 = -1$$<ul><li>Rechts steht etwas Negatives</li><li>Kein Punkt erfüllt die Gleichung</li></ul><p class="exres">Ergebnis: \(\emptyset \text{ (leere Menge)}\)</p></div>
-</div>
+<h3 id="blatt">Aufgaben vom Blatt (25. November 2026)</h3>
+<p>Die vier Fragen von deinem Blatt, Schritt für Schritt.</p>
+
+<article class="ex" id="k1">
+  <div class="ex-head"><h3>Frage 1</h3></div>
+  <div class="task">Was beschreibt \(x^2 + y^2 = 1\)?</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>Mittelpunkt ablesen</h4>
+      <p class="why">Ohne Zahl in der Klammer heisst das: minus 0.</p>
+      <div class="calc">$$x^2 + y^2 = (x - 0)^2 + (y - 0)^2 \;\Rightarrow\; M = (0, 0)$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4>Radius: Wurzel der rechten Seite</h4>
+      <p class="why">Rechts steht \(r^2\), nicht r.</p>
+      <div class="calc">$$r^2 = 1 \;\Rightarrow\; r = \sqrt1 = 1$$</div>
+    </li>
+  </ol>
+  <div class="done">Der Kreis um \((0, 0)\) mit Radius 1: \(K_1(0, 0)\).</div>
+</article>
+
+<article class="ex" id="k2">
+  <div class="ex-head"><h3>Frage 2</h3></div>
+  <div class="task">Was beschreibt \((3 - x)^2 + (y + 7)^2 = \sqrt5\)?</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>Die erste Klammer umdrehen</h4>
+      <p class="why">\(3 - x\) ist das Gegenteil von \(x - 3\). Ins Quadrat genommen ist das egal.</p>
+      <div class="calc">$$(3 - x)^2 = \big(-(x - 3)\big)^2 = (x - 3)^2 \;\Rightarrow\; a = 3$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4>Die zweite Klammer</h4>
+      <p class="why">Plus in der Klammer heisst: der Mittelpunkt ist negativ.</p>
+      <div class="calc">$$(y + 7)^2 = \big(y - (-7)\big)^2 \;\Rightarrow\; b = -7$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4>Radius: Wurzel der rechten Seite</h4>
+      <p class="why">Rechts steht \(r^2 = \sqrt5\). Also ist r die Wurzel davon, die Wurzel aus der Wurzel.</p>
+      <div class="calc">$$r = \sqrt{\sqrt5} = \sqrt[4]{5} \approx 1.50$$</div>
+    </li>
+  </ol>
+  <div class="done">Der Kreis um \((3, -7)\) mit Radius \(\sqrt[4]{5}\): \(K_{\sqrt[4]{5}}(3, -7)\). Achtung: nicht \(\sqrt5\)!</div>
+</article>
+
+<article class="ex" id="k3">
+  <div class="ex-head"><h3>Frage 3</h3></div>
+  <div class="task">Was beschreibt \(x^2 + y^2 = 0\)?</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>Quadrate sind nie negativ</h4>
+      <p class="why">\(x^2 \ge 0\) und \(y^2 \ge 0\), für jede Zahl.</p>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4>Wann ist die Summe 0?</h4>
+      <p class="why">Zwei Zahlen, die nicht negativ sind, ergeben nur dann 0, wenn beide 0 sind.</p>
+      <div class="calc">$$x^2 = 0 \text{ und } y^2 = 0 \;\Rightarrow\; x = 0,\ y = 0$$</div>
+    </li>
+  </ol>
+  <div class="done">Nur ein einziger Punkt: \(K_0(0, 0) = \{(0, 0)\}\), ein «Kreis» mit Radius 0.</div>
+</article>
+
+<article class="ex" id="k4">
+  <div class="ex-head"><h3>Frage 4</h3></div>
+  <div class="task">Was beschreibt \(x^2 + y^2 = -1\)?</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>Quadrate sind nie negativ</h4>
+      <p class="why">Darum ist die linke Seite immer mindestens 0.</p>
+      <div class="calc">$$x^2 + y^2 \ge 0$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4>Mit der rechten Seite vergleichen</h4>
+      <p class="why">Etwas, das mindestens 0 ist, kann nie −1 sein.</p>
+      <div class="calc">$$x^2 + y^2 \ge 0 > -1$$</div>
+    </li>
+  </ol>
+  <div class="done">Kein Punkt erfüllt die Gleichung: die leere Menge \(\emptyset\).</div>
+</article>
+
 <div class="box"><p style="margin:0"><b>Rückwärts</b> geht es genauso: Kreis mit Radius \(\sqrt3\) und Mittelpunkt \((2, -1)\):</p>
 $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 <div class="box">

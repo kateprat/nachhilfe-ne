@@ -387,13 +387,76 @@ $$\overline{PF} = \overline{P\ell}$$</div>
   $$\begin{aligned} (y + 7)^2 &= (y - (-7))^2 \;\Rightarrow\; b = -7 \\ (3 - x)^2 &= (x - 3)^2 \;\Rightarrow\; a = 3 \end{aligned}$$</div>
   <div class="box"><p style="margin:0 0 4px"><b>3. Check the right side.</b></p><p style="margin:0">A square is never negative. So:</p><ul style="margin:6px 0 0"><li>Positive: a circle</li><li>Zero: only the point M</li><li>Negative: no point at all</li></ul></div>
 </div>
-<p style="margin:18px 0 8px"><b>The tasks from your sheet</b></p>
-<div class="exlist">
-  <div class="exitem">$$x^2 + y^2 = 1$$<ul><li>Centre \((0, 0)\)</li><li>\(r^2 = 1\), so \(r = 1\)</li></ul><p class="exres">Result: \(K_1(0, 0)\)</p></div>
-  <div class="exitem">$$(3 - x)^2 + (y + 7)^2 = \sqrt5$$<ul><li>Centre \((3, -7)\)</li><li>\(r^2 = \sqrt5\), so \(r = \sqrt{\sqrt5} = \sqrt[4]{5} \approx 1.5\)</li></ul><p class="exres">Result: \(K_{\sqrt[4]{5}}(3, -7)\)</p></div>
-  <div class="exitem">$$x^2 + y^2 = 0$$<ul><li>The right side is 0</li><li>Only \((0, 0)\) solves the equation</li></ul><p class="exres">Result: \(K_0(0, 0) = \{(0, 0)\}\)</p></div>
-  <div class="exitem">$$x^2 + y^2 = -1$$<ul><li>The right side is negative</li><li>No point solves the equation</li></ul><p class="exres">Result: \(\emptyset \text{ (empty set)}\)</p></div>
-</div>
+<h3 id="blatt">Tasks from the sheet (25 November 2026)</h3>
+<p>The four questions from your sheet, step by step.</p>
+
+<article class="ex" id="k1">
+  <div class="ex-head"><h3>Question 1</h3></div>
+  <div class="task">What does \(x^2 + y^2 = 1\) describe?</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">STEP 1</span><h4>Read off the centre</h4>
+      <p class="why">No number in the bracket means: minus 0.</p>
+      <div class="calc">$$x^2 + y^2 = (x - 0)^2 + (y - 0)^2 \;\Rightarrow\; M = (0, 0)$$</div>
+    </li>
+    <li class="step"><span class="nr">STEP 2</span><h4>Radius: square root of the right side</h4>
+      <p class="why">The right side is \(r^2\), not r.</p>
+      <div class="calc">$$r^2 = 1 \;\Rightarrow\; r = \sqrt1 = 1$$</div>
+    </li>
+  </ol>
+  <div class="done">The circle around \((0, 0)\) with radius 1: \(K_1(0, 0)\).</div>
+</article>
+
+<article class="ex" id="k2">
+  <div class="ex-head"><h3>Question 2</h3></div>
+  <div class="task">What does \((3 - x)^2 + (y + 7)^2 = \sqrt5\) describe?</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">STEP 1</span><h4>Turn the first bracket around</h4>
+      <p class="why">\(3 - x\) is the opposite of \(x - 3\). Squared, that makes no difference.</p>
+      <div class="calc">$$(3 - x)^2 = \big(-(x - 3)\big)^2 = (x - 3)^2 \;\Rightarrow\; a = 3$$</div>
+    </li>
+    <li class="step"><span class="nr">STEP 2</span><h4>The second bracket</h4>
+      <p class="why">A plus in the bracket means the centre is negative.</p>
+      <div class="calc">$$(y + 7)^2 = \big(y - (-7)\big)^2 \;\Rightarrow\; b = -7$$</div>
+    </li>
+    <li class="step"><span class="nr">STEP 3</span><h4>Radius: square root of the right side</h4>
+      <p class="why">The right side is \(r^2 = \sqrt5\). So r is its square root, the root of the root.</p>
+      <div class="calc">$$r = \sqrt{\sqrt5} = \sqrt[4]{5} \approx 1.50$$</div>
+    </li>
+  </ol>
+  <div class="done">The circle around \((3, -7)\) with radius \(\sqrt[4]{5}\): \(K_{\sqrt[4]{5}}(3, -7)\). Careful: not \(\sqrt5\)!</div>
+</article>
+
+<article class="ex" id="k3">
+  <div class="ex-head"><h3>Question 3</h3></div>
+  <div class="task">What does \(x^2 + y^2 = 0\) describe?</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">STEP 1</span><h4>Squares are never negative</h4>
+      <p class="why">\(x^2 \ge 0\) and \(y^2 \ge 0\), for every number.</p>
+    </li>
+    <li class="step"><span class="nr">STEP 2</span><h4>When is the sum 0?</h4>
+      <p class="why">Two numbers that are not negative only add up to 0 if both are 0.</p>
+      <div class="calc">$$x^2 = 0 \text{ and } y^2 = 0 \;\Rightarrow\; x = 0,\ y = 0$$</div>
+    </li>
+  </ol>
+  <div class="done">Only one single point: \(K_0(0, 0) = \{(0, 0)\}\), a “circle” with radius 0.</div>
+</article>
+
+<article class="ex" id="k4">
+  <div class="ex-head"><h3>Question 4</h3></div>
+  <div class="task">What does \(x^2 + y^2 = -1\) describe?</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">STEP 1</span><h4>Squares are never negative</h4>
+      <p class="why">So the left side is always at least 0.</p>
+      <div class="calc">$$x^2 + y^2 \ge 0$$</div>
+    </li>
+    <li class="step"><span class="nr">STEP 2</span><h4>Compare with the right side</h4>
+      <p class="why">Something that is at least 0 can never be −1.</p>
+      <div class="calc">$$x^2 + y^2 \ge 0 > -1$$</div>
+    </li>
+  </ol>
+  <div class="done">No point solves the equation: the empty set \(\emptyset\).</div>
+</article>
+
 <div class="box"><p style="margin:0"><b>Backwards</b> works the same way: circle with radius \(\sqrt3\) and centre \((2, -1)\):</p>
 $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 <div class="box">
