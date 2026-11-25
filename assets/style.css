@@ -65,7 +65,15 @@ a.card:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--shadow)}
 .card .n{color:var(--mute);font-size:15px;font-weight:700}
 .card b{font-size:25px;display:block;margin:0 0 4px;line-height:1.1}
 .card span:last-child{display:block}
-@media(max-width:520px){.card{grid-template-columns:minmax(0,1fr)}.card .doodle{width:64px;height:64px}.card .doodle svg{width:46px;height:46px}}
+@media(max-width:520px){
+  .cards{gap:12px;margin-top:20px}
+  .card{grid-template-columns:48px minmax(0,1fr);gap:12px;padding:12px 14px;align-items:start;border-radius:16px;box-shadow:3px 3px 0 var(--shadow)}
+  .card .doodle{width:48px;height:48px;border-radius:12px}
+  .card .doodle svg{width:34px;height:34px;stroke-width:3.5}
+  .card .n{font-size:13px}
+  .card b{font-size:19px;margin:0 0 2px}
+  .card span:last-child{font-size:15px;line-height:1.4}
+}
 
 /* boxes */
 .box{border:2px solid var(--line);border-radius:18px;padding:16px 18px;margin:16px 0;background:var(--card)}
@@ -182,3 +190,21 @@ ol.puzzle li.no{animation:shake .3s}
 @media(max-width:520px){.langsw a,.langsw button{padding:5px 8px;font-size:13px}}
 /* KaTeX hides its MathML copy with position:absolute; keep it inside scroll boxes so it cannot widen the page */
 .tbl,.calc,.katex-display,.task,.box,.tc,.sheet,.step{position:relative}
+/* phones: less air, same hierarchy */
+@media(max-width:520px){
+  body{font-size:17px}
+  .wrap{padding:14px 16px 64px}
+  h1{font-size:32px;margin-bottom:10px}
+  .lead{font-size:17px;line-height:1.5}
+  h2{margin-top:44px}
+  .box,.sub li,.recipe li{padding:12px}
+  .ex{padding:16px 14px 16px 26px;margin:20px 0;box-shadow:3px 3px 0 var(--shadow)}
+  .ex::before{left:13px}
+}
+@media(max-width:520px){
+  .ctrl{gap:8px}
+  .ctrl button{min-height:42px;padding:0 12px;font-size:15px;flex:1 1 auto}
+  .ctrl [data-a=next]{flex:1 1 100%}
+  .predict{font-size:15px;margin-top:10px}
+  .task{padding:10px 12px}
+}
