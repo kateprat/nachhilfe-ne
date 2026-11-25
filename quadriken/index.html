@@ -18,11 +18,11 @@
 <nav class="langsw" aria-label="Sprache / language"><a href="./" lang="de" aria-current="page">DE</a><a href="en.html" lang="en">EN</a></nav>
 <p class="crumb"><a href="../">← Übersicht</a></p>
 <h1>Quadriken: Tangenten und Kreise</h1>
-<p class="lead">Skript Kapitel 17.2–17.5, Aufgaben A2–A12. Zuerst die Buchstaben, dann ein Kochrezept, das bei fast allen Aufgaben gleich bleibt.</p>
+<p class="lead">Skript Kapitel 17.2–17.5, Aufgaben A1–A12. Zuerst die Buchstaben, dann ein Kochrezept, das bei fast allen Aufgaben gleich bleibt.</p>
 
 <nav class="nav" aria-label="Abschnitte"><ul>
   <li><a href="#buchstaben">Buchstaben</a></li><li><a href="#rezept">Kochrezept</a></li>
-  <li><a href="#a2">A2</a></li><li><a href="#a3">A3</a></li><li><a href="#a4">A4</a></li><li><a href="#a5">A5</a></li>
+  <li><a href="#a1">A1</a></li><li><a href="#a2">A2</a></li><li><a href="#a3">A3</a></li><li><a href="#a4">A4</a></li><li><a href="#a5">A5</a></li>
   <li><a href="#a6">A6</a></li><li><a href="#a7">A7</a></li><li><a href="#a8">A8</a></li><li><a href="#kreise">Kreise</a></li><li><a href="#a9">A9</a></li><li><a href="#a10">A10</a></li><li><a href="#a11">A11</a></li><li><a href="#a12">A12</a></li><li><a href="interaktiv.html#tangente">Interaktiv</a></li><li><a href="spickzettel.html">Spickzettel</a></li><li><a href="../grundlagen/">Algebra</a></li><li><a href="../training/">Prüfungstraining</a></li>
 </ul></nav>
 
@@ -101,7 +101,44 @@
 
 <!-- ============ 3. Aufgaben ============ -->
 <h2 id="aufgaben">3 · Aufgaben</h2>
-<p>A2–A4 (a) sind <b>ganz vorgerechnet</b>: Klick dich Schritt für Schritt durch und überleg vor jedem Klick, was als Nächstes kommt. Ab A4 (b) <b>rechnest du selbst</b>: Du siehst den Schritt, die Rechnung erst auf Knopfdruck.</p>
+<p>A1 (a), A2, A3 und A4 (a) sind <b>ganz vorgerechnet</b>: Klick dich Schritt für Schritt durch und überleg vor jedem Klick, was als Nächstes kommt. Ab A4 (b) <b>rechnest du selbst</b>: Du siehst den Schritt, die Rechnung erst auf Knopfdruck.</p>
+
+<!-- A1 -->
+<article class="ex" id="a1" data-mode="worked">
+  <div class="ex-head"><h3>A1 (a)</h3><span class="mode">vorgerechnet</span></div>
+  <div class="task">Beschreibe die Parabel zum Brennpunkt \(F = (2, 1)\) und zur Leitgeraden \(\ell: y = -1\) als Graph einer Funktion.<br><small style="color:var(--mute)">Eine Parabel ist die Menge aller Punkte P, die von F und von ℓ gleich weit entfernt sind (17.1.1).</small></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>Ein allgemeiner Punkt</h4>
+      <p class="why">Wir nennen einen beliebigen Punkt \(P = (x, y)\) und schreiben auf, wann er auf der Parabel liegt.</p>
+      <div class="calc">$$\overline{P\ell} = \overline{PF}$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4>Beide Abstände als Formel</h4>
+      <p class="why">Abstand zu einer waagrechten Geraden: einfach die Differenz der y-Werte. Abstand zu einem Punkt: Pythagoras.</p>
+      <div class="calc">$$\overline{P\ell} = |y - (-1)| = |y + 1|, \qquad \overline{PF} = \sqrt{(x - 2)^2 + (y - 1)^2}$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4>Gleichsetzen und quadrieren</h4>
+      <p class="why">Beide Seiten sind nicht negativ, darum darf man quadrieren. Dann verschwinden Wurzel und Betrag.</p>
+      <div class="calc">$$(y + 1)^2 = (x - 2)^2 + (y - 1)^2$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 4</span><h4>Ausmultiplizieren, \(y^2\) fällt weg</h4>
+      <div class="calc">$$\begin{aligned} y^2 + 2y + 1 &= (x - 2)^2 + y^2 - 2y + 1 \\ 4y &= (x - 2)^2 \end{aligned}$$</div></li>
+    <li class="step"><span class="nr">SCHRITT 5</span><h4>Nach y auflösen</h4>
+      <div class="calc">$$y = \tfrac14 (x - 2)^2$$
+      <p>Probe: Der Scheitel \((2, 0)\) liegt genau in der Mitte zwischen \(F = (2, 1)\) und \(\ell: y = -1\) ✓</p></div></li>
+  </ol>
+  <div class="done">Die Parabel ist der Graph von \(f(x) = \frac14 (x - 2)^2\). <a href="interaktiv.html#brennpunkt">Im Bild prüfen</a>: F auf (2, 1), ℓ auf y = −1.</div>
+</article>
+
+<article class="ex" id="a1b" data-mode="faded">
+  <div class="ex-head"><h3>A1 (b) und (c)</h3><span class="mode">selbst rechnen</span></div>
+  <div class="task">(b) Sei \(a \neq 0\) (du darfst \(a \gt 0\) annehmen). Beschreibe die Parabel zu \(F = (0, a)\) und \(\ell: y = -a\) als Graph einer Funktion. (c) Finde F und ℓ so, dass die Parabel der Graph von \(f(x) = x^2\) ist.</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">(b)</span><h4>Genau wie (a), nur mit a statt Zahlen</h4>
+      <p class="why">a ist ein Parameter: eine feste Zahl, die wir nicht festlegen.</p>
+      <div class="calc">$$\begin{aligned} (y + a)^2 &= x^2 + (y - a)^2 \\ y^2 + 2ay + a^2 &= x^2 + y^2 - 2ay + a^2 \\ 4ay &= x^2 \\ y &= \tfrac{1}{4a}\,x^2 \end{aligned}$$</div></li>
+    <li class="step"><span class="nr">(c)</span><h4>Mit (b) rückwärts</h4>
+      <p class="why">Wir brauchen \(\frac{1}{4a} = 1\).</p>
+      <div class="calc">$$\tfrac{1}{4a} = 1 \iff a = \tfrac14, \qquad F = \left(0, \tfrac14\right),\quad \ell: y = -\tfrac14$$</div></li>
+  </ol>
+  <div class="done">Das ist 17.1.2 im Skript: Der Graph von \(f(x) = \frac{1}{4a}x^2\) ist die Parabel zu \(F = (0, a)\) und \(\ell: y = -a\).</div>
+</article>
 
 <!-- A2 -->
 <article class="ex" id="a2" data-mode="worked">

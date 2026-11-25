@@ -18,11 +18,11 @@
 <nav class="langsw" aria-label="Sprache / language"><a href="./" lang="de">DE</a><a href="en.html" lang="en" aria-current="page">EN</a></nav>
 <p class="crumb"><a href="../en.html">← Overview</a></p>
 <h1>Conics: tangents and circles</h1>
-<p class="lead">Script chapter 17.2–17.5, exercises A2–A12. First the letters, then a recipe that stays the same for almost every exercise.</p>
+<p class="lead">Script chapter 17.2–17.5, exercises A1–A12. First the letters, then a recipe that stays the same for almost every exercise.</p>
 
 <nav class="nav" aria-label="Sections"><ul>
   <li><a href="#buchstaben">Letters</a></li><li><a href="#rezept">Recipe</a></li>
-  <li><a href="#a2">A2</a></li><li><a href="#a3">A3</a></li><li><a href="#a4">A4</a></li><li><a href="#a5">A5</a></li>
+  <li><a href="#a1">A1</a></li><li><a href="#a2">A2</a></li><li><a href="#a3">A3</a></li><li><a href="#a4">A4</a></li><li><a href="#a5">A5</a></li>
   <li><a href="#a6">A6</a></li><li><a href="#a7">A7</a></li><li><a href="#a8">A8</a></li><li><a href="#kreise">Circles</a></li><li><a href="#a9">A9</a></li><li><a href="#a10">A10</a></li><li><a href="#a11">A11</a></li><li><a href="#a12">A12</a></li><li><a href="interaktiv.html#tangente">Interactive</a></li><li><a href="spickzettel.html">Cheat sheet</a></li><li><a href="../grundlagen/">Algebra</a></li><li><a href="../training/">Exam training</a></li>
 </ul></nav>
 
@@ -101,7 +101,44 @@
 
 <!-- ============ 3. Exercises ============ -->
 <h2 id="aufgaben">3 · Exercises</h2>
-<p>A2–A4 (a) are <b>fully worked</b>: click through step by step and think about what comes next before each click. From A4 (b) on, <b>you calculate yourself</b>: you see the step, the working only when you press the button.</p>
+<p>A1 (a), A2, A3 and A4 (a) are <b>fully worked</b>: click through step by step and think about what comes next before each click. From A4 (b) on, <b>you calculate yourself</b>: you see the step, the working only when you press the button.</p>
+
+<!-- A1 -->
+<article class="ex" id="a1" data-mode="worked">
+  <div class="ex-head"><h3>A1 (a)</h3><span class="mode">worked</span></div>
+  <div class="task">Describe the parabola with focus \(F = (2, 1)\) and directrix \(\ell: y = -1\) as the graph of a function.<br><small style="color:var(--mute)">A parabola is the set of all points P that are equally far from F and from ℓ (17.1.1).</small></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">STEP 1</span><h4>A general point</h4>
+      <p class="why">Take any point \(P = (x, y)\) and write down when it lies on the parabola.</p>
+      <div class="calc">$$\overline{P\ell} = \overline{PF}$$</div></li>
+    <li class="step"><span class="nr">STEP 2</span><h4>Both distances as formulas</h4>
+      <p class="why">Distance to a horizontal line: just the difference of the y-values. Distance to a point: Pythagoras.</p>
+      <div class="calc">$$\overline{P\ell} = |y - (-1)| = |y + 1|, \qquad \overline{PF} = \sqrt{(x - 2)^2 + (y - 1)^2}$$</div></li>
+    <li class="step"><span class="nr">STEP 3</span><h4>Set equal and square</h4>
+      <p class="why">Both sides are not negative, so we may square. Then the root and the absolute value disappear.</p>
+      <div class="calc">$$(y + 1)^2 = (x - 2)^2 + (y - 1)^2$$</div></li>
+    <li class="step"><span class="nr">STEP 4</span><h4>Expand, \(y^2\) cancels</h4>
+      <div class="calc">$$\begin{aligned} y^2 + 2y + 1 &= (x - 2)^2 + y^2 - 2y + 1 \\ 4y &= (x - 2)^2 \end{aligned}$$</div></li>
+    <li class="step"><span class="nr">STEP 5</span><h4>Solve for y</h4>
+      <div class="calc">$$y = \tfrac14 (x - 2)^2$$
+      <p>Check: the vertex \((2, 0)\) lies exactly halfway between \(F = (2, 1)\) and \(\ell: y = -1\) ✓</p></div></li>
+  </ol>
+  <div class="done">The parabola is the graph of \(f(x) = \frac14 (x - 2)^2\). <a href="interaktiv.html#brennpunkt">Check it in the picture</a>: F at (2, 1), ℓ at y = −1.</div>
+</article>
+
+<article class="ex" id="a1b" data-mode="faded">
+  <div class="ex-head"><h3>A1 (b) and (c)</h3><span class="mode">your turn</span></div>
+  <div class="task">(b) Let \(a \neq 0\) (you may assume \(a \gt 0\)). Describe the parabola with \(F = (0, a)\) and \(\ell: y = -a\) as the graph of a function. (c) Find F and ℓ so that the parabola is the graph of \(f(x) = x^2\).</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">(b)</span><h4>Exactly like (a), with a instead of numbers</h4>
+      <p class="why">a is a parameter: a fixed number that we don't specify.</p>
+      <div class="calc">$$\begin{aligned} (y + a)^2 &= x^2 + (y - a)^2 \\ y^2 + 2ay + a^2 &= x^2 + y^2 - 2ay + a^2 \\ 4ay &= x^2 \\ y &= \tfrac{1}{4a}\,x^2 \end{aligned}$$</div></li>
+    <li class="step"><span class="nr">(c)</span><h4>Use (b) backwards</h4>
+      <p class="why">We need \(\frac{1}{4a} = 1\).</p>
+      <div class="calc">$$\tfrac{1}{4a} = 1 \iff a = \tfrac14, \qquad F = \left(0, \tfrac14\right),\quad \ell: y = -\tfrac14$$</div></li>
+  </ol>
+  <div class="done">This is 17.1.2 in the script: the graph of \(f(x) = \frac{1}{4a}x^2\) is the parabola with \(F = (0, a)\) and \(\ell: y = -a\).</div>
+</article>
 
 <!-- A2 -->
 <article class="ex" id="a2" data-mode="worked">
