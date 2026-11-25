@@ -173,7 +173,7 @@ ol.puzzle{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
 ol.puzzle li{padding:10px 14px;border-radius:14px;border:2px solid var(--line);background:var(--card);cursor:pointer;font-weight:700}
 ol.puzzle li.ok{border-color:var(--ok);background:color-mix(in srgb,var(--mint) 25%,var(--card))}
 ol.puzzle li.ok::before{content:attr(data-n) ". ";color:var(--ok)}
-ol.puzzle li.no{animation:shake .3s;border-color:var(--q);background:color-mix(in srgb,var(--q) 15%,var(--card))}
+ol.puzzle li.no{animation:shake .3s;border-color:color-mix(in srgb,var(--q) 55%,var(--line))}
 @keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 @media(prefers-reduced-motion:reduce){ol.puzzle li.no{animation:none;border-color:var(--q)}}
 .puzzle-msg{font-weight:700;color:var(--ok)}
