@@ -103,7 +103,7 @@
       const resolve = ok => {
         a._resolved = true; if (ok && tries === 0) right1++;
         const st = steps[i], m = document.createElement('p'); m.className = 'mine' + (ok ? ' ok' : '');
-        m.innerHTML = D('mine') + ' ' + answer + (ok ? ' ✓' : ''); st.querySelector('.mine')?.remove(); st.querySelector('.nr').after(m);
+        const q = a.querySelector('.q'); m.innerHTML = (q ? `<span class="mq">${q.innerHTML}</span>` : '') + `<span class="ma">${D('mine')} ${answer}${ok ? ' ✓' : ''}</span>`; st.querySelector('.mine')?.remove(); st.querySelector('.nr').after(m);
         const y0 = ctrl.getBoundingClientRect().top; shown = Math.min(steps.length, i + 1); update(true, y0);
       };
       const wrong = vals => {

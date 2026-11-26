@@ -296,6 +296,8 @@ body{padding-top:env(safe-area-inset-top,0px)}
 .hintmsg.warn{background:var(--hi)}
 .hintmsg.err{color:var(--q);padding:0;margin-top:8px}
 .showstep{margin-top:10px;min-height:40px;font-size:15px;background:var(--card)}
-.mine{margin:2px 0 4px;font-size:15px;color:var(--mute)}
-.mine.ok{color:var(--ok)}
+.mine{margin:4px 0 8px;padding:8px 12px;border-radius:10px;background:var(--soft);font-size:16px}
+.mine .mq{display:block;font-weight:700}
+.mine .ma{display:block;color:var(--mute)}
+.mine.ok .ma{color:var(--ok)}
 .tally{margin:8px 0 0;font-weight:400;font-size:15px}
