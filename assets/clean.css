@@ -1,0 +1,63 @@
+/* Clean look (Nov 2026): calm surfaces, thin lines, no hard shadows. Light = clean app, dark = deep navy with lime.
+   Loaded last on every page, so it overrides the older exercise-book styles. Maths colours (m, q, cos, sin) stay. */
+:root{
+  --bg:light-dark(#F6F7FB,#0F1020);
+  --card:light-dark(#FFFFFF,#1A1C33);
+  --ink:light-dark(#14162B,#F2F3FF);
+  --mute:light-dark(#5E6382,#A3A8CC);
+  --line:light-dark(#E4E7F0,#2C3058);
+  --soft:light-dark(#F0F2F9,#23264A);
+  --grid:light-dark(#E9EDF5,#232650);
+  --paper-grid:transparent;
+  --shadow:transparent;
+  --accent:light-dark(#2F6BFF,#B8F35C);
+  --on-accent:light-dark(#FFFFFF,#0F1020);
+  --link:light-dark(#1F5FD6,#9EC0FF);
+  --hi:light-dark(#FFF4C2,#33301A);
+  --mark:light-dark(#FFE45C,#5C5216);
+  --tip:light-dark(#EAF1FF,#202650);
+  --margin:transparent;
+}
+body{background-image:none!important;background-color:var(--bg)!important}
+
+/* surfaces: thin line, soft corners, no offset shadows */
+.card,.ex,.sheet,.box,.recipe li,.sub li,.theory .tc,.exitem,.tmenu,.langsw,.menubtn,.tabs,.seg,.fig>svg,.fig svg,.ask{
+  border:1px solid var(--line)!important;box-shadow:none!important}
+.fig{box-shadow:none!important}
+.card,.ex,.sheet,.box{border-radius:20px}
+.ex{padding-left:clamp(16px,3vw,26px)!important}
+.ex::before{display:none!important}
+.box.exam,.helper,.nextcard{border-style:dashed!important}
+.box.exam{border-color:color-mix(in srgb,var(--mark) 70%,var(--line))!important}
+a.card{transition:transform .2s,box-shadow .2s}
+a.card:hover{transform:translateY(-2px)!important;box-shadow:0 10px 28px rgba(20,22,43,.08)!important}
+a.card:active{transform:scale(.99)!important;box-shadow:none!important}
+
+/* buttons: quiet by default, one clear accent for the main action, a small press on tap */
+button{border:1px solid var(--line);border-radius:14px;box-shadow:none}
+button:active{transform:scale(.97)}
+button.primary{background:var(--accent)!important;color:var(--on-accent)!important;border-color:transparent!important;box-shadow:none!important}
+button.primary:active{transform:scale(.97)!important}
+.ask .pad button{border-color:var(--line)}
+.ask .form input{border:1px solid var(--line)!important}
+.ask .form input:focus,.ask .form input.cur{border-color:var(--accent)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)!important}
+.ask{background:var(--soft)!important;border-style:solid!important}
+
+/* navigation */
+.nav{border-bottom:1px solid var(--line)!important;background:color-mix(in srgb,var(--bg) 92%,transparent)}
+.nav a,.nav .navback{border:1px solid var(--line)!important}
+.nav a.active{background:light-dark(#FFE45C,#B8F35C)!important;border-color:transparent!important;color:#14162B!important}
+.nav a.done{background:var(--mint);border-color:transparent!important;color:#10241b}
+@media(min-width:1100px){.nav{border-right:1px solid var(--line)!important;border-bottom:0!important;background:var(--card)!important}}
+
+/* step numbers in recipes, the "done" stamp as a calm badge */
+.recipe li::before{border:0!important;background:light-dark(#FFE45C,#B8F35C)!important;color:#14162B!important}
+.stamp{transform:none!important;border:0!important;background:color-mix(in srgb,var(--mint) 55%,transparent)!important;color:light-dark(#0b5a39,#c9ffe6)!important;
+  border-radius:999px!important;font-size:14px!important;padding:4px 12px!important}
+.done{border-radius:14px}
+
+/* tools (interaktiv pages) */
+.seg button[aria-pressed=true]{background:var(--ink)!important;color:var(--bg)!important}
+.tabs button[aria-selected=true]{background:light-dark(#FFE45C,#B8F35C)!important;color:#14162B!important;box-shadow:none!important}
+
+@media print{.card,.ex,.sheet,.box{border:1px solid #999!important}}
