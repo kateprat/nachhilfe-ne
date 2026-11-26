@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<script src="../assets/theme.js?v=53"></script>
+<script src="../assets/theme.js?v=55"></script>
 <script src="../assets/sitenav.js?v=28"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Conics: parabolas, tangents and circles</title>
@@ -12,8 +12,8 @@
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/steps.js?v=53"></script>
-<link rel="stylesheet" href="../assets/style.css?v=54">
+<script defer src="../assets/steps.js?v=57"></script>
+<link rel="stylesheet" href="../assets/style.css?v=55">
 </head>
 <body>
 <main class="wrap">
@@ -394,11 +394,11 @@ $$\overline{PF} = \overline{P\ell}$$</div>
   <div class="ex-head"><h3>Question 1</h3></div>
   <div class="task">What does \(x^2 + y^2 = 1\) describe?</div>
   <ol class="steps">
-    <li class="step"><span class="nr">STEP 1</span><h4>Read off the centre</h4>
+    <li class="step"><div class="ask" data-form="M = (_, _)" data-ans="0|0"><p class="q"><span data-l="de">Wo liegt der Mittelpunkt?</span><span data-l="en">Where is the centre?</span></p><p class="hint"><span data-l="de">Vergleiche mit \((x - a)^2 + (y - b)^2\). Was steht hier anstelle von a und b?</span><span data-l="en">Compare with \((x - a)^2 + (y - b)^2\). What stands in place of a and b here?</span></p></div><span class="nr">STEP 1</span><h4>Read off the centre</h4>
       <p class="why">No number in the bracket means: minus 0.</p>
       <div class="calc">$$x^2 + y^2 = (x - 0)^2 + (y - 0)^2 \;\Rightarrow\; M = (0, 0)$$</div>
     </li>
-    <li class="step"><span class="nr">STEP 2</span><h4>Radius: square root of the right side</h4>
+    <li class="step"><div class="ask" data-form="r = _" data-ans="1" data-keys="√"><p class="q"><span data-l="de">Wie gross ist der Radius?</span><span data-l="en">What is the radius?</span></p><p class="hint"><span data-l="de">Rechts steht \(r^2\). Welche Zahl mal sich selbst gibt 1?</span><span data-l="en">The right side is \(r^2\). Which number times itself gives 1?</span></p></div><span class="nr">STEP 2</span><h4>Radius: square root of the right side</h4>
       <p class="why">The right side is \(r^2\), not r.</p>
       <div class="calc">$$r^2 = 1 \;\Rightarrow\; r = \sqrt1 = 1$$</div>
     </li>
@@ -410,15 +410,15 @@ $$\overline{PF} = \overline{P\ell}$$</div>
   <div class="ex-head"><h3>Question 2</h3></div>
   <div class="task">What does \((3 - x)^2 + (y + 7)^2 = \sqrt5\) describe?</div>
   <ol class="steps">
-    <li class="step"><span class="nr">STEP 1</span><h4>Turn the first bracket around</h4>
+    <li class="step"><div class="ask" data-form="a = _" data-ans="3"><p class="q"><span data-l="de">Erste Koordinate des Mittelpunkts?</span><span data-l="en">First coordinate of the centre?</span></p><p class="hint" data-when="-3"><span data-l="de">Fast. \(3 - x\) ist dasselbe wie \(-(x - 3)\), und im Quadrat fällt das Minus weg.</span><span data-l="en">Close. \(3 - x\) is the same as \(-(x - 3)\), and squaring removes the minus.</span></p><p class="hint"><span data-l="de">Schreib \((3 - x)^2\) als \((x - \ldots)^2\). Im Quadrat ist die Reihenfolge egal.</span><span data-l="en">Write \((3 - x)^2\) as \((x - \ldots)^2\). Squared, the order does not matter.</span></p></div><span class="nr">STEP 1</span><h4>Turn the first bracket around</h4>
       <p class="why">\(3 - x\) is the opposite of \(x - 3\). Squared, that makes no difference.</p>
       <div class="calc">$$(3 - x)^2 = \big(-(x - 3)\big)^2 = (x - 3)^2 \;\Rightarrow\; a = 3$$</div>
     </li>
-    <li class="step"><span class="nr">STEP 2</span><h4>The second bracket</h4>
+    <li class="step"><div class="ask" data-form="b = _" data-ans="-7"><p class="q"><span data-l="de">Zweite Koordinate des Mittelpunkts?</span><span data-l="en">Second coordinate of the centre?</span></p><p class="hint" data-when="7"><span data-l="de">Achtung Vorzeichen: \(y + 7 = y - (-7)\).</span><span data-l="en">Watch the sign: \(y + 7 = y - (-7)\).</span></p><p class="hint"><span data-l="de">Schreib \(y + 7\) als \(y - (\ldots)\).</span><span data-l="en">Write \(y + 7\) as \(y - (\ldots)\).</span></p></div><span class="nr">STEP 2</span><h4>The second bracket</h4>
       <p class="why">A plus in the bracket means the centre is negative.</p>
       <div class="calc">$$(y + 7)^2 = \big(y - (-7)\big)^2 \;\Rightarrow\; b = -7$$</div>
     </li>
-    <li class="step"><span class="nr">STEP 3</span><h4>Radius: square root of the right side</h4>
+    <li class="step"><div class="ask" data-form="r = _" data-ans="5^(1/4)" data-keys="√"><p class="q"><span data-l="de">Wie gross ist der Radius?</span><span data-l="en">What is the radius?</span></p><p class="hint" data-when="√5"><span data-l="de">Rechts steht \(r^2 = \sqrt5\), nicht r. Zieh nochmals die Wurzel.</span><span data-l="en">The right side is \(r^2 = \sqrt5\), not r. Take the square root once more.</span></p><p class="hint" data-when="5"><span data-l="de">Rechts steht \(\sqrt5\), nicht 5. Und das ist erst \(r^2\).</span><span data-l="en">The right side is \(\sqrt5\), not 5. And that is only \(r^2\).</span></p><p class="hint"><span data-l="de">Rechts steht \(r^2\). Der Radius ist die Wurzel der rechten Seite. Tipp: √√5 darfst du so eintippen.</span><span data-l="en">The right side is \(r^2\). The radius is the square root of it. Tip: you may type √√5.</span></p></div><span class="nr">STEP 3</span><h4>Radius: square root of the right side</h4>
       <p class="why">The right side is \(r^2 = \sqrt5\). So r is its square root, the root of the root.</p>
       <div class="calc">$$r = \sqrt{\sqrt5} = \sqrt[4]{5} \approx 1.50$$</div>
     </li>
@@ -430,7 +430,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
   <div class="ex-head"><h3>Question 3</h3></div>
   <div class="task">What does \(x^2 + y^2 = 0\) describe?</div>
   <ol class="steps">
-    <li class="step"><span class="nr">STEP 1</span><h4>Squares are never negative</h4>
+    <li class="step"><div class="ask" data-type="choice"><p class="q"><span data-l="de">Dein Tipp, bevor du rechnest:</span><span data-l="en">Your guess, before you calculate:</span></p><button class="opt"><span data-l="de">Einen Kreis um (0, 0) mit Radius&nbsp;1</span><span data-l="en">A circle around (0, 0) with radius&nbsp;1</span><span class="oh"><span data-l="de">Dann müsste rechts 1 stehen. Hier ist \(r^2 = 0\).</span><span data-l="en">Then the right side would be 1. Here \(r^2 = 0\).</span></span></button><button class="opt" data-ok><span data-l="de">Nur den Punkt (0, 0)</span><span data-l="en">Only the point (0, 0)</span></button><button class="opt"><span data-l="de">Gar keinen Punkt (leere Menge)</span><span data-l="en">No point at all (empty set)</span><span class="oh"><span data-l="de">Setz \(x = 0\) und \(y = 0\) ein. Stimmt die Gleichung?</span><span data-l="en">Put in \(x = 0\) and \(y = 0\). Does the equation hold?</span></span></button></div><span class="nr">STEP 1</span><h4>Squares are never negative</h4>
       <p class="why">\(x^2 \ge 0\) and \(y^2 \ge 0\), for every number.</p>
     </li>
     <li class="step"><span class="nr">STEP 2</span><h4>When is the sum 0?</h4>
@@ -445,7 +445,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
   <div class="ex-head"><h3>Question 4</h3></div>
   <div class="task">What does \(x^2 + y^2 = -1\) describe?</div>
   <ol class="steps">
-    <li class="step"><span class="nr">STEP 1</span><h4>Squares are never negative</h4>
+    <li class="step"><div class="ask" data-type="choice"><p class="q"><span data-l="de">Dein Tipp, bevor du rechnest:</span><span data-l="en">Your guess, before you calculate:</span></p><button class="opt"><span data-l="de">Einen Kreis um (0, 0) mit Radius&nbsp;1</span><span data-l="en">A circle around (0, 0) with radius&nbsp;1</span><span class="oh"><span data-l="de">Rechts steht −1, nicht 1. Kann \(x^2 + y^2\) negativ sein?</span><span data-l="en">The right side is −1, not 1. Can \(x^2 + y^2\) be negative?</span></span></button><button class="opt"><span data-l="de">Nur den Punkt (0, 0)</span><span data-l="en">Only the point (0, 0)</span><span class="oh"><span data-l="de">Setz \(x = 0\), \(y = 0\) ein: \(0 = -1\)? Stimmt nicht.</span><span data-l="en">Put in \(x = 0\), \(y = 0\): \(0 = -1\)? False.</span></span></button><button class="opt" data-ok><span data-l="de">Gar keinen Punkt (leere Menge)</span><span data-l="en">No point at all (empty set)</span></button></div><span class="nr">STEP 1</span><h4>Squares are never negative</h4>
       <p class="why">So the left side is always at least 0.</p>
       <div class="calc">$$x^2 + y^2 \ge 0$$</div>
     </li>

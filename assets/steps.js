@@ -9,10 +9,25 @@
     predict: ['Was kommt als Nächstes? Erst überlegen, dann klicken.', 'What comes next? Think first, then click.'],
     start: ['Wie würdest du anfangen? Erst überlegen, dann klicken.', 'How would you start? Think first, then click.'],
     axis: ['auf einer Achse', 'on an axis'], x: ['x-Koordinate', 'x-coordinate'], y: ['y-Koordinate', 'y-coordinate'],
-    slope: ['Steigung', 'slope'], nd: ['nicht definiert', 'not defined']
+    slope: ['Steigung', 'slope'], nd: ['nicht definiert', 'not defined'],
+    check: ['Prüfen', 'Check'], showstep: ['Schritt zeigen', 'Show the step'], right: ['Richtig!', 'Correct!'],
+    empty: ['Gib zuerst eine Antwort ein, auch wenn du unsicher bist.', 'Type an answer first, even if you are unsure.'],
+    unread: ['Das kann ich nicht lesen. Schreib zum Beispiel 3, −7, 1.5 oder √5.', 'I can’t read that. Write for example 3, −7, 1.5 or √5.'],
+    again: ['Noch nicht. Ändere deine Antwort und prüf nochmals, oder lass dir den Schritt zeigen.', 'Not yet. Change your answer and check again, or open the step.'],
+    mine: ['Deine Antwort:', 'Your answer:']
   };
   const D = k => `<span data-l="de">${T[k][0]}</span><span data-l="en">${T[k][1]}</span>`;
   const of = (a, b) => `<span data-l="de">${a} von ${b} geschafft</span><span data-l="en">${a} of ${b} done</span>`;
+  const firstTry = (a, b) => `<span data-l="de">Beim 1. Versuch richtig: ${a} von ${b}</span><span data-l="en">Right on the first try: ${a} of ${b}</span>`;
+  // read what she typed: 3, -7, 1,5, 1/2, √5, √(5), √√5, 5^(1/4), π
+  function num(str) {
+    let t = String(str).trim().toLowerCase().replace(/[−–]/g, '-').replace(/,/g, '.').replace(/\s+/g, '').replace(/π|pi/g, '(Math.PI)').replace(/\^/g, '**').replace(/wurzel|sqrt/g, '√');
+    if (!t) return NaN;
+    for (let k = 0; k < 6 && t.includes('√'); k++) t = t.replace(/√(\d+(?:\.\d+)?|\(\Math\.PI\)|Math\.sqrt\([^()]*\)|\([^()]*\))/, 'Math.sqrt($1)');
+    if (t.includes('√') || /[^0-9.+\-*/()]/.test(t.replace(/Math\.(sqrt|PI)/g, ''))) return NaN;
+    try { const v = Function('"use strict";return (' + t + ')')(); return typeof v === 'number' && isFinite(v) ? v : NaN; } catch (e) { return NaN; }
+  }
+  const same = (a, b) => Math.abs(a - b) <= 0.01 * Math.max(1, Math.abs(b));
   const MACROS = { '\\m': '\\textcolor{#3b7be8}{m}', '\\q': '\\textcolor{#e0475b}{q}' };
 
   // progress per topic (same for DE and EN), kept only on this device
@@ -62,6 +77,10 @@
       st._calcBtn = b;
     });
 
+    // "try first" questions: a step with <div class="ask"> opens only after she has answered (right or wrong)
+    const asks = steps.map(st => { const a = st.querySelector(':scope > .ask'); if (a) a.remove(); return a; });
+    const askCount = asks.filter(Boolean).length;
+    let right1 = 0;
     const ctrl = document.createElement('div');
     ctrl.className = 'ctrl';
     ctrl.innerHTML = `<button type="button" class="primary" data-a="next">${D('next')}</button>` +
@@ -70,11 +89,68 @@
     const pred = document.createElement('p'); pred.className = 'predict'; pred.innerHTML = D('predict');
     if (!faded) ctrl.before(pred);
     const next = ctrl.querySelector('[data-a=next]');
+    if (askCount) ctrl.querySelector('[data-a=all]').remove(); // no skipping past the questions
+    asks.forEach((a, i) => { if (a) { pred.before(a); setupAsk(a, i); } });
+    const tally = document.createElement('p'); tally.className = 'tally';
+    if (askCount && done) done.append(tally);
+
+    function setupAsk(a, i) {
+      const hint = document.createElement('p'); hint.className = 'hintmsg'; hint.hidden = true;
+      const showBtn = document.createElement('button'); showBtn.type = 'button'; showBtn.className = 'showstep'; showBtn.innerHTML = D('showstep'); showBtn.hidden = true;
+      let tries = 0, answer = '';
+      const own = [...a.querySelectorAll(':scope > .hint')]; own.forEach(h => { h.hidden = true; }); // stay in the page so KaTeX renders them; copied when needed
+      const say = (html, cls) => { hint.innerHTML = html; hint.className = 'hintmsg ' + (cls || ''); hint.hidden = false; if (hint.textContent.includes('\\(')) renderMath(hint); };
+      const resolve = ok => {
+        a._resolved = true; if (ok && tries === 0) right1++;
+        const st = steps[i], m = document.createElement('p'); m.className = 'mine' + (ok ? ' ok' : '');
+        m.innerHTML = D('mine') + ' ' + answer + (ok ? ' ✓' : ''); st.querySelector('.mine')?.remove(); st.querySelector('.nr').after(m);
+        const y0 = ctrl.getBoundingClientRect().top; shown = Math.min(steps.length, i + 1); update(true, y0);
+      };
+      const wrong = vals => {
+        tries++;
+        const h = own.find(h => h.dataset.when && h.dataset.when.split('|').every((w, k) => same(vals[k], num(w)))) || own.find(h => !h.dataset.when);
+        say(h ? h.innerHTML : D('again'), 'warn'); showBtn.hidden = false;
+      };
+      a._reset = () => { a._resolved = false; tries = 0; answer = ''; hint.hidden = true; showBtn.hidden = true; a.querySelectorAll('input').forEach(x => { x.value = ''; }); a.querySelectorAll('.opt').forEach(o => o.classList.remove('picked')); };
+      showBtn.addEventListener('click', () => resolve(false));
+      if (a.dataset.type === 'choice') {
+        a.querySelectorAll('.opt').forEach(o => {
+          o.type = 'button'; const oh = o.querySelector('.oh'); if (oh) oh.hidden = true;
+          o.addEventListener('click', () => {
+            const c = o.cloneNode(true); c.querySelector('.oh')?.remove(); answer = '«' + c.innerHTML + '»'; a.querySelectorAll('.opt').forEach(x => x.classList.toggle('picked', x === o));
+            if (o.hasAttribute('data-ok')) { resolve(true); return; }
+            tries++; say(oh ? oh.innerHTML : D('again'), 'warn'); showBtn.hidden = false;
+          });
+        });
+      } else {
+        // data-form="M = (_, _)" → one field per _
+        const form = document.createElement('div'); form.className = 'form';
+        form.innerHTML = (a.dataset.form || '_').split('_').map((part, k, arr) => `<span>${part}</span>` + (k < arr.length - 1 ? `<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" aria-label="${k + 1}">` : '')).join('');
+        const go = document.createElement('button'); go.type = 'button'; go.className = 'primary'; go.innerHTML = D('check');
+        form.append(go);
+        if (a.dataset.keys) { const kb = document.createElement('span'); kb.className = 'keys'; a.dataset.keys.split(' ').forEach(k => { const b = document.createElement('button'); b.type = 'button'; b.textContent = k; b.addEventListener('pointerdown', e => e.preventDefault()); b.addEventListener('click', () => { const f = form.querySelector('input:focus') || a._last || form.querySelector('input'); const p0 = f.selectionStart ?? f.value.length; f.value = f.value.slice(0, p0) + k + f.value.slice(p0); f.focus(); f.setSelectionRange(p0 + k.length, p0 + k.length); }); kb.append(b); }); form.append(kb); }
+        a.append(form);
+        const ins = [...form.querySelectorAll('input')];
+        ins.forEach(x => { x.addEventListener('focus', () => { a._last = x; }); x.addEventListener('input', () => { if (hint.classList.contains('err')) hint.hidden = true; }); x.addEventListener('keydown', e => { if (e.key === 'Enter') go.click(); }); });
+        const want = (a.dataset.ans || '').split('|').map(num);
+        go.addEventListener('click', () => {
+          if (ins.some(x => !x.value.trim())) { say(D('empty'), 'err'); return; }
+          const vals = ins.map(x => num(x.value));
+          if (vals.some(isNaN)) { say(D('unread'), 'err'); return; }
+          answer = (a.dataset.form || '_').split('_').map((part, k, arr) => part + (k < arr.length - 1 ? ins[k].value.trim() : '')).join('');
+          if (vals.every((v, k) => same(v, want[k]))) resolve(true); else wrong(vals);
+        });
+      }
+      a.append(hint, showBtn);
+    }
 
     function update(scroll, y0) {
       steps.forEach((st, i) => { st.hidden = i >= shown; st.classList.toggle('on', i === shown - 1); });
       if (done) done.hidden = shown < steps.length;
-      next.hidden = shown >= steps.length; pred.hidden = shown >= steps.length;
+      const pending = asks[shown] && !asks[shown]._resolved;
+      asks.forEach((a, i) => { if (a) a.hidden = i !== shown || a._resolved; });
+      next.hidden = shown >= steps.length || pending; pred.hidden = shown >= steps.length || pending;
+      if (askCount) tally.innerHTML = firstTry(right1, askCount);
       // the new step opens above the buttons; keep the buttons where they were, so the thumb stays on "Next step"
       pred.innerHTML = D(shown === 0 ? 'start' : 'predict');
       if (scroll && y0 != null) scrollBy({ top: ctrl.getBoundingClientRect().top - y0, behavior: 'instant' });
@@ -94,7 +170,7 @@
       const a = (e.target.closest('button') || {}).dataset?.a;
       if (a === 'next') { const y0 = ctrl.getBoundingClientRect().top; shown = Math.min(steps.length, shown + 1); update(true, y0); }
       if (a === 'all') { shown = steps.length; steps.forEach(st => { const c = st.querySelector('.calc'); if (c) c.hidden = false; st._calcBtn && st._calcBtn.remove(); }); update(false); steps.forEach(st => st.classList.remove('on')); }
-      if (a === 'reset') { shown = 0; hideCalcs(); update(false); if (doneSet.has(ex.id)) { doneSet.delete(ex.id); saveDone(); progressUpdate(); } const sp = ex.querySelector('.stamp'); if (sp) sp.remove(); ex.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
+      if (a === 'reset') { shown = 0; right1 = 0; asks.forEach(q => q && q._reset()); steps.forEach(st => st.querySelector('.mine')?.remove()); hideCalcs(); update(false); if (doneSet.has(ex.id)) { doneSet.delete(ex.id); saveDone(); progressUpdate(); } const sp = ex.querySelector('.stamp'); if (sp) sp.remove(); ex.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
     });
     hideCalcs();
     update(false);

@@ -281,3 +281,21 @@ body{padding-top:env(safe-area-inset-top,0px)}
 .exitem{border:2px solid var(--line);border-radius:14px;background:var(--card);padding:6px 16px 12px}
 .exitem ul{margin:0;padding-left:20px}.exitem li{margin:2px 0}
 .exres{margin:8px 0 0;font-weight:700}
+
+/* try-first questions inside exercises */
+.ask{margin:16px 0 0;padding:14px 16px;border:2px dashed var(--line);border-radius:14px;background:var(--soft)}
+.ask .q{margin:0 0 10px;font-weight:700}
+.ask .form{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:18px}
+.ask .form input{width:5.2em;min-height:44px;padding:0 10px;font:inherit;border:2px solid var(--ink);border-radius:10px;background:var(--card);color:var(--ink);text-align:center}
+.ask .form .primary{margin-left:6px}
+.ask .keys{display:flex;gap:6px;flex-basis:100%}
+.ask .keys button{min-height:38px;min-width:44px;padding:0 10px;font-size:17px;background:var(--card);border-color:var(--line)}
+.ask .opt{display:block;width:100%;text-align:left;margin:0 0 8px;padding:10px 14px;font-weight:600;line-height:1.4}
+.ask .opt.picked{border-color:var(--sin)}
+.hintmsg{margin:12px 0 0;padding:10px 12px;border-radius:10px;font-size:16px}
+.hintmsg.warn{background:var(--hi)}
+.hintmsg.err{color:var(--q);padding:0;margin-top:8px}
+.showstep{margin-top:10px;min-height:40px;font-size:15px;background:var(--card)}
+.mine{margin:2px 0 4px;font-size:15px;color:var(--mute)}
+.mine.ok{color:var(--ok)}
+.tally{margin:8px 0 0;font-weight:400;font-size:15px}
