@@ -301,3 +301,8 @@ body{padding-top:env(safe-area-inset-top,0px)}
 .mine .ma{display:block;color:var(--mute)}
 .mine.ok .ma{color:var(--ok)}
 .tally{margin:8px 0 0;font-weight:400;font-size:15px}
+.ask .pad{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px;max-width:360px}
+.ask .pad button{min-height:48px;padding:0;font-size:22px;font-weight:600;background:var(--card);border-color:var(--line)}
+.ask .pad button:active{background:var(--soft)}
+.ask .form input.cur{border-color:var(--m);box-shadow:0 0 0 3px color-mix(in srgb,var(--m) 25%,transparent)}
+.ask .padgo{margin-top:12px;width:100%;max-width:360px}

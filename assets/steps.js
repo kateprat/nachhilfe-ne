@@ -131,6 +131,31 @@
         if (a.dataset.keys) { const kb = document.createElement('span'); kb.className = 'keys'; a.dataset.keys.split(' ').forEach(k => { const b = document.createElement('button'); b.type = 'button'; b.textContent = k; b.addEventListener('pointerdown', e => e.preventDefault()); b.addEventListener('click', () => { const f = form.querySelector('input:focus') || a._last || form.querySelector('input'); const p0 = f.selectionStart ?? f.value.length; f.value = f.value.slice(0, p0) + k + f.value.slice(p0); f.focus(); f.setSelectionRange(p0 + k.length, p0 + k.length); }); kb.append(b); }); form.append(kb); }
         a.append(form);
         const ins = [...form.querySelectorAll('input')];
+        // phones and tablets: own keypad instead of the system keyboard (the keyboard makes iOS move the page around)
+        if (matchMedia('(pointer: coarse)').matches) {
+          form.querySelector('.keys')?.remove();
+          ins.forEach(x => { x.setAttribute('inputmode', 'none'); x.readOnly = false; });
+          a._last = ins[0]; ins[0].classList.add('cur');
+          ins.forEach(x => x.addEventListener('focus', () => { ins.forEach(y => y.classList.toggle('cur', y === x)); }));
+          const pad = document.createElement('div'); pad.className = 'pad';
+          ['7', '8', '9', '⌫', '4', '5', '6', '√', '1', '2', '3', '−', '0', ',', '/', '→'].forEach(k => {
+            const b = document.createElement('button'); b.type = 'button'; b.textContent = k;
+            if (k === '→') b.setAttribute('aria-label', 'nächstes Feld');
+            if (k === '⌫') b.setAttribute('aria-label', 'löschen');
+            b.addEventListener('pointerdown', e => e.preventDefault());
+            b.addEventListener('click', () => {
+              const f = a._last || ins[0];
+              if (k === '⌫') f.value = f.value.slice(0, -1);
+              else if (k === '→') { const n = ins[(ins.indexOf(f) + 1) % ins.length]; a._last = n; ins.forEach(y => y.classList.toggle('cur', y === n)); return; }
+              else f.value += k;
+              f.dispatchEvent(new Event('input'));
+            });
+            pad.append(b);
+          });
+          if (ins.length < 2) pad.lastChild.style.visibility = 'hidden';
+          form.after(pad); go.classList.add('padgo'); pad.after(go);
+          ins.forEach(x => x.addEventListener('pointerdown', () => { a._last = x; ins.forEach(y => y.classList.toggle('cur', y === x)); }));
+        }
         ins.forEach(x => { x.addEventListener('focus', () => { a._last = x; }); x.addEventListener('input', () => { if (hint.classList.contains('err')) hint.hidden = true; }); x.addEventListener('keydown', e => { if (e.key === 'Enter') go.click(); }); });
         const want = (a.dataset.ans || '').split('|').map(num);
         go.addEventListener('click', () => {
@@ -317,20 +342,6 @@
       d.style.fontSize = '';
       if (d.scrollWidth > d.clientWidth + 1) d.style.fontSize = Math.max(.7, d.clientWidth / d.scrollWidth - .01) + 'em';
     });
-  }
-  if (window.visualViewport) {
-    let t = 0;
-    const keep = () => {
-      const f = document.activeElement;
-      if (!f || !f.closest || !f.closest('.ask')) return;
-      clearTimeout(t);
-      t = setTimeout(() => {
-        const vv = visualViewport, r = f.getBoundingClientRect(), top = r.top - vv.offsetTop, bottom = r.bottom - vv.offsetTop;
-        const room = vv.height, want = Math.max(16, room * 0.3);
-        if (bottom > room - 16 || top < 16) scrollBy(0, top - want);
-      }, 120);
-    };
-    visualViewport.addEventListener('resize', keep);
   }
   const refit = () => requestAnimationFrame(fitWide);
   window.addEventListener('resize', refit);
