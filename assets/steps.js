@@ -125,7 +125,7 @@
       } else {
         // data-form="M = (_, _)" → one field per _
         const form = document.createElement('div'); form.className = 'form';
-        form.innerHTML = (a.dataset.form || '_').split('_').map((part, k, arr) => `<span>${part}</span>` + (k < arr.length - 1 ? `<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" aria-label="${k + 1}">` : '')).join('');
+        form.innerHTML = (a.dataset.form || '_').split('_').map((part, k, arr) => `<span>${part}</span>` + (k < arr.length - 1 ? `<input type="text" name="antwort-${i}-${k}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-1p-ignore enterkeyhint="done" aria-label="${k + 1}">` : '')).join('');
         const go = document.createElement('button'); go.type = 'button'; go.className = 'primary'; go.innerHTML = D('check');
         form.append(go);
         if (a.dataset.keys) { const kb = document.createElement('span'); kb.className = 'keys'; a.dataset.keys.split(' ').forEach(k => { const b = document.createElement('button'); b.type = 'button'; b.textContent = k; b.addEventListener('pointerdown', e => e.preventDefault()); b.addEventListener('click', () => { const f = form.querySelector('input:focus') || a._last || form.querySelector('input'); const p0 = f.selectionStart ?? f.value.length; f.value = f.value.slice(0, p0) + k + f.value.slice(p0); f.focus(); f.setSelectionRange(p0 + k.length, p0 + k.length); }); kb.append(b); }); form.append(kb); }
@@ -317,6 +317,20 @@
       d.style.fontSize = '';
       if (d.scrollWidth > d.clientWidth + 1) d.style.fontSize = Math.max(.7, d.clientWidth / d.scrollWidth - .01) + 'em';
     });
+  }
+  if (window.visualViewport) {
+    let t = 0;
+    const keep = () => {
+      const f = document.activeElement;
+      if (!f || !f.closest || !f.closest('.ask')) return;
+      clearTimeout(t);
+      t = setTimeout(() => {
+        const vv = visualViewport, r = f.getBoundingClientRect(), top = r.top - vv.offsetTop, bottom = r.bottom - vv.offsetTop;
+        const room = vv.height, want = Math.max(16, room * 0.3);
+        if (bottom > room - 16 || top < 16) scrollBy(0, top - want);
+      }, 120);
+    };
+    visualViewport.addEventListener('resize', keep);
   }
   const refit = () => requestAnimationFrame(fitWide);
   window.addEventListener('resize', refit);
