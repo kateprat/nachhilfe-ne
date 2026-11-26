@@ -1,6 +1,7 @@
 // Step-by-step reveal for worked (data-mode="worked") and faded (data-mode="faded") exercises,
 // KaTeX rendering with colour macros, and the small m/q line playground.
 (function () {
+  const navOff = n => !n || getComputedStyle(n).position === 'fixed' ? 0 : n.offsetHeight + (parseFloat(getComputedStyle(n).top) || 0);
   const isEN = () => document.documentElement.lang === 'en';
   // every generated label carries both languages; CSS shows the one matching <html lang>
   const T = {
@@ -428,7 +429,7 @@
     progressUpdate();
     // jump targets land below the sticky nav (its height changes with the progress bar and screen size)
     if (nav) {
-      const setNavH = () => document.documentElement.style.setProperty('--navh', (nav.offsetHeight + (parseFloat(getComputedStyle(nav).top) || 0) + 16) + 'px');
+      const setNavH = () => document.documentElement.style.setProperty('--navh', (navOff(nav) + 16) + 'px');
       setNavH(); window.addEventListener('resize', setNavH, sig);
       // jump to a section and keep it in place for a moment: on a fresh visit, fonts and formulas finish loading after
       // the jump and push the content down (Safari doesn't compensate), so the jump would land one section too early
@@ -439,7 +440,7 @@
         addEventListener('touchstart', stop, { once: true, passive: true }); addEventListener('wheel', stop, { once: true, passive: true });
         const go = () => {
           if (run !== pinRun || n++ > 40) return;
-          const d = t.getBoundingClientRect().top - (nav.offsetHeight + (parseFloat(getComputedStyle(nav).top) || 0) + 16);
+          const d = t.getBoundingClientRect().top - (navOff(nav) + 16);
           if (Math.abs(d) > 2) scrollBy(0, d);
           setTimeout(go, 50);
         };
@@ -457,7 +458,7 @@
       let current = null, ticking = false;
       const spy = () => {
         ticking = false;
-        const line = nav.offsetHeight + (parseFloat(getComputedStyle(nav).top) || 0) + 40;
+        const line = navOff(nav) + 40;
         let hit = null;
         for (const [a, t] of links) if (t.getBoundingClientRect().top <= line) hit = a;
         if (hit === current) return;

@@ -86,7 +86,7 @@
     if (!a || a.hasAttribute('aria-current') || e.metaKey || e.ctrlKey) return;
     e.preventDefault();
     const url = new URL(a.getAttribute('href'), location.href);
-    const nav = document.querySelector('.nav'), line = (nav ? nav.offsetHeight : 0) + 8;
+    const nav = document.querySelector('.nav'), line = (!nav || getComputedStyle(nav).position === 'fixed' ? 0 : nav.offsetHeight) + 8;
     let anchor = null, off = 0;
     if (scrollY > 0) document.querySelectorAll('main [id]').forEach(el => { const t = el.getBoundingClientRect().top; if (t <= line && !el.closest('svg')) { anchor = el.id; off = t; } });
     try {

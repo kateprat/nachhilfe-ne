@@ -5,6 +5,7 @@
 // 3. in every chapter bar, links that leave the chapter (Algebra, Prüfungstraining) sit behind a divider and carry ↗;
 // 4. Prüfungstraining / Algebra remember which chapter you came from ("← zurück zu Trigonometrie").
 (function () {
+  const navOff = n => !n || getComputedStyle(n).position === 'fixed' ? 0 : n.offsetHeight + (parseFloat(getComputedStyle(n).top) || 0);
   const N = {
     home: { de: 'Start', en: 'Home', url: { de: '/', en: '/en.html' } },
     trig: { de: 'Trigonometrie', en: 'Trigonometry', url: { de: '/trigonometrie/de.html', en: '/trigonometrie/' } },
@@ -186,7 +187,7 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
     addEventListener('touchstart', stop, { once: true, passive: true }); addEventListener('wheel', stop, { once: true, passive: true });
     const go = () => {
       if (run !== keepRun || n++ > 60) return;
-      const nav = document.querySelector('.nav'), d = f.getBoundingClientRect().top - ((nav ? nav.offsetHeight + (parseFloat(getComputedStyle(nav).top) || 0) : 0) + 12);
+      const nav = document.querySelector('.nav'), d = f.getBoundingClientRect().top - (navOff(nav) + 12);
       if (Math.abs(d) > 2) scrollBy(0, d);
       setTimeout(go, 50);
     };
@@ -218,7 +219,7 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
   const keepGraph = () => document.querySelectorAll('iframe.embedded[data-mode]').forEach(f => {
     let d; try { d = f.contentDocument; } catch (e) { return; }
     const fig = d && d.querySelector('.fig'); if (!fig) return;
-    const nav = document.querySelector('.nav'), navh = nav ? nav.offsetHeight : 0;
+    const navh = navOff(document.querySelector('.nav'));
     // phone: graph above, controls below, no following (moving it while the page scrolls made it tremble on iPhone)
     if (f.clientWidth <= 820) { fig.style.transform = ''; fig.style.width = ''; fig.style.marginLeft = ''; fig.style.marginRight = ''; return; }
     fig.style.width = `min(100%, ${Math.max(320, innerHeight - navh - 32)}px)`;
@@ -252,6 +253,7 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
       const l = lang(), row = document.createElement('div'); row.className = 'navrow';
       ul.before(row);
       row.innerHTML = `<a class="navback" href="${N.home.url[l]}" aria-label="${N.home[l]}">←<span class="nbt"> ${N.home[l]}</span></a>`;
+      const h1 = document.querySelector('h1'); if (h1) { const t = document.createElement('p'); t.className = 'sidehead'; if (h1.querySelector('[data-l]')) t.innerHTML = h1.innerHTML; else t.textContent = h1.textContent.split(':')[0].trim(); row.append(t); }
       row.append(ul);
     });
     // a pill row that runs off to the right fades out there, so it's clear there is more
