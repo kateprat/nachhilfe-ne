@@ -306,3 +306,11 @@ body{padding-top:env(safe-area-inset-top,0px)}
 .ask .pad button:active{background:var(--soft)}
 .ask .form input.cur{border-color:var(--m);box-shadow:0 0 0 3px color-mix(in srgb,var(--m) 25%,transparent)}
 .ask .padgo{margin-top:12px;width:100%;max-width:360px}
+.tryself .th{margin:0 0 4px}
+.tryself .ts{margin:14px 0 6px;color:var(--mute);font-size:16px}
+.tryl{list-style:none;margin:0;padding:0}
+.tryl li{padding:10px 0;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
+.tryl li:first-child{border-top:0}
+.tryl .tq{flex-basis:100%}
+.tryl .reveal{margin:0}
+.tryl .ta{flex-basis:100%;margin:4px 0 0;padding:8px 12px;border-radius:10px;background:var(--hi)}

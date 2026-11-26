@@ -230,7 +230,10 @@
     root.querySelectorAll('[data-answer]').forEach(el => {
       const ans = document.getElementById(el.dataset.answer);
       ans.hidden = true;
-      el.addEventListener('click', () => { ans.hidden = false; el.remove(); });
+      // tap again to hide the answer again
+      const en = /^\s*show/i.test(el.textContent), show = el.innerHTML, hide = en ? (/solution/i.test(el.textContent) ? 'Hide solution' : 'Hide answer') : (/Lösung/.test(el.textContent) ? 'Lösung verstecken' : 'Antwort verstecken');
+      el.setAttribute('aria-expanded', 'false');
+      el.addEventListener('click', () => { ans.hidden = !ans.hidden; el.innerHTML = ans.hidden ? show : hide; el.setAttribute('aria-expanded', String(!ans.hidden)); });
     });
   }
 
