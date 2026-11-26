@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/steps.js?v=66"></script>
+<script defer src="../assets/steps.js?v=69"></script>
 <link rel="stylesheet" href="../assets/style.css?v=60">
 </head>
 <body>
@@ -467,21 +467,23 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 <ol class="tryl"><li><span class="tq"><b>e)</b> Centre \((-3, 4)\), radius \(\sqrt2\)</span> <button type="button" class="reveal" data-answer="kqe">Show solution</button><p id="kqe" class="ta">\((x + 3)^2 + (y - 4)^2 = 2\)</p></li></ol></div>
 
 <h3>Recipe A: read off centre and radius</h3>
+<p>With the example \(x^2 + y^2 - 6x + 4y - 3 = 0\), step by step:</p>
 <ol class="recipe">
-  <li><div><b>Sort</b><span class="f">\((x^2 + s\,x) + (y^2 + t\,y) + u = 0\)</span><small>x-terms together, y-terms together.</small></div></li>
-  <li><div><b>Complete the square</b><span class="f">\(x^2 + s\,x = \left(x + \tfrac{s}{2}\right)^2 - \left(\tfrac{s}{2}\right)^2\)</span><small>Half the number in front of x goes into the bracket; subtract its square again. Same for y.</small></div></li>
-  <li><div><b>Numbers to the right</b><span class="f">\((x - a)^2 + (y - b)^2 = d\)</span></div></li>
-  <li><div><b>Read off</b><span class="f">\(M = (a, b),\ r = \sqrt{d}\)</span><small>If d = 0: just one point. If d is negative: no point at all.</small></div></li>
+  <li><div><b>Sort</b><span class="f">\((x^2 - 6x) + (y^2 + 4y) = 3\)</span><small>x-terms together, y-terms together, the number to the right.</small></div></li>
+  <li><div><b>Complete the square</b><span class="f">\(x^2 - 6x = (x - 3)^2 - 9\)</span><span class="f">\(y^2 + 4y = (y + 2)^2 - 4\)</span><small>Half the number in front of x goes into the bracket; subtract its square again. Same for y.</small></div></li>
+  <li><div><b>Put it in</b><span class="f">\((x - 3)^2 + (y + 2)^2 = 3 + 9 + 4\)</span><span class="f">\((x - 3)^2 + (y + 2)^2 = 16\)</span><small>The 9 and 4 that were subtracted are added on the right. Now the equation has the circle form<br><span style="white-space:nowrap">\((x - a)^2 + (y - b)^2 = r^2\)</span>.</small></div></li>
+  <li><div><b>Read off</b><span class="f">\(M = (3, -2)\)</span><span class="f">\(r = \sqrt{16} = 4\)</span><small>Flip the signs from the brackets. If the right side is 0: just one point. If it is negative: no point at all.</small></div></li>
 </ol>
 
-<h3>Recipe B: intersect a circle and a line</h3>
+<h3>Recipe B: intersect circle and line</h3>
+<p>With the example: circle \(x^2 + y^2 = 25\) and line \(x - y + 1 = 0\).</p>
 <ol class="recipe">
-  <li><div><b>Solve the line for y</b><span class="f">\(y = \m x + \q\)</span></div></li>
-  <li><div><b>Substitute into the circle equation</b><small>Wherever there is a y, write \((\m x + \q)\) in brackets.</small></div></li>
-  <li><div><b>Standard form</b><span class="f">\(ax^2 + bx + c = 0\)</span><small>Binomial formula, multiply away fractions.</small></div></li>
-  <li><div><b>Quadratic formula</b><small>D tells you again: 2 intersection points, 1 (tangent) or none. Just like with parabolas!</small></div></li>
-  <li><div><b>Calculate y</b><small>Put the x-values into the line equation.</small></div></li>
-  <li><div><b>Check</b><small>Put both points into both equations.</small></div></li>
+  <li><div><b>Solve the line for y</b><span class="f">\(y = x + 1\)</span><small>In general: \(y = \m x + \q\).</small></div></li>
+  <li><div><b>Put it into the circle equation</b><span class="f">\(x^2 + (x + 1)^2 = 25\)</span><small>Wherever y stands, write \((x + 1)\), with brackets.</small></div></li>
+  <li><div><b>Standard form</b><span class="f">\(x^2 + x^2 + 2x + 1 = 25\)</span><span class="f">\(2x^2 + 2x - 24 = 0\)</span><span class="f">\(x^2 + x - 12 = 0\)</span><small>Binomial formula, everything to the left, here also divide by 2. Goal: \(ax^2 + bx + c = 0\).</small></div></li>
+  <li><div><b>Quadratic formula</b><span class="f">\(D = 1^2 - 4\cdot 1\cdot(-12) = 49\)</span><span class="f">\(x = \dfrac{-1 \pm 7}{2}\)</span><span class="f">\(x_1 = 3,\ x_2 = -4\)</span><small>D&nbsp;&gt;&nbsp;0: two intersection points.<br>D&nbsp;=&nbsp;0: one (tangent).<br>D&nbsp;&lt;&nbsp;0: none. Just like with parabolas!</small></div></li>
+  <li><div><b>Work out y</b><span class="f">\(y_1 = 3 + 1 = 4\)</span><span class="f">\(y_2 = -4 + 1 = -3\)</span><small>Put the x-values into the line equation. Intersection points: \((3, 4)\) and \((-4, -3)\).</small></div></li>
+  <li><div><b>Check</b><span class="f">\(3^2 + 4^2 = 25\ \checkmark\)</span><span class="f">\((-4)^2 + (-3)^2 = 25\ \checkmark\)</span><small>Both points also lie on the line.</small></div></li>
 </ol>
 
 <!-- A9 e -->

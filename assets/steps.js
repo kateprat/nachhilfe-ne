@@ -369,6 +369,16 @@
       d.style.fontSize = '';
       if (d.scrollWidth > d.clientWidth + 1) d.style.fontSize = Math.max(.7, d.clientWidth / d.scrollWidth - .01) + 'em';
     });
+    // recipe formulas stay on one line; shrink a little if needed instead of breaking
+    document.querySelectorAll('.recipe .f').forEach(f => {
+      if (!f.offsetParent) return;
+      f.style.whiteSpace = 'nowrap'; f.style.fontSize = '';
+      const k = f.querySelector('.katex'); if (!k) return;
+      const box = f.parentElement.getBoundingClientRect(), pad = parseFloat(getComputedStyle(f.parentElement).paddingRight) || 0;
+      const room = box.right - pad - k.getBoundingClientRect().left, need = k.getBoundingClientRect().width;
+      if (need > room) f.style.fontSize = Math.max(.75, room / need - .02) + 'em';
+      if (k.getBoundingClientRect().right > box.right - pad + 1) f.style.whiteSpace = '';
+    });
   }
   const refit = () => requestAnimationFrame(fitWide);
   window.addEventListener('resize', refit);
@@ -502,7 +512,7 @@
     setupCircle();
     renderMath(document.body);
     unorphan(document);
-    refit();
+    refit(); if (document.fonts) document.fonts.ready.then(refit); setTimeout(refit, 800);
   }
 
   // no lonely last words: glue the last short words (or a trailing "(17.1.2)." to its formula) with non-breaking spaces
