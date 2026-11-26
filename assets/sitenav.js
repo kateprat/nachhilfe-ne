@@ -49,7 +49,7 @@ html.embed .panel,html.embed .panel>*{min-width:0;max-width:100%}html.embed .seg
 html.embed main{padding:0!important;max-width:none!important}
 html.embed .topbar,html.embed .topctl,html.embed .crumb,html.embed .lang,html.embed .langsw,html.embed main>h1,html.embed footer,html.embed .lic,html.embed .chapnav{display:none!important}
 html.embed .fig{position:relative!important;top:auto!important;will-change:transform;z-index:3}
-@media(max-width:820px){html.embed .fig{width:min(100%,620px)!important;margin:0 auto!important}}
+@media(max-width:820px){html.embed .fig{width:min(calc(100% - 7px),620px)!important;margin:0 auto 7px 0!important}}
 html.embed .fig>svg{background:var(--card)}
 
 @media(min-width:900px) and (max-width:1099px){iframe.embedded[data-mode]{width:min(1080px,calc(100vw - 2*max(4vw,16px)));margin-left:50%;transform:translateX(-50%)}}

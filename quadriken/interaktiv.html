@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap">
 <script src="../assets/theme.js?v=53"></script>
-<script src="../assets/sitenav.js?v=28"></script>
+<script src="../assets/sitenav.js?v=29"></script>
 <style>
 /* VOICE: calm maths notebook, same family as the Einheitskreis page
    IDEA: squared exercise paper with coloured-pencil constructions
@@ -102,7 +102,8 @@ body{font-family:"Atkinson Hyperlegible",system-ui,sans-serif;background-color:v
   background-image:linear-gradient(light-dark(#e3ecf8,#2e2723) 1px,transparent 1px),linear-gradient(90deg,light-dark(#e3ecf8,#2e2723) 1px,transparent 1px);background-size:24px 24px}
 h1,.tabs button,button,.lbl,.tick{font-family:"Bricolage Grotesque",system-ui,sans-serif}
 h1{font-weight:800;letter-spacing:-.02em}
-.fig>svg{background:var(--card);border:2px solid var(--ink);border-radius:18px;box-shadow:5px 5px 0 light-dark(#1f2340,#000)}
+.fig>svg{background:var(--card);border:2px solid var(--ink);border-radius:18px}
+.fig{border-radius:18px;box-shadow:5px 5px 0 light-dark(#1f2340,#000)}
 .box{background:var(--card);border:2px solid var(--line);border-radius:18px}
 .calc{background:var(--card);border:2px solid var(--line)}
 .tabs{background:var(--card);border:2px solid var(--ink)}
@@ -152,7 +153,6 @@ html[lang=de] [data-l=en],html[lang=en] [data-l=de]{display:none!important}
       </div>
       <button id="quizBtn" type="button" class="quizbtn" data-t="quiz"></button>
     </div>
-    <p class="help" id="help"></p>
 
     <!-- Tab 1 -->
     <div class="box" data-tab="1">
@@ -167,14 +167,15 @@ html[lang=de] [data-l=en],html[lang=en] [data-l=de]{display:none!important}
     <!-- Tab 2 -->
     <div class="seg" role="group" data-tab="2" style="margin-bottom:12px"><button id="s2a" type="button" data-t="s2a"></button><button id="s2b" type="button" data-t="s2b"></button></div>
     <div class="box" data-tab="2" data-sub="line">
-      <p class="help" data-t="mqHelp"></p>
       <div class="slab"><span>m</span><input id="m2" type="range" min="-8" max="8" step="0.25" aria-label="m"><b id="m2v"></b></div>
       <div class="slab"><span>q</span><input id="q2" type="range" min="-10" max="10" step="0.25" aria-label="q"><b id="q2v"></b></div>
+      <p class="small" data-t="mqHelp" style="margin:4px 0 10px"></p>
       <button id="snap2" type="button" data-t="snap"></button>
     </div>
     <div class="box" data-tab="2" data-sub="point">
       <div class="row"><label>A = (<input id="ax" type="text" inputmode="decimal" aria-label="A x">,<input id="ay" type="text" inputmode="decimal" aria-label="A y">)</label></div>
-      <p class="small" data-t="dragA"></p>
+      <p class="help" data-t="dragA" style="margin-top:8px"></p>
+      <p class="small" id="ptq" style="margin-top:6px"></p>
     </div>
     <div class="box" data-tab="2">
       <div class="chips" id="presets"></div>
@@ -217,6 +218,7 @@ html[lang=de] [data-l=en],html[lang=en] [data-l=de]{display:none!important}
     </div>
     <div class="calc hideable" data-tab="4" id="calc4"></div>
     <p class="result hideable" data-tab="4" id="res4" data-reveal="ans"></p>
+    <p class="help" id="help" style="margin-top:16px"></p>
   </section>
 </div>
 <h2 class="th2" id="theorie"><span data-l="de">Die Theorie im Überblick</span><span data-l="en">The theory at a glance</span></h2>
@@ -261,8 +263,8 @@ const save=()=>{try{localStorage.setItem('quadriken',JSON.stringify(st))}catch(e
 const I18N={
 de:{title:'Quadriken zum Ziehen',sub:'Parabeln, Tangenten und Kreise aus Kapitel 17. Zieh die farbigen Punkte oder stell die Werte rechts ein. Die Rechnung läuft live mit.',
 t1:'Brennpunkt',t2:'Tangente',t3:'Kreis & Gerade',t4:'Zwei Kreise',quiz:'Erst selbst rechnen',quizOff:'Alles wieder zeigen',dirLbl:'Leitgerade y =',s2a:'Gerade verschieben',s2b:'Tangente durch Punkt A',
-snap:'q so wählen, dass D = 0 (Tangente)',dragA:'Den gelben Punkt A kannst du auch im Bild ziehen.',
-mqHelp:'g(x) = m·x + q.  m = Steigung: gehst du 1 nach rechts, geht die Gerade m nach oben (bei m < 0 nach unten).  q = y-Achsenabschnitt: hier schneidet die Gerade die y-Achse, im Punkt (0, q). Beides siehst du am roten Dreieck. Wird die Gerade grün, ist sie eine Tangente.',
+snap:'q so wählen, dass D = 0 (Tangente)',dragA:'Aufgabe: Finde die Tangenten an die Parabel, die durch A gehen. Wähl unten eine Aufgabe von A4 bis A8 oder zieh den gelben Punkt A im Bild. Liegt A unter der Parabel, gibt es 2 Tangenten, auf der Parabel 1, innen drin keine.',ptQuiz:'Die Tangenten erscheinen, sobald du unten das Resultat antippst.',
+mqHelp:'g(x) = m·x + q: m ist die Steigung, q der y-Achsenabschnitt (rotes Dreieck). Wird die Gerade grün, ist sie eine Tangente.',
 method4:'Rechenweg hier: beide Kreisgleichungen ausmultiplizieren und voneinander abziehen. Dann fallen x² und y² weg und es bleibt eine Gerade durch beide Schnittpunkte. Das Skript (A12) löst nach y auf und quadriert zweimal: gleiche Punkte, aber viel mehr Rechnung.',
 help:{1:'Eine Parabel ist die Menge aller Punkte P, die gleich weit vom Brennpunkt F und von der Leitgeraden ℓ entfernt sind (17.1, A1). Zieh F, die Leitgerade (Griff rechts), P oder den Scheitel S (S verschiebt die ganze Parabel, ohne sie umzudrehen).',
 2:'Eine Gerade ist Tangente, wenn f(x) = g(x) genau eine Lösung hat, also D = 0 (17.2, A2–A8). Verschieb die Gerade oder zieh einen Punkt A und schau, wie viele Tangenten es gibt.',
@@ -278,8 +280,8 @@ two:'Zwei Tangenten: A liegt ausserhalb der Parabel.',one:'Genau eine Tangente: 
 k1k2:'K₁ − K₂',solveY:'nach y aufgelöst',into:'in K₁ einsetzen',same:'Gleicher Mittelpunkt: die Kreise sind gleich oder schneiden sich nie.',touch4:p=>`Die Kreise berühren sich in ${p}.`,two4:p=>`Zwei Schnittpunkte: ${p}`,zero4:'Kein Schnittpunkt: die Kreise liegen ausein­ander oder ineinander.',ex4:'Beispiel'},
 en:{title:'Interactive conics',sub:'Parabolas, tangents and circles from chapter 17. Drag the coloured points or set the values on the right. The working updates live.',
 t1:'Focus',t2:'Tangent',t3:'Circle & line',t4:'Two circles',quiz:'Try it first',quizOff:'Show everything again',dirLbl:'Directrix y =',s2a:'Move the line',s2b:'Tangent through point A',
-snap:'Choose q so that D = 0 (tangent)',dragA:'You can also drag the yellow point A in the picture.',
-mqHelp:'g(x) = m·x + q.  m = slope: go 1 to the right and the line goes m up (down if m < 0).  q = y-intercept: where the line crosses the y-axis, at the point (0, q). The red triangle shows both. When the line turns green, it is a tangent.',
+snap:'Choose q so that D = 0 (tangent)',dragA:'Task: find the tangents to the parabola that go through A. Pick one of A4 to A8 below or drag the yellow point A in the picture. If A is below the parabola there are 2 tangents, on the parabola 1, inside none.',ptQuiz:'The tangents appear as soon as you tap the result below.',
+mqHelp:'g(x) = m·x + q: m is the slope, q the y-intercept (red triangle). When the line turns green, it is a tangent.',
 method4:'Method used here: expand both circle equations and subtract one from the other. x² and y² cancel, leaving a line through both intersection points. The handout (A12) solves for y and squares twice: same points, much more work.',
 help:{1:'A parabola is the set of all points P that are equally far from the focus F and from the directrix ℓ (17.1, A1). Drag F, the directrix (handle on the right), P or the vertex S (S moves the whole parabola without flipping it).',
 2:'A line is a tangent when f(x) = g(x) has exactly one solution, i.e. D = 0 (17.2, A2–A8). Move the line, or drag a point A and see how many tangents there are.',
@@ -487,6 +489,7 @@ function draw(){
   document.querySelectorAll('[data-t]').forEach(el=>{const v=T(el.dataset.t);if(typeof v==='string')el.textContent=v});
   $('lDe').setAttribute('aria-pressed',st.lang==='de');$('lEn').setAttribute('aria-pressed',st.lang==='en');
   $('help').textContent=T('help')[st.tab]+(st.quiz?T('quizHint'):'');
+  $('ptq').textContent=st.quiz?T('ptQuiz'):'';
   document.body.classList.toggle('quiz',st.quiz);document.body.classList.remove('ansshown');
   document.querySelectorAll('.hideable.shown').forEach(el=>el.classList.remove('shown'));
   $('quizBtn').setAttribute('aria-pressed',st.quiz);
@@ -540,7 +543,7 @@ $('s2b').addEventListener('click',()=>{st.sub='point';draw()});
 $('snap2').addEventListener('click',()=>{const B=st.b-st.m2;st.q2=st.c-B*B/(4*st.a);draw()});
 $('snap3').addEventListener('click',()=>{const {ca:a,cb:b,r,m3:m}=st,s=r*Math.sqrt(1+m*m),ks=[-a*m+s,-a*m-s];const cur=st.q3-b;const k=Math.abs(ks[0]-cur)<Math.abs(ks[1]-cur)?ks[0]:ks[1];st.q3=b+k;draw()});
 $('presets').innerHTML=PRE.map((p,i)=>`<button type="button" data-i="${i}"><b>${p.s}</b> ${p.n}</button>`).join('');
-$('presets').addEventListener('click',e=>{const bt=e.target.closest('[data-i]');if(!bt)return;const p=PRE[+bt.dataset.i];Object.assign(st,{a:p.a,b:p.b,c:p.c,ax:p.ax,ay:p.ay,m2:p.m});const B=p.b-p.m;st.q2=p.c-B*B/(4*p.a);draw()});
+$('presets').addEventListener('click',e=>{const bt=e.target.closest('[data-i]');if(!bt)return;const i=+bt.dataset.i,p=PRE[i];Object.assign(st,{a:p.a,b:p.b,c:p.c,ax:p.ax,ay:p.ay,m2:p.m,sub:i>=2?'point':'line'});const B=p.b-p.m;st.q2=p.c-B*B/(4*p.a);draw()});
 $('presets4').addEventListener('click',e=>{const bt=e.target.closest('[data-i]');if(!bt)return;const p=PRE4[+bt.dataset.i];['a1','b1','r1','a2','b2','r2'].forEach(k=>st[k]=p[k]);fitMap();draw()});
 $('quizBtn').addEventListener('click',()=>{st.quiz=!st.quiz;draw()});
 $('lDe').addEventListener('click',()=>{st.lang='de';draw()});
