@@ -37,6 +37,11 @@
   try { doneSet = new Set(JSON.parse(localStorage.getItem(PKEY) || '[]')); } catch (e) {}
   const saveDone = () => { try { localStorage.setItem(PKEY, JSON.stringify([...doneSet])); } catch (e) {} };
   let progressUpdate = () => {};
+  // her answers to the try-first questions, so a finished exercise shows them again later (this device only)
+  const AKEY = 'nachhilfe-ans:' + TOPIC;
+  let answers = {};
+  try { answers = JSON.parse(localStorage.getItem(AKEY) || '{}'); } catch (e) {}
+  const saveAnswers = () => { try { localStorage.setItem(AKEY, JSON.stringify(answers)); } catch (e) {} };
 
   // on narrow screens, split display formulas at \qquad into stacked lines so nothing runs off the card
   function splitWide(root) {
@@ -94,6 +99,11 @@
     const tally = document.createElement('p'); tally.className = 'tally';
     if (askCount && done) done.append(tally);
 
+    function mine(i, answer, ok) {
+      const st = steps[i], a = asks[i], m = document.createElement('p'); m.className = 'mine' + (ok ? ' ok' : '');
+      const q = a.querySelector('.q'); m.innerHTML = (q ? `<span class="mq">${q.innerHTML}</span>` : '') + `<span class="ma">${D('mine')} ${answer}${ok ? ' ✓' : ''}</span>`;
+      st.querySelector('.mine')?.remove(); st.querySelector('.nr').after(m);
+    }
     function setupAsk(a, i) {
       const hint = document.createElement('p'); hint.className = 'hintmsg'; hint.hidden = true;
       const showBtn = document.createElement('button'); showBtn.type = 'button'; showBtn.className = 'showstep'; showBtn.innerHTML = D('showstep'); showBtn.hidden = true;
@@ -102,8 +112,8 @@
       const say = (html, cls) => { hint.innerHTML = html; hint.className = 'hintmsg ' + (cls || ''); hint.hidden = false; if (hint.textContent.includes('\\(')) renderMath(hint); };
       const resolve = ok => {
         a._resolved = true; a._ok = ok; if (ok && tries === 0) right1++;
-        const st = steps[i], m = document.createElement('p'); m.className = 'mine' + (ok ? ' ok' : '');
-        const q = a.querySelector('.q'); m.innerHTML = (q ? `<span class="mq">${q.innerHTML}</span>` : '') + `<span class="ma">${D('mine')} ${answer}${ok ? ' ✓' : ''}</span>`; st.querySelector('.mine')?.remove(); st.querySelector('.nr').after(m);
+        mine(i, answer, ok);
+        (answers[ex.id] = answers[ex.id] || {})[i] = { a: answer, ok, f: ok && tries === 0 }; saveAnswers();
         const y0 = ctrl.getBoundingClientRect().top; shown = Math.min(steps.length, i + 1); update(true, y0);
       };
       const wrong = vals => {
@@ -202,9 +212,16 @@
       const a = (e.target.closest('button') || {}).dataset?.a;
       if (a === 'next') { const y0 = ctrl.getBoundingClientRect().top; shown = Math.min(steps.length, shown + 1); update(true, y0); }
       if (a === 'all') { shown = steps.length; steps.forEach(st => { const c = st.querySelector('.calc'); if (c) c.hidden = false; st._calcBtn && st._calcBtn.remove(); }); update(false); steps.forEach(st => st.classList.remove('on')); }
-      if (a === 'reset') { shown = 0; right1 = 0; asks.forEach(q => q && q._reset()); steps.forEach(st => st.querySelector('.mine')?.remove()); hideCalcs(); update(false); if (doneSet.has(ex.id)) { doneSet.delete(ex.id); saveDone(); progressUpdate(); } const sp = ex.querySelector('.stamp'); if (sp) sp.remove(); ex.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
+      if (a === 'reset') { shown = 0; right1 = 0; delete answers[ex.id]; saveAnswers(); asks.forEach(q => q && q._reset()); steps.forEach(st => st.querySelector('.mine')?.remove()); hideCalcs(); update(false); if (doneSet.has(ex.id)) { doneSet.delete(ex.id); saveDone(); progressUpdate(); } const sp = ex.querySelector('.stamp'); if (sp) sp.remove(); ex.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
     });
     hideCalcs();
+    // a finished exercise opens finished: all steps shown, with her answers
+    if (doneSet.has(ex.id)) {
+      shown = steps.length;
+      const rec = answers[ex.id] || {};
+      asks.forEach((a, i) => { if (!a) return; a._resolved = true; a._ok = true; const r = rec[i]; if (r) { mine(i, r.a, r.ok); if (r.f) right1++; } });
+      if (askCount && !Object.keys(rec).length) tally.remove();
+    }
     update(false);
   }
 
