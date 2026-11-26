@@ -223,8 +223,14 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
     // phone: graph above, controls below, no following (moving it while the page scrolls made it tremble on iPhone)
     if (f.clientWidth <= 820) { fig.style.transform = ''; fig.style.width = ''; fig.style.marginLeft = ''; fig.style.marginRight = ''; return; }
     fig.style.width = `min(100%, ${Math.max(320, innerHeight - navh - 32)}px)`;
-    // no following while scrolling: moving the graph with the page made it wiggle (also on laptops)
-    fig.style.transform = '';
+    // follow the page smoothly: positions come from the layout (not the moving picture), and the move is eased,
+    // so it glides instead of shaking
+    const docTop = el => { let y = 0; for (let e = el; e; e = e.offsetParent) y += e.offsetTop; return y; };
+    const base = docTop(fig), boxBottom = docTop(fig.parentElement) + fig.parentElement.offsetHeight, hgt = fig.offsetHeight;
+    const want = navh + 12 - f.getBoundingClientRect().top;
+    const y = Math.max(base, Math.min(want, boxBottom - hgt));
+    fig.style.transition = matchMedia('(prefers-reduced-motion: reduce)').matches ? '' : 'transform .35s cubic-bezier(.2,.7,.2,1)';
+    fig.style.transform = y > base ? `translateY(${Math.round(y - base)}px)` : '';
   });
   if (!EMBED) {
     let kgTick = false;
