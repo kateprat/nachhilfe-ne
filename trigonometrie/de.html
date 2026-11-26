@@ -13,7 +13,7 @@
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
 <script defer src="../assets/steps.js?v=69"></script>
-<link rel="stylesheet" href="../assets/style.css?v=60">
+<link rel="stylesheet" href="../assets/style.css?v=61">
 </head>
 <body>
 <main class="wrap">
@@ -46,14 +46,6 @@
   <li><span class="ss">sin(α)</span> = die <b>y-Koordinate</b> von P (wie weit oben/unten)</li>
   <li><span class="tt">tan(α)</span> = die <b>Steigung</b> des Strahls, also \(\frac{\sin(\alpha)}{\cos(\alpha)}\). Genau das m aus \(\m x + \q\)! Man sieht sie an der Linie \(x = 1\).</li>
 </ul>
-<div class="box play">
-  <svg id="ucSvg" viewBox="-1.6 -1.6 3.2 3.2" role="img" aria-label="Einheitskreis"></svg>
-  <div>
-    <div class="sl" style="grid-template-columns:1.6em minmax(0,1fr)"><span>α</span><input id="ucS" type="range" min="-360" max="360" step="1" value="35" aria-label="Winkel α in Grad"></div>
-    <div id="ucOut"></div>
-    <div class="chips"><button type="button" data-deg="30">30°</button><button type="button" data-deg="45">45°</button><button type="button" data-deg="60">60°</button><button type="button" data-deg="120">120°</button><button type="button" data-deg="207">207°</button><button type="button" data-deg="290">290°</button><button type="button" data-deg="-190">−190°</button></div>
-  </div>
-</div>
 <iframe class="embedded" data-mode="einheitskreis" src="interaktiv.html?embed=1&amp;one=1&amp;lang=de#einheitskreis" title="Ausprobieren" loading="lazy"></iframe>
 <p>Zwei Dinge, die man aus dem Bild direkt sieht:</p>
 <ul class="sub">
@@ -63,7 +55,8 @@
 
 <!-- ============ 3 Rezepte ============ -->
 <h2 id="rezepte">3 · Die Rezepte</h2>
-<ol class="recipe">
+<p>Sechs kurze Rezepte, eines pro Aufgabentyp. Sie sind keine Schrittfolge: Nimm das, das zu deiner Aufgabe passt.</p>
+<ol class="recipe set">
   <li><div><b>Grad ↔ Bogenmass</b><span class="f">\(r = \frac{\pi}{180}\cdot d, \quad d = \frac{180}{\pi}\cdot r\)</span><small>Immer von \(180^\circ = \pi\) aus denken.</small></div></li>
   <li><div><b>Vorzeichen</b>In welchem Viertel (Quadrant) liegt P?<small>cos + rechts, sin + oben. tan + wenn beide gleiches Vorzeichen haben (I und III).</small></div></li>
   <li><div><b>Gleichung \(\sin(\alpha) = c\)</b>waagrechte Linie \(y = c\), trifft den Kreis 2×<small>\(\alpha_1\) vom Rechner, \(\alpha_2 = 180^\circ - \alpha_1\). Dann \(+\,k\cdot 360^\circ\).</small></div></li>

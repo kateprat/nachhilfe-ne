@@ -314,3 +314,6 @@ body{padding-top:env(safe-area-inset-top,0px)}
 .tryl .tq{flex-basis:100%}
 .tryl .reveal{margin:0}
 .tryl .ta{flex-basis:100%;margin:4px 0 0;padding:8px 12px;border-radius:10px;background:var(--hi)}
+/* a set of independent recipes (no step numbers, they are not a sequence) */
+.recipe.set li{grid-template-columns:1fr;border-left:6px solid var(--yellow)}
+.recipe.set li::before{content:none}

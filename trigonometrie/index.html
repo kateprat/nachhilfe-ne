@@ -13,7 +13,7 @@
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
 <script defer src="../assets/steps.js?v=69"></script>
-<link rel="stylesheet" href="../assets/style.css?v=60">
+<link rel="stylesheet" href="../assets/style.css?v=61">
 </head>
 <body>
 <main class="wrap">
@@ -46,14 +46,6 @@
   <li><span class="ss">sin(α)</span> = the <b>y-coordinate</b> of P (how far up/down)</li>
   <li><span class="tt">tan(α)</span> = the <b>slope</b> of the ray, i.e. \(\frac{\sin(\alpha)}{\cos(\alpha)}\). Exactly the m from \(\m x + \q\)! You can see it on the line \(x = 1\).</li>
 </ul>
-<div class="box play">
-  <svg id="ucSvg" viewBox="-1.6 -1.6 3.2 3.2" role="img" aria-label="Unit circle"></svg>
-  <div>
-    <div class="sl" style="grid-template-columns:1.6em minmax(0,1fr)"><span>α</span><input id="ucS" type="range" min="-360" max="360" step="1" value="35" aria-label="Angle α in degrees"></div>
-    <div id="ucOut"></div>
-    <div class="chips"><button type="button" data-deg="30">30°</button><button type="button" data-deg="45">45°</button><button type="button" data-deg="60">60°</button><button type="button" data-deg="120">120°</button><button type="button" data-deg="207">207°</button><button type="button" data-deg="290">290°</button><button type="button" data-deg="-190">−190°</button></div>
-  </div>
-</div>
 <iframe class="embedded" data-mode="einheitskreis" src="interaktiv.html?embed=1&amp;one=1&amp;lang=en#einheitskreis" title="Try it out" loading="lazy"></iframe>
 <p>Two things you can see straight from the picture:</p>
 <ul class="sub">
@@ -63,7 +55,8 @@
 
 <!-- ============ 3 Recipes ============ -->
 <h2 id="rezepte">3 · The recipes</h2>
-<ol class="recipe">
+<p>Six short recipes, one for each type of task. They are not a sequence: pick the one that fits your task.</p>
+<ol class="recipe set">
   <li><div><b>Degrees ↔ radians</b><span class="f">\(r = \frac{\pi}{180}\cdot d, \quad d = \frac{180}{\pi}\cdot r\)</span><small>Always think from \(180^\circ = \pi\).</small></div></li>
   <li><div><b>Signs</b>In which quarter (quadrant) does P lie?<small>cos + on the right, sin + at the top. tan + when both have the same sign (I and III).</small></div></li>
   <li><div><b>Equation \(\sin(\alpha) = c\)</b>horizontal line \(y = c\), meets the circle twice<small>\(\alpha_1\) from the calculator, \(\alpha_2 = 180^\circ - \alpha_1\). Then \(+\,k\cdot 360^\circ\).</small></div></li>
