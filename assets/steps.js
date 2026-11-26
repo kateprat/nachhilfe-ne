@@ -101,7 +101,7 @@
       const own = [...a.querySelectorAll(':scope > .hint')]; own.forEach(h => { h.hidden = true; }); // stay in the page so KaTeX renders them; copied when needed
       const say = (html, cls) => { hint.innerHTML = html; hint.className = 'hintmsg ' + (cls || ''); hint.hidden = false; if (hint.textContent.includes('\\(')) renderMath(hint); };
       const resolve = ok => {
-        a._resolved = true; if (ok && tries === 0) right1++;
+        a._resolved = true; a._ok = ok; if (ok && tries === 0) right1++;
         const st = steps[i], m = document.createElement('p'); m.className = 'mine' + (ok ? ' ok' : '');
         const q = a.querySelector('.q'); m.innerHTML = (q ? `<span class="mq">${q.innerHTML}</span>` : '') + `<span class="ma">${D('mine')} ${answer}${ok ? ' ✓' : ''}</span>`; st.querySelector('.mine')?.remove(); st.querySelector('.nr').after(m);
         const y0 = ctrl.getBoundingClientRect().top; shown = Math.min(steps.length, i + 1); update(true, y0);
@@ -111,7 +111,7 @@
         const h = own.find(h => h.dataset.when && h.dataset.when.split('|').every((w, k) => same(vals[k], num(w)))) || own.find(h => !h.dataset.when);
         say(h ? h.innerHTML : D('again'), 'warn'); showBtn.hidden = false;
       };
-      a._reset = () => { a._resolved = false; tries = 0; answer = ''; hint.hidden = true; showBtn.hidden = true; a.querySelectorAll('input').forEach(x => { x.value = ''; }); a.querySelectorAll('.opt').forEach(o => o.classList.remove('picked')); };
+      a._reset = () => { a._resolved = false; a._ok = false; tries = 0; answer = ''; hint.hidden = true; showBtn.hidden = true; a.querySelectorAll('input').forEach(x => { x.value = ''; }); a.querySelectorAll('.opt').forEach(o => o.classList.remove('picked')); };
       showBtn.addEventListener('click', () => resolve(false));
       if (a.dataset.type === 'choice') {
         a.querySelectorAll('.opt').forEach(o => {
@@ -138,7 +138,7 @@
           a._last = ins[0]; ins[0].classList.add('cur');
           ins.forEach(x => x.addEventListener('focus', () => { ins.forEach(y => y.classList.toggle('cur', y === x)); }));
           const pad = document.createElement('div'); pad.className = 'pad';
-          ['7', '8', '9', '⌫', '4', '5', '6', '√', '1', '2', '3', '−', '0', ',', '/', '→'].forEach(k => {
+          ['7', '8', '9', '⌫', '4', '5', '6', '√', '1', '2', '3', '−', '0', '.', '/', '→'].forEach(k => {
             const b = document.createElement('button'); b.type = 'button'; b.textContent = k;
             if (k === '→') b.setAttribute('aria-label', 'nächstes Feld');
             if (k === '⌫') b.setAttribute('aria-label', 'löschen');
@@ -179,7 +179,11 @@
       // the new step opens above the buttons; keep the buttons where they were, so the thumb stays on "Next step"
       pred.innerHTML = D(shown === 0 ? 'start' : 'predict');
       if (scroll && y0 != null) scrollBy({ top: ctrl.getBoundingClientRect().top - y0, behavior: 'instant' });
-      if (scroll && shown >= steps.length && !doneSet.has(ex.id)) { doneSet.add(ex.id); saveDone(); stamp(true); progressUpdate(); }
+      // with questions: only "done" if every question was answered right (a revealed step doesn't count)
+      const allRight = asks.every(q => !q || q._ok);
+      if (askCount && done) tally.classList.toggle('notyet', shown >= steps.length && !allRight);
+      if (askCount && shown >= steps.length && !allRight) tally.innerHTML += `<br><span data-l="de">Noch nicht geschafft. Probier es später nochmals mit «Von vorn».</span><span data-l="en">Not done yet. Try again later with «Start over».</span>`;
+      if (scroll && shown >= steps.length && allRight && !doneSet.has(ex.id)) { doneSet.add(ex.id); saveDone(); stamp(true); progressUpdate(); }
     }
     function stamp(pop) {
       if (ex.querySelector('.stamp')) return;
