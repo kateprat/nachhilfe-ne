@@ -177,7 +177,10 @@
       next.hidden = shown >= steps.length || pending; pred.hidden = shown >= steps.length || pending;
       if (askCount) tally.innerHTML = firstTry(right1, askCount);
       // the new step opens above the buttons; keep the buttons where they were, so the thumb stays on "Next step"
-      pred.innerHTML = D(shown === 0 ? 'start' : 'predict');
+      // name the next step, so it is clear what to think about
+      const h = steps[shown] && steps[shown].querySelector('h4');
+      pred.innerHTML = shown === 0 || !h ? D(shown === 0 ? 'start' : 'predict')
+        : `<span data-l="de">Als Nächstes: <b>${h.innerHTML}</b>. Überleg kurz selbst, dann tippen.</span><span data-l="en">Next: <b>${h.innerHTML}</b>. Think about it first, then tap.</span>`;
       if (scroll && y0 != null) scrollBy({ top: ctrl.getBoundingClientRect().top - y0, behavior: 'instant' });
       // with questions: only "done" if every question was answered right (a revealed step doesn't count)
       const allRight = asks.every(q => !q || q._ok);

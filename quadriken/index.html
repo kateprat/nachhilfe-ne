@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/steps.js?v=62"></script>
+<script defer src="../assets/steps.js?v=63"></script>
 <link rel="stylesheet" href="../assets/style.css?v=58">
 </head>
 <body>
@@ -433,7 +433,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
     <li class="step"><div class="ask" data-type="choice"><p class="q"><span data-l="de">Dein Tipp, bevor du rechnest:</span><span data-l="en">Your guess, before you calculate:</span></p><button class="opt"><span data-l="de">Einen Kreis um (0, 0) mit Radius&nbsp;1</span><span data-l="en">A circle around (0, 0) with radius&nbsp;1</span><span class="oh"><span data-l="de">Dann müsste rechts 1 stehen. Hier ist \(r^2 = 0\).</span><span data-l="en">Then the right side would be 1. Here \(r^2 = 0\).</span></span></button><button class="opt" data-ok><span data-l="de">Nur den Punkt (0, 0)</span><span data-l="en">Only the point (0, 0)</span></button><button class="opt"><span data-l="de">Gar keinen Punkt (leere Menge)</span><span data-l="en">No point at all (empty set)</span><span class="oh"><span data-l="de">Setz \(x = 0\) und \(y = 0\) ein. Stimmt die Gleichung?</span><span data-l="en">Put in \(x = 0\) and \(y = 0\). Does the equation hold?</span></span></button></div><span class="nr">SCHRITT 1</span><h4>Quadrate sind nie negativ</h4>
       <p class="why">\(x^2 \ge 0\) und \(y^2 \ge 0\), für jede Zahl.</p>
     </li>
-    <li class="step"><span class="nr">SCHRITT 2</span><h4>Wann ist die Summe 0?</h4>
+    <li class="step"><div class="ask" data-type="choice"><p class="q"><span data-l="de">Wann ist \(x^2 + y^2 = 0\)?</span><span data-l="en">When is \(x^2 + y^2 = 0\)?</span></p><button class="opt" data-ok><span data-l="de">Nur wenn x = 0 und y = 0</span><span data-l="en">Only when x = 0 and y = 0</span></button><button class="opt"><span data-l="de">Wenn y das Gegenteil von x ist</span><span data-l="en">When y is the opposite of x</span><span class="oh"><span data-l="de">Probier \(x = 1\), \(y = -1\): \(1 + 1 = 2\), nicht 0.</span><span data-l="en">Try \(x = 1\), \(y = -1\): \(1 + 1 = 2\), not 0.</span></span></button><button class="opt"><span data-l="de">Nie</span><span data-l="en">Never</span><span class="oh"><span data-l="de">Setz \(x = 0\), \(y = 0\) ein. Was kommt heraus?</span><span data-l="en">Put in \(x = 0\), \(y = 0\). What do you get?</span></span></button></div><span class="nr">SCHRITT 2</span><h4>Wann ist die Summe 0?</h4>
       <p class="why">Zwei Zahlen, die nicht negativ sind, ergeben nur dann 0, wenn beide 0 sind.</p>
       <div class="calc">$$x^2 = 0 \text{ und } y^2 = 0 \;\Rightarrow\; x = 0,\ y = 0$$</div>
     </li>
@@ -449,7 +449,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
       <p class="why">Darum ist die linke Seite immer mindestens 0.</p>
       <div class="calc">$$x^2 + y^2 \ge 0$$</div>
     </li>
-    <li class="step"><span class="nr">SCHRITT 2</span><h4>Mit der rechten Seite vergleichen</h4>
+    <li class="step"><div class="ask" data-type="choice"><p class="q"><span data-l="de">Kann \(x^2 + y^2\) gleich \(-1\) sein?</span><span data-l="en">Can \(x^2 + y^2\) equal \(-1\)?</span></p><button class="opt"><span data-l="de">Ja, wenn x und y negativ sind</span><span data-l="en">Yes, if x and y are negative</span><span class="oh"><span data-l="de">\((-1)^2 = 1\): Auch Quadrate von negativen Zahlen sind positiv.</span><span data-l="en">\((-1)^2 = 1\): squares of negative numbers are positive too.</span></span></button><button class="opt" data-ok><span data-l="de">Nein, die linke Seite ist immer mindestens 0</span><span data-l="en">No, the left side is always at least 0</span></button><button class="opt"><span data-l="de">Ja, aber nur für einen Punkt</span><span data-l="en">Yes, but only for one point</span><span class="oh"><span data-l="de">Welcher Punkt sollte das sein? Probier \((0, 0)\): \(0 = -1\)?</span><span data-l="en">Which point would it be? Try \((0, 0)\): \(0 = -1\)?</span></span></button></div><span class="nr">SCHRITT 2</span><h4>Mit der rechten Seite vergleichen</h4>
       <p class="why">Etwas, das mindestens 0 ist, kann nie −1 sein.</p>
       <div class="calc">$$x^2 + y^2 \ge 0 > -1$$</div>
     </li>
