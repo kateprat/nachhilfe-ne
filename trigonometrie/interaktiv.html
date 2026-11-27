@@ -34,7 +34,8 @@
 @media(max-width:820px){.ilay{grid-template-columns:minmax(0,1fr)}.fig{position:static;margin:0 auto}}
 .chips .chiplab{flex-basis:100%;margin:6px 0 0;font-size:13px;font-weight:700;color:var(--mute)}
 .chips .chiplab:first-child{margin-top:0}
-.chips button .src{font-weight:400;color:var(--mute)}
+.chips button .src{font-weight:600;font-size:12px;color:var(--mute);margin-left:4px}
+.chips button .src::before{content:'('}.chips button .src::after{content:')'}
 .chips button.sel{background:var(--soft);border-color:var(--accent,#2F6BFF)!important;box-shadow:inset 0 0 0 1px var(--accent,#2F6BFF)}
 </style>
 <link rel="stylesheet" href="../assets/clean.css?v=1">
@@ -207,10 +208,10 @@
     const f = st.f, c = st.c;
     const inp = $('c2'); inp.min = f === 'tan' ? -3 : -1.5; inp.max = f === 'tan' ? 3 : 1.5; inp.value = c; $('c2v').textContent = num(c, 2);
     document.querySelectorAll('#fn button').forEach(b => b.setAttribute('aria-pressed', b.dataset.f === f));
-    const chip = ([l, v, p]) => `<button type="button" data-v="${v}"${Math.abs(v - c) < 1e-9 ? ' class="sel"' : ''}>c = ${l}${p ? ` <span class="src">(${both('exercise', 'Aufgabe')} ${p})</span>` : ''}</button>`;
+    const chip = ([l, v, p]) => `<button type="button" data-v="${v}"${Math.abs(v - c) < 1e-9 ? ' class="sel"' : ''}>${l}${p ? ` <span class="src">${p.replace('E2 ', '')}</span>` : ''}</button>`;
     const fromEx = CH2[f].filter(x => x[2]), exact = CH2[f].filter(x => !x[2]);
-    $('chips2').innerHTML = `<p class="chiplab">${both('From the exercises', 'Aus den Aufgaben')}</p>` + fromEx.map(chip).join('') +
-      `<p class="chiplab">${both('Exact values (table in E5)', 'Exakte Werte (Tabelle in E5)')}</p>` + exact.map(chip).join('');
+    $('chips2').innerHTML = `<p class="chiplab">${both('From exercise E2', 'Aus Aufgabe E2')}</p>` + fromEx.map(chip).join('') +
+      `<p class="chiplab">${both('Exact values, table in E5', 'Exakte Werte, Tabelle in E5')}</p>` + exact.map(chip).join('');
     let h = grid() + circle(), sols = [], o = '';
     const col = { sin: 'var(--sin)', cos: 'var(--cos)', tan: 'var(--m)' }[f];
     if (f === 'sin') h += `<line x1="${-R}" y1="${-c}" x2="${R}" y2="${-c}" stroke="${col}" stroke-width=".02" stroke-dasharray=".06 .04"/>`;
@@ -294,9 +295,10 @@
 
   document.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { st.tab = +b.dataset.tab; draw(); }));
   $('a1').addEventListener('input', e => { st.deg = +e.target.value; draw(); });
-  const ch1 = (d, p) => `<button type="button" data-d="${d}">α = ${String(d).replace('-', '−')}°${p ? ` <span class="src">(${both('exercise', 'Aufgabe')} ${p})</span>` : ''}</button>`;
-  $('chips1').innerHTML = `<p class="chiplab">${both('From the exercises', 'Aus den Aufgaben')}</p>` + [55, 290, -190, 380].map(d => ch1(d, 'E2 a–c')).join('') +
-    `<p class="chiplab">${both('Exact values (table in E5)', 'Exakte Werte (Tabelle in E5)')}</p>` + [30, 45, 60, 120, 135, 150, 210, 240, 300, 330].map(d => ch1(d)).join('');
+  // the source goes in the group label once, the buttons only show the value
+  const ch1 = d => `<button type="button" data-d="${d}">${String(d).replace('-', '−')}°</button>`;
+  $('chips1').innerHTML = `<p class="chiplab">${both('From exercise E2 (a)–(c)', 'Aus Aufgabe E2 (a)–(c)')}</p>` + [55, 290, -190, 380].map(ch1).join('') +
+    `<p class="chiplab">${both('Exact values, table in E5', 'Exakte Werte, Tabelle in E5')}</p>` + [30, 45, 60, 120, 135, 150, 210, 240, 300, 330].map(ch1).join('');
   $('chips1').addEventListener('click', e => { const b = e.target.closest('[data-d]'); if (b) { st.deg = +b.dataset.d; draw(); } });
   document.querySelectorAll('#fn button').forEach(b => b.addEventListener('click', () => { st.f = b.dataset.f; if (st.f !== 'tan' && Math.abs(st.c) > 1.5) st.c = .5; draw(); }));
   $('c2').addEventListener('input', e => { st.c = +e.target.value; draw(); });
