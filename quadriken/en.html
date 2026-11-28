@@ -14,19 +14,19 @@
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
 <script defer src="../assets/steps.js?v=72"></script>
 <link rel="stylesheet" href="../assets/style.css?v=74">
-<link rel="stylesheet" href="../assets/clean.css?v=1">
+<link rel="stylesheet" href="../assets/clean.css?v=3">
 </head>
 <body>
 <main class="wrap">
 <nav class="langsw" aria-label="Sprache / language"><a href="./" lang="de">DE</a><a href="en.html" lang="en" aria-current="page">EN</a></nav>
 <p class="crumb"><a href="../en.html">← Overview</a></p>
 <h1>Conics: parabolas, tangents and circles</h1>
-<p class="lead">Script chapter 17, exercises A1–A12. First: what is a parabola? Then the letters and a recipe that stays the same for almost every exercise.</p>
+<p class="lead">Script chapter 17, exercises A1–A12. First: what is a parabola? Then the letters and the tangent recipe, which stays the same for almost every exercise.</p>
 
 <nav class="nav" aria-label="Sections"><ul>
-  <li><a href="#parabel">Parabola</a></li><li><a href="#buchstaben">Letters</a></li><li><a href="#rezept">Recipe</a></li>
+  <li><a href="#parabel">Parabola</a></li><li><a href="#buchstaben">Letters</a></li><li><a href="#rezept">Tangent recipe</a></li>
   <li><a href="#aufgaben">Exercises</a></li><li><a href="#a1">A1</a></li><li><a href="#a2">A2</a></li><li><a href="#a3">A3</a></li><li><a href="#a4">A4</a></li><li><a href="#a5">A5</a></li>
-  <li><a href="#a6">A6</a></li><li><a href="#a7">A7</a></li><li><a href="#a8">A8</a></li><li><a href="#kreise">Circles</a></li><li><a href="#a9">A9</a></li><li><a href="#a10">A10</a></li><li><a href="#a11">A11</a></li><li><a href="#a12">A12</a></li><li><a href="#spickzettel">Cheat sheet</a></li><li><a href="../grundlagen/">Algebra</a></li>
+  <li><a href="#a6">A6</a></li><li><a href="#a7">A7</a></li><li><a href="#a8">A8</a></li><li><a href="#kreise">Circles</a></li><li class="sub"><a href="#kreisrezept1">Circle recipe 1</a></li><li class="sub"><a href="#kreisrezept2">Circle recipe 2</a></li><li><a href="#a9">A9</a></li><li><a href="#a10">A10</a></li><li><a href="#a11">A11</a></li><li><a href="#a12">A12</a></li><li><a href="#spickzettel">Cheat sheet</a></li><li><a href="../grundlagen/">Algebra</a></li>
 </ul></nav>
 
 <!-- ============ 1. Parabola ============ -->
@@ -103,7 +103,8 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <iframe class="embedded" data-mode="tangente" src="interaktiv.html?embed=1&amp;one=1&amp;lang=en#tangente" title="Try it out" loading="lazy"></iframe>
 
 <!-- ============ 2. Recipe ============ -->
-<h2 id="rezept">3 · The recipe for tangents</h2>
+<h2 id="rezept">3 · The tangent recipe</h2>
+<p class="small" style="color:var(--mute)">Circles have two recipes of their own, in <a href="#kreisrezept1">5 · Circles</a>. All recipes at a glance: <a href="#spickzettel">6 · Cheat sheet</a>.</p>
 <p>Almost all exercises A2–A8 use the same 7 steps. Only step 1 changes, depending on what is given.</p>
 <ol class="recipe">
   <li><div><b>Set-up (Ansatz)</b><span class="f">\(t(x) = \m x + \q\)</span>Substitute what is given.<small>Slope given → substitute m. Point given → substitute it and solve for q.</small></div></li>
@@ -467,7 +468,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 <p class="ts">Backwards: write the equation</p>
 <ol class="tryl"><li><span class="tq"><b>e)</b> Centre \((-3, 4)\), radius \(\sqrt2\)</span> <button type="button" class="reveal" data-answer="kqe">Show solution</button><p id="kqe" class="ta">\((x + 3)^2 + (y - 4)^2 = 2\)</p></li></ol></div>
 
-<h3>Recipe A: read off centre and radius</h3>
+<h3 id="kreisrezept1">Circle recipe 1: read off centre and radius</h3>
 <p>With the example \(x^2 + y^2 - 6x + 4y - 3 = 0\), step by step:</p>
 <ol class="recipe">
   <li><div><b>Sort</b><span class="f">\((x^2 - 6x) + (y^2 + 4y) = 3\)</span><small>x-terms together, y-terms together, the number to the right.</small></div></li>
@@ -476,8 +477,8 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
   <li><div><b>Read off</b><span class="f">\(M = (3, -2)\)</span><span class="f">\(r = \sqrt{16} = 4\)</span><small>Flip the signs from the brackets. If the right side is 0: just one point. If it is negative: no point at all.</small></div></li>
 </ol>
 
-<h3>Completing the square: the recipe</h3>
-<p>Step 2 of recipe A needs no guessing. For \(x^2 + b\,x\) it always works like this:</p>
+<h3 id="ergaenzen">In-between step: completing the square</h3>
+<p>Step 2 of circle recipe 1 needs no guessing. For \(x^2 + b\,x\) it always works like this:</p>
 <ol class="recipe">
   <li><div><b>Halve</b><span class="f">\(h = \dfrac{b}{2}\)</span><small>Halve the number in front of x, sign included.</small></div></li>
   <li><div><b>Write the bracket</b><span class="f">\((x + h)^2\)</span></div></li>
@@ -533,7 +534,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
   <div class="done">Check: multiplied out this gives back \(x^2 + 3x\).</div>
 </article>
 
-<h3>Recipe B: intersect circle and line</h3>
+<h3 id="kreisrezept2">Circle recipe 2: intersect circle and line</h3>
 <p>With the example: circle \(x^2 + y^2 = 25\) and line \(x - y + 1 = 0\).</p>
 <ol class="recipe">
   <li><div><b>Solve the line for y</b><span class="f">\(y = x + 1\)</span><small>In general: \(y = \m x + \q\).</small></div></li>
@@ -678,7 +679,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
       <p class="why">\(x^2\) and \(y^2\) cancel.</p>
       <div class="calc">$$\begin{aligned} 280x + 40y - 20000 &= 3000 \\ 280x + 40y &= 23000 \quad\mid :40 \\ 7x + y &= 575 \iff y = 575 - 7x \end{aligned}$$
       <p>This is the line through both intersection points.</p></div></li>
-    <li class="step"><span class="nr">STEP 4</span><h4>Now recipe B: substitute into (I)</h4>
+    <li class="step"><span class="nr">STEP 4</span><h4>Now circle recipe 2: substitute into (I)</h4>
       <div class="calc">$$\begin{aligned} x^2 + (575 - 7x)^2 &= 7225 \\ 50x^2 - 8050x + 323400 &= 0 \quad\mid :50 \\ x^2 - 161x + 6468 &= 0,\quad x = \tfrac{161 \pm 7}{2} \end{aligned}$$
       <p>\(x_1 = 84\), \(x_2 = 77\).</p></div></li>
     <li class="step"><span class="nr">STEP 5</span><h4>y from the line</h4>

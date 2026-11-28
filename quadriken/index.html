@@ -14,19 +14,19 @@
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
 <script defer src="../assets/steps.js?v=72"></script>
 <link rel="stylesheet" href="../assets/style.css?v=74">
-<link rel="stylesheet" href="../assets/clean.css?v=1">
+<link rel="stylesheet" href="../assets/clean.css?v=3">
 </head>
 <body>
 <main class="wrap">
 <nav class="langsw" aria-label="Sprache / language"><a href="./" lang="de" aria-current="page">DE</a><a href="en.html" lang="en">EN</a></nav>
 <p class="crumb"><a href="../">← Übersicht</a></p>
 <h1>Quadriken: Parabeln, Tangenten und Kreise</h1>
-<p class="lead">Skript Kapitel 17, Aufgaben A1–A12. Zuerst: Was ist eine Parabel? Dann die Buchstaben und ein Kochrezept, das bei fast allen Aufgaben gleich bleibt.</p>
+<p class="lead">Skript Kapitel 17, Aufgaben A1–A12. Zuerst: Was ist eine Parabel? Dann die Buchstaben und das Tangenten-Rezept, das bei fast allen Aufgaben gleich bleibt.</p>
 
 <nav class="nav" aria-label="Abschnitte"><ul>
-  <li><a href="#parabel">Parabel</a></li><li><a href="#buchstaben">Buchstaben</a></li><li><a href="#rezept">Kochrezept</a></li>
+  <li><a href="#parabel">Parabel</a></li><li><a href="#buchstaben">Buchstaben</a></li><li><a href="#rezept">Tangenten-Rezept</a></li>
   <li><a href="#aufgaben">Aufgaben</a></li><li><a href="#a1">A1</a></li><li><a href="#a2">A2</a></li><li><a href="#a3">A3</a></li><li><a href="#a4">A4</a></li><li><a href="#a5">A5</a></li>
-  <li><a href="#a6">A6</a></li><li><a href="#a7">A7</a></li><li><a href="#a8">A8</a></li><li><a href="#kreise">Kreise</a></li><li><a href="#a9">A9</a></li><li><a href="#a10">A10</a></li><li><a href="#a11">A11</a></li><li><a href="#a12">A12</a></li><li><a href="#spickzettel">Spickzettel</a></li><li><a href="../grundlagen/">Algebra</a></li>
+  <li><a href="#a6">A6</a></li><li><a href="#a7">A7</a></li><li><a href="#a8">A8</a></li><li><a href="#kreise">Kreise</a></li><li class="sub"><a href="#kreisrezept1">Kreis-Rezept 1</a></li><li class="sub"><a href="#kreisrezept2">Kreis-Rezept 2</a></li><li><a href="#a9">A9</a></li><li><a href="#a10">A10</a></li><li><a href="#a11">A11</a></li><li><a href="#a12">A12</a></li><li><a href="#spickzettel">Spickzettel</a></li><li><a href="../grundlagen/">Algebra</a></li>
 </ul></nav>
 
 <!-- ============ 1. Parabel ============ -->
@@ -103,7 +103,8 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <iframe class="embedded" data-mode="tangente" src="interaktiv.html?embed=1&amp;one=1&amp;lang=de#tangente" title="Ausprobieren" loading="lazy"></iframe>
 
 <!-- ============ 2. Rezept ============ -->
-<h2 id="rezept">3 · Das Kochrezept für Tangenten</h2>
+<h2 id="rezept">3 · Das Tangenten-Rezept</h2>
+<p class="small" style="color:var(--mute)">Für Kreise gibt es zwei eigene Rezepte, sie stehen bei <a href="#kreisrezept1">5 · Kreise</a>. Alle Rezepte auf einen Blick: <a href="#spickzettel">6 · Spickzettel</a>.</p>
 <p>Fast alle Aufgaben A2–A8 gehen mit denselben 7 Schritten. Nur Schritt 1 ändert sich, je nachdem, was gegeben ist.</p>
 <ol class="recipe">
   <li><div><b>Ansatz</b><span class="f">\(t(x) = \m x + \q\)</span>Das Gegebene einsetzen.<small>Steigung gegeben → m einsetzen. Punkt gegeben → einsetzen und nach q auflösen.</small></div></li>
@@ -467,7 +468,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 <p class="ts">Rückwärts: Gleichung aufstellen</p>
 <ol class="tryl"><li><span class="tq"><b>e)</b> Mittelpunkt \((-3, 4)\), Radius \(\sqrt2\)</span> <button type="button" class="reveal" data-answer="kqe">Lösung zeigen</button><p id="kqe" class="ta">\((x + 3)^2 + (y - 4)^2 = 2\)</p></li></ol></div>
 
-<h3>Rezept A: Mittelpunkt und Radius ablesen</h3>
+<h3 id="kreisrezept1">Kreis-Rezept 1: Mittelpunkt und Radius ablesen</h3>
 <p>Am Beispiel \(x^2 + y^2 - 6x + 4y - 3 = 0\), Schritt für Schritt:</p>
 <ol class="recipe">
   <li><div><b>Sortieren</b><span class="f">\((x^2 - 6x) + (y^2 + 4y) = 3\)</span><small>x-Terme zusammen, y-Terme zusammen, die Zahl nach rechts.</small></div></li>
@@ -476,8 +477,8 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
   <li><div><b>Ablesen</b><span class="f">\(M = (3, -2)\)</span><span class="f">\(r = \sqrt{16} = 4\)</span><small>Vorzeichen aus der Klammer umdrehen. Steht rechts 0: nur ein Punkt. Steht rechts etwas Negatives: gar kein Punkt.</small></div></li>
 </ol>
 
-<h3>Quadratisch ergänzen: das Rezept</h3>
-<p>Für Schritt 2 von Rezept A braucht es kein Raten. Für \(x^2 + b\,x\) gilt immer:</p>
+<h3 id="ergaenzen">Zwischenschritt: quadratisch ergänzen</h3>
+<p>Für Schritt 2 von Kreis-Rezept 1 braucht es kein Raten. Für \(x^2 + b\,x\) gilt immer:</p>
 <ol class="recipe">
   <li><div><b>Halbieren</b><span class="f">\(h = \dfrac{b}{2}\)</span><small>Die Zahl vor x halbieren, mit Vorzeichen.</small></div></li>
   <li><div><b>Klammer hinschreiben</b><span class="f">\((x + h)^2\)</span></div></li>
@@ -533,7 +534,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
   <div class="done">Probe: ausmultipliziert gibt das wieder \(x^2 + 3x\).</div>
 </article>
 
-<h3>Rezept B: Kreis und Gerade schneiden</h3>
+<h3 id="kreisrezept2">Kreis-Rezept 2: Kreis und Gerade schneiden</h3>
 <p>Am Beispiel: Kreis \(x^2 + y^2 = 25\) und Gerade \(x - y + 1 = 0\).</p>
 <ol class="recipe">
   <li><div><b>Gerade nach y auflösen</b><span class="f">\(y = x + 1\)</span><small>Allgemein: \(y = \m x + \q\).</small></div></li>
@@ -678,7 +679,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
       <p class="why">\(x^2\) und \(y^2\) heben sich weg.</p>
       <div class="calc">$$\begin{aligned} 280x + 40y - 20000 &= 3000 \\ 280x + 40y &= 23000 \quad\mid :40 \\ 7x + y &= 575 \iff y = 575 - 7x \end{aligned}$$
       <p>Das ist die Gerade durch beide Schnittpunkte.</p></div></li>
-    <li class="step"><span class="nr">SCHRITT 4</span><h4>Jetzt Rezept B: in (I) einsetzen</h4>
+    <li class="step"><span class="nr">SCHRITT 4</span><h4>Jetzt Kreis-Rezept 2: in (I) einsetzen</h4>
       <div class="calc">$$\begin{aligned} x^2 + (575 - 7x)^2 &= 7225 \\ 50x^2 - 8050x + 323400 &= 0 \quad\mid :50 \\ x^2 - 161x + 6468 &= 0,\quad x = \tfrac{161 \pm 7}{2} \end{aligned}$$
       <p>\(x_1 = 84\), \(x_2 = 77\).</p></div></li>
     <li class="step"><span class="nr">SCHRITT 5</span><h4>y aus der Geraden</h4>
