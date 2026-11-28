@@ -58,6 +58,7 @@
       <button type="button" role="tab" data-tab="1"><span data-l="en">Unit circle</span><span data-l="de">Einheitskreis</span></button>
       <button type="button" role="tab" data-tab="2"><span data-l="en">Equations</span><span data-l="de">Gleichungen</span></button>
       <button type="button" role="tab" data-tab="3"><span data-l="en">Radians</span><span data-l="de">Bogenmass</span></button>
+      <button type="button" role="tab" data-tab="4"><span data-l="en">Polar</span><span data-l="de">Polar</span></button>
     </div>
 
     <!-- tab 1 -->
@@ -83,6 +84,14 @@
       <div class="sl" style="grid-template-columns:1.6em minmax(0,1fr) 5.6em"><span>α</span><input id="a3" type="range" min="0" max="360" step="1" aria-label="α"><label class="numin"><input id="a3v" type="text" inputmode="text" enterkeyhint="done" autocomplete="off" spellcheck="false" aria-label="α in °">°</label></div>
       <div class="sl" style="grid-template-columns:1.6em minmax(0,1fr) 4em"><span>r</span><input id="r3" type="range" min="1" max="5" step="1" aria-label="r"><b id="r3v"></b></div>
       <div class="out" id="out3"></div>
+    </div>
+    <!-- tab 4: polar coordinates -->
+    <div data-p="4" class="panel">
+      <p class="hint"><span data-l="en">Polar coordinates: go r units, at the angle φ. Drag P, or set r and φ. Green = x, orange = y.</span><span data-l="de">Polarkoordinaten: r Einheiten weit gehen, im Winkel φ. Zieh P oder stell r und φ ein. Grün = x, orange = y.</span></p>
+      <div class="sl" style="grid-template-columns:1.6em minmax(0,1fr) 5.6em"><span>r</span><input id="r4" type="range" min="0" max="10" step="0.1" aria-label="r"><label class="numin"><input id="r4v" type="text" inputmode="text" enterkeyhint="done" autocomplete="off" spellcheck="false" aria-label="r"><span style="visibility:hidden">°</span></label></div>
+      <div class="sl" style="grid-template-columns:1.6em minmax(0,1fr) 5.6em"><span>φ</span><input id="p4" type="range" min="-360" max="1080" step="1" aria-label="φ"><label class="numin"><input id="p4v" type="text" inputmode="text" enterkeyhint="done" autocomplete="off" spellcheck="false" aria-label="φ in °">°</label></div>
+      <div class="chips" id="chips4"></div>
+      <div class="out" id="out4"></div>
     </div>
   </section>
 </div>
@@ -133,7 +142,7 @@
 (function () {
   const $ = id => document.getElementById(id);
   const svg = $('svg'), R = 1.6;
-  const st = { tab: 1, deg: 150, f: 'sin', c: 0.5, a3: 120, r: 3 };
+  const st = { tab: 1, deg: 150, f: 'sin', c: 0.5, a3: 120, r: 3, r4: 3, p4: 150, src4: null };
   const tex = s => window.katex ? katex.renderToString(s, { throwOnError: false }) : s;
   const both = (en, de) => `<span data-l="en">${en}</span><span data-l="de">${de}</span>`;
   const num = (v, d = 3) => (Math.abs(v) < 5e-4 ? '0' : (+v.toFixed(d)).toString()).replace('-', '−');
@@ -269,10 +278,62 @@
     $('out3').innerHTML = o;
   }
 
+
+  /* ---- tab 4: polar coordinates ---- */
+  const RMAX = [1, 2, 3, 4, 5, 6, 8, 10];
+  function tab4() {
+    const r = st.r4, deg = st.p4, a = deg * Math.PI / 180;
+    const x = r * Math.cos(a), y = r * Math.sin(a);
+    const rm = RMAX.find(v => v >= r - 1e-9) || 10, k = 1.3 / rm, X = x * k, Y = -y * k;
+    const step = rm <= 6 ? 1 : 2;
+    let h = '';
+    for (let i = -rm; i <= rm + 1e-9; i += step) if (i) h += `<line x1="${i * k}" y1="${-R}" x2="${i * k}" y2="${R}" stroke="var(--paper-grid)" stroke-width=".012"/><line x1="${-R}" y1="${i * k}" x2="${R}" y2="${i * k}" stroke="var(--paper-grid)" stroke-width=".012"/>`;
+    h += `<line x1="${-R}" y1="0" x2="${R}" y2="0" stroke="var(--ink)" stroke-width=".016"/><line x1="0" y1="${-R}" x2="0" y2="${R}" stroke="var(--ink)" stroke-width=".016"/>`;
+    h += `<text x="${rm * k + .03}" y=".12" font-size=".09" fill="var(--mute)">${rm}</text><text x=".04" y="${-rm * k - .03}" font-size=".09" fill="var(--mute)">${rm}</text>`;
+    h += `<text x="${R - .05}" y="-.05" font-size=".1" fill="var(--mute)" text-anchor="end">x</text><text x=".05" y="${-R + .12}" font-size=".1" fill="var(--mute)">y</text>`;
+    if (r > 0) h += `<circle cx="0" cy="0" r="${r * k}" fill="none" stroke="var(--mute)" stroke-width=".012" stroke-dasharray=".04 .03"/>`;
+    h += arc(deg, Math.min(.28, Math.max(.12, r * k * .35)), 'var(--q)', .03);
+    const am = mod(deg) * Math.PI / 360, ar = Math.min(.28, Math.max(.12, r * k * .35)) + .1;
+    if (mod(deg) > 3) h += lbl(ar * Math.cos(am), -ar * Math.sin(am) + .04, 'φ', 'var(--q)', 'middle');
+    h += `<line x1="0" y1="0" x2="${X}" y2="0" stroke="var(--cos)" stroke-width=".05"/>`;
+    h += `<line x1="${X}" y1="0" x2="${X}" y2="${Y}" stroke="var(--sin)" stroke-width=".05"/>`;
+    h += `<line x1="0" y1="0" x2="${X}" y2="${Y}" stroke="var(--ink)" stroke-width=".022"/>`;
+    if (r > 0) h += lbl(X / 2 - Math.sin(a) * .1, Y / 2 - Math.cos(a) * .1 + .04, 'r', 'var(--ink)', 'middle');
+    if (Math.abs(X) > .15) h += lbl(X / 2, y >= 0 ? .16 : -.07, 'x', 'var(--cos)', 'middle');
+    if (Math.abs(Y) > .15) h += lbl(X + (x >= 0 ? .07 : -.07), Y / 2 + .04, 'y', 'var(--sin)', x >= 0 ? 'start' : 'end');
+    h += `<circle class="drag" data-h="P" cx="${X}" cy="${Y}" r=".075" fill="var(--yellow)" stroke="var(--ink)" stroke-width=".02"/>` + lbl(X + (x >= 0 ? .1 : -.1), Y - .09, 'P', 'var(--ink)', x >= 0 ? 'start' : 'end');
+    svg.innerHTML = h;
+    $('r4').value = r; $('p4').value = deg;
+    if (document.activeElement !== $('r4v')) $('r4v').value = num(r, 2);
+    if (document.activeElement !== $('p4v')) $('p4v').value = String(deg).replace('-', '−');
+    const d = mod(deg), ex = isSpecial(deg) ? exact(deg) : null, rI = Math.abs(r - Math.round(r)) < 1e-9;
+    const D = String(deg).replace('-', '−') + '°';
+    const part = (fn, exTex, val) => {
+      const whole = ['0', '1', '-1'].includes(exTex);
+      const e = ex && exTex !== undefined && rI ? (whole ? `= ${r}\\cdot ${exTex === '-1' ? '(-1)' : exTex} = ${Math.round(val)}` : `= ${r}\\cdot\\left(${exTex}\\right)`) : '';
+      return tex(`${fn === 'cos' ? 'x' : 'y'} = r\\cdot\\${fn}(\\varphi) = ${num(r, 2)}\\cdot\\${fn}(${D.replace('−', '-').replace('°', '^\\circ')}) ${e}`) + (e && whole ? '' : ' ≈ ' + num(val));
+    };
+    let o = `<div class="big">P = (${num(r, 2)}, ${D}) ${both('in polar coordinates', 'in Polarkoordinaten')}</div>`;
+    o += `<div class="cc"><b>${part('cos', ex && ex[1], x)}</b></div><div class="ss"><b>${part('sin', ex && ex[0], y)}</b></div>`;
+    o += `<div>${both('Cartesian:', 'Kartesisch:')} P ≈ (${num(x)}, ${num(y)})</div>`;
+    if (deg >= 360 || deg < 0) o += `<div class="hint">${both(`Same point as φ = ${num(d, 1)}° (full turns don't matter).`, `Gleicher Punkt wie φ = ${num(d, 1)}° (volle Umdrehungen spielen keine Rolle).`)}</div>`;
+    if (r > 0 && d % 90 !== 0) {
+      const q = Math.floor(d / 90), ref = [d, 180 - d, d - 180, 360 - d][q];
+      const rule = ['φ = ref', 'φ = 180° − ref', 'φ = 180° + ref', 'φ = 360° − ref'][q];
+      const sx = x > 0 ? '+' : '−', sy = y > 0 ? '+' : '−';
+      o += `<div>${both('Quadrant', 'Quadrant')} ${['I', 'II', 'III', 'IV'][q]}: x ${sx}, y ${sy}. ${both('Reference angle', 'Bezugswinkel')} ${num(ref, 1)}°.</div>`;
+      o += `<div class="hint">${both('Backwards (cartesian → polar):', 'Rückwärts (kartesisch → polar):')} r = √(x² + y²) = ${num(r, 2)}, ${both('reference angle from', 'Bezugswinkel aus')} tan = |y| / |x|, ${both('then', 'dann')} ${rule.replace('ref', num(ref, 1) + '°')} = ${num(d, 1)}°.</div>`;
+    } else if (r > 0) {
+      o += `<div class="hint">${both('P lies on an axis: read φ off directly.', 'P liegt auf einer Achse: φ direkt ablesen.')}</div>`;
+    }
+    if (st.src4) o += `<div class="hint">${st.src4}</div>`;
+    $('out4').innerHTML = o;
+  }
+
   function draw() {
     document.querySelectorAll('[data-tab]').forEach(b => b.setAttribute('aria-selected', +b.dataset.tab === st.tab));
     document.querySelectorAll('[data-p]').forEach(p => p.hidden = +p.dataset.p !== st.tab);
-    [tab1, tab2, tab3][st.tab - 1]();
+    [tab1, tab2, tab3, tab4][st.tab - 1]();
   }
 
   // dragging
@@ -292,6 +353,11 @@
     const [x, y] = wpt(e);
     if (st.tab === 1) st.deg = snapDeg(x, y);
     if (st.tab === 3) { const d = snapDeg(x, y); st.a3 = d === 0 && st.a3 > 300 ? 360 : d; }
+    if (st.tab === 4) {
+      const rm = RMAX.find(v => v >= st.r4 - 1e-9) || 10, k = 1.3 / rm;
+      let r = Math.hypot(x, y) / k; r = Math.abs(r - Math.round(r)) < .12 ? Math.round(r) : Math.round(r * 10) / 10;
+      st.r4 = Math.min(10, r); st.p4 = snapDeg(x, y); st.src4 = null;
+    }
     draw();
   }
   svg.addEventListener('pointermove', move);
@@ -314,6 +380,23 @@
   };
   typed('a1v', -3600, 3600, v => { st.deg = v; });
   typed('a3v', 0, 360, v => { st.a3 = Math.round(v); });
+  typed('r4v', 0, 10, v => { st.r4 = Math.round(v * 100) / 100; st.src4 = null; });
+  typed('p4v', -3600, 3600, v => { st.p4 = v; st.src4 = null; });
+  $('r4').addEventListener('input', e => { st.r4 = +e.target.value; st.src4 = null; draw(); });
+  $('p4').addEventListener('input', e => { st.p4 = +e.target.value; st.src4 = null; draw(); });
+  // points from E9 (polar given) and E10 (cartesian given)
+  const P9 = [['A', 1, 30], ['B', 2, -30], ['C', 3, 150], ['D', 4, 1080]];
+  const P10 = [['A', '(0, 10)', 10, 90], ['B', '(5, 5)', 5 * Math.SQRT2, 45], ['P', '(1, √3)', 2, 60], ['Q', '(−1, √3)', 2, 120], ['R', '(1, −√3)', 2, 300], ['S', '(−1, −√3)', 2, 240]];
+  $('chips4').innerHTML = `<p class="chiplab">${both('E9: polar given', 'E9: polar gegeben')}</p>` +
+    P9.map(([n, r, p]) => `<button type="button" data-r="${r}" data-phi="${p}">${n} = (${r}, ${String(p).replace('-', '−')}°)</button>`).join('') +
+    `<p class="chiplab">${both('E10: cartesian given', 'E10: kartesisch gegeben')}</p>` +
+    P10.map(([n, c, r, p]) => `<button type="button" data-r="${r}" data-phi="${p}" data-c="${n} = ${c}">${n} = ${c}</button>`).join('');
+  $('chips4').addEventListener('click', e => {
+    const b = e.target.closest('[data-r]'); if (!b) return;
+    st.r4 = +b.dataset.r; st.p4 = +b.dataset.phi;
+    st.src4 = b.dataset.c ? both(`Given was ${b.dataset.c} (cartesian). Above you see its polar coordinates.`, `Gegeben war ${b.dataset.c} (kartesisch). Oben siehst du die Polarkoordinaten dazu.`) : null;
+    draw();
+  });
   // the source goes in the group label once, the buttons only show the value
   const ch1 = d => `<button type="button" data-d="${d}">${String(d).replace('-', '−')}°</button>`;
   $('chips1').innerHTML = `<p class="chiplab">${both('From exercise E2 (a)–(c)', 'Aus Aufgabe E2 (a)–(c)')}</p>` + [55, 290, -190, 380].map(ch1).join('') +
@@ -324,7 +407,7 @@
   $('chips2').addEventListener('click', e => { const b = e.target.closest('[data-v]'); if (b) { st.c = +b.dataset.v; draw(); } });
   $('a3').addEventListener('input', e => { st.a3 = +e.target.value; draw(); });
   $('r3').addEventListener('input', e => { st.r = +e.target.value; draw(); });
-  const go = () => { const m = location.hash.slice(1); if (m === 'einheitskreis' || m === 'unit-circle') st.tab = 1; if (m === 'gleichungen' || m === 'equations') st.tab = 2; if (m === 'bogenmass' || m === 'radians') st.tab = 3; draw(); };
+  const go = () => { const m = location.hash.slice(1); if (m === 'einheitskreis' || m === 'unit-circle') st.tab = 1; if (m === 'gleichungen' || m === 'equations') st.tab = 2; if (m === 'bogenmass' || m === 'radians') st.tab = 3; if (m === 'polar') st.tab = 4; draw(); };
   window.addEventListener('DOMContentLoaded', () => setTimeout(go, 0)); window.addEventListener('hashchange', go);
 })();
 
