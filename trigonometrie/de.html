@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <script src="../assets/theme.js?v=70"></script>
-<script src="../assets/sitenav.js?v=35"></script>
+<script src="../assets/sitenav.js?v=37"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Trigonometrie</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="Mathe 2cNP"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="theme-color" content="#fffdf8" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#1f1a17" media="(prefers-color-scheme: dark)">
@@ -12,8 +12,8 @@
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/steps.js?v=72"></script>
-<link rel="stylesheet" href="../assets/style.css?v=74">
+<script defer src="../assets/steps.js?v=73"></script>
+<link rel="stylesheet" href="../assets/style.css?v=76">
 <link rel="stylesheet" href="../assets/clean.css?v=3">
 </head>
 <body>
@@ -21,55 +21,25 @@
 <nav class="langsw" aria-label="Sprache / language"><a href="de.html" lang="de" aria-current="page">DE</a><a href="./" lang="en">EN</a></nav>
 <p class="crumb"><a href="../">← Übersicht</a></p>
 <h1>Trigonometrie</h1>
-<p class="lead">Skript Kapitel 15 (auf Englisch), Aufgaben E1–E11. Die ganze Trigonometrie steckt in einem einzigen Bild: dem Einheitskreis.</p>
+<p class="lead">Skript Kapitel 15 (auf Englisch), Aufgaben E1–E11. Die Abschnitte haben dieselben Nummern wie im Skript (15.1–15.4), so kannst du direkt vergleichen.</p>
 
-<nav class="nav" aria-label="Abschnitte"><ul>
-  <li><a href="#bogenmass">Bogenmass</a></li><li><a href="#kreis">Einheitskreis</a></li><li><a href="#rezepte">Rezepte</a></li>
-  <li><a href="#aufgaben">Aufgaben</a></li><li><a href="#e1">E1</a></li><li><a href="#e2">E2</a></li><li><a href="#e3">E3</a></li><li><a href="#e4">E4</a></li>
-  <li><a href="#e5">E5</a></li><li><a href="#e6">E6</a></li><li><a href="#e7">E7</a></li><li><a href="#polar">Polar</a></li><li><a href="#e9">E9</a></li><li><a href="#e10">E10</a></li><li><a href="#drehung">Drehung</a></li><li><a href="#e11">E11</a></li><li><a href="#dreieck">Dreiecke</a></li><li><a href="#spickzettel">Spickzettel</a></li><li><a href="../grundlagen/">Algebra</a></li>
+<nav class="nav" data-ph="Skript Kapitel 15" aria-label="Abschnitte"><ul>
+  <li><a href="#bogenmass">Bogenmass</a></li><li><a href="#e1">E1</a></li><li><a href="#kreis">Trig. Funktionen</a></li><li class="sub"><a href="#rezepte">Rezepte</a></li>
+  <li><a href="#e2">E2</a></li><li><a href="#e3">E3</a></li><li><a href="#e4">E4</a></li><li><a href="#e5">E5</a></li><li><a href="#e6">E6</a></li><li><a href="#e7">E7</a></li>
+  <li><a href="#polar">Polar</a></li><li><a href="#e9">E9</a></li><li><a href="#e10">E10</a></li><li class="sub"><a href="#drehung">Drehung</a></li><li><a href="#e11">E11</a></li><li><a href="#dreieck">Dreiecke</a></li><li><a href="#spickzettel">Spickzettel</a></li><li><a href="../grundlagen/">Algebra</a></li>
 </ul></nav>
 
-<!-- ============ 1 Bogenmass ============ -->
-<h2 id="bogenmass">1 · Winkel im Bogenmass (radian)</h2>
+<h2 id="bogenmass">15.1 · Winkel messen: das Bogenmass</h2>
+<p class="ref"><b>Im Skript:</b> Definition 15.1.2 (Radiant) · Beispiele 15.1.3 · Korollar 15.1.7 · Memo 15.1.9 · Aufgabe E1</p>
 <p>Statt in Grad kann man einen Winkel als <b>Länge des Bogens auf dem Einheitskreis</b> (Radius 1) messen. Der ganze Kreis hat Umfang \(2\pi\), also:</p>
 <div class="box">$$360^\circ = 2\pi, \qquad 180^\circ = \pi, \qquad 90^\circ = \tfrac{\pi}{2}$$
 <p style="margin:0">Mehr musst du nicht auswendig wissen. <b>Alles andere rechnest du aus \(180^\circ = \pi\)</b> aus: durch 180 teilen, mal π (oder umgekehrt).</p></div>
 <p>Probier selbst: Wie viel ist 60° im Bogenmass? <button type="button" class="reveal" data-answer="t1">Antwort zeigen</button></p>
 <p id="t1">\(60^\circ = \frac{60}{180}\pi = \frac{\pi}{3}\)</p>
 <iframe class="embedded" data-mode="bogenmass" src="interaktiv.html?embed=1&amp;one=1&amp;lang=de#bogenmass" title="Ausprobieren" loading="lazy"></iframe>
+<div class="box"><b>Korollar 15.1.7: Bogenlänge und Sektorfläche</b><p style="margin:4px 0 0">Im Kreis mit Radius r gehört zum Winkel α (im Bogenmass)</p>$$b = \alpha\cdot r, \qquad A = \frac{\alpha}{2}\cdot r^2$$<p style="margin:0">Probe mit dem ganzen Kreis, \(\alpha = 2\pi\): \(b = 2\pi r\) (Umfang) ✓, \(A = \pi r^2\) ✓</p></div>
 <div class="box tip"><b>Taschenrechner</b> Der Rechner muss auf <b>DEG</b> stehen, wenn du in Grad rechnest, und auf <b>RAD</b> im Bogenmass. Test: \(\sin(90)\) gibt 1 → DEG. Gibt 0.89… → RAD.</div>
 
-<!-- ============ 2 Einheitskreis ============ -->
-<h2 id="kreis">2 · Der Einheitskreis: cos, sin, tan</h2>
-<p>Dreh einen Strahl um den Winkel α (gegen den Uhrzeigersinn, von der positiven x-Achse aus). Er trifft den Kreis im Punkt \(P_\alpha\). Dann ist:</p>
-<ul class="sub">
-  <li><span class="cc">cos(α)</span> = die <b>x-Koordinate</b> von P (wie weit rechts/links)</li>
-  <li><span class="ss">sin(α)</span> = die <b>y-Koordinate</b> von P (wie weit oben/unten)</li>
-  <li><span class="tt">tan(α)</span> = die <b>Steigung</b> des Strahls, also \(\frac{\sin(\alpha)}{\cos(\alpha)}\). Genau das m aus \(\m x + \q\)! Man sieht sie an der Linie \(x = 1\).</li>
-</ul>
-<iframe class="embedded" data-mode="einheitskreis" src="interaktiv.html?embed=1&amp;one=1&amp;lang=de#einheitskreis" title="Ausprobieren" loading="lazy"></iframe>
-<p>Zwei Dinge, die man aus dem Bild direkt sieht:</p>
-<ul class="sub">
-  <li>cos und sin liegen immer zwischen −1 und 1. P ist ja auf dem Kreis mit Radius 1.</li>
-  <li><b>Pythagoras</b>: Das Dreieck aus <span class="cc">cos</span>, <span class="ss">sin</span> und Radius 1 ist rechtwinklig, also \(\sin^2(\alpha) + \cos^2(\alpha) = 1\).</li>
-</ul>
-
-<!-- ============ 3 Rezepte ============ -->
-<h2 id="rezepte">3 · Die Rezepte</h2>
-<p>Sechs kurze Rezepte, eines pro Aufgabentyp. Sie sind keine Schrittfolge: Nimm das, das zu deiner Aufgabe passt.</p>
-<ol class="recipe set">
-  <li><div><b>Grad ↔ Bogenmass</b><span class="f">\(r = \frac{\pi}{180}\cdot d, \quad d = \frac{180}{\pi}\cdot r\)</span><small>Immer von \(180^\circ = \pi\) aus denken.</small></div></li>
-  <li><div><b>Vorzeichen</b>In welchem Viertel (Quadrant) liegt P?<small>cos + rechts, sin + oben. tan + wenn beide gleiches Vorzeichen haben (I und III).</small></div></li>
-  <li><div><b>Gleichung \(\sin(\alpha) = c\)</b>waagrechte Linie \(y = c\), trifft den Kreis 2×<small>\(\alpha_1\) vom Rechner, \(\alpha_2 = 180^\circ - \alpha_1\). Dann \(+\,k\cdot 360^\circ\).</small></div></li>
-  <li><div><b>Gleichung \(\cos(\alpha) = c\)</b>senkrechte Linie \(x = c\), trifft den Kreis 2×<small>\(\alpha_1\) vom Rechner, \(\alpha_2 = -\alpha_1\). Dann \(+\,k\cdot 360^\circ\).</small></div></li>
-  <li><div><b>Gleichung \(\tan(\alpha) = c\)</b>Gerade durch O mit Steigung c<small>\(\alpha_1\) vom Rechner, dann \(+\,k\cdot 180^\circ\) (die Gerade geht durch zwei gegenüberliegende Punkte).</small></div></li>
-  <li><div><b>Eins bekannt → die anderen zwei</b><small>\(\sin^2 + \cos^2 = 1\) und \(\tan = \frac{\sin}{\cos}\). Vorzeichen aus dem Quadranten.</small></div></li>
-</ol>
-
-<!-- ============ 4 Aufgaben ============ -->
-<iframe class="embedded" data-mode="gleichungen" src="interaktiv.html?embed=1&amp;one=1&amp;lang=de#gleichungen" title="Ausprobieren" loading="lazy"></iframe>
-
-<h2 id="aufgaben">4 · Aufgaben</h2>
 <p>So funktionieren alle Aufgaben: Lies die Aufgabe und überleg zuerst selbst, wie du anfangen würdest. Dann klickst du dich mit <b>«Nächster Schritt»</b> durch die Lösung, ein Schritt nach dem anderen. Überleg vor jedem Klick, was als Nächstes kommt.</p>
 
 <!-- E1 -->
@@ -92,6 +62,35 @@
   </ol>
   <div class="done">Merke nur \(180^\circ = \pi\). Den Rest rechnest du jedes Mal aus.</div>
 </article>
+
+<h2 id="kreis">15.2 · Trigonometrische Funktionen</h2>
+<p class="ref"><b>Im Skript:</b> Definition 15.2.2 (sin, cos, tan) · Memo 15.2.4 (Taschenrechner) · Memo 15.2.5 (spezielle Werte) · Satz 15.2.6 (Pythagoras) · Aufgaben E2–E7</p>
+<p>Dreh einen Strahl um den Winkel α (gegen den Uhrzeigersinn, von der positiven x-Achse aus). Er trifft den Kreis im Punkt \(P_\alpha\). Dann ist:</p>
+<ul class="sub">
+  <li><span class="cc">cos(α)</span> = die <b>x-Koordinate</b> von P (wie weit rechts/links)</li>
+  <li><span class="ss">sin(α)</span> = die <b>y-Koordinate</b> von P (wie weit oben/unten)</li>
+  <li><span class="tt">tan(α)</span> = die <b>Steigung</b> des Strahls, also \(\frac{\sin(\alpha)}{\cos(\alpha)}\). Genau das m aus \(\m x + \q\)! Man sieht sie an der Linie \(x = 1\).</li>
+</ul>
+<iframe class="embedded" data-mode="einheitskreis" src="interaktiv.html?embed=1&amp;one=1&amp;lang=de#einheitskreis" title="Ausprobieren" loading="lazy"></iframe>
+<p>Zwei Dinge, die man aus dem Bild direkt sieht:</p>
+<ul class="sub">
+  <li>cos und sin liegen immer zwischen −1 und 1. P ist ja auf dem Kreis mit Radius 1.</li>
+  <li><b>Pythagoras</b>: Das Dreieck aus <span class="cc">cos</span>, <span class="ss">sin</span> und Radius 1 ist rechtwinklig, also \(\sin^2(\alpha) + \cos^2(\alpha) = 1\).</li>
+</ul>
+
+<h3 id="rezepte">Die Rezepte</h3>
+<p>Sechs kurze Rezepte, eines pro Aufgabentyp. Sie sind keine Schrittfolge: Nimm das, das zu deiner Aufgabe passt.</p>
+<ol class="recipe set">
+  <li><div><b>Grad ↔ Bogenmass</b><span class="f">\(r = \frac{\pi}{180}\cdot d, \quad d = \frac{180}{\pi}\cdot r\)</span><small>Immer von \(180^\circ = \pi\) aus denken.</small></div></li>
+  <li><div><b>Vorzeichen</b>In welchem Viertel (Quadrant) liegt P?<small>cos + rechts, sin + oben. tan + wenn beide gleiches Vorzeichen haben (I und III).</small></div></li>
+  <li><div><b>Gleichung \(\sin(\alpha) = c\)</b>waagrechte Linie \(y = c\), trifft den Kreis 2×<small>\(\alpha_1\) vom Rechner, \(\alpha_2 = 180^\circ - \alpha_1\). Dann \(+\,k\cdot 360^\circ\).</small></div></li>
+  <li><div><b>Gleichung \(\cos(\alpha) = c\)</b>senkrechte Linie \(x = c\), trifft den Kreis 2×<small>\(\alpha_1\) vom Rechner, \(\alpha_2 = -\alpha_1\). Dann \(+\,k\cdot 360^\circ\).</small></div></li>
+  <li><div><b>Gleichung \(\tan(\alpha) = c\)</b>Gerade durch O mit Steigung c<small>\(\alpha_1\) vom Rechner, dann \(+\,k\cdot 180^\circ\) (die Gerade geht durch zwei gegenüberliegende Punkte).</small></div></li>
+  <li><div><b>Eins bekannt → die anderen zwei</b><small>\(\sin^2 + \cos^2 = 1\) und \(\tan = \frac{\sin}{\cos}\). Vorzeichen aus dem Quadranten.</small></div></li>
+</ol>
+
+<iframe class="embedded" data-mode="gleichungen" src="interaktiv.html?embed=1&amp;one=1&amp;lang=de#gleichungen" title="Ausprobieren" loading="lazy"></iframe>
+
 
 <!-- E2 -->
 <article class="ex" id="e2" data-mode="faded">
@@ -227,8 +226,8 @@
   <div class="done">Im Skript fehlt die Musterlösung zu E7 noch. Diese Lösung ist selbst hergeleitet, also im Zweifel mit der Lehrperson abgleichen.</div>
 </article>
 
-<!-- ============ 5 Polarkoordinaten (Skript 15.3) ============ -->
-<h2 id="polar">5 · Polarkoordinaten</h2>
+<h2 id="polar">15.3 · Polarkoordinaten</h2>
+<p class="ref"><b>Im Skript:</b> Definition 15.3.2 · Beispiel 15.3.3 · Memo 15.3.4 (Umrechnung) · Memo 15.3.5 (drehender Punkt) · Aufgaben E8–E11</p>
 <div class="box tip" id="e8"><b>Skriptseiten 7–9 fehlen hier noch</b>Dort stehen der Anfang von 15.3 (inkl. 15.3.1) und die Aufgabe E8. Sobald wir sie haben, kommen sie hierher.</div>
 <p>Bisher war ein Punkt durch \(x\) und \(y\) gegeben: «3 nach rechts, 1 nach oben». Man kann ihn auch wie eine Wegbeschreibung angeben: <b>«geh 3 Einheiten, im Winkel 30°»</b>. Das sind Polarkoordinaten (auch Kreiskoordinaten).</p>
 <div class="box">$$P = (r, \varphi)$$
@@ -305,7 +304,7 @@
 </article>
 
 <!-- ============ 6 Drehende Punkte ============ -->
-<h2 id="drehung">6 · Drehende Punkte</h2>
+<h3 id="drehung">Drehende Punkte</h3>
 <p>Ein Punkt dreht sich mit konstanter Geschwindigkeit um O, wie eine Markierung auf einem Rad. Sein Abstand r bleibt gleich, nur der Winkel ändert sich. Also: <b>Winkel zur Zeit t bestimmen</b>, dann die Formel polar → kartesisch.</p>
 <div class="box">$$\varphi(t) = \omega\cdot t + \varphi_0 \qquad\Rightarrow\qquad P(t) = \begin{pmatrix} r\cdot\cos(\omega t + \varphi_0) \\ r\cdot\sin(\omega t + \varphi_0) \end{pmatrix}$$
 <ul class="sub">
@@ -348,8 +347,8 @@
   <div class="done">\(\big(r\cos(\omega t + \varphi_0),\ r\sin(\omega t + \varphi_0)\big)\): r = Radius, \(T = \frac{2\pi}{|\omega|}\), φ₀ = Startwinkel, Vorzeichen von ω = Richtung.</div>
 </article>
 
-<!-- ============ 7 Rechtwinklige Dreiecke (Skript 15.4) ============ -->
-<h2 id="dreieck">7 · Trigonometrie im rechtwinkligen Dreieck</h2>
+<h2 id="dreieck">15.4 · Trigonometrie im rechtwinkligen Dreieck</h2>
+<p class="ref"><b>Im Skript:</b> Definition 15.4.2 (Ankathete, Gegenkathete) · Satz 15.4.3 (Seitenverhältnisse)</p>
 <p>Trigonometrie heisst «Dreiecksmessung». Im rechtwinkligen Dreieck sind sin, cos und tan einfach <b>Verhältnisse von zwei Seiten</b>.</p>
 <p>Zuerst die Namen. Sie hängen immer davon ab, <b>welchen Winkel</b> du anschaust:</p>
 <svg viewBox="0 0 320 180" role="img" aria-label="Rechtwinkliges Dreieck mit Winkel Alpha, Hypotenuse, Gegenkathete und Ankathete" style="width:100%;max-width:420px;display:block;margin:14px auto">
@@ -376,7 +375,7 @@
 <p id="t2">\(\sin\alpha = \frac35\), \(\cos\alpha = \frac45\), \(\tan\alpha = \frac34\)</p>
 <div class="box tip"><b>Verbindung zu den Polarkoordinaten</b>\(x = r\cos\varphi\) ist nichts anderes als «Ankathete = Hypotenuse · cos»: x ist die Ankathete, r die Hypotenuse. Dieselbe Idee, zwei Namen.</div>
 
-<h2 id="spickzettel">8 · Spickzettel</h2>
+<h2 id="spickzettel">Spickzettel</h2>
 <iframe class="embedded" data-part="spickzettel" src="spickzettel.html?embed=1&amp;lang=de" title="Spickzettel"></iframe>
 
 <a class="card c-mint nextcard" href="../training/"><div class="doodle"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 10h36v44H14z"/><path d="M22 24l5 5 9-10M22 40h20"/></svg></div><div><span class="n">Fertig mit dem Kapitel?</span><b>Weiter zum Prüfungstraining ↗</b><span>Gemischte Aufgaben aus beiden Kapiteln, wie in der Prüfung. Du kannst jederzeit hierher zurück.</span></div></a>

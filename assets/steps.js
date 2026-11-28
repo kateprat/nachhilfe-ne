@@ -412,15 +412,17 @@
     // section pills carry the number of their heading ("1 · Radians" -> pill "1 Radians")
     if (nav) nav.querySelectorAll('a[href^="#"]').forEach(a => {
       const t = document.getElementById(a.getAttribute('href').slice(1));
-      const m = t && t.tagName === 'H2' && t.textContent.match(/^\s*(\d+)\s*·/);
+      const m = t && t.tagName === 'H2' && t.textContent.match(/^\s*(\d+(?:\.\d+)*)\s*·/);
       if (m && !a.querySelector('.pn')) a.insertAdjacentHTML('afterbegin', `<span class="pn">${m[1]}</span>`);
     });
     // the bar in three phases: understand → practise → consolidate
     if (nav && !nav.querySelector('.ph') && nav.querySelector('a[href="#e1"], a[href="#a1"]')) {
       const en = document.documentElement.lang === 'en';
       const mark = (sel, de, enl) => { const a = nav.querySelector(sel); if (!a) return; const li = document.createElement('li'); li.className = 'ph'; li.textContent = en ? enl : de; a.closest('li').before(li); };
-      mark('a[href^="#"]', 'Verstehen', 'Understand');
-      mark('a[href="#aufgaben"], a[href="#e1"], a[href="#a1"]', 'Üben', 'Practise');
+      // chapters that follow the script (theory and exercises alternate per section) carry their own first label
+      const ph = nav.dataset.ph;
+      mark('a[href^="#"]', ph || 'Theorie', ph || 'Theory');
+      if (nav.querySelector('a[href="#aufgaben"]')) mark('a[href="#aufgaben"]', 'Üben', 'Practise');
       mark('a[href="#spickzettel"]', 'Festigen', 'Consolidate');
     }
     if (nav && exs.length) {

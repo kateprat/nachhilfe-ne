@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <script src="../assets/theme.js?v=70"></script>
-<script src="../assets/sitenav.js?v=35"></script>
+<script src="../assets/sitenav.js?v=37"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Conics: parabolas, tangents and circles</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="Mathe 2cNP"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="theme-color" content="#fffdf8" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#1f1a17" media="(prefers-color-scheme: dark)">
@@ -12,8 +12,8 @@
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/steps.js?v=72"></script>
-<link rel="stylesheet" href="../assets/style.css?v=74">
+<script defer src="../assets/steps.js?v=73"></script>
+<link rel="stylesheet" href="../assets/style.css?v=76">
 <link rel="stylesheet" href="../assets/clean.css?v=3">
 </head>
 <body>
@@ -21,16 +21,16 @@
 <nav class="langsw" aria-label="Sprache / language"><a href="./" lang="de">DE</a><a href="en.html" lang="en" aria-current="page">EN</a></nav>
 <p class="crumb"><a href="../en.html">← Overview</a></p>
 <h1>Conics: parabolas, tangents and circles</h1>
-<p class="lead">Script chapter 17, exercises A1–A12. First: what is a parabola? Then the letters and the tangent recipe, which stays the same for almost every exercise.</p>
+<p class="lead">Script chapter 17, exercises A1–A12. First: what is a parabola? Then the letters and the tangent recipe, which stays the same for almost every exercise. The sections have the same numbers as in the script (17.1–17.5).</p>
 
-<nav class="nav" aria-label="Sections"><ul>
-  <li><a href="#parabel">Parabola</a></li><li><a href="#buchstaben">Letters</a></li><li><a href="#rezept">Tangent recipe</a></li>
-  <li><a href="#aufgaben">Exercises</a></li><li><a href="#a1">A1</a></li><li><a href="#a2">A2</a></li><li><a href="#a3">A3</a></li><li><a href="#a4">A4</a></li><li><a href="#a5">A5</a></li>
-  <li><a href="#a6">A6</a></li><li><a href="#a7">A7</a></li><li><a href="#a8">A8</a></li><li><a href="#kreise">Circles</a></li><li class="sub"><a href="#kreisrezept1">Circle recipe 1</a></li><li class="sub"><a href="#kreisrezept2">Circle recipe 2</a></li><li><a href="#a9">A9</a></li><li><a href="#a10">A10</a></li><li><a href="#a11">A11</a></li><li><a href="#a12">A12</a></li><li><a href="#spickzettel">Cheat sheet</a></li><li><a href="../grundlagen/">Algebra</a></li>
+<nav class="nav" data-ph="Script chapter 17" aria-label="Sections"><ul>
+  <li><a href="#parabel">Parabola</a></li><li><a href="#a1">A1</a></li><li><a href="#tangenten">Tangents</a></li><li class="sub"><a href="#buchstaben">Letters</a></li><li class="sub"><a href="#rezept">Tangent recipe</a></li>
+  <li><a href="#a2">A2</a></li><li><a href="#a3">A3</a></li><li><a href="#a4">A4</a></li><li><a href="#a5">A5</a></li><li><a href="#a6">A6</a></li><li><a href="#a7">A7</a></li><li><a href="#a8">A8</a></li>
+  <li><a href="#kreise">Circles</a></li><li class="sub"><a href="#kreisrezept1">Circle recipe 1</a></li><li><a href="#a9">A9</a></li><li><a href="#a10">A10</a></li><li><a href="#kreisgerade">Circle and line</a></li><li class="sub"><a href="#kreisrezept2">Circle recipe 2</a></li><li><a href="#a11">A11</a></li><li><a href="#zweikreise">Two circles</a></li><li><a href="#a12">A12</a></li><li><a href="#spickzettel">Cheat sheet</a></li><li><a href="../grundlagen/">Algebra</a></li>
 </ul></nav>
 
-<!-- ============ 1. Parabola ============ -->
-<h2 id="parabel">1 · What is a parabola?</h2>
+<h2 id="parabel">17.1 · Parabolas as a locus and algebraically</h2>
+<p class="ref"><b>In the script:</b> 17.1.1 (definition of a parabola) · Satz 17.1.3 · Exercise A1</p>
 <p><b>Conics</b> (Quadriken) are curves whose equation contains x and y at most squared: parabolas, circles, ellipses and hyperbolas. This chapter is about <b>parabolas</b> and <b>circles</b>.</p>
 
 <h3>The definition (17.1.1)</h3>
@@ -53,8 +53,48 @@ $$\overline{PF} = \overline{P\ell}$$</div>
   <li>\(a > 0\): opens upwards, \(a < 0\): downwards; large \(|a|\): narrow, small \(|a|\): wide;</li>
   <li>for \(f(x) = ax^2\) the focus is at \(F = \left(0, \tfrac{1}{4a}\right)\) and the directrix at \(y = -\tfrac{1}{4a}\) (17.1.2).</li>
 </ul>
-<!-- ============ 2. Letters ============ -->
-<h2 id="buchstaben">2 · What do the letters mean?</h2>
+<p>Every exercise works the same way: read the task and first think about how you would start. Then click through the solution with <b>“Next step”</b>, one step at a time. Before each click, think about what comes next.</p>
+
+<!-- A1 -->
+<article class="ex" id="a1" data-mode="worked">
+  <div class="ex-head"><h3>A1 (a)</h3></div>
+  <div class="task">Describe the parabola with focus \(F = (2, 1)\) and directrix \(\ell: y = -1\) as the graph of a function.<br><small style="color:var(--mute)">A parabola is the set of all points P that are equally far from F and from ℓ (17.1.1).</small></div>
+  <ol class="steps">
+    <li class="step"><span class="nr">STEP 1</span><h4>A general point</h4>
+      <p class="why">Take any point \(P = (x, y)\) and write down when it lies on the parabola.</p>
+      <div class="calc">$$\overline{P\ell} = \overline{PF}$$</div></li>
+    <li class="step"><span class="nr">STEP 2</span><h4>Both distances as formulas</h4>
+      <p class="why">Distance to a horizontal line: just the difference of the y-values. Distance to a point: Pythagoras.</p>
+      <div class="calc">$$\overline{P\ell} = |y - (-1)| = |y + 1|, \qquad \overline{PF} = \sqrt{(x - 2)^2 + (y - 1)^2}$$</div></li>
+    <li class="step"><span class="nr">STEP 3</span><h4>Set equal and square</h4>
+      <p class="why">Both sides are not negative, so we may square. Then the root and the absolute value disappear.</p>
+      <div class="calc">$$(y + 1)^2 = (x - 2)^2 + (y - 1)^2$$</div></li>
+    <li class="step"><span class="nr">STEP 4</span><h4>Expand, \(y^2\) cancels</h4>
+      <div class="calc">$$\begin{aligned} y^2 + 2y + 1 &= (x - 2)^2 + y^2 - 2y + 1 \\ 4y &= (x - 2)^2 \end{aligned}$$</div></li>
+    <li class="step"><span class="nr">STEP 5</span><h4>Solve for y</h4>
+      <div class="calc">$$y = \tfrac14 (x - 2)^2$$
+      <p>Check: the vertex \((2, 0)\) lies exactly halfway between \(F = (2, 1)\) and \(\ell: y = -1\) ✓</p></div></li>
+  </ol>
+  <div class="done">The parabola is the graph of \(f(x) = \frac14 (x - 2)^2\). <a href="interaktiv.html#brennpunkt">Check it in the picture</a>: F at (2, 1), ℓ at y = −1.</div>
+</article>
+
+<article class="ex" id="a1b" data-mode="faded">
+  <div class="ex-head"><h3>A1 (b) and (c)</h3></div>
+  <div class="task">(b) Let \(a \neq 0\) (you may assume \(a \gt 0\)). Describe the parabola with \(F = (0, a)\) and \(\ell: y = -a\) as the graph of a function.<br>(c) Find F and ℓ so that the parabola is the graph of \(f(x) = x^2\).</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">(b)</span><h4>Exactly like (a), with a instead of numbers</h4>
+      <p class="why">a is a parameter: a fixed number that we don't specify.</p>
+      <div class="calc">$$\begin{aligned} (y + a)^2 &= x^2 + (y - a)^2 \\ y^2 + 2ay + a^2 &= x^2 + y^2 - 2ay + a^2 \\ 4ay &= x^2 \\ y &= \tfrac{1}{4a}\,x^2 \end{aligned}$$</div></li>
+    <li class="step"><span class="nr">(c)</span><h4>Use (b) backwards</h4>
+      <p class="why">We need \(\frac{1}{4a} = 1\).</p>
+      <div class="calc">$$\tfrac{1}{4a} = 1 \iff a = \tfrac14, \qquad F = \left(0, \tfrac14\right),\quad \ell: y = -\tfrac14$$</div></li>
+  </ol>
+  <div class="done">This is 17.1.2 in the script: the graph of \(f(x) = \frac{1}{4a}x^2\) is the parabola with \(F = (0, a)\) and \(\ell: y = -a\).</div>
+</article>
+
+<h2 id="tangenten">17.2 · Tangents to parabolas</h2>
+<p class="ref"><b>In the script:</b> Definition 17.2.2 (tangent) · Beispiel 17.2.3 · Proposition 17.2.4 · Exercises A2–A8</p>
+<h3 id="buchstaben">What do the letters mean?</h3>
 <p><b>A letter stands for a number</b> that we don't know yet, or that is allowed to change. That's all. You calculate with it exactly like with a number.</p>
 
 <h3>Substituting into x</h3>
@@ -102,8 +142,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 </ul>
 <iframe class="embedded" data-mode="tangente" src="interaktiv.html?embed=1&amp;one=1&amp;lang=en#tangente" title="Try it out" loading="lazy"></iframe>
 
-<!-- ============ 2. Recipe ============ -->
-<h2 id="rezept">3 · The tangent recipe</h2>
+<h3 id="rezept">The tangent recipe</h3>
 <p class="small" style="color:var(--mute)">Circles have two recipes of their own, in <a href="#kreisrezept1">5 · Circles</a>. All recipes at a glance: <a href="#spickzettel">6 · Cheat sheet</a>.</p>
 <p>Almost all exercises A2–A8 use the same 7 steps. Only step 1 changes, depending on what is given.</p>
 <ol class="recipe">
@@ -126,47 +165,6 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 
 <div class="box exam"><b>How to write it down in the exam</b>
 <p style="margin:4px 0 0">Use the words from the script: “Ansatz: …”, “Since P lies on t, …”, “⇔”, “So …”, “The tangent we are looking for is …”. No calculator: leave fractions as they are. Check: substitute the point of contact into f as well, you must get the same y.</p></div>
-
-<!-- ============ 3. Exercises ============ -->
-<h2 id="aufgaben">4 · Exercises</h2>
-<p>Every exercise works the same way: read the task and first think about how you would start. Then click through the solution with <b>“Next step”</b>, one step at a time. Before each click, think about what comes next.</p>
-
-<!-- A1 -->
-<article class="ex" id="a1" data-mode="worked">
-  <div class="ex-head"><h3>A1 (a)</h3></div>
-  <div class="task">Describe the parabola with focus \(F = (2, 1)\) and directrix \(\ell: y = -1\) as the graph of a function.<br><small style="color:var(--mute)">A parabola is the set of all points P that are equally far from F and from ℓ (17.1.1).</small></div>
-  <ol class="steps">
-    <li class="step"><span class="nr">STEP 1</span><h4>A general point</h4>
-      <p class="why">Take any point \(P = (x, y)\) and write down when it lies on the parabola.</p>
-      <div class="calc">$$\overline{P\ell} = \overline{PF}$$</div></li>
-    <li class="step"><span class="nr">STEP 2</span><h4>Both distances as formulas</h4>
-      <p class="why">Distance to a horizontal line: just the difference of the y-values. Distance to a point: Pythagoras.</p>
-      <div class="calc">$$\overline{P\ell} = |y - (-1)| = |y + 1|, \qquad \overline{PF} = \sqrt{(x - 2)^2 + (y - 1)^2}$$</div></li>
-    <li class="step"><span class="nr">STEP 3</span><h4>Set equal and square</h4>
-      <p class="why">Both sides are not negative, so we may square. Then the root and the absolute value disappear.</p>
-      <div class="calc">$$(y + 1)^2 = (x - 2)^2 + (y - 1)^2$$</div></li>
-    <li class="step"><span class="nr">STEP 4</span><h4>Expand, \(y^2\) cancels</h4>
-      <div class="calc">$$\begin{aligned} y^2 + 2y + 1 &= (x - 2)^2 + y^2 - 2y + 1 \\ 4y &= (x - 2)^2 \end{aligned}$$</div></li>
-    <li class="step"><span class="nr">STEP 5</span><h4>Solve for y</h4>
-      <div class="calc">$$y = \tfrac14 (x - 2)^2$$
-      <p>Check: the vertex \((2, 0)\) lies exactly halfway between \(F = (2, 1)\) and \(\ell: y = -1\) ✓</p></div></li>
-  </ol>
-  <div class="done">The parabola is the graph of \(f(x) = \frac14 (x - 2)^2\). <a href="interaktiv.html#brennpunkt">Check it in the picture</a>: F at (2, 1), ℓ at y = −1.</div>
-</article>
-
-<article class="ex" id="a1b" data-mode="faded">
-  <div class="ex-head"><h3>A1 (b) and (c)</h3></div>
-  <div class="task">(b) Let \(a \neq 0\) (you may assume \(a \gt 0\)). Describe the parabola with \(F = (0, a)\) and \(\ell: y = -a\) as the graph of a function.<br>(c) Find F and ℓ so that the parabola is the graph of \(f(x) = x^2\).</div>
-  <ol class="steps">
-    <li class="step"><span class="nr">(b)</span><h4>Exactly like (a), with a instead of numbers</h4>
-      <p class="why">a is a parameter: a fixed number that we don't specify.</p>
-      <div class="calc">$$\begin{aligned} (y + a)^2 &= x^2 + (y - a)^2 \\ y^2 + 2ay + a^2 &= x^2 + y^2 - 2ay + a^2 \\ 4ay &= x^2 \\ y &= \tfrac{1}{4a}\,x^2 \end{aligned}$$</div></li>
-    <li class="step"><span class="nr">(c)</span><h4>Use (b) backwards</h4>
-      <p class="why">We need \(\frac{1}{4a} = 1\).</p>
-      <div class="calc">$$\tfrac{1}{4a} = 1 \iff a = \tfrac14, \qquad F = \left(0, \tfrac14\right),\quad \ell: y = -\tfrac14$$</div></li>
-  </ol>
-  <div class="done">This is 17.1.2 in the script: the graph of \(f(x) = \frac{1}{4a}x^2\) is the parabola with \(F = (0, a)\) and \(\ell: y = -a\).</div>
-</article>
 
 <!-- A2 -->
 <article class="ex" id="a2" data-mode="worked">
@@ -373,8 +371,8 @@ $$\overline{PF} = \overline{P\ell}$$</div>
   <div class="done">\(t(x) = x + 3\), point of contact \(A = (-1, 2)\).</div>
 </article>
 
-<!-- ============ 4. Circles ============ -->
-<h2 id="kreise">5 · Circles (A9–A12)</h2>
+<h2 id="kreise">17.3 · Circles and quadratic equations</h2>
+<p class="ref"><b>In the script:</b> Definition 17.3.2 (circle) · Merke 17.3.4 (circle equation) · Definition 17.3.6 (zero set) · Merke 17.3.7 · Exercises A9, A10</p>
 <p>A circle is the set of all points at exactly distance r from a centre M. Pythagoras turns this into the <b>circle equation</b>:</p>
 <div class="box">$$(x - a)^2 + (y - b)^2 = r^2 \qquad M = (a, b),\ \text{radius } r$$
 <p style="margin:0">Careful with signs: \((y + 10)^2\) is \((y - (-10))^2\), so \(b = -10\).</p></div>
@@ -534,17 +532,6 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
   <div class="done">Check: multiplied out this gives back \(x^2 + 3x\).</div>
 </article>
 
-<h3 id="kreisrezept2">Circle recipe 2: intersect circle and line</h3>
-<p>With the example: circle \(x^2 + y^2 = 10\) and line \(x - y + 2 = 0\).</p>
-<ol class="recipe">
-  <li><div><b>Solve the line for y</b><span class="f">\(y = x + 2\)</span><small>In general: \(y = \m x + \q\).</small></div></li>
-  <li><div><b>Put it into the circle equation</b><span class="f">\(x^2 + (x + 2)^2 = 10\)</span><small>Wherever y stands, write \((x + 2)\), with brackets.</small></div></li>
-  <li><div><b>Standard form</b><span class="f">\(x^2 + x^2 + 4x + 4 = 10\)</span><span class="f">\(2x^2 + 4x - 6 = 0\)</span><span class="f">\(x^2 + 2x - 3 = 0\)</span><small>Binomial formula, everything to the left, here also divide by 2. Goal: \(ax^2 + bx + c = 0\).</small></div></li>
-  <li><div><b>Quadratic formula</b><span class="f">\(D = 2^2 - 4\cdot 1\cdot(-3) = 16\)</span><span class="f">\(x = \dfrac{-2 \pm 4}{2}\)</span><span class="f">\(x_1 = 1,\ x_2 = -3\)</span><small>D&nbsp;&gt;&nbsp;0: two intersection points.<br>D&nbsp;=&nbsp;0: one (tangent).<br>D&nbsp;&lt;&nbsp;0: none. Just like with parabolas!</small></div></li>
-  <li><div><b>Work out y</b><span class="f">\(y_1 = 1 + 2 = 3\)</span><span class="f">\(y_2 = -3 + 2 = -1\)</span><small>Put the x-values into the line equation. Intersection points: \((1, 3)\) and \((-3, -1)\).</small></div></li>
-  <li><div><b>Check</b><span class="f">\(1^2 + 3^2 = 10\ \checkmark\)</span><span class="f">\((-3)^2 + (-1)^2 = 10\ \checkmark\)</span><small>Both points also lie on the line.</small></div></li>
-</ol>
-
 <!-- A9 e -->
 <iframe class="embedded" data-mode="kreis" src="interaktiv.html?embed=1&amp;one=1&amp;lang=en#kreis" title="Try it out" loading="lazy"></iframe>
 
@@ -618,6 +605,19 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
   </ol>
 </article>
 
+<h2 id="kreisgerade">17.4 · Intersecting a circle with a line</h2>
+<p class="ref"><b>In the script:</b> Exercise A11</p>
+<h3 id="kreisrezept2">Circle recipe 2: intersect circle and line</h3>
+<p>With the example: circle \(x^2 + y^2 = 10\) and line \(x - y + 2 = 0\).</p>
+<ol class="recipe">
+  <li><div><b>Solve the line for y</b><span class="f">\(y = x + 2\)</span><small>In general: \(y = \m x + \q\).</small></div></li>
+  <li><div><b>Put it into the circle equation</b><span class="f">\(x^2 + (x + 2)^2 = 10\)</span><small>Wherever y stands, write \((x + 2)\), with brackets.</small></div></li>
+  <li><div><b>Standard form</b><span class="f">\(x^2 + x^2 + 4x + 4 = 10\)</span><span class="f">\(2x^2 + 4x - 6 = 0\)</span><span class="f">\(x^2 + 2x - 3 = 0\)</span><small>Binomial formula, everything to the left, here also divide by 2. Goal: \(ax^2 + bx + c = 0\).</small></div></li>
+  <li><div><b>Quadratic formula</b><span class="f">\(D = 2^2 - 4\cdot 1\cdot(-3) = 16\)</span><span class="f">\(x = \dfrac{-2 \pm 4}{2}\)</span><span class="f">\(x_1 = 1,\ x_2 = -3\)</span><small>D&nbsp;&gt;&nbsp;0: two intersection points.<br>D&nbsp;=&nbsp;0: one (tangent).<br>D&nbsp;&lt;&nbsp;0: none. Just like with parabolas!</small></div></li>
+  <li><div><b>Work out y</b><span class="f">\(y_1 = 1 + 2 = 3\)</span><span class="f">\(y_2 = -3 + 2 = -1\)</span><small>Put the x-values into the line equation. Intersection points: \((1, 3)\) and \((-3, -1)\).</small></div></li>
+  <li><div><b>Check</b><span class="f">\(1^2 + 3^2 = 10\ \checkmark\)</span><span class="f">\((-3)^2 + (-1)^2 = 10\ \checkmark\)</span><small>Both points also lie on the line.</small></div></li>
+</ol>
+
 <!-- A11 a -->
 <article class="ex" id="a11" data-mode="worked">
   <div class="ex-head"><h3>A11 (a)</h3></div>
@@ -664,6 +664,8 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
   </ol>
 </article>
 
+<h2 id="zweikreise">17.5 · For the brave only: intersecting two circles</h2>
+<p class="ref"><b>In the script:</b> Exercise A12</p>
 <!-- A12 -->
 <iframe class="embedded" data-mode="zwei-kreise" src="interaktiv.html?embed=1&amp;one=1&amp;lang=en#zwei-kreise" title="Try it out" loading="lazy"></iframe>
 
@@ -688,7 +690,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
   <div class="done">Intersection points \((84, -13)\) and \((77, 36)\), as in the script. <a href="interaktiv.html#zwei-kreise">Check it in the picture</a></div>
 </article>
 
-<h2 id="spickzettel">6 · Cheat sheet</h2>
+<h2 id="spickzettel">Cheat sheet</h2>
 <iframe class="embedded" data-part="spickzettel" src="spickzettel.html?embed=1&amp;lang=en" title="Cheat sheet"></iframe>
 
 <a class="card c-mint nextcard" href="../training/"><div class="doodle"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 10h36v44H14z"/><path d="M22 24l5 5 9-10M22 40h20"/></svg></div><div><span class="n">Done with this chapter?</span><b>On to exam training ↗</b><span>Mixed tasks from both chapters, like in the test. You can come back here any time.</span></div></a>

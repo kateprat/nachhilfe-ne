@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <script src="../assets/theme.js?v=70"></script>
-<script src="../assets/sitenav.js?v=35"></script>
+<script src="../assets/sitenav.js?v=37"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Trigonometry</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="Mathe 2cNP"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="theme-color" content="#fffdf8" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#1f1a17" media="(prefers-color-scheme: dark)">
@@ -12,8 +12,8 @@
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/steps.js?v=72"></script>
-<link rel="stylesheet" href="../assets/style.css?v=74">
+<script defer src="../assets/steps.js?v=73"></script>
+<link rel="stylesheet" href="../assets/style.css?v=76">
 <link rel="stylesheet" href="../assets/clean.css?v=3">
 </head>
 <body>
@@ -21,55 +21,25 @@
 <nav class="langsw" aria-label="Sprache / language"><a href="de.html" lang="de">DE</a><a href="./" lang="en" aria-current="page">EN</a></nav>
 <p class="crumb"><a href="../en.html">← Overview</a></p>
 <h1>Trigonometry</h1>
-<p class="lead">Script chapter 15, exercises E1–E11. All of trigonometry is in a single picture: the unit circle.</p>
+<p class="lead">Script chapter 15, exercises E1–E11. The sections have the same numbers as in the script (15.1–15.4), so you can compare them directly.</p>
 
-<nav class="nav" aria-label="Sections"><ul>
-  <li><a href="#bogenmass">Radians</a></li><li><a href="#kreis">Unit circle</a></li><li><a href="#rezepte">Recipes</a></li>
-  <li><a href="#aufgaben">Exercises</a></li><li><a href="#e1">E1</a></li><li><a href="#e2">E2</a></li><li><a href="#e3">E3</a></li><li><a href="#e4">E4</a></li>
-  <li><a href="#e5">E5</a></li><li><a href="#e6">E6</a></li><li><a href="#e7">E7</a></li><li><a href="#polar">Polar</a></li><li><a href="#e9">E9</a></li><li><a href="#e10">E10</a></li><li><a href="#drehung">Rotation</a></li><li><a href="#e11">E11</a></li><li><a href="#dreieck">Triangles</a></li><li><a href="#spickzettel">Cheat sheet</a></li><li><a href="../grundlagen/">Algebra</a></li>
+<nav class="nav" data-ph="Script chapter 15" aria-label="Sections"><ul>
+  <li><a href="#bogenmass">Radians</a></li><li><a href="#e1">E1</a></li><li><a href="#kreis">Trig functions</a></li><li class="sub"><a href="#rezepte">Recipes</a></li>
+  <li><a href="#e2">E2</a></li><li><a href="#e3">E3</a></li><li><a href="#e4">E4</a></li><li><a href="#e5">E5</a></li><li><a href="#e6">E6</a></li><li><a href="#e7">E7</a></li>
+  <li><a href="#polar">Polar</a></li><li><a href="#e9">E9</a></li><li><a href="#e10">E10</a></li><li class="sub"><a href="#drehung">Rotation</a></li><li><a href="#e11">E11</a></li><li><a href="#dreieck">Triangles</a></li><li><a href="#spickzettel">Cheat sheet</a></li><li><a href="../grundlagen/">Algebra</a></li>
 </ul></nav>
 
-<!-- ============ 1 Radians ============ -->
-<h2 id="bogenmass">1 · Angles in radians</h2>
+<h2 id="bogenmass">15.1 · Measuring angles: radians</h2>
+<p class="ref"><b>In the script:</b> Definition 15.1.2 (radian) · Examples 15.1.3 · Corollary 15.1.7 · Memo 15.1.9 · Exercise E1</p>
 <p>Instead of degrees, you can measure an angle as the <b>length of the arc on the unit circle</b> (radius 1). The whole circle has circumference \(2\pi\), so:</p>
 <div class="box">$$360^\circ = 2\pi, \qquad 180^\circ = \pi, \qquad 90^\circ = \tfrac{\pi}{2}$$
 <p style="margin:0">That's all you need to memorise. <b>Work everything else out from \(180^\circ = \pi\)</b>: divide by 180, multiply by π (or the other way round).</p></div>
 <p>Try it yourself: what is 60° in radians? <button type="button" class="reveal" data-answer="t1">Show answer</button></p>
 <p id="t1">\(60^\circ = \frac{60}{180}\pi = \frac{\pi}{3}\)</p>
 <iframe class="embedded" data-mode="bogenmass" src="interaktiv.html?embed=1&amp;one=1&amp;lang=en#bogenmass" title="Try it out" loading="lazy"></iframe>
+<div class="box"><b>Corollary 15.1.7: arc length and sector area</b><p style="margin:4px 0 0">In a circle with radius r, the angle α (in radians) gives</p>$$b = \alpha\cdot r, \qquad A = \frac{\alpha}{2}\cdot r^2$$<p style="margin:0">Check with the full circle, \(\alpha = 2\pi\): \(b = 2\pi r\) (circumference) ✓, \(A = \pi r^2\) ✓</p></div>
 <div class="box tip"><b>Calculator</b> The calculator must be set to <b>DEG</b> when you work in degrees and to <b>RAD</b> for radians. Test: \(\sin(90)\) gives 1 → DEG. Gives 0.89… → RAD.</div>
 
-<!-- ============ 2 Unit circle ============ -->
-<h2 id="kreis">2 · The unit circle: cos, sin, tan</h2>
-<p>Turn a ray by the angle α (anticlockwise, starting from the positive x-axis). It meets the circle at the point \(P_\alpha\). Then:</p>
-<ul class="sub">
-  <li><span class="cc">cos(α)</span> = the <b>x-coordinate</b> of P (how far right/left)</li>
-  <li><span class="ss">sin(α)</span> = the <b>y-coordinate</b> of P (how far up/down)</li>
-  <li><span class="tt">tan(α)</span> = the <b>slope</b> of the ray, i.e. \(\frac{\sin(\alpha)}{\cos(\alpha)}\). Exactly the m from \(\m x + \q\)! You can see it on the line \(x = 1\).</li>
-</ul>
-<iframe class="embedded" data-mode="einheitskreis" src="interaktiv.html?embed=1&amp;one=1&amp;lang=en#einheitskreis" title="Try it out" loading="lazy"></iframe>
-<p>Two things you can see straight from the picture:</p>
-<ul class="sub">
-  <li>cos and sin are always between −1 and 1. P is on a circle of radius 1, after all.</li>
-  <li><b>Pythagoras</b>: the triangle made of <span class="cc">cos</span>, <span class="ss">sin</span> and radius 1 is right-angled, so \(\sin^2(\alpha) + \cos^2(\alpha) = 1\).</li>
-</ul>
-
-<!-- ============ 3 Recipes ============ -->
-<h2 id="rezepte">3 · The recipes</h2>
-<p>Six short recipes, one for each type of task. They are not a sequence: pick the one that fits your task.</p>
-<ol class="recipe set">
-  <li><div><b>Degrees ↔ radians</b><span class="f">\(r = \frac{\pi}{180}\cdot d, \quad d = \frac{180}{\pi}\cdot r\)</span><small>Always think from \(180^\circ = \pi\).</small></div></li>
-  <li><div><b>Signs</b>In which quarter (quadrant) does P lie?<small>cos + on the right, sin + at the top. tan + when both have the same sign (I and III).</small></div></li>
-  <li><div><b>Equation \(\sin(\alpha) = c\)</b>horizontal line \(y = c\), meets the circle twice<small>\(\alpha_1\) from the calculator, \(\alpha_2 = 180^\circ - \alpha_1\). Then \(+\,k\cdot 360^\circ\).</small></div></li>
-  <li><div><b>Equation \(\cos(\alpha) = c\)</b>vertical line \(x = c\), meets the circle twice<small>\(\alpha_1\) from the calculator, \(\alpha_2 = -\alpha_1\). Then \(+\,k\cdot 360^\circ\).</small></div></li>
-  <li><div><b>Equation \(\tan(\alpha) = c\)</b>line through O with slope c<small>\(\alpha_1\) from the calculator, then \(+\,k\cdot 180^\circ\) (the line passes through two opposite points).</small></div></li>
-  <li><div><b>One known → the other two</b><small>\(\sin^2 + \cos^2 = 1\) and \(\tan = \frac{\sin}{\cos}\). Signs from the quadrant.</small></div></li>
-</ol>
-
-<!-- ============ 4 Exercises ============ -->
-<iframe class="embedded" data-mode="gleichungen" src="interaktiv.html?embed=1&amp;one=1&amp;lang=en#gleichungen" title="Try it out" loading="lazy"></iframe>
-
-<h2 id="aufgaben">4 · Exercises</h2>
 <p>Every exercise works the same way: read the task and first think about how you would start. Then click through the solution with <b>“Next step”</b>, one step at a time. Before each click, think about what comes next.</p>
 
 <!-- E1 -->
@@ -92,6 +62,35 @@
   </ol>
   <div class="done">Only remember \(180^\circ = \pi\). Work out the rest each time.</div>
 </article>
+
+<h2 id="kreis">15.2 · Trigonometric functions</h2>
+<p class="ref"><b>In the script:</b> Definition 15.2.2 (sin, cos, tan) · Memo 15.2.4 (calculator) · Memo 15.2.5 (special values) · Theorem 15.2.6 (Pythagoras) · Exercises E2–E7</p>
+<p>Turn a ray by the angle α (anticlockwise, starting from the positive x-axis). It meets the circle at the point \(P_\alpha\). Then:</p>
+<ul class="sub">
+  <li><span class="cc">cos(α)</span> = the <b>x-coordinate</b> of P (how far right/left)</li>
+  <li><span class="ss">sin(α)</span> = the <b>y-coordinate</b> of P (how far up/down)</li>
+  <li><span class="tt">tan(α)</span> = the <b>slope</b> of the ray, i.e. \(\frac{\sin(\alpha)}{\cos(\alpha)}\). Exactly the m from \(\m x + \q\)! You can see it on the line \(x = 1\).</li>
+</ul>
+<iframe class="embedded" data-mode="einheitskreis" src="interaktiv.html?embed=1&amp;one=1&amp;lang=en#einheitskreis" title="Try it out" loading="lazy"></iframe>
+<p>Two things you can see straight from the picture:</p>
+<ul class="sub">
+  <li>cos and sin are always between −1 and 1. P is on a circle of radius 1, after all.</li>
+  <li><b>Pythagoras</b>: the triangle made of <span class="cc">cos</span>, <span class="ss">sin</span> and radius 1 is right-angled, so \(\sin^2(\alpha) + \cos^2(\alpha) = 1\).</li>
+</ul>
+
+<h3 id="rezepte">The recipes</h3>
+<p>Six short recipes, one for each type of task. They are not a sequence: pick the one that fits your task.</p>
+<ol class="recipe set">
+  <li><div><b>Degrees ↔ radians</b><span class="f">\(r = \frac{\pi}{180}\cdot d, \quad d = \frac{180}{\pi}\cdot r\)</span><small>Always think from \(180^\circ = \pi\).</small></div></li>
+  <li><div><b>Signs</b>In which quarter (quadrant) does P lie?<small>cos + on the right, sin + at the top. tan + when both have the same sign (I and III).</small></div></li>
+  <li><div><b>Equation \(\sin(\alpha) = c\)</b>horizontal line \(y = c\), meets the circle twice<small>\(\alpha_1\) from the calculator, \(\alpha_2 = 180^\circ - \alpha_1\). Then \(+\,k\cdot 360^\circ\).</small></div></li>
+  <li><div><b>Equation \(\cos(\alpha) = c\)</b>vertical line \(x = c\), meets the circle twice<small>\(\alpha_1\) from the calculator, \(\alpha_2 = -\alpha_1\). Then \(+\,k\cdot 360^\circ\).</small></div></li>
+  <li><div><b>Equation \(\tan(\alpha) = c\)</b>line through O with slope c<small>\(\alpha_1\) from the calculator, then \(+\,k\cdot 180^\circ\) (the line passes through two opposite points).</small></div></li>
+  <li><div><b>One known → the other two</b><small>\(\sin^2 + \cos^2 = 1\) and \(\tan = \frac{\sin}{\cos}\). Signs from the quadrant.</small></div></li>
+</ol>
+
+<iframe class="embedded" data-mode="gleichungen" src="interaktiv.html?embed=1&amp;one=1&amp;lang=en#gleichungen" title="Try it out" loading="lazy"></iframe>
+
 
 <!-- E2 -->
 <article class="ex" id="e2" data-mode="faded">
@@ -227,8 +226,8 @@
   <div class="done">The script doesn't have a model solution for E7 yet. This solution was worked out separately, so if in doubt, check it with your teacher.</div>
 </article>
 
-<!-- ============ 5 Polar coordinates (script 15.3) ============ -->
-<h2 id="polar">5 · Polar coordinates</h2>
+<h2 id="polar">15.3 · Polar coordinates</h2>
+<p class="ref"><b>In the script:</b> Definition 15.3.2 · Example 15.3.3 · Memo 15.3.4 (conversion) · Memo 15.3.5 (rotating point) · Exercises E8–E11</p>
 <div class="box tip" id="e8"><b>Script pages 7–9 are still missing here</b>They contain the start of 15.3 (incl. 15.3.1) and exercise E8. As soon as we have them, they will be added here.</div>
 <p>So far, a point was given by \(x\) and \(y\): “3 to the right, 1 up”. You can also describe it like a direction: <b>“go 3 units, at an angle of 30°”</b>. That's polar coordinates.</p>
 <div class="box">$$P = (r, \varphi)$$
@@ -305,7 +304,7 @@
 </article>
 
 <!-- ============ 6 Rotating points ============ -->
-<h2 id="drehung">6 · Rotating points</h2>
+<h3 id="drehung">Rotating points</h3>
 <p>A point turns around O at constant speed, like a mark on a wheel. Its distance r stays the same, only the angle changes. So: <b>find the angle at time t</b>, then use the polar → cartesian formula.</p>
 <div class="box">$$\varphi(t) = \omega\cdot t + \varphi_0 \qquad\Rightarrow\qquad P(t) = \begin{pmatrix} r\cdot\cos(\omega t + \varphi_0) \\ r\cdot\sin(\omega t + \varphi_0) \end{pmatrix}$$
 <ul class="sub">
@@ -348,8 +347,8 @@
   <div class="done">\(\big(r\cos(\omega t + \varphi_0),\ r\sin(\omega t + \varphi_0)\big)\): r = radius, \(T = \frac{2\pi}{|\omega|}\), φ₀ = start angle, sign of ω = direction.</div>
 </article>
 
-<!-- ============ 7 Right triangles (script 15.4) ============ -->
-<h2 id="dreieck">7 · Trigonometry in right triangles</h2>
+<h2 id="dreieck">15.4 · Trigonometry in right triangles</h2>
+<p class="ref"><b>In the script:</b> Definition 15.4.2 (adjacent, opposite side) · Theorem 15.4.3 (side ratios)</p>
 <p>Trigonometry means “measuring triangles”. In a right triangle, sin, cos and tan are simply <b>ratios of two sides</b>.</p>
 <p>First the names. They always depend on <b>which angle</b> you are looking at:</p>
 <svg viewBox="0 0 320 180" role="img" aria-label="Right triangle with angle alpha, hypotenuse, opposite and adjacent side" style="width:100%;max-width:420px;display:block;margin:14px auto">
@@ -376,7 +375,7 @@
 <p id="t2">\(\sin\alpha = \frac35\), \(\cos\alpha = \frac45\), \(\tan\alpha = \frac34\)</p>
 <div class="box tip"><b>Link to polar coordinates</b>\(x = r\cos\varphi\) is just “adjacent = hypotenuse · cos”: x is the adjacent side, r the hypotenuse. Same idea, two names.</div>
 
-<h2 id="spickzettel">8 · Cheat sheet</h2>
+<h2 id="spickzettel">Cheat sheet</h2>
 <iframe class="embedded" data-part="spickzettel" src="spickzettel.html?embed=1&amp;lang=en" title="Cheat sheet"></iframe>
 
 <a class="card c-mint nextcard" href="../training/"><div class="doodle"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 10h36v44H14z"/><path d="M22 24l5 5 9-10M22 40h20"/></svg></div><div><span class="n">Done with this chapter?</span><b>On to exam training ↗</b><span>Mixed tasks from both chapters, like in the test. You can come back here any time.</span></div></a>

@@ -83,6 +83,7 @@ a.card:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--shadow)}
 /* boxes */
 .box{border:2px solid var(--line);border-radius:18px;padding:16px 18px;margin:16px 0;background:var(--card)}
 .tip{background:var(--tip);border-color:transparent}
+.ref{margin:-4px 0 14px;font-size:15px;color:var(--mute)}.ref b{color:var(--ink)}
 .tip b:first-child{display:block;margin-bottom:4px}
 .exam{background:var(--hi);border:2px dashed var(--ink)}
 .sub{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:8px}
@@ -334,10 +335,10 @@ body{padding-top:env(safe-area-inset-top,0px)}
   .sidehead{display:block;margin:4px 2px 0;font:800 22px/1.15 "Bricolage Grotesque",system-ui,sans-serif;color:var(--ink)}
   .nav ul,.nav ul.more{flex-wrap:wrap;overflow:visible;gap:5px;-webkit-mask-image:none;mask-image:none}
   .nav li{flex:0 0 auto}
-  .nav li:has(.pn),.nav li.ph,.nav li.div{flex-basis:100%}
+  .nav li:has(.pn),.nav li:has(a[href="#spickzettel"]),.nav li.ph,.nav li.div{flex-basis:100%}
   .nav li.ph{padding:10px 2px 2px!important;font-size:12px;text-transform:none}
-  .nav li:has(.pn) a{border-radius:12px;padding:6px 12px;white-space:normal}
-  .nav li:not(:has(.pn)):not(.ph):not(.div) a{padding:2px 9px;font-size:13px;border-width:1.5px;margin-left:0}
+  .nav li:has(.pn) a,.nav li:has(a[href="#spickzettel"]) a{border-radius:12px;padding:6px 12px;white-space:normal}
+  .nav li:not(:has(.pn)):not(:has(a[href="#spickzettel"])):not(.ph):not(.div) a{padding:2px 9px;font-size:13px;border-width:1.5px;margin-left:0}
   .nav li.div{height:0;border-top:2px dashed var(--line);margin:8px 0 4px}
   .nav .navrow{display:contents}
   .nav .navback{order:1}.nav .sidehead{order:2}.nav .progress{order:3}.nav .navrow>ul{order:4}

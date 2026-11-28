@@ -73,7 +73,7 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
     const m = new URL(a.href, location.href).pathname.match(/\/(training|grundlagen)\//); if (!m) return;
     const act = document.querySelector('.nav a.active');
     const sec = act && (act.getAttribute('href') || '').startsWith('#') ? act.getAttribute('href') : '';
-    const label = sec ? act.textContent.replace(/^\d+/, '').trim() : '';
+    const label = sec ? act.textContent.replace(/^[\d.]+/, '').trim() : '';
     try { sessionStorage.setItem('nachhilfe-from:' + (m[1] === 'training' ? 'train' : 'alg'), JSON.stringify({ c: chap, url: location.pathname + sec, label })); } catch (err) {}
   });
   // arriving from the start page (or anywhere outside a chapter) forgets the old way back
@@ -130,7 +130,7 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
       const n = document.createElement('a'); n.textContent = a.textContent; n.href = abs.pathname + abs.hash;
       if (href.startsWith('#')) {
         const t = doc.getElementById(href.slice(1));
-        const m = t && t.tagName === 'H2' && t.textContent.match(/^\s*(\d+)\s*·/);
+        const m = t && t.tagName === 'H2' && t.textContent.match(/^\s*(\d+(?:\.\d+)*)\s*·/);
         if (m) n.insertAdjacentHTML('afterbegin', `<span class="pn">${m[1]}</span>`);
         if (done.has(href.slice(1))) n.classList.add('done');
       }
