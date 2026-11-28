@@ -57,6 +57,17 @@
     });
   }
 
+  // a comma or full stop right after a formula stays on the formula's line
+  function gluePunct(root) {
+    root.querySelectorAll('.katex').forEach(k => {
+      if (k.closest('.katex-display') || k.closest('.glue')) return;
+      let el = k; while (!el.nextSibling && el.parentElement && el.parentElement.childNodes.length === 1 && el.parentElement.tagName === 'SPAN' && !el.parentElement.classList.contains('glue')) el = el.parentElement;
+      const n = el.nextSibling; if (!n || n.nodeType !== 3) return;
+      const m = n.nodeValue.match(/^[.,;:!?)]+/); if (!m) return;
+      const w = document.createElement('span'); w.className = 'glue'; w.style.whiteSpace = 'nowrap';
+      el.before(w); w.append(el); n.nodeValue = n.nodeValue.slice(m[0].length); w.append(m[0]);
+    });
+  }
   function renderMath(root) {
     if (!window.renderMathInElement) return;
     splitWide(root);
@@ -64,6 +75,7 @@
       delimiters: [{ left: '$$', right: '$$', display: true }, { left: '\\(', right: '\\)', display: false }],
       macros: MACROS, throwOnError: false
     });
+    gluePunct(root);
   }
 
   function setupExercise(ex) {
