@@ -12,8 +12,8 @@
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/steps.js?v=73"></script>
-<link rel="stylesheet" href="../assets/style.css?v=78">
+<script defer src="../assets/steps.js?v=74"></script>
+<link rel="stylesheet" href="../assets/style.css?v=79">
 <style>
 .wrap.wide{max-width:1180px}
 .ilay{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(18px,3vw,36px);align-items:start;margin-top:20px}
@@ -41,6 +41,10 @@
 .numin input{width:4.2em;min-height:40px;padding:0 6px;font:inherit;font-variant-numeric:tabular-nums;text-align:right;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
 .numin input:focus{outline:none;border-color:var(--m);box-shadow:0 0 0 3px color-mix(in srgb,var(--m) 25%,transparent)}
 .numin input.bad{border-color:var(--rose)}
+.out .katex{white-space:nowrap}
+.out .fls b{display:flex;flex-direction:column;gap:2px}
+.out .fl{display:block;white-space:nowrap;overflow-x:auto;overflow-y:hidden}
+.out .fl + .fl{padding-left:1.2em}
 </style>
 <link rel="stylesheet" href="../assets/clean.css?v=3">
 </head>
@@ -308,13 +312,18 @@
     if (document.activeElement !== $('p4v')) $('p4v').value = String(deg).replace('-', '−');
     const d = mod(deg), ex = isSpecial(deg) ? exact(deg) : null, rI = Math.abs(r - Math.round(r)) < 1e-9;
     const D = String(deg).replace('-', '−') + '°';
+    // each formula line stays in one piece (never broken in the middle); the second line continues with "="
     const part = (fn, exTex, val) => {
+      const v = fn === 'cos' ? 'x' : 'y', Dt = D.replace('−', '-').replace('°', '^\\circ');
+      const l1 = tex(`${v} = r\\cdot\\${fn}(\\varphi) = ${num(r, 2)}\\cdot\\${fn}(${Dt})`);
       const whole = ['0', '1', '-1'].includes(exTex);
-      const e = ex && exTex !== undefined && rI ? (whole ? `= ${r}\\cdot ${exTex === '-1' ? '(-1)' : exTex} = ${Math.round(val)}` : `= ${r}\\cdot\\left(${exTex}\\right)`) : '';
-      return tex(`${fn === 'cos' ? 'x' : 'y'} = r\\cdot\\${fn}(\\varphi) = ${num(r, 2)}\\cdot\\${fn}(${D.replace('−', '-').replace('°', '^\\circ')}) ${e}`) + (e && whole ? '' : ' ≈ ' + num(val));
+      let l2;
+      if (ex && exTex !== undefined && rI) l2 = whole ? tex(`= ${r}\\cdot ${exTex === '-1' ? '(-1)' : exTex} = ${Math.round(val)}`) : tex(`= ${r}\\cdot\\left(${exTex}\\right)`) + ' ≈ ' + num(val);
+      else l2 = '≈ ' + num(val);
+      return `<span class="fl">${l1}</span><span class="fl">${l2}</span>`;
     };
     let o = `<div class="big">P = (${num(r, 2)}, ${D}) ${both('in polar coordinates', 'in Polarkoordinaten')}</div>`;
-    o += `<div class="cc"><b>${part('cos', ex && ex[1], x)}</b></div><div class="ss"><b>${part('sin', ex && ex[0], y)}</b></div>`;
+    o += `<div class="cc fls"><b>${part('cos', ex && ex[1], x)}</b></div><div class="ss fls"><b>${part('sin', ex && ex[0], y)}</b></div>`;
     o += `<div>${both('Cartesian:', 'Kartesisch:')} P ≈ (${num(x)}, ${num(y)})</div>`;
     if (deg >= 360 || deg < 0) o += `<div class="hint">${both(`Same point as φ = ${num(d, 1)}° (full turns don't matter).`, `Gleicher Punkt wie φ = ${num(d, 1)}° (volle Umdrehungen spielen keine Rolle).`)}</div>`;
     if (r > 0 && d % 90 !== 0) {
@@ -322,7 +331,8 @@
       const rule = ['φ = ref', 'φ = 180° − ref', 'φ = 180° + ref', 'φ = 360° − ref'][q];
       const sx = x > 0 ? '+' : '−', sy = y > 0 ? '+' : '−';
       o += `<div>${both('Quadrant', 'Quadrant')} ${['I', 'II', 'III', 'IV'][q]}: x ${sx}, y ${sy}. ${both('Reference angle', 'Bezugswinkel')} ${num(ref, 1)}°.</div>`;
-      o += `<div class="hint">${both('Backwards (cartesian → polar):', 'Rückwärts (kartesisch → polar):')} r = √(x² + y²) = ${num(r, 2)}, ${both('reference angle from', 'Bezugswinkel aus')} tan = |y| / |x|, ${both('then', 'dann')} ${rule.replace('ref', num(ref, 1) + '°')} = ${num(d, 1)}°.</div>`;
+      const nw = t => `<span style="white-space:nowrap">${t}</span>`;
+      o += `<div class="hint">${both('Backwards (cartesian → polar):', 'Rückwärts (kartesisch → polar):')} ${nw('r = √(x² + y²) = ' + num(r, 2))}, ${both('reference angle from', 'Bezugswinkel aus')} ${nw('tan = |y| / |x|')}, ${both('then', 'dann')} ${nw(rule.replace('ref', num(ref, 1) + '°') + ' = ' + num(d, 1) + '°')}.</div>`;
     } else if (r > 0) {
       o += `<div class="hint">${both('P lies on an axis: read φ off directly.', 'P liegt auf einer Achse: φ direkt ablesen.')}</div>`;
     }

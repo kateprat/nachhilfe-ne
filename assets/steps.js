@@ -393,7 +393,9 @@
       if (k.getBoundingClientRect().right > box.right - pad + 1) f.style.whiteSpace = '';
     });
   }
-  const refit = () => requestAnimationFrame(fitWide);
+  const refit = () => requestAnimationFrame(() => { fitWide(); if (window.nachhilfeFitInline) window.nachhilfeFitInline(document); });
+  // revealed steps and answers become visible only after a click: fit their formulas then
+  document.addEventListener('click', () => setTimeout(refit, 60));
   window.addEventListener('resize', refit);
   document.addEventListener('click', refit);
   document.addEventListener('langchange', refit);
@@ -531,6 +533,22 @@
   }
 
   // no lonely last words: glue the last short words (or a trailing "(17.1.2)." to its formula) with non-breaking spaces
+  function fitInline(root) {
+    (root || document).querySelectorAll('.katex').forEach(k => {
+      if (k.closest('.katex-display')) return;
+      k.classList.add('nw'); k.style.fontSize = ''; k.classList.remove('kscroll');
+      if (!k.offsetParent) return;
+      const box = k.closest('p, li, td, th, div, span[data-l]') || k.parentElement;
+      const cs = getComputedStyle(box), room = box.clientWidth - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0);
+      const need = k.getBoundingClientRect().width;
+      if (room > 0 && need > room) {
+        k.style.fontSize = Math.max(.75, room / need - .02) + 'em';
+        if (k.getBoundingClientRect().width > room + 1) k.classList.add('kscroll');
+      }
+    });
+  }
+  window.nachhilfeFitInline = fitInline;
+  let fitT = 0; window.addEventListener('resize', () => { clearTimeout(fitT); fitT = setTimeout(() => fitInline(document), 150); });
   function unorphan(root) {
     const glue = el => {
       const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentElement.closest('.katex, .katex-display, button, script, style') ? 2 : 1 });
@@ -553,8 +571,9 @@
         if (t && t.nodeType === 3) t.nodeValue = t.nodeValue.replace(/\s+$/, '\u00A0');
       }
     };
-    // short inline formulas never break in the middle ("g(x) =" / "y"); long ones still may, so nothing runs off a phone
-    root.querySelectorAll('.katex').forEach(k => { if (k.closest('.katex-display') || !k.offsetParent) return; const box = k.closest('p, li, td, th, div, span[data-l]') || k.parentElement; const w = [...k.querySelector('.katex-html').getClientRects()].reduce((a, r) => a + r.width, 0); if (w < Math.min(220, box.clientWidth * 0.55)) k.classList.add('nw'); });
+    // inline formulas never break in the middle: keep each on one line; shrink a little if it doesn't fit,
+    // and only if that's not enough, let that one formula scroll sideways instead of breaking
+    fitInline(root);
     root.querySelectorAll('main p, main li, .lead, .task, .done, .why').forEach(el => {
       if (el.closest('.nav')) return;
       const parts = el.querySelectorAll(':scope > [data-l]');

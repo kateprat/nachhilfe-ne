@@ -259,7 +259,7 @@ h1,h2,h3,h4,.card b,.lead{text-wrap:balance}
   .path,.helper,main>.box.exam{max-width:880px}
 }
 .katex.nw{white-space:nowrap}
-table .katex.nw{white-space:normal}
+.katex.kscroll{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:2px 0}
 @media(max-width:520px){table.which{table-layout:fixed;width:100%;font-size:14px}table.which td,table.which th{overflow-wrap:anywhere;padding-left:6px;padding-right:6px}}
 .katex .katex-mathml{max-width:100%;overflow:hidden}
 
