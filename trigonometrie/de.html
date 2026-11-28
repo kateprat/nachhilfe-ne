@@ -30,15 +30,15 @@
 </ul></nav>
 
 <h2 id="bogenmass">15.1 · Winkel messen: das Bogenmass</h2>
-<p class="ref"><b>Im Skript:</b> Definition 15.1.2 (Radiant) · Beispiele 15.1.3 · Korollar 15.1.7 · Memo 15.1.9 · Aufgabe E1</p>
+<p class="ref"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>Im Skript</b></a> (S. 1–3): Definition 15.1.2 (Radiant) · Beispiele 15.1.3 · Korollar 15.1.7 · Memo 15.1.9 · Aufgabe E1</p>
 <p>Statt in Grad kann man einen Winkel als <b>Länge des Bogens auf dem Einheitskreis</b> (Radius 1) messen. Der ganze Kreis hat Umfang \(2\pi\), also:</p>
-<div class="box">$$360^\circ = 2\pi, \qquad 180^\circ = \pi, \qquad 90^\circ = \tfrac{\pi}{2}$$
+<div class="box"><b>Definition 15.1.2: Radiant (Bogenmass)</b><p style="margin:4px 0 0">Zeichne um den Scheitel des Winkels einen Kreis mit beliebigem Radius r. Der Winkel schneidet einen Bogen der Länge b heraus. Dann ist</p>$$\alpha = \frac{b}{r}\ \text{rad}$$<p style="margin:0">Das hängt nicht von r ab: Ein doppelt so grosser Kreis hat einen doppelt so langen Bogen, der Bruch bleibt gleich. Darum darf man auch gleich den <b>Einheitskreis</b> (r = 1) nehmen: Dann ist der Winkel einfach die Bogenlänge (Memo 15.1.9). «rad» darf man weglassen, 1 rad = 1. Taschenrechner und Programme (z.B. Python) rechnen fast immer im Bogenmass.</p></div>
+<div class="box"><b>Beispiele 15.1.3</b>$$360^\circ = 2\pi, \qquad 180^\circ = \pi, \qquad 90^\circ = \tfrac{\pi}{2}$$
 <p style="margin:0">Mehr musst du nicht auswendig wissen. <b>Alles andere rechnest du aus \(180^\circ = \pi\)</b> aus: durch 180 teilen, mal π (oder umgekehrt).</p></div>
 <p>Probier selbst: Wie viel ist 60° im Bogenmass? <button type="button" class="reveal" data-answer="t1">Antwort zeigen</button></p>
 <p id="t1">\(60^\circ = \frac{60}{180}\pi = \frac{\pi}{3}\)</p>
 <iframe class="embedded" data-mode="bogenmass" src="interaktiv.html?embed=1&amp;one=1&amp;lang=de#bogenmass" title="Ausprobieren" loading="lazy"></iframe>
 <div class="box"><b>Korollar 15.1.7: Bogenlänge und Sektorfläche</b><p style="margin:4px 0 0">Im Kreis mit Radius r gehört zum Winkel α (im Bogenmass)</p>$$b = \alpha\cdot r, \qquad A = \frac{\alpha}{2}\cdot r^2$$<p style="margin:0">Probe mit dem ganzen Kreis, \(\alpha = 2\pi\): \(b = 2\pi r\) (Umfang) ✓, \(A = \pi r^2\) ✓</p></div>
-<div class="box tip"><b>Taschenrechner</b> Der Rechner muss auf <b>DEG</b> stehen, wenn du in Grad rechnest, und auf <b>RAD</b> im Bogenmass. Test: \(\sin(90)\) gibt 1 → DEG. Gibt 0.89… → RAD.</div>
 
 <p>So funktionieren alle Aufgaben: Lies die Aufgabe und überleg zuerst selbst, wie du anfangen würdest. Dann klickst du dich mit <b>«Nächster Schritt»</b> durch die Lösung, ein Schritt nach dem anderen. Überleg vor jedem Klick, was als Nächstes kommt.</p>
 
@@ -64,19 +64,29 @@
 </article>
 
 <h2 id="kreis">15.2 · Trigonometrische Funktionen</h2>
-<p class="ref"><b>Im Skript:</b> Definition 15.2.2 (sin, cos, tan) · Memo 15.2.4 (Taschenrechner) · Memo 15.2.5 (spezielle Werte) · Satz 15.2.6 (Pythagoras) · Aufgaben E2–E7</p>
+<p class="ref"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>Im Skript</b></a> (S. 3–6): Definition 15.2.2 (sin, cos, tan) · Memo 15.2.4 (Taschenrechner) · Memo 15.2.5 (spezielle Werte) · Satz 15.2.6 (Pythagoras) · Aufgaben E2–E7</p>
+<p><b>Definition 15.2.2</b></p>
 <p>Dreh einen Strahl um den Winkel α (gegen den Uhrzeigersinn, von der positiven x-Achse aus). Er trifft den Kreis im Punkt \(P_\alpha\). Dann ist:</p>
 <ul class="sub">
   <li><span class="cc">cos(α)</span> = die <b>x-Koordinate</b> von P (wie weit rechts/links)</li>
   <li><span class="ss">sin(α)</span> = die <b>y-Koordinate</b> von P (wie weit oben/unten)</li>
   <li><span class="tt">tan(α)</span> = die <b>Steigung</b> des Strahls, also \(\frac{\sin(\alpha)}{\cos(\alpha)}\). Genau das m aus \(\m x + \q\)! Man sieht sie an der Linie \(x = 1\).</li>
 </ul>
+<p>tan(α) gibt es nur, wenn der Strahl nicht senkrecht ist (bei 90° und 270° ist er senkrecht). Das Skript zeigt in 15.2.3 das Beispiel α = 207°: cos und sin sind negativ (Pfeile nach links und unten), tan ist trotzdem positiv, weil die Gerade ansteigt.</p>
 <iframe class="embedded" data-mode="einheitskreis" src="interaktiv.html?embed=1&amp;one=1&amp;lang=de#einheitskreis" title="Ausprobieren" loading="lazy"></iframe>
 <p>Zwei Dinge, die man aus dem Bild direkt sieht:</p>
 <ul class="sub">
   <li>cos und sin liegen immer zwischen −1 und 1. P ist ja auf dem Kreis mit Radius 1.</li>
-  <li><b>Pythagoras</b>: Das Dreieck aus <span class="cc">cos</span>, <span class="ss">sin</span> und Radius 1 ist rechtwinklig, also \(\sin^2(\alpha) + \cos^2(\alpha) = 1\).</li>
+  <li><b>Satz 15.2.6 (Pythagoras)</b>: Das Dreieck aus <span class="cc">cos</span>, <span class="ss">sin</span> und Radius 1 ist rechtwinklig, also \(\sin^2(\alpha) + \cos^2(\alpha) = 1\).</li>
 </ul>
+
+<div class="box"><b>Memo 15.2.5: Werte bei speziellen Winkeln</b>
+<div class="tbl"><table><tr><th>α</th><th>0°</th><th>30° = \(\frac{\pi}{6}\)</th><th>45° = \(\frac{\pi}{4}\)</th><th>60° = \(\frac{\pi}{3}\)</th><th>90° = \(\frac{\pi}{2}\)</th></tr>
+<tr><td><span class="ss">sin</span></td><td>\(\frac{\sqrt0}{2} = 0\)</td><td>\(\frac{\sqrt1}{2} = \frac12\)</td><td>\(\frac{\sqrt2}{2}\)</td><td>\(\frac{\sqrt3}{2}\)</td><td>\(\frac{\sqrt4}{2} = 1\)</td></tr>
+<tr><td><span class="cc">cos</span></td><td>1</td><td>\(\frac{\sqrt3}{2}\)</td><td>\(\frac{\sqrt2}{2}\)</td><td>\(\frac12\)</td><td>0</td></tr>
+<tr><td><span class="tt">tan</span></td><td>0</td><td>\(\frac{\sqrt3}{3}\)</td><td>1</td><td>\(\sqrt3\)</td><td>n.d.</td></tr></table></div>
+<p style="margin:0">Merkhilfe: sin-Zeile = Wurzeln aus 0, 1, 2, 3, 4, jeweils durch 2. cos-Zeile = dieselbe rückwärts. tan = sin : cos. Wie man darauf kommt, zeigt <a href="#e5">E5</a>.</p></div>
+<div class="box tip"><b>Memo 15.2.4: Taschenrechner</b> Der Rechner muss auf <b>DEG</b> stehen, wenn du in Grad rechnest, und auf <b>RAD</b> im Bogenmass. Test: \(\sin(90)\) gibt 1 → DEG. Gibt 0.89… → RAD.</div>
 
 <h3 id="rezepte">Die Rezepte</h3>
 <p>Sechs kurze Rezepte, eines pro Aufgabentyp. Sie sind keine Schrittfolge: Nimm das, das zu deiner Aufgabe passt.</p>
@@ -227,18 +237,19 @@
 </article>
 
 <h2 id="polar">15.3 · Polarkoordinaten</h2>
-<p class="ref"><b>Im Skript:</b> Definition 15.3.2 · Beispiel 15.3.3 · Memo 15.3.4 (Umrechnung) · Memo 15.3.5 (drehender Punkt) · Aufgaben E8–E11</p>
+<p class="ref"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>Im Skript</b></a> (S. 10–11): Definition 15.3.2 · Beispiel 15.3.3 · Memo 15.3.4 (Umrechnung) · Memo 15.3.5 (drehender Punkt) · Aufgaben E8–E11</p>
 <div class="box tip" id="e8"><b>Skriptseiten 7–9 fehlen hier noch</b>Dort stehen der Anfang von 15.3 (inkl. 15.3.1) und die Aufgabe E8. Sobald wir sie haben, kommen sie hierher.</div>
 <p>Bisher war ein Punkt durch \(x\) und \(y\) gegeben: «3 nach rechts, 1 nach oben». Man kann ihn auch wie eine Wegbeschreibung angeben: <b>«geh 3 Einheiten, im Winkel 30°»</b>. Das sind Polarkoordinaten (auch Kreiskoordinaten).</p>
-<div class="box">$$P = (r, \varphi)$$
+<div class="box"><b>Definition 15.3.2: Polarkoordinaten</b>$$P = (r, \varphi)$$
 <ul class="sub">
   <li><b>r</b> = radiale Koordinate = <b>Abstand</b> von P zum Ursprung O (dem Pol). Immer \(r \ge 0\).</li>
-  <li><b>φ</b> (phi) = Winkelkoordinate = der <b>Winkel</b> zwischen der positiven x-Achse (der Polarachse) und dem Strahl von O durch P. Meistens \(0^\circ \le \varphi \lt 360^\circ\).</li>
+  <li><b>φ</b> (phi) = Winkelkoordinate = der <b>Winkel</b> zwischen der positiven x-Achse (der Polarachse) und dem Strahl von O durch P. Meistens \(0^\circ \le \varphi \lt 360^\circ\). Für den Ursprung selbst (r = 0) nimmt man φ = 0°.</li>
 </ul></div>
+<div class="box"><b>Beispiel 15.3.3</b><p style="margin:4px 0 0">Der Punkt im Bild des Skripts ist 3 Einheiten vom Ursprung weg, im Winkel 30°: \(P = (3, 30^\circ) = \left(3, \tfrac{\pi}{6}\ \text{rad}\right)\).</p></div>
 <p>Achtung: \((3, 30^\circ)\) in Polarkoordinaten und \((3, 30)\) in kartesischen Koordinaten sind zwei ganz verschiedene Punkte. Das °-Zeichen (oder π) zeigt dir, dass es ein Winkel ist.</p>
 <p>Die Verbindung zum Einheitskreis: Auf dem Einheitskreis (\(r = 1\)) ist der Punkt \((\cos\varphi, \sin\varphi)\). Ein Kreis mit Radius \(r\) ist der Einheitskreis, um \(r\) gestreckt. Also <b>beide Koordinaten mal r</b>.</p>
 <ol class="recipe set">
-  <li><div><b>Polar → kartesisch</b><span class="f">\(x = r\cdot\cos(\varphi), \quad y = r\cdot\sin(\varphi)\)</span><small>Gilt für jeden Winkel, auch für negative und für Winkel ab 360°.</small></div></li>
+  <li><div><b>Polar → kartesisch (Memo 15.3.4)</b><span class="f">\(x = r\cdot\cos(\varphi), \quad y = r\cdot\sin(\varphi)\)</span><small>Gilt für jeden Winkel, auch für negative und für Winkel ab 360°.</small></div></li>
   <li><div><b>Kartesisch → polar</b><span class="f">\(r = \sqrt{x^2 + y^2}\)</span><small>Pythagoras: x und y sind die Katheten, r ist die Hypotenuse. Für φ: <strong>Punkt skizzieren</strong>, den Winkel zur x-Achse (Bezugswinkel) aus \(\tan = \frac{|y|}{|x|}\) bestimmen, dann je nach Quadrant anpassen (Tabelle unten).</small></div></li>
 </ol>
 <div class="tbl"><table>
@@ -313,7 +324,7 @@
   <li><b>φ₀</b> = Winkel am Anfang (t = 0)</li>
   <li><b>Vorzeichen von ω</b>: positiv → gegen den Uhrzeigersinn (die normale Richtung), negativ → im Uhrzeigersinn</li>
 </ul></div>
-<p>Spezialfall (Memo 15.3.5): Einheitskreis, Start bei \((1, 0)\), Geschwindigkeit 1 Einheit pro Sekunde. Dann ist der Winkel einfach t, und der Punkt ist \((\cos t, \sin t)\).</p>
+<p>Spezialfall (Memo 15.3.5): Einheitskreis, Start bei \((1, 0)\), Geschwindigkeit 1 Einheit pro Sekunde. Dann ist der Winkel einfach t, und der Punkt ist \((\cos t, \sin t)\). <b>Warum?</b> In t Sekunden legt der Punkt den Weg t zurück (Geschwindigkeit 1). Auf dem Einheitskreis ist die Bogenlänge gleich dem Winkel im Bogenmass (Memo 15.1.9). Also ist der Winkel t, und nach Definition 15.2.2 ist der Punkt \((\cos t, \sin t)\).</p>
 
 <!-- E11 -->
 <article class="ex" id="e11" data-mode="worked">
@@ -348,9 +359,9 @@
 </article>
 
 <h2 id="dreieck">15.4 · Trigonometrie im rechtwinkligen Dreieck</h2>
-<p class="ref"><b>Im Skript:</b> Definition 15.4.2 (Ankathete, Gegenkathete) · Satz 15.4.3 (Seitenverhältnisse)</p>
+<p class="ref"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>Im Skript</b></a> (S. 12): Definition 15.4.2 (Ankathete, Gegenkathete) · Satz 15.4.3 (Seitenverhältnisse)</p>
 <p>Trigonometrie heisst «Dreiecksmessung». Im rechtwinkligen Dreieck sind sin, cos und tan einfach <b>Verhältnisse von zwei Seiten</b>.</p>
-<p>Zuerst die Namen. Sie hängen immer davon ab, <b>welchen Winkel</b> du anschaust:</p>
+<p><b>Definition 15.4.2</b> Zuerst die Namen. Sie hängen immer davon ab, <b>welchen Winkel</b> du anschaust:</p>
 <svg viewBox="0 0 320 180" role="img" aria-label="Rechtwinkliges Dreieck mit Winkel Alpha, Hypotenuse, Gegenkathete und Ankathete" style="width:100%;max-width:420px;display:block;margin:14px auto">
   <polygon points="30,150 290,150 290,30" fill="none" stroke="var(--ink)" stroke-width="2"/>
   <path d="M276 150v-14h14" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
@@ -368,9 +379,32 @@
   <li><span class="ss">Gegenkathete</span> (opposite side): die Kathete, die α <b>gegenüber</b> liegt.</li>
 </ul>
 <p>Schaust du den anderen spitzen Winkel an, tauschen Ankathete und Gegenkathete die Rollen.</p>
-<div class="box">$$\sin(\alpha) = \frac{\text{Gegenkathete}}{\text{Hypotenuse}}, \qquad \cos(\alpha) = \frac{\text{Ankathete}}{\text{Hypotenuse}}, \qquad \tan(\alpha) = \frac{\text{Gegenkathete}}{\text{Ankathete}}$$
+<div class="box"><b>Satz 15.4.3: Sinus und Kosinus als Seitenverhältnisse im rechtwinkligen Dreieck</b><p style="margin:4px 0 0">In jedem rechtwinkligen Dreieck sei \(\alpha \neq 90^\circ\) einer der beiden nicht-rechten Winkel. Dann gilt:</p>$$\sin(\alpha) = \frac{\text{Gegenkathete}}{\text{Hypotenuse}}, \qquad \cos(\alpha) = \frac{\text{Ankathete}}{\text{Hypotenuse}}, \qquad \tan(\alpha) = \frac{\text{Gegenkathete}}{\text{Ankathete}}$$
 <p style="margin:0">Merkhilfe: <b>GAGA HühnerHof AG</b> (sin = G/H, cos = A/H, tan = G/A). Auf Englisch: SOH CAH TOA.</p></div>
-<p><b>Warum stimmt das?</b> Leg das Dreieck so hin, dass α bei O liegt. Verkleinere es, bis die Hypotenuse 1 ist: Jetzt ist es genau das Dreieck im Einheitskreis, mit den Katheten <span class="cc">cos α</span> und <span class="ss">sin α</span>. Verkleinern ändert die Winkel nicht (die Dreiecke sind <b>ähnlich</b>) und auch nicht die Seitenverhältnisse. Im kleinen Dreieck ist \(\frac{\text{Gegenkathete}}{\text{Hypotenuse}} = \frac{\sin\alpha}{1}\). Also auch im grossen.</p>
+<div class="box"><b>Beweis von Satz 15.4.3</b>
+<svg viewBox="0 0 420 160" role="img" aria-label="Kleines Dreieck im Einheitskreis mit Hypotenuse 1, Katheten cos Alpha und sin Alpha, um c gestreckt zum Dreieck aus dem Satz" style="width:100%;max-width:520px;display:block;margin:12px auto">
+  <polygon points="20,130 102,130 102,73" fill="color-mix(in srgb,var(--rose) 12%,transparent)" stroke="var(--rose)" stroke-width="2.5"/>
+  <path d="M94 130v-8h8" fill="none" stroke="var(--ink)" stroke-width="1.3"/>
+  <path d="M38 130a18 18 0 0 0 -3.3 -10.3" fill="none" stroke="var(--ink)" stroke-width="1.3"/><text x="41" y="125" font-size="12" fill="var(--ink)">α</text>
+  <text x="52" y="94" font-size="14" font-weight="700" fill="var(--ink)" text-anchor="end">1</text>
+  <text x="61" y="148" font-size="13" font-weight="700" fill="var(--cos)" text-anchor="middle">cos α</text>
+  <text x="107" y="106" font-size="13" font-weight="700" fill="var(--sin)">sin α</text>
+  <text x="170" y="92" font-size="15" font-weight="700" fill="var(--mute)" text-anchor="middle">· c →</text>
+  <polygon points="200,130 347,130 347,27" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+  <path d="M339 130v-8h8" fill="none" stroke="var(--ink)" stroke-width="1.3"/>
+  <path d="M226 130a26 26 0 0 0 -4.7 -14.9" fill="none" stroke="var(--ink)" stroke-width="1.3"/><text x="230" y="124" font-size="12" fill="var(--ink)">α</text>
+  <text x="262" y="70" font-size="14" font-weight="700" fill="var(--ink)" text-anchor="end">c</text>
+  <text x="273" y="148" font-size="13" font-weight="700" fill="var(--cos)" text-anchor="middle">c · cos α</text>
+  <text x="352" y="84" font-size="13" font-weight="700" fill="var(--sin)">c · sin α</text>
+</svg>
+<ol class="recipe">
+  <li><div><b>Das Dreieck aus dem Einheitskreis</b>Nimm den Punkt \(P_\alpha\) auf dem Einheitskreis und fälle das Lot auf die x-Achse. So entsteht ein rechtwinkliges Dreieck (rot): Hypotenuse 1 (der Radius), Ankathete <span class="cc">cos α</span>, Gegenkathete <span class="ss">sin α</span>. Das ist einfach die Definition 15.2.2.</div></li>
+  <li><div><b>Es ist ähnlich zum Dreieck aus dem Satz</b>Beide Dreiecke haben den Winkel α und einen rechten Winkel, also ist auch der dritte Winkel gleich (Winkelsumme 180°). Gleiche Winkel heisst: Die Dreiecke sind <strong>ähnlich</strong>. Das eine ist eine gestreckte Kopie des anderen.</div></li>
+  <li><div><b>Streckfaktor c</b>Nenne die Hypotenuse des Dreiecks aus dem Satz c. Das rote Dreieck hat Hypotenuse 1, du streckst es also mit dem Faktor c. Jede Seite wird mit c multipliziert:
+    $$\text{Hypotenuse} = c, \qquad \text{Ankathete} = c\cdot\cos\alpha, \qquad \text{Gegenkathete} = c\cdot\sin\alpha$$</div></li>
+  <li><div><b>Dividieren</b>$$\frac{\text{Gegenkathete}}{\text{Hypotenuse}} = \frac{c\cdot\sin\alpha}{c} = \sin\alpha, \qquad \frac{\text{Ankathete}}{\text{Hypotenuse}} = \frac{c\cdot\cos\alpha}{c} = \cos\alpha$$$$\frac{\text{Gegenkathete}}{\text{Ankathete}} = \frac{c\cdot\sin\alpha}{c\cdot\cos\alpha} = \frac{\sin\alpha}{\cos\alpha} = \tan\alpha \qquad \square$$</div></li>
+</ol>
+<p style="margin:0;color:var(--mute);font-size:16px">Im Skript kommt in die Lücke bei «The red triangle in the picture and the triangle in the theorem are ✎»: <b>similar</b> (ähnlich).</p></div>
 <p>Probier selbst: Ein rechtwinkliges Dreieck hat die Katheten 3 und 4 und die Hypotenuse 5. α liegt gegenüber der Seite 3. Wie gross sind sin α, cos α und tan α? <button type="button" class="reveal" data-answer="t2">Antwort zeigen</button></p>
 <p id="t2">\(\sin\alpha = \frac35\), \(\cos\alpha = \frac45\), \(\tan\alpha = \frac34\)</p>
 <div class="box tip"><b>Verbindung zu den Polarkoordinaten</b>\(x = r\cos\varphi\) ist nichts anderes als «Ankathete = Hypotenuse · cos»: x ist die Ankathete, r die Hypotenuse. Dieselbe Idee, zwei Namen.</div>
