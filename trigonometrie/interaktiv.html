@@ -12,8 +12,8 @@
 <link rel="stylesheet" href="../assets/katex/katex.min.css">
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
-<script defer src="../assets/steps.js?v=74"></script>
-<link rel="stylesheet" href="../assets/style.css?v=79">
+<script defer src="../assets/steps.js?v=75"></script>
+<link rel="stylesheet" href="../assets/style.css?v=80">
 <style>
 .wrap.wide{max-width:1180px}
 .ilay{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(18px,3vw,36px);align-items:start;margin-top:20px}
@@ -67,7 +67,7 @@
 
     <!-- tab 1 -->
     <div data-p="1" class="panel">
-      <p class="hint"><span data-l="en">cos = x (green), sin = y (orange), tan = slope of the ray, read off on the line x = 1 (blue). Special angles snap and show exact values.</span><span data-l="de">cos = x (grün), sin = y (orange), tan = Steigung des Strahls, abgelesen auf der Linie x = 1 (blau). Spezielle Winkel rasten ein und zeigen exakte Werte.</span></p>
+      <p class="hint"><span data-l="en">cos = x (red), sin = y (green), tan = slope of the ray, read off on the line x = 1 (blue). Special angles snap and show exact values.</span><span data-l="de">cos = x (rot), sin = y (grün), tan = Steigung des Strahls, abgelesen auf der Linie x = 1 (blau). Spezielle Winkel rasten ein und zeigen exakte Werte.</span></p>
       <div class="sl" style="grid-template-columns:1.6em minmax(0,1fr) 5.6em"><span>α</span><input id="a1" type="range" min="-360" max="720" step="1" aria-label="α"><label class="numin"><input id="a1v" type="text" inputmode="text" enterkeyhint="done" autocomplete="off" spellcheck="false" aria-label="α in °">°</label></div>
       <div class="chips" id="chips1"></div>
       <div class="out" id="out1"></div>
@@ -91,7 +91,7 @@
     </div>
     <!-- tab 4: polar coordinates -->
     <div data-p="4" class="panel">
-      <p class="hint"><span data-l="en">Polar coordinates: go r units, at the angle φ. Drag P, or set r and φ. Green = x, orange = y.</span><span data-l="de">Polarkoordinaten: r Einheiten weit gehen, im Winkel φ. Zieh P oder stell r und φ ein. Grün = x, orange = y.</span></p>
+      <p class="hint"><span data-l="en">Polar coordinates: go r units, at the angle φ. Drag P, or set r and φ. Red = x, green = y.</span><span data-l="de">Polarkoordinaten: r Einheiten weit gehen, im Winkel φ. Zieh P oder stell r und φ ein. Rot = x, grün = y.</span></p>
       <div class="sl" style="grid-template-columns:1.6em minmax(0,1fr) 5.6em"><span>r</span><input id="r4" type="range" min="0" max="10" step="0.1" aria-label="r"><label class="numin"><input id="r4v" type="text" inputmode="text" enterkeyhint="done" autocomplete="off" spellcheck="false" aria-label="r"><span style="visibility:hidden">°</span></label></div>
       <div class="sl" style="grid-template-columns:1.6em minmax(0,1fr) 5.6em"><span>φ</span><input id="p4" type="range" min="-360" max="1080" step="1" aria-label="φ"><label class="numin"><input id="p4v" type="text" inputmode="text" enterkeyhint="done" autocomplete="off" spellcheck="false" aria-label="φ in °">°</label></div>
       <div class="chips" id="chips4"></div>
@@ -266,9 +266,9 @@
     h += `<circle cx="0" cy="0" r="${R0}" fill="none" stroke="var(--ink)" stroke-width=".02"/>`;
     if (d > 0 && d < 360) { const large = d > 180 ? 1 : 0; h += `<path d="M0 0 L${R0} 0 A${R0} ${R0} 0 ${large} 0 ${R0 * Math.cos(a)} ${-R0 * Math.sin(a)} Z" fill="var(--pink)" fill-opacity=".45" stroke="none"/>`; }
     if (d === 360) h += `<circle cx="0" cy="0" r="${R0}" fill="var(--pink)" fill-opacity=".45"/>`;
-    h += arc(d === 360 ? 359.9 : d, R0, 'var(--q)', .06);
+    h += arc(d === 360 ? 359.9 : d, R0, 'var(--ang)', .06);
     h += `<line x1="0" y1="0" x2="${R0}" y2="0" stroke="var(--ink)" stroke-width=".025"/><line x1="0" y1="0" x2="${R0 * Math.cos(a)}" y2="${-R0 * Math.sin(a)}" stroke="var(--ink)" stroke-width=".025"/>`;
-    h += lbl(R0 / 2, .16, 'r = ' + r, 'var(--ink)', 'middle') + lbl(R0 * Math.cos(a / 2) * 1.12, -R0 * Math.sin(a / 2) * 1.12, 'b', 'var(--q)', 'middle');
+    h += lbl(R0 / 2, .16, 'r = ' + r, 'var(--ink)', 'middle') + lbl(R0 * Math.cos(a / 2) * 1.12, -R0 * Math.sin(a / 2) * 1.12, 'b', 'var(--ang)', 'middle');
     h += `<circle class="drag" data-h="A" cx="${R0 * Math.cos(a)}" cy="${-R0 * Math.sin(a)}" r=".075" fill="var(--yellow)" stroke="var(--ink)" stroke-width=".02"/>`;
     svg.innerHTML = h;
     $('a3').value = d; if (document.activeElement !== $('a3v')) $('a3v').value = d; $('r3').value = r; $('r3v').textContent = r;
@@ -276,7 +276,7 @@
     const frac = (num_, den) => { const k = gcd(num_, den); num_ /= k; den /= k; return den === 1 ? (num_ === 1 ? '\\pi' : num_ + '\\pi') : `\\tfrac{${num_ === 1 ? '' : num_}\\pi}{${den}}`; };
     const exactOk = d % 15 === 0 && d > 0;
     let o = `<div class="big">α = ${d}° = ${d === 0 ? '0' : exactOk ? tex(frac(p, q)) + ' ≈ ' + num(a) : num(a)}</div>`;
-    o += `<div style="color:var(--q)"><b>b = α · r = ${exactOk ? tex(frac(p * r, q)) + ' ≈ ' : ''}${num(a * r)}</b></div>`;
+    o += `<div style="color:var(--ang)"><b>b = α · r = ${exactOk ? tex(frac(p * r, q)) + ' ≈ ' : ''}${num(a * r)}</b></div>`;
     o += `<div><b>A = α/2 · r² = ${exactOk ? tex(frac(p * r * r, 2 * q)) + ' ≈ ' : ''}${num(a / 2 * r * r)}</b></div>`;
     o += `<div class="hint">b / r = ${num(a * r)} / ${r} = ${num(a)} = α ${both('(in radians, whatever r is)', '(im Bogenmass, egal welches r)')}</div>`;
     $('out3').innerHTML = o;
@@ -296,9 +296,9 @@
     h += `<text x="${rm * k + .03}" y=".12" font-size=".09" fill="var(--mute)">${rm}</text><text x=".04" y="${-rm * k - .03}" font-size=".09" fill="var(--mute)">${rm}</text>`;
     h += `<text x="${R - .05}" y="-.05" font-size=".1" fill="var(--mute)" text-anchor="end">x</text><text x=".05" y="${-R + .12}" font-size=".1" fill="var(--mute)">y</text>`;
     if (r > 0) h += `<circle cx="0" cy="0" r="${r * k}" fill="none" stroke="var(--mute)" stroke-width=".012" stroke-dasharray=".04 .03"/>`;
-    h += arc(deg, Math.min(.28, Math.max(.12, r * k * .35)), 'var(--q)', .03);
+    h += arc(deg, Math.min(.28, Math.max(.12, r * k * .35)), 'var(--ang)', .03);
     const am = mod(deg) * Math.PI / 360, ar = Math.min(.28, Math.max(.12, r * k * .35)) + .1;
-    if (mod(deg) > 3) h += lbl(ar * Math.cos(am), -ar * Math.sin(am) + .04, 'φ', 'var(--q)', 'middle');
+    if (mod(deg) > 3) h += lbl(ar * Math.cos(am), -ar * Math.sin(am) + .04, 'φ', 'var(--ang)', 'middle');
     h += `<line x1="0" y1="0" x2="${X}" y2="0" stroke="var(--cos)" stroke-width=".05"/>`;
     h += `<line x1="${X}" y1="0" x2="${X}" y2="${Y}" stroke="var(--sin)" stroke-width=".05"/>`;
     h += `<line x1="0" y1="0" x2="${X}" y2="${Y}" stroke="var(--ink)" stroke-width=".022"/>`;

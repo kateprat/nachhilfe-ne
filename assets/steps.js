@@ -277,7 +277,7 @@
     draw();
   }
 
-  // unit circle: cos = x (green), sin = y (orange), tan = slope, drawn on x = 1 (blue, like m)
+  // unit circle: cos = x (red), sin = y (green), tan = slope, drawn on x = 1 (blue, like m)
   function setupCircle() {
     const svg = document.getElementById('ucSvg');
     if (!svg) return;
