@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <script src="../assets/theme.js?v=70"></script>
-<script src="../assets/sitenav.js?v=34"></script>
+<script src="../assets/sitenav.js?v=35"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Trigonometry</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="Mathe 2cNP"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="theme-color" content="#fffdf8" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#1f1a17" media="(prefers-color-scheme: dark)">
@@ -21,12 +21,12 @@
 <nav class="langsw" aria-label="Sprache / language"><a href="de.html" lang="de">DE</a><a href="./" lang="en" aria-current="page">EN</a></nav>
 <p class="crumb"><a href="../en.html">← Overview</a></p>
 <h1>Trigonometry</h1>
-<p class="lead">Script chapter 15, exercises E1–E7. All of trigonometry is in a single picture: the unit circle.</p>
+<p class="lead">Script chapter 15, exercises E1–E11. All of trigonometry is in a single picture: the unit circle.</p>
 
 <nav class="nav" aria-label="Sections"><ul>
   <li><a href="#bogenmass">Radians</a></li><li><a href="#kreis">Unit circle</a></li><li><a href="#rezepte">Recipes</a></li>
   <li><a href="#aufgaben">Exercises</a></li><li><a href="#e1">E1</a></li><li><a href="#e2">E2</a></li><li><a href="#e3">E3</a></li><li><a href="#e4">E4</a></li>
-  <li><a href="#e5">E5</a></li><li><a href="#e6">E6</a></li><li><a href="#e7">E7</a></li><li><a href="#spickzettel">Cheat sheet</a></li><li><a href="../grundlagen/">Algebra</a></li>
+  <li><a href="#e5">E5</a></li><li><a href="#e6">E6</a></li><li><a href="#e7">E7</a></li><li><a href="#polar">Polar</a></li><li><a href="#e9">E9</a></li><li><a href="#e10">E10</a></li><li><a href="#drehung">Rotation</a></li><li><a href="#e11">E11</a></li><li><a href="#dreieck">Triangles</a></li><li><a href="#spickzettel">Cheat sheet</a></li><li><a href="../grundlagen/">Algebra</a></li>
 </ul></nav>
 
 <!-- ============ 1 Radians ============ -->
@@ -227,7 +227,156 @@
   <div class="done">The script doesn't have a model solution for E7 yet. This solution was worked out separately, so if in doubt, check it with your teacher.</div>
 </article>
 
-<h2 id="spickzettel">5 · Cheat sheet</h2>
+<!-- ============ 5 Polar coordinates (script 15.3) ============ -->
+<h2 id="polar">5 · Polar coordinates</h2>
+<div class="box tip" id="e8"><b>Script pages 7–9 are still missing here</b>They contain the start of 15.3 (incl. 15.3.1) and exercise E8. As soon as we have them, they will be added here.</div>
+<p>So far, a point was given by \(x\) and \(y\): “3 to the right, 1 up”. You can also describe it like a direction: <b>“go 3 units, at an angle of 30°”</b>. That's polar coordinates.</p>
+<div class="box">$$P = (r, \varphi)$$
+<ul class="sub">
+  <li><b>r</b> = radial coordinate = <b>distance</b> of P from the origin O (the pole). Always \(r \ge 0\).</li>
+  <li><b>φ</b> (phi) = angle coordinate = the <b>angle</b> between the positive x-axis (the polar axis) and the ray from O through P. Usually \(0^\circ \le \varphi \lt 360^\circ\).</li>
+</ul></div>
+<p>Careful: \((3, 30^\circ)\) in polar coordinates and \((3, 30)\) in cartesian coordinates are completely different points. The ° sign (or π) tells you it's an angle.</p>
+<p>The link to the unit circle: on the unit circle (\(r = 1\)) the point is \((\cos\varphi, \sin\varphi)\). A circle with radius \(r\) is the unit circle stretched by \(r\), so <b>multiply both coordinates by r</b>.</p>
+<ol class="recipe set">
+  <li><div><b>Polar → cartesian</b><span class="f">\(x = r\cdot\cos(\varphi), \quad y = r\cdot\sin(\varphi)\)</span><small>Works for every angle, also negative ones and angles of 360° or more.</small></div></li>
+  <li><div><b>Cartesian → polar</b><span class="f">\(r = \sqrt{x^2 + y^2}\)</span><small>Pythagoras: x and y are the legs, r is the hypotenuse. For φ: <strong>sketch the point</strong>, find the angle to the x-axis (reference angle) from \(\tan = \frac{|y|}{|x|}\), then adjust for the quadrant (table below).</small></div></li>
+</ol>
+<div class="tbl"><table>
+  <tr><th>P lies in quadrant</th><th>I (right, top)</th><th>II (left, top)</th><th>III (left, bottom)</th><th>IV (right, bottom)</th></tr>
+  <tr><td>φ =</td><td>reference angle</td><td>180° − ref.</td><td>180° + ref.</td><td>360° − ref.</td></tr>
+</table></div>
+<div class="box tip"><b>Why not just use the calculator's tan⁻¹?</b>\(\tan^{-1}\) only gives angles between −90° and 90°. It can't tell \((1, 1)\) and \((-1, -1)\) apart: both have \(\frac{y}{x} = 1\). That's why you always sketch first.</div>
+
+<!-- E9 -->
+<article class="ex" id="e9" data-mode="worked">
+  <div class="ex-head"><h3>E9</h3></div>
+  <div class="task">Without a calculator.<br>(a) Find the cartesian coordinates of the points \(A = (1, 30^\circ)\), \(B = (2, -30^\circ)\), \(C = (3, 150^\circ)\), \(D = (4, 1080^\circ)\), given in polar coordinates.<br>(b) What should be added in Memo 15.3.4? Test your formula with the points above.</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">STEP 1</span><h4>The formula</h4>
+      <p class="why">The point on the unit circle, stretched by r.</p>
+      <div class="calc">$$x = r\cdot\cos(\varphi), \qquad y = r\cdot\sin(\varphi)$$</div></li>
+    <li class="step"><span class="nr">A</span><h4>\(A = (1, 30^\circ)\)</h4>
+      <p class="why">r = 1, so A is directly on the unit circle. Values for 30° from the table in <a href="#e5">E5</a>.</p>
+      <div class="calc">$$x = 1\cdot\cos 30^\circ = \tfrac{\sqrt3}{2}, \quad y = 1\cdot\sin 30^\circ = \tfrac12 \qquad\Rightarrow\qquad A = \left(\tfrac{\sqrt3}{2},\ \tfrac12\right)$$</div></li>
+    <li class="step"><span class="nr">B</span><h4>\(B = (2, -30^\circ)\)</h4>
+      <p class="why">−30° means 30° clockwise: quadrant IV, so x positive, y negative. From <a href="#e6">E6</a>: \(\cos(-\alpha) = \cos\alpha\), \(\sin(-\alpha) = -\sin\alpha\).</p>
+      <div class="calc">$$x = 2\cdot\tfrac{\sqrt3}{2} = \sqrt3, \quad y = 2\cdot\left(-\tfrac12\right) = -1 \qquad\Rightarrow\qquad B = (\sqrt3,\ -1)$$</div></li>
+    <li class="step"><div class="ask" data-type="choice"><p class="q">In which quadrant is C?</p><button class="opt">I<span class="oh">Quadrant I goes from 0° to 90°. 150° is further.</span></button><button class="opt" data-ok>II</button><button class="opt">III<span class="oh">Quadrant III starts at 180°. 150° is not there yet.</span></button><button class="opt">IV<span class="oh">Quadrant IV goes from 270° to 360°.</span></button></div><span class="nr">C</span><h4>\(C = (3, 150^\circ)\)</h4>
+      <p class="why">150° is in quadrant II (left, top): x negative, y positive. The reference angle (to the x-axis) is \(180^\circ - 150^\circ = 30^\circ\), so the numbers are the ones of 30°.</p>
+      <div class="calc">$$x = 3\cdot\left(-\tfrac{\sqrt3}{2}\right) = -\tfrac{3\sqrt3}{2}, \quad y = 3\cdot\tfrac12 = \tfrac32 \qquad\Rightarrow\qquad C = \left(-\tfrac{3\sqrt3}{2},\ \tfrac32\right)$$</div></li>
+    <li class="step"><span class="nr">D</span><h4>\(D = (4, 1080^\circ)\)</h4>
+      <p class="why">\(1080^\circ = 3\cdot 360^\circ\): three full turns. You end up exactly where you started, at 0°.</p>
+      <div class="calc">$$x = 4\cdot\cos 0^\circ = 4, \quad y = 4\cdot\sin 0^\circ = 0 \qquad\Rightarrow\qquad D = (4,\ 0)$$</div></li>
+    <li class="step"><span class="nr">(b)</span><h4>What to add to the memo</h4>
+      <p class="why">In the definition, φ is between 0° and 360°. But B (−30°) and D (1080°) are outside, and the formulas still gave the right points.</p>
+      <div class="calc"><p>Addition: <b>the formulas \(x = r\cos\varphi\), \(y = r\sin\varphi\) hold for every angle φ</b>, also for negative angles and angles of 360° or more.</p></div></li>
+  </ol>
+  <div class="done">x = r·cos φ, y = r·sin φ. Get the numbers from the special-values table, the signs from the quadrant.</div>
+</article>
+
+<!-- E10 -->
+<article class="ex" id="e10" data-mode="faded">
+  <div class="ex-head"><h3>E10</h3></div>
+  <div class="task">Without a calculator. Find the polar coordinates of the points \(A = (0, 10)\), \(B = (5, 5)\), \(P = (1, \sqrt3)\), \(Q = (-1, \sqrt3)\), \(R = (1, -\sqrt3)\), \(S = (-1, -\sqrt3)\), given in cartesian coordinates.</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">TIP</span><h4>Sketch all six points first</h4>
+      <p class="why">P, Q, R and S are mirror images of each other. Once you have P, the others are quick.</p></li>
+    <li class="step"><span class="nr">A</span><h4>\(A = (0, 10)\)</h4>
+      <p class="why">A lies on the positive y-axis, 10 units above O. Straight up is 90°.</p>
+      <div class="calc">$$A = (10,\ 90^\circ)$$</div></li>
+    <li class="step"><span class="nr">B</span><h4>\(B = (5, 5)\)</h4>
+      <p class="why">r with Pythagoras. x and y are equal, so the angle is exactly in the middle of quadrant I.</p>
+      <div class="calc">$$r = \sqrt{5^2 + 5^2} = \sqrt{50} = 5\sqrt2, \qquad \tan\varphi = \tfrac55 = 1 \Rightarrow \varphi = 45^\circ \qquad\Rightarrow\qquad B = (5\sqrt2,\ 45^\circ)$$</div></li>
+    <li class="step"><span class="nr">P</span><h4>\(P = (1, \sqrt3)\)</h4>
+      <p class="why">\(\tan = \sqrt3\): which special angle has that? Look at the tan row in <a href="#e5">E5</a>.</p>
+      <div class="calc">$$r = \sqrt{1 + 3} = 2, \qquad \tan\varphi = \tfrac{\sqrt3}{1} = \sqrt3 \Rightarrow \varphi = 60^\circ \qquad\Rightarrow\qquad P = (2,\ 60^\circ)$$</div></li>
+    <li class="step"><div class="ask" data-type="choice"><p class="q">Q = (−1, √3). In which quadrant is Q?</p><button class="opt">I<span class="oh">x is negative, so Q is on the left.</span></button><button class="opt" data-ok>II</button><button class="opt">III<span class="oh">y is positive, so Q is at the top.</span></button><button class="opt">IV<span class="oh">x is negative and y positive: left and top.</span></button></div><span class="nr">Q</span><h4>\(Q = (-1, \sqrt3)\)</h4>
+      <p class="why">Same r and reference angle 60° as P, but left and top: quadrant II.</p>
+      <div class="calc">$$r = 2, \qquad \varphi = 180^\circ - 60^\circ = 120^\circ \qquad\Rightarrow\qquad Q = (2,\ 120^\circ)$$</div></li>
+    <li class="step"><span class="nr">R</span><h4>\(R = (1, -\sqrt3)\)</h4>
+      <p class="why">Right and bottom: quadrant IV.</p>
+      <div class="calc">$$r = 2, \qquad \varphi = 360^\circ - 60^\circ = 300^\circ \qquad\Rightarrow\qquad R = (2,\ 300^\circ)$$</div></li>
+    <li class="step"><span class="nr">S</span><h4>\(S = (-1, -\sqrt3)\)</h4>
+      <p class="why">Left and bottom: quadrant III. S is exactly opposite P.</p>
+      <div class="calc">$$r = 2, \qquad \varphi = 180^\circ + 60^\circ = 240^\circ \qquad\Rightarrow\qquad S = (2,\ 240^\circ)$$</div></li>
+  </ol>
+  <div class="done">r with Pythagoras. φ: sketch → reference angle → adjust for the quadrant.</div>
+</article>
+
+<!-- ============ 6 Rotating points ============ -->
+<h2 id="drehung">6 · Rotating points</h2>
+<p>A point turns around O at constant speed, like a mark on a wheel. Its distance r stays the same, only the angle changes. So: <b>find the angle at time t</b>, then use the polar → cartesian formula.</p>
+<div class="box">$$\varphi(t) = \omega\cdot t + \varphi_0 \qquad\Rightarrow\qquad P(t) = \begin{pmatrix} r\cdot\cos(\omega t + \varphi_0) \\ r\cdot\sin(\omega t + \varphi_0) \end{pmatrix}$$
+<ul class="sub">
+  <li><b>r</b> = radius (the number in front of cos and sin)</li>
+  <li><b>ω</b> (omega) = angle per second, in radians (the number in front of t). One full turn is 2π in T seconds, so \(\omega = \frac{2\pi}{T}\) and \(T = \frac{2\pi}{|\omega|}\).</li>
+  <li><b>φ₀</b> = angle at the start (t = 0)</li>
+  <li><b>Sign of ω</b>: positive → anticlockwise (the normal direction), negative → clockwise</li>
+</ul></div>
+<p>Special case (Memo 15.3.5): unit circle, start at \((1, 0)\), speed 1 unit per second. Then the angle is simply t, and the point is \((\cos t, \sin t)\).</p>
+
+<!-- E11 -->
+<article class="ex" id="e11" data-mode="worked">
+  <div class="ex-head"><h3>E11</h3></div>
+  <div class="task">A wheel with its axis at the origin turns at constant angular velocity. A point A is marked at distance r from the origin.<br>(a) Find \(x(t)\) and \(y(t)\) for \(r = 7\), period \(T = 20\) s, start \(A(0) = (r, 0)\).<br>(b) Find \(A(t)\) for \(r = 1\), \(T = 2\pi\), \(A(0) = (r, 0)\). How fast is the point moving along the circle?<br>(c) Find \(A(t)\) for \(r = 1\), \(T = 2\pi\), \(A(0) = (0, r)\).<br>(d) \(B(t) = \left(3\cos\left(\frac{\pi}{3}t\right),\ 3\sin\left(\frac{\pi}{3}t\right)\right)\). Distance r? Period T? Where is B at t = 0?<br>(e) \(B(t) = \left(\cos\left(-5t + \frac{\pi}{3}\right),\ \sin\left(-5t + \frac{\pi}{3}\right)\right)\). Distance r? Period T? Where is B at t = 0? In which direction does it turn?</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">STEP 1</span><h4>(a) How fast does the angle grow?</h4>
+      <p class="why">One full turn (2π) takes 20 seconds. So per second, the wheel turns a 20th of that.</p>
+      <div class="calc">$$\varphi(t) = \frac{2\pi}{20}\cdot t = \frac{\pi}{10}\cdot t$$
+      <p>Check: \(t = 0\) → angle 0 ✓ (start on the x-axis). \(t = 20\) → angle \(2\pi\) ✓ (one full turn).</p></div></li>
+    <li class="step"><span class="nr">STEP 2</span><h4>(a) Polar → cartesian</h4>
+      <p class="why">r = 7, angle φ(t). Use x = r·cos φ, y = r·sin φ.</p>
+      <div class="calc">$$x(t) = 7\cos\left(\tfrac{\pi}{10}t\right), \qquad y(t) = 7\sin\left(\tfrac{\pi}{10}t\right)$$
+      <p>Test: after 5 s (a quarter of 20 s) the point should be at the top: \(A(5) = (7\cos\frac{\pi}{2},\ 7\sin\frac{\pi}{2}) = (0, 7)\) ✓</p></div></li>
+    <li class="step"><span class="nr">(b)</span><h4>T = 2π: the angle is simply t</h4>
+      <p class="why">\(\varphi(t) = \frac{2\pi}{2\pi}\cdot t = t\). Speed = distance ÷ time: one lap is the circumference \(2\pi\cdot 1\), and it takes \(2\pi\) seconds.</p>
+      <div class="calc">$$A(t) = \begin{pmatrix}\cos t \\ \sin t\end{pmatrix}, \qquad v = \frac{2\pi}{2\pi} = 1\ \tfrac{\text{unit}}{\text{second}}$$
+      <p>This is exactly Memo 15.3.5.</p></div></li>
+    <li class="step"><span class="nr">(c)</span><h4>Start at the top: the angle is π/2 ahead</h4>
+      <p class="why">(0, 1) is at 90° = π/2. Same speed as in (b), but the angle starts at π/2 instead of 0.</p>
+      <div class="calc">$$\varphi(t) = t + \tfrac{\pi}{2} \qquad\Rightarrow\qquad A(t) = \begin{pmatrix}\cos\left(t + \frac{\pi}{2}\right) \\ \sin\left(t + \frac{\pi}{2}\right)\end{pmatrix} = \begin{pmatrix}-\sin t \\ \cos t\end{pmatrix}$$
+      <p>The short form comes from <a href="#e6">E6 (b)</a>. Check: \(A(0) = (-\sin 0, \cos 0) = (0, 1)\) ✓</p></div></li>
+    <li class="step"><span class="nr">(d)</span><h4>Read off r, ω, start</h4>
+      <p class="why">Compare with \(r\cos(\omega t + \varphi_0)\): in front 3, before t \(\frac{\pi}{3}\), nothing added.</p>
+      <div class="calc">$$r = 3, \qquad \omega = \tfrac{\pi}{3} \Rightarrow T = 2\pi : \tfrac{\pi}{3} = 2\pi\cdot\tfrac{3}{\pi} = 6\text{ s}, \qquad B(0) = (3\cos 0,\ 3\sin 0) = (3, 0)$$</div></li>
+    <li class="step"><div class="ask" data-type="choice"><p class="q">The angle is −5t + π/3. In which direction does B turn?</p><button class="opt">Anticlockwise<span class="oh">Look at the sign in front of t. As t grows, does the angle get bigger or smaller?</span></button><button class="opt" data-ok>Clockwise</button></div><span class="nr">(e)</span><h4>Read off r, ω, start, direction</h4>
+      <p class="why">No number in front of cos and sin means r = 1. The angle changes by −5 per second: it gets smaller, so the point turns backwards (clockwise).</p>
+      <div class="calc">$$r = 1, \qquad T = \frac{2\pi}{|-5|} = \frac{2\pi}{5} \approx 1.26\text{ s}, \qquad B(0) = \left(\cos\tfrac{\pi}{3},\ \sin\tfrac{\pi}{3}\right) = \left(\tfrac12,\ \tfrac{\sqrt3}{2}\right)$$
+      <p>Direction: <b>clockwise</b>, because of the minus sign in front of t.</p></div></li>
+  </ol>
+  <div class="done">\(\big(r\cos(\omega t + \varphi_0),\ r\sin(\omega t + \varphi_0)\big)\): r = radius, \(T = \frac{2\pi}{|\omega|}\), φ₀ = start angle, sign of ω = direction.</div>
+</article>
+
+<!-- ============ 7 Right triangles (script 15.4) ============ -->
+<h2 id="dreieck">7 · Trigonometry in right triangles</h2>
+<p>Trigonometry means “measuring triangles”. In a right triangle, sin, cos and tan are simply <b>ratios of two sides</b>.</p>
+<p>First the names. They always depend on <b>which angle</b> you are looking at:</p>
+<svg viewBox="0 0 320 180" role="img" aria-label="Right triangle with angle alpha, hypotenuse, opposite and adjacent side" style="width:100%;max-width:420px;display:block;margin:14px auto">
+  <polygon points="30,150 290,150 290,30" fill="none" stroke="var(--ink)" stroke-width="2"/>
+  <path d="M276 150v-14h14" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+  <path d="M75 150a45 45 0 0 0 -4.2 -18.9" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+  <text x="80" y="143" font-size="16" fill="var(--ink)">α</text>
+  <line x1="30" y1="150" x2="290" y2="150" stroke="var(--cos)" stroke-width="5"/>
+  <line x1="290" y1="150" x2="290" y2="30" stroke="var(--sin)" stroke-width="5"/>
+  <text x="160" y="168" font-size="14" text-anchor="middle" fill="var(--cos)" font-weight="700">adjacent (next to α)</text>
+  <text x="296" y="95" font-size="14" fill="var(--sin)" font-weight="700" transform="rotate(90 296 95)" text-anchor="middle">opposite</text>
+  <text x="150" y="86" font-size="14" fill="var(--ink)" font-weight="700" transform="rotate(-24.8 150 86)" text-anchor="middle">hypotenuse (longest)</text>
+</svg>
+<ul class="sub">
+  <li><b>Hypotenuse</b>: opposite the right angle, the longest side. Always the same.</li>
+  <li><span class="cc">Adjacent side</span> (Ankathete): the leg that <b>touches</b> α.</li>
+  <li><span class="ss">Opposite side</span> (Gegenkathete): the leg <b>across from</b> α.</li>
+</ul>
+<p>Look at the other acute angle instead, and adjacent and opposite swap roles.</p>
+<div class="box">$$\sin(\alpha) = \frac{\text{opposite}}{\text{hypotenuse}}, \qquad \cos(\alpha) = \frac{\text{adjacent}}{\text{hypotenuse}}, \qquad \tan(\alpha) = \frac{\text{opposite}}{\text{adjacent}}$$
+<p style="margin:0">Memory aid: <b>SOH CAH TOA</b> (Sin = O/H, Cos = A/H, Tan = O/A).</p></div>
+<p><b>Why is that true?</b> Put the triangle so that α is at O. Shrink it until the hypotenuse is 1: now it is exactly the triangle in the unit circle, with legs <span class="cc">cos α</span> and <span class="ss">sin α</span>. Shrinking doesn't change the angles (the triangles are <b>similar</b>, ähnlich), and it doesn't change the ratios of the sides either. In the small triangle, \(\frac{\text{opposite}}{\text{hypotenuse}} = \frac{\sin\alpha}{1}\). So it's the same in the big one.</p>
+<p>Try it yourself: a right triangle has legs 3 and 4 and hypotenuse 5. α is the angle opposite the side 3. What are sin α, cos α and tan α? <button type="button" class="reveal" data-answer="t2">Show answer</button></p>
+<p id="t2">\(\sin\alpha = \frac35\), \(\cos\alpha = \frac45\), \(\tan\alpha = \frac34\)</p>
+<div class="box tip"><b>Link to polar coordinates</b>\(x = r\cos\varphi\) is just “adjacent = hypotenuse · cos”: x is the adjacent side, r the hypotenuse. Same idea, two names.</div>
+
+<h2 id="spickzettel">8 · Cheat sheet</h2>
 <iframe class="embedded" data-part="spickzettel" src="spickzettel.html?embed=1&amp;lang=en" title="Cheat sheet"></iframe>
 
 <a class="card c-mint nextcard" href="../training/"><div class="doodle"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 10h36v44H14z"/><path d="M22 24l5 5 9-10M22 40h20"/></svg></div><div><span class="n">Done with this chapter?</span><b>On to exam training ↗</b><span>Mixed tasks from both chapters, like in the test. You can come back here any time.</span></div></a>

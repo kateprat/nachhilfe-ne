@@ -274,7 +274,7 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
     // start page: progress per step and "continue where you were"
     document.querySelectorAll('.path a[data-topic]').forEach(a => {
       const t = a.dataset.topic, box = a.querySelector('.cprog'); if (!box) return;
-      let done = 0, total = { '/trigonometrie/': 7, '/quadriken/': 16 }[t] || 0;
+      let done = 0, total = { '/trigonometrie/': 10, '/quadriken/': 16 }[t] || 0;
       try { done = JSON.parse(localStorage.getItem('nachhilfe-done:' + t) || '[]').length; total = +localStorage.getItem('nachhilfe-total:' + t) || total; } catch (e) {}
       if (total) box.innerHTML = `<i><b style="width:${Math.round(100 * done / total)}%"></b></i>${done}/${total}`;
     });

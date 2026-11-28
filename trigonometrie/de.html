@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <script src="../assets/theme.js?v=70"></script>
-<script src="../assets/sitenav.js?v=34"></script>
+<script src="../assets/sitenav.js?v=35"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Trigonometrie</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="Mathe 2cNP"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="theme-color" content="#fffdf8" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#1f1a17" media="(prefers-color-scheme: dark)">
@@ -21,12 +21,12 @@
 <nav class="langsw" aria-label="Sprache / language"><a href="de.html" lang="de" aria-current="page">DE</a><a href="./" lang="en">EN</a></nav>
 <p class="crumb"><a href="../">← Übersicht</a></p>
 <h1>Trigonometrie</h1>
-<p class="lead">Skript Kapitel 15 (auf Englisch), Aufgaben E1–E7. Die ganze Trigonometrie steckt in einem einzigen Bild: dem Einheitskreis.</p>
+<p class="lead">Skript Kapitel 15 (auf Englisch), Aufgaben E1–E11. Die ganze Trigonometrie steckt in einem einzigen Bild: dem Einheitskreis.</p>
 
 <nav class="nav" aria-label="Abschnitte"><ul>
   <li><a href="#bogenmass">Bogenmass</a></li><li><a href="#kreis">Einheitskreis</a></li><li><a href="#rezepte">Rezepte</a></li>
   <li><a href="#aufgaben">Aufgaben</a></li><li><a href="#e1">E1</a></li><li><a href="#e2">E2</a></li><li><a href="#e3">E3</a></li><li><a href="#e4">E4</a></li>
-  <li><a href="#e5">E5</a></li><li><a href="#e6">E6</a></li><li><a href="#e7">E7</a></li><li><a href="#spickzettel">Spickzettel</a></li><li><a href="../grundlagen/">Algebra</a></li>
+  <li><a href="#e5">E5</a></li><li><a href="#e6">E6</a></li><li><a href="#e7">E7</a></li><li><a href="#polar">Polar</a></li><li><a href="#e9">E9</a></li><li><a href="#e10">E10</a></li><li><a href="#drehung">Drehung</a></li><li><a href="#e11">E11</a></li><li><a href="#dreieck">Dreiecke</a></li><li><a href="#spickzettel">Spickzettel</a></li><li><a href="../grundlagen/">Algebra</a></li>
 </ul></nav>
 
 <!-- ============ 1 Bogenmass ============ -->
@@ -227,7 +227,156 @@
   <div class="done">Im Skript fehlt die Musterlösung zu E7 noch. Diese Lösung ist selbst hergeleitet, also im Zweifel mit der Lehrperson abgleichen.</div>
 </article>
 
-<h2 id="spickzettel">5 · Spickzettel</h2>
+<!-- ============ 5 Polarkoordinaten (Skript 15.3) ============ -->
+<h2 id="polar">5 · Polarkoordinaten</h2>
+<div class="box tip" id="e8"><b>Skriptseiten 7–9 fehlen hier noch</b>Dort stehen der Anfang von 15.3 (inkl. 15.3.1) und die Aufgabe E8. Sobald wir sie haben, kommen sie hierher.</div>
+<p>Bisher war ein Punkt durch \(x\) und \(y\) gegeben: «3 nach rechts, 1 nach oben». Man kann ihn auch wie eine Wegbeschreibung angeben: <b>«geh 3 Einheiten, im Winkel 30°»</b>. Das sind Polarkoordinaten (auch Kreiskoordinaten).</p>
+<div class="box">$$P = (r, \varphi)$$
+<ul class="sub">
+  <li><b>r</b> = radiale Koordinate = <b>Abstand</b> von P zum Ursprung O (dem Pol). Immer \(r \ge 0\).</li>
+  <li><b>φ</b> (phi) = Winkelkoordinate = der <b>Winkel</b> zwischen der positiven x-Achse (der Polarachse) und dem Strahl von O durch P. Meistens \(0^\circ \le \varphi \lt 360^\circ\).</li>
+</ul></div>
+<p>Achtung: \((3, 30^\circ)\) in Polarkoordinaten und \((3, 30)\) in kartesischen Koordinaten sind zwei ganz verschiedene Punkte. Das °-Zeichen (oder π) zeigt dir, dass es ein Winkel ist.</p>
+<p>Die Verbindung zum Einheitskreis: Auf dem Einheitskreis (\(r = 1\)) ist der Punkt \((\cos\varphi, \sin\varphi)\). Ein Kreis mit Radius \(r\) ist der Einheitskreis, um \(r\) gestreckt. Also <b>beide Koordinaten mal r</b>.</p>
+<ol class="recipe set">
+  <li><div><b>Polar → kartesisch</b><span class="f">\(x = r\cdot\cos(\varphi), \quad y = r\cdot\sin(\varphi)\)</span><small>Gilt für jeden Winkel, auch für negative und für Winkel ab 360°.</small></div></li>
+  <li><div><b>Kartesisch → polar</b><span class="f">\(r = \sqrt{x^2 + y^2}\)</span><small>Pythagoras: x und y sind die Katheten, r ist die Hypotenuse. Für φ: <strong>Punkt skizzieren</strong>, den Winkel zur x-Achse (Bezugswinkel) aus \(\tan = \frac{|y|}{|x|}\) bestimmen, dann je nach Quadrant anpassen (Tabelle unten).</small></div></li>
+</ol>
+<div class="tbl"><table>
+  <tr><th>P liegt im Quadranten</th><th>I (rechts oben)</th><th>II (links oben)</th><th>III (links unten)</th><th>IV (rechts unten)</th></tr>
+  <tr><td>φ =</td><td>Bezugswinkel</td><td>180° − Bezugsw.</td><td>180° + Bezugsw.</td><td>360° − Bezugsw.</td></tr>
+</table></div>
+<div class="box tip"><b>Warum nicht einfach tan⁻¹ vom Taschenrechner?</b>\(\tan^{-1}\) gibt nur Winkel zwischen −90° und 90°. Er kann \((1, 1)\) und \((-1, -1)\) nicht unterscheiden: Beide haben \(\frac{y}{x} = 1\). Darum immer zuerst skizzieren.</div>
+
+<!-- E9 -->
+<article class="ex" id="e9" data-mode="worked">
+  <div class="ex-head"><h3>E9</h3></div>
+  <div class="task">Ohne Taschenrechner.<br>(a) Bestimme die kartesischen Koordinaten der Punkte \(A = (1, 30^\circ)\), \(B = (2, -30^\circ)\), \(C = (3, 150^\circ)\), \(D = (4, 1080^\circ)\), die in Polarkoordinaten gegeben sind.<br>(b) Was sollte in Memo 15.3.4 ergänzt werden? Teste deine Formel mit den Punkten oben.</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>Die Formel</h4>
+      <p class="why">Der Punkt auf dem Einheitskreis, um r gestreckt.</p>
+      <div class="calc">$$x = r\cdot\cos(\varphi), \qquad y = r\cdot\sin(\varphi)$$</div></li>
+    <li class="step"><span class="nr">A</span><h4>\(A = (1, 30^\circ)\)</h4>
+      <p class="why">r = 1, A liegt also direkt auf dem Einheitskreis. Werte für 30° aus der Tabelle in <a href="#e5">E5</a>.</p>
+      <div class="calc">$$x = 1\cdot\cos 30^\circ = \tfrac{\sqrt3}{2}, \quad y = 1\cdot\sin 30^\circ = \tfrac12 \qquad\Rightarrow\qquad A = \left(\tfrac{\sqrt3}{2},\ \tfrac12\right)$$</div></li>
+    <li class="step"><span class="nr">B</span><h4>\(B = (2, -30^\circ)\)</h4>
+      <p class="why">−30° heisst: 30° im Uhrzeigersinn. Quadrant IV, also x positiv, y negativ. Aus <a href="#e6">E6</a>: \(\cos(-\alpha) = \cos\alpha\), \(\sin(-\alpha) = -\sin\alpha\).</p>
+      <div class="calc">$$x = 2\cdot\tfrac{\sqrt3}{2} = \sqrt3, \quad y = 2\cdot\left(-\tfrac12\right) = -1 \qquad\Rightarrow\qquad B = (\sqrt3,\ -1)$$</div></li>
+    <li class="step"><div class="ask" data-type="choice"><p class="q">In welchem Quadranten liegt C?</p><button class="opt">I<span class="oh">Quadrant I geht von 0° bis 90°. 150° ist weiter.</span></button><button class="opt" data-ok>II</button><button class="opt">III<span class="oh">Quadrant III beginnt erst bei 180°.</span></button><button class="opt">IV<span class="oh">Quadrant IV geht von 270° bis 360°.</span></button></div><span class="nr">C</span><h4>\(C = (3, 150^\circ)\)</h4>
+      <p class="why">150° liegt im Quadranten II (links oben): x negativ, y positiv. Der Bezugswinkel (zur x-Achse) ist \(180^\circ - 150^\circ = 30^\circ\), die Zahlen sind also die von 30°.</p>
+      <div class="calc">$$x = 3\cdot\left(-\tfrac{\sqrt3}{2}\right) = -\tfrac{3\sqrt3}{2}, \quad y = 3\cdot\tfrac12 = \tfrac32 \qquad\Rightarrow\qquad C = \left(-\tfrac{3\sqrt3}{2},\ \tfrac32\right)$$</div></li>
+    <li class="step"><span class="nr">D</span><h4>\(D = (4, 1080^\circ)\)</h4>
+      <p class="why">\(1080^\circ = 3\cdot 360^\circ\): drei ganze Umdrehungen. Du landest genau dort, wo du gestartet bist, bei 0°.</p>
+      <div class="calc">$$x = 4\cdot\cos 0^\circ = 4, \quad y = 4\cdot\sin 0^\circ = 0 \qquad\Rightarrow\qquad D = (4,\ 0)$$</div></li>
+    <li class="step"><span class="nr">(b)</span><h4>Was ins Memo gehört</h4>
+      <p class="why">In der Definition liegt φ zwischen 0° und 360°. B (−30°) und D (1080°) liegen ausserhalb, und die Formeln haben trotzdem die richtigen Punkte geliefert.</p>
+      <div class="calc"><p>Ergänzung: <b>Die Formeln \(x = r\cos\varphi\), \(y = r\sin\varphi\) gelten für jeden Winkel φ</b>, auch für negative Winkel und Winkel ab 360°.</p></div></li>
+  </ol>
+  <div class="done">x = r·cos φ, y = r·sin φ. Die Zahlen aus der Tabelle der speziellen Werte, die Vorzeichen aus dem Quadranten.</div>
+</article>
+
+<!-- E10 -->
+<article class="ex" id="e10" data-mode="faded">
+  <div class="ex-head"><h3>E10</h3></div>
+  <div class="task">Ohne Taschenrechner. Bestimme die Polarkoordinaten der Punkte \(A = (0, 10)\), \(B = (5, 5)\), \(P = (1, \sqrt3)\), \(Q = (-1, \sqrt3)\), \(R = (1, -\sqrt3)\), \(S = (-1, -\sqrt3)\), die in kartesischen Koordinaten gegeben sind.</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">TIPP</span><h4>Zuerst alle sechs Punkte skizzieren</h4>
+      <p class="why">P, Q, R und S sind Spiegelbilder voneinander. Wenn du P hast, gehen die anderen schnell.</p></li>
+    <li class="step"><span class="nr">A</span><h4>\(A = (0, 10)\)</h4>
+      <p class="why">A liegt auf der positiven y-Achse, 10 Einheiten über O. Gerade nach oben ist 90°.</p>
+      <div class="calc">$$A = (10,\ 90^\circ)$$</div></li>
+    <li class="step"><span class="nr">B</span><h4>\(B = (5, 5)\)</h4>
+      <p class="why">r mit Pythagoras. x und y sind gleich gross, der Winkel liegt also genau in der Mitte von Quadrant I.</p>
+      <div class="calc">$$r = \sqrt{5^2 + 5^2} = \sqrt{50} = 5\sqrt2, \qquad \tan\varphi = \tfrac55 = 1 \Rightarrow \varphi = 45^\circ \qquad\Rightarrow\qquad B = (5\sqrt2,\ 45^\circ)$$</div></li>
+    <li class="step"><span class="nr">P</span><h4>\(P = (1, \sqrt3)\)</h4>
+      <p class="why">\(\tan = \sqrt3\): Welcher spezielle Winkel hat das? Schau in die tan-Zeile von <a href="#e5">E5</a>.</p>
+      <div class="calc">$$r = \sqrt{1 + 3} = 2, \qquad \tan\varphi = \tfrac{\sqrt3}{1} = \sqrt3 \Rightarrow \varphi = 60^\circ \qquad\Rightarrow\qquad P = (2,\ 60^\circ)$$</div></li>
+    <li class="step"><div class="ask" data-type="choice"><p class="q">Q = (−1, √3). In welchem Quadranten liegt Q?</p><button class="opt">I<span class="oh">x ist negativ, Q liegt also links.</span></button><button class="opt" data-ok>II</button><button class="opt">III<span class="oh">y ist positiv, Q liegt also oben.</span></button><button class="opt">IV<span class="oh">x negativ und y positiv: links oben.</span></button></div><span class="nr">Q</span><h4>\(Q = (-1, \sqrt3)\)</h4>
+      <p class="why">Gleiches r und Bezugswinkel 60° wie P, aber links oben: Quadrant II.</p>
+      <div class="calc">$$r = 2, \qquad \varphi = 180^\circ - 60^\circ = 120^\circ \qquad\Rightarrow\qquad Q = (2,\ 120^\circ)$$</div></li>
+    <li class="step"><span class="nr">R</span><h4>\(R = (1, -\sqrt3)\)</h4>
+      <p class="why">Rechts unten: Quadrant IV.</p>
+      <div class="calc">$$r = 2, \qquad \varphi = 360^\circ - 60^\circ = 300^\circ \qquad\Rightarrow\qquad R = (2,\ 300^\circ)$$</div></li>
+    <li class="step"><span class="nr">S</span><h4>\(S = (-1, -\sqrt3)\)</h4>
+      <p class="why">Links unten: Quadrant III. S liegt genau gegenüber von P.</p>
+      <div class="calc">$$r = 2, \qquad \varphi = 180^\circ + 60^\circ = 240^\circ \qquad\Rightarrow\qquad S = (2,\ 240^\circ)$$</div></li>
+  </ol>
+  <div class="done">r mit Pythagoras. φ: skizzieren → Bezugswinkel → je nach Quadrant anpassen.</div>
+</article>
+
+<!-- ============ 6 Drehende Punkte ============ -->
+<h2 id="drehung">6 · Drehende Punkte</h2>
+<p>Ein Punkt dreht sich mit konstanter Geschwindigkeit um O, wie eine Markierung auf einem Rad. Sein Abstand r bleibt gleich, nur der Winkel ändert sich. Also: <b>Winkel zur Zeit t bestimmen</b>, dann die Formel polar → kartesisch.</p>
+<div class="box">$$\varphi(t) = \omega\cdot t + \varphi_0 \qquad\Rightarrow\qquad P(t) = \begin{pmatrix} r\cdot\cos(\omega t + \varphi_0) \\ r\cdot\sin(\omega t + \varphi_0) \end{pmatrix}$$
+<ul class="sub">
+  <li><b>r</b> = Radius (die Zahl vor cos und sin)</li>
+  <li><b>ω</b> (omega) = Drehgeschwindigkeit, Winkel pro Sekunde im Bogenmass (die Zahl vor t). Eine ganze Umdrehung ist 2π in T Sekunden, also \(\omega = \frac{2\pi}{T}\) und \(T = \frac{2\pi}{|\omega|}\).</li>
+  <li><b>φ₀</b> = Winkel am Anfang (t = 0)</li>
+  <li><b>Vorzeichen von ω</b>: positiv → gegen den Uhrzeigersinn (die normale Richtung), negativ → im Uhrzeigersinn</li>
+</ul></div>
+<p>Spezialfall (Memo 15.3.5): Einheitskreis, Start bei \((1, 0)\), Geschwindigkeit 1 Einheit pro Sekunde. Dann ist der Winkel einfach t, und der Punkt ist \((\cos t, \sin t)\).</p>
+
+<!-- E11 -->
+<article class="ex" id="e11" data-mode="worked">
+  <div class="ex-head"><h3>E11</h3></div>
+  <div class="task">Ein Rad mit Drehachse im Ursprung dreht sich mit konstanter Drehgeschwindigkeit. Ein Punkt A ist im Abstand r vom Ursprung markiert.<br>(a) Bestimme \(x(t)\) und \(y(t)\) für \(r = 7\), Periode \(T = 20\) s, Start \(A(0) = (r, 0)\).<br>(b) Bestimme \(A(t)\) für \(r = 1\), \(T = 2\pi\), \(A(0) = (r, 0)\). Wie schnell bewegt sich der Punkt auf dem Kreis?<br>(c) Bestimme \(A(t)\) für \(r = 1\), \(T = 2\pi\), \(A(0) = (0, r)\).<br>(d) \(B(t) = \left(3\cos\left(\frac{\pi}{3}t\right),\ 3\sin\left(\frac{\pi}{3}t\right)\right)\). Abstand r? Periode T? Wo ist B zur Zeit t = 0?<br>(e) \(B(t) = \left(\cos\left(-5t + \frac{\pi}{3}\right),\ \sin\left(-5t + \frac{\pi}{3}\right)\right)\). Abstand r? Periode T? Wo ist B zur Zeit t = 0? In welche Richtung dreht er sich?</div>
+  <ol class="steps">
+    <li class="step"><span class="nr">SCHRITT 1</span><h4>(a) Wie schnell wächst der Winkel?</h4>
+      <p class="why">Eine ganze Umdrehung (2π) dauert 20 Sekunden. Pro Sekunde dreht sich das Rad also um einen Zwanzigstel davon.</p>
+      <div class="calc">$$\varphi(t) = \frac{2\pi}{20}\cdot t = \frac{\pi}{10}\cdot t$$
+      <p>Kontrolle: \(t = 0\) → Winkel 0 ✓ (Start auf der x-Achse). \(t = 20\) → Winkel \(2\pi\) ✓ (eine ganze Umdrehung).</p></div></li>
+    <li class="step"><span class="nr">SCHRITT 2</span><h4>(a) Polar → kartesisch</h4>
+      <p class="why">r = 7, Winkel φ(t). Also x = r·cos φ, y = r·sin φ.</p>
+      <div class="calc">$$x(t) = 7\cos\left(\tfrac{\pi}{10}t\right), \qquad y(t) = 7\sin\left(\tfrac{\pi}{10}t\right)$$
+      <p>Test: Nach 5 s (ein Viertel von 20 s) sollte der Punkt oben sein: \(A(5) = (7\cos\frac{\pi}{2},\ 7\sin\frac{\pi}{2}) = (0, 7)\) ✓</p></div></li>
+    <li class="step"><span class="nr">(b)</span><h4>T = 2π: Der Winkel ist einfach t</h4>
+      <p class="why">\(\varphi(t) = \frac{2\pi}{2\pi}\cdot t = t\). Geschwindigkeit = Weg : Zeit. Eine Runde ist der Umfang \(2\pi\cdot 1\) und dauert \(2\pi\) Sekunden.</p>
+      <div class="calc">$$A(t) = \begin{pmatrix}\cos t \\ \sin t\end{pmatrix}, \qquad v = \frac{2\pi}{2\pi} = 1\ \tfrac{\text{Einheit}}{\text{Sekunde}}$$
+      <p>Das ist genau Memo 15.3.5.</p></div></li>
+    <li class="step"><span class="nr">(c)</span><h4>Start oben: Der Winkel ist π/2 voraus</h4>
+      <p class="why">(0, 1) liegt bei 90° = π/2. Gleiche Geschwindigkeit wie in (b), aber der Winkel beginnt bei π/2 statt bei 0.</p>
+      <div class="calc">$$\varphi(t) = t + \tfrac{\pi}{2} \qquad\Rightarrow\qquad A(t) = \begin{pmatrix}\cos\left(t + \frac{\pi}{2}\right) \\ \sin\left(t + \frac{\pi}{2}\right)\end{pmatrix} = \begin{pmatrix}-\sin t \\ \cos t\end{pmatrix}$$
+      <p>Die kurze Form kommt aus <a href="#e6">E6 (b)</a>. Kontrolle: \(A(0) = (-\sin 0, \cos 0) = (0, 1)\) ✓</p></div></li>
+    <li class="step"><span class="nr">(d)</span><h4>r, ω und Start ablesen</h4>
+      <p class="why">Vergleiche mit \(r\cos(\omega t + \varphi_0)\): vorne 3, vor dem t \(\frac{\pi}{3}\), nichts dazu addiert.</p>
+      <div class="calc">$$r = 3, \qquad \omega = \tfrac{\pi}{3} \Rightarrow T = 2\pi : \tfrac{\pi}{3} = 2\pi\cdot\tfrac{3}{\pi} = 6\text{ s}, \qquad B(0) = (3\cos 0,\ 3\sin 0) = (3, 0)$$</div></li>
+    <li class="step"><div class="ask" data-type="choice"><p class="q">Der Winkel ist −5t + π/3. In welche Richtung dreht sich B?</p><button class="opt">Gegen den Uhrzeigersinn<span class="oh">Schau auf das Vorzeichen vor dem t. Wenn t wächst: Wird der Winkel grösser oder kleiner?</span></button><button class="opt" data-ok>Im Uhrzeigersinn</button></div><span class="nr">(e)</span><h4>r, ω, Start und Richtung ablesen</h4>
+      <p class="why">Keine Zahl vor cos und sin heisst r = 1. Der Winkel ändert sich pro Sekunde um −5: Er wird kleiner, der Punkt dreht also rückwärts (im Uhrzeigersinn).</p>
+      <div class="calc">$$r = 1, \qquad T = \frac{2\pi}{|-5|} = \frac{2\pi}{5} \approx 1.26\text{ s}, \qquad B(0) = \left(\cos\tfrac{\pi}{3},\ \sin\tfrac{\pi}{3}\right) = \left(\tfrac12,\ \tfrac{\sqrt3}{2}\right)$$
+      <p>Richtung: <b>im Uhrzeigersinn</b>, wegen des Minus vor dem t.</p></div></li>
+  </ol>
+  <div class="done">\(\big(r\cos(\omega t + \varphi_0),\ r\sin(\omega t + \varphi_0)\big)\): r = Radius, \(T = \frac{2\pi}{|\omega|}\), φ₀ = Startwinkel, Vorzeichen von ω = Richtung.</div>
+</article>
+
+<!-- ============ 7 Rechtwinklige Dreiecke (Skript 15.4) ============ -->
+<h2 id="dreieck">7 · Trigonometrie im rechtwinkligen Dreieck</h2>
+<p>Trigonometrie heisst «Dreiecksmessung». Im rechtwinkligen Dreieck sind sin, cos und tan einfach <b>Verhältnisse von zwei Seiten</b>.</p>
+<p>Zuerst die Namen. Sie hängen immer davon ab, <b>welchen Winkel</b> du anschaust:</p>
+<svg viewBox="0 0 320 180" role="img" aria-label="Rechtwinkliges Dreieck mit Winkel Alpha, Hypotenuse, Gegenkathete und Ankathete" style="width:100%;max-width:420px;display:block;margin:14px auto">
+  <polygon points="30,150 290,150 290,30" fill="none" stroke="var(--ink)" stroke-width="2"/>
+  <path d="M276 150v-14h14" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+  <path d="M75 150a45 45 0 0 0 -4.2 -18.9" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+  <text x="80" y="143" font-size="16" fill="var(--ink)">α</text>
+  <line x1="30" y1="150" x2="290" y2="150" stroke="var(--cos)" stroke-width="5"/>
+  <line x1="290" y1="150" x2="290" y2="30" stroke="var(--sin)" stroke-width="5"/>
+  <text x="160" y="168" font-size="14" text-anchor="middle" fill="var(--cos)" font-weight="700">Ankathete (liegt an α)</text>
+  <text x="296" y="95" font-size="14" fill="var(--sin)" font-weight="700" transform="rotate(90 296 95)" text-anchor="middle">Gegenkathete</text>
+  <text x="150" y="86" font-size="14" fill="var(--ink)" font-weight="700" transform="rotate(-24.8 150 86)" text-anchor="middle">Hypotenuse (längste)</text>
+</svg>
+<ul class="sub">
+  <li><b>Hypotenuse</b>: gegenüber vom rechten Winkel, die längste Seite. Immer dieselbe.</li>
+  <li><span class="cc">Ankathete</span> (adjacent side): die Kathete, die α <b>berührt</b>.</li>
+  <li><span class="ss">Gegenkathete</span> (opposite side): die Kathete, die α <b>gegenüber</b> liegt.</li>
+</ul>
+<p>Schaust du den anderen spitzen Winkel an, tauschen Ankathete und Gegenkathete die Rollen.</p>
+<div class="box">$$\sin(\alpha) = \frac{\text{Gegenkathete}}{\text{Hypotenuse}}, \qquad \cos(\alpha) = \frac{\text{Ankathete}}{\text{Hypotenuse}}, \qquad \tan(\alpha) = \frac{\text{Gegenkathete}}{\text{Ankathete}}$$
+<p style="margin:0">Merkhilfe: <b>GAGA HühnerHof AG</b> (sin = G/H, cos = A/H, tan = G/A). Auf Englisch: SOH CAH TOA.</p></div>
+<p><b>Warum stimmt das?</b> Leg das Dreieck so hin, dass α bei O liegt. Verkleinere es, bis die Hypotenuse 1 ist: Jetzt ist es genau das Dreieck im Einheitskreis, mit den Katheten <span class="cc">cos α</span> und <span class="ss">sin α</span>. Verkleinern ändert die Winkel nicht (die Dreiecke sind <b>ähnlich</b>) und auch nicht die Seitenverhältnisse. Im kleinen Dreieck ist \(\frac{\text{Gegenkathete}}{\text{Hypotenuse}} = \frac{\sin\alpha}{1}\). Also auch im grossen.</p>
+<p>Probier selbst: Ein rechtwinkliges Dreieck hat die Katheten 3 und 4 und die Hypotenuse 5. α liegt gegenüber der Seite 3. Wie gross sind sin α, cos α und tan α? <button type="button" class="reveal" data-answer="t2">Antwort zeigen</button></p>
+<p id="t2">\(\sin\alpha = \frac35\), \(\cos\alpha = \frac45\), \(\tan\alpha = \frac34\)</p>
+<div class="box tip"><b>Verbindung zu den Polarkoordinaten</b>\(x = r\cos\varphi\) ist nichts anderes als «Ankathete = Hypotenuse · cos»: x ist die Ankathete, r die Hypotenuse. Dieselbe Idee, zwei Namen.</div>
+
+<h2 id="spickzettel">8 · Spickzettel</h2>
 <iframe class="embedded" data-part="spickzettel" src="spickzettel.html?embed=1&amp;lang=de" title="Spickzettel"></iframe>
 
 <a class="card c-mint nextcard" href="../training/"><div class="doodle"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 10h36v44H14z"/><path d="M22 24l5 5 9-10M22 40h20"/></svg></div><div><span class="n">Fertig mit dem Kapitel?</span><b>Weiter zum Prüfungstraining ↗</b><span>Gemischte Aufgaben aus beiden Kapiteln, wie in der Prüfung. Du kannst jederzeit hierher zurück.</span></div></a>

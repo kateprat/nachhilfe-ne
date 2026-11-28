@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <script src="../assets/theme.js?v=70"></script>
-<script src="../assets/sitenav.js?v=34"></script>
+<script src="../assets/sitenav.js?v=35"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Trigonometry interactive</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="Mathe 2cNP"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="theme-color" content="#fffdf8" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#1f1a17" media="(prefers-color-scheme: dark)">
@@ -32,11 +32,15 @@
 .hint{color:var(--mute);font-size:16px;margin:0}
 .drag{cursor:grab}
 @media(max-width:820px){.ilay{grid-template-columns:minmax(0,1fr)}.fig{position:static;margin:0 auto}}
-.chips .chiplab{flex-basis:100%;margin:6px 0 0;font-size:13px;font-weight:700;color:var(--mute)}
+.chips .chiplab{flex-basis:100%;max-width:none;margin:6px 0 0;font-size:13px;font-weight:700;color:var(--mute)}
 .chips .chiplab:first-child{margin-top:0}
 .chips button .src{font-weight:600;font-size:12px;color:var(--mute);margin-left:4px}
 .chips button .src::before{content:'('}.chips button .src::after{content:')'}
 .chips button.sel{background:var(--soft);border-color:var(--accent,#2F6BFF)!important;box-shadow:inset 0 0 0 1px var(--accent,#2F6BFF)}
+.numin{display:flex;align-items:center;justify-content:flex-end;gap:2px;font-weight:700;font-size:18px}
+.numin input{width:4.2em;min-height:40px;padding:0 6px;font:inherit;font-variant-numeric:tabular-nums;text-align:right;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.numin input:focus{outline:none;border-color:var(--m);box-shadow:0 0 0 3px color-mix(in srgb,var(--m) 25%,transparent)}
+.numin input.bad{border-color:var(--rose)}
 </style>
 <link rel="stylesheet" href="../assets/clean.css?v=3">
 </head>
@@ -59,7 +63,7 @@
     <!-- tab 1 -->
     <div data-p="1" class="panel">
       <p class="hint"><span data-l="en">cos = x (green), sin = y (orange), tan = slope of the ray, read off on the line x = 1 (blue). Special angles snap and show exact values.</span><span data-l="de">cos = x (grün), sin = y (orange), tan = Steigung des Strahls, abgelesen auf der Linie x = 1 (blau). Spezielle Winkel rasten ein und zeigen exakte Werte.</span></p>
-      <div class="sl" style="grid-template-columns:1.6em minmax(0,1fr) 4em"><span>α</span><input id="a1" type="range" min="-360" max="720" step="1" aria-label="α"><b id="a1v"></b></div>
+      <div class="sl" style="grid-template-columns:1.6em minmax(0,1fr) 5.6em"><span>α</span><input id="a1" type="range" min="-360" max="720" step="1" aria-label="α"><label class="numin"><input id="a1v" type="text" inputmode="text" enterkeyhint="done" autocomplete="off" spellcheck="false" aria-label="α in °">°</label></div>
       <div class="chips" id="chips1"></div>
       <div class="out" id="out1"></div>
     </div>
@@ -76,7 +80,7 @@
     <!-- tab 3 -->
     <div data-p="3" class="panel">
       <p class="hint"><span data-l="en">An angle in radians is arc length divided by radius. Change α and r: the ratio b / r stays the angle.</span><span data-l="de">Ein Winkel im Bogenmass ist Bogenlänge durch Radius. Verändere α und r: Das Verhältnis b / r bleibt der Winkel.</span></p>
-      <div class="sl" style="grid-template-columns:1.6em minmax(0,1fr) 4em"><span>α</span><input id="a3" type="range" min="0" max="360" step="1" aria-label="α"><b id="a3v"></b></div>
+      <div class="sl" style="grid-template-columns:1.6em minmax(0,1fr) 5.6em"><span>α</span><input id="a3" type="range" min="0" max="360" step="1" aria-label="α"><label class="numin"><input id="a3v" type="text" inputmode="text" enterkeyhint="done" autocomplete="off" spellcheck="false" aria-label="α in °">°</label></div>
       <div class="sl" style="grid-template-columns:1.6em minmax(0,1fr) 4em"><span>r</span><input id="r3" type="range" min="1" max="5" step="1" aria-label="r"><b id="r3v"></b></div>
       <div class="out" id="out3"></div>
     </div>
@@ -181,7 +185,7 @@
     if (tanOk && Math.abs(t) < 1.55) h += `<line x1="1" y1="0" x2="1" y2="${-t}" stroke="var(--m)" stroke-width=".05"/>` + `<circle cx="1" cy="${-t}" r=".03" fill="var(--m)"/>`;
     h += `<circle class="drag" data-h="P" cx="${c}" cy="${-s}" r=".075" fill="var(--yellow)" stroke="var(--ink)" stroke-width=".02"/>` + lbl(c + (c >= 0 ? .1 : -.1), -s - .08, 'P', 'var(--ink)', c >= 0 ? 'start' : 'end');
     svg.innerHTML = h;
-    $('a1').value = deg; $('a1v').textContent = String(deg).replace('-', '−') + '°';
+    $('a1').value = deg; if (document.activeElement !== $('a1v')) $('a1v').value = String(deg).replace('-', '−');
     const d = mod(deg), quad = d % 90 === 0 ? null : Math.floor(d / 90);
     const ex = isSpecial(deg) ? exact(deg) : null;
     const row = (name, cls, exTex, val) => `<div class="${cls}"><b>${name}(α) = ${exTex ? tex(exTex) + (exTex.match(/sqrt/) ? ' ≈ ' + num(val) : '') : num(val)}</b></div>`;
@@ -254,7 +258,7 @@
     h += lbl(R0 / 2, .16, 'r = ' + r, 'var(--ink)', 'middle') + lbl(R0 * Math.cos(a / 2) * 1.12, -R0 * Math.sin(a / 2) * 1.12, 'b', 'var(--q)', 'middle');
     h += `<circle class="drag" data-h="A" cx="${R0 * Math.cos(a)}" cy="${-R0 * Math.sin(a)}" r=".075" fill="var(--yellow)" stroke="var(--ink)" stroke-width=".02"/>`;
     svg.innerHTML = h;
-    $('a3').value = d; $('a3v').textContent = d + '°'; $('r3').value = r; $('r3v').textContent = r;
+    $('a3').value = d; if (document.activeElement !== $('a3v')) $('a3v').value = d; $('r3').value = r; $('r3v').textContent = r;
     const g = gcd(d, 180) || 180, p = d / g, q = 180 / g;
     const frac = (num_, den) => { const k = gcd(num_, den); num_ /= k; den /= k; return den === 1 ? (num_ === 1 ? '\\pi' : num_ + '\\pi') : `\\tfrac{${num_ === 1 ? '' : num_}\\pi}{${den}}`; };
     const exactOk = d % 15 === 0 && d > 0;
@@ -295,6 +299,21 @@
 
   document.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { st.tab = +b.dataset.tab; draw(); }));
   $('a1').addEventListener('input', e => { st.deg = +e.target.value; draw(); });
+  // typed angle: accepts −, minus sign, comma or point; any size (e.g. 1080) for α, 0–360 for the radians tab
+  const typed = (id, lo, hi, set) => {
+    const f = $(id);
+    f.addEventListener('input', () => {
+      const t = f.value.trim().replace(/[−–]/g, '-').replace(',', '.').replace('°', '');
+      const v = Number(t), ok = t !== '' && t !== '-' && Number.isFinite(v) && v >= lo && v <= hi;
+      f.classList.toggle('bad', !ok && t !== '' && t !== '-');
+      if (ok) { set(Math.round(v * 10) / 10); draw(); }
+    });
+    f.addEventListener('focus', () => f.select());
+    f.addEventListener('blur', () => { f.classList.remove('bad'); draw(); });
+    f.addEventListener('keydown', e => { if (e.key === 'Enter') f.blur(); });
+  };
+  typed('a1v', -3600, 3600, v => { st.deg = v; });
+  typed('a3v', 0, 360, v => { st.a3 = Math.round(v); });
   // the source goes in the group label once, the buttons only show the value
   const ch1 = d => `<button type="button" data-d="${d}">${String(d).replace('-', '−')}°</button>`;
   $('chips1').innerHTML = `<p class="chiplab">${both('From exercise E2 (a)–(c)', 'Aus Aufgabe E2 (a)–(c)')}</p>` + [55, 290, -190, 380].map(ch1).join('') +
