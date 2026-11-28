@@ -476,6 +476,63 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
   <li><div><b>Read off</b><span class="f">\(M = (3, -2)\)</span><span class="f">\(r = \sqrt{16} = 4\)</span><small>Flip the signs from the brackets. If the right side is 0: just one point. If it is negative: no point at all.</small></div></li>
 </ol>
 
+<h3>Completing the square: the recipe</h3>
+<p>Step 2 of recipe A needs no guessing. For \(x^2 + b\,x\) it always works like this:</p>
+<ol class="recipe">
+  <li><div><b>Halve</b><span class="f">\(h = \dfrac{b}{2}\)</span><small>Halve the number in front of x, sign included.</small></div></li>
+  <li><div><b>Write the bracket</b><span class="f">\((x + h)^2\)</span></div></li>
+  <li><div><b>Subtract h² again</b><span class="f">\(x^2 + b\,x = (x + h)^2 - h^2\)</span><small>The bracket brings an extra h², so take it away again.</small></div></li>
+</ol>
+<div class="box"><p style="margin:0"><b>Why?</b> Multiplied out, \((x + h)^2 = x^2 + 2h\,x + h^2\). For the x-term to match, \(2h = b\) so \(h = \tfrac{b}{2}\). The \(h^2\) is extra and is subtracted.<br><b>Check:</b> multiplying out must give back what you started with.<br><b>Number in front of x²?</b> Factor it out first: \(2x^2 + 12x = 2(x^2 + 6x)\), then complete the square inside.</p></div>
+<article class="ex" id="qe1">
+  <div class="ex-head"><h3>Practice 1</h3></div>
+  <div class="task">Complete the square: \(x^2 - 8x\)</div>
+  <ol class="steps">
+    <li class="step"><div class="ask" data-form="h = _" data-ans="-4"><p class="q">What is h, half the number in front of x?</p><p class="hint" data-when="4">Close: the sign stays when you halve.</p><p class="hint" data-when="-8">That is the whole number in front of x. Take half of it.</p><p class="hint">The number in front of x is \(-8\). Divide it by 2.</p></div><span class="nr">STEP 1</span><h4>Halve</h4>
+      <div class="calc">$$h = \frac{-8}{2} = -4$$</div>
+    </li>
+    <li class="step"><div class="ask" data-form="h² = _" data-ans="16" data-keys="√"><p class="q">And h²?</p><p class="hint" data-when="-16">A square is never negative.</p><p class="hint">Work out \((-4)^2\).</p></div><span class="nr">STEP 2</span><h4>Square of h</h4>
+      <div class="calc">$$h^2 = \left(-4\right)^2 = 16$$</div>
+    </li>
+    <li class="step"><span class="nr">STEP 3</span><h4>Put it together</h4>
+      <div class="calc">$$x^2 - 8x = (x - 4)^2 - 16$$</div>
+    </li>
+  </ol>
+  <div class="done">Check: multiplied out this gives back \(x^2 - 8x\).</div>
+</article>
+<article class="ex" id="qe2">
+  <div class="ex-head"><h3>Practice 2</h3></div>
+  <div class="task">Complete the square: \(y^2 + 10y\)</div>
+  <ol class="steps">
+    <li class="step"><div class="ask" data-form="h = _" data-ans="5"><p class="q">What is h, half the number in front of y?</p><p class="hint" data-when="-5">Close: the sign stays when you halve.</p><p class="hint" data-when="10">That is the whole number in front of y. Take half of it.</p><p class="hint">The number in front of y is \(10\). Divide it by 2.</p></div><span class="nr">STEP 1</span><h4>Halve</h4>
+      <div class="calc">$$h = \frac{10}{2} = 5$$</div>
+    </li>
+    <li class="step"><div class="ask" data-form="h² = _" data-ans="25" data-keys="√"><p class="q">And h²?</p><p class="hint" data-when="-25">A square is never negative.</p><p class="hint">Work out \((5)^2\).</p></div><span class="nr">STEP 2</span><h4>Square of h</h4>
+      <div class="calc">$$h^2 = \left(5\right)^2 = 25$$</div>
+    </li>
+    <li class="step"><span class="nr">STEP 3</span><h4>Put it together</h4>
+      <div class="calc">$$y^2 + 10y = (y + 5)^2 - 25$$</div>
+    </li>
+  </ol>
+  <div class="done">Check: multiplied out this gives back \(y^2 + 10y\).</div>
+</article>
+<article class="ex" id="qe3">
+  <div class="ex-head"><h3>Practice 3</h3></div>
+  <div class="task">Complete the square: \(x^2 + 3x\)</div>
+  <ol class="steps">
+    <li class="step"><div class="ask" data-form="h = _" data-ans="3/2"><p class="q">What is h, half the number in front of x?</p><p class="hint" data-when="-3/2">Close: the sign stays when you halve.</p><p class="hint" data-when="3">That is the whole number in front of x. Take half of it.</p><p class="hint">The number in front of x is \(3\). Divide it by 2.</p></div><span class="nr">STEP 1</span><h4>Halve</h4>
+      <div class="calc">$$h = \frac{3}{2}$$</div>
+    </li>
+    <li class="step"><div class="ask" data-form="h² = _" data-ans="9/4" data-keys="√"><p class="q">And h²?</p><p class="hint" data-when="-9/4">A square is never negative.</p><p class="hint">Work out \((\tfrac{3}{2})^2\).</p></div><span class="nr">STEP 2</span><h4>Square of h</h4>
+      <div class="calc">$$h^2 = \left(\tfrac{3}{2}\right)^2 = \tfrac{9}{4}$$</div>
+    </li>
+    <li class="step"><span class="nr">STEP 3</span><h4>Put it together</h4>
+      <div class="calc">$$x^2 + 3x = \left(x + \tfrac{3}{2}\right)^2 - \tfrac{9}{4}$$</div>
+    </li>
+  </ol>
+  <div class="done">Check: multiplied out this gives back \(x^2 + 3x\).</div>
+</article>
+
 <h3>Recipe B: intersect circle and line</h3>
 <p>With the example: circle \(x^2 + y^2 = 25\) and line \(x - y + 1 = 0\).</p>
 <ol class="recipe">

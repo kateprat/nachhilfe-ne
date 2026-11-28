@@ -476,6 +476,63 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
   <li><div><b>Ablesen</b><span class="f">\(M = (3, -2)\)</span><span class="f">\(r = \sqrt{16} = 4\)</span><small>Vorzeichen aus der Klammer umdrehen. Steht rechts 0: nur ein Punkt. Steht rechts etwas Negatives: gar kein Punkt.</small></div></li>
 </ol>
 
+<h3>Quadratisch ergänzen: das Rezept</h3>
+<p>Für Schritt 2 von Rezept A braucht es kein Raten. Für \(x^2 + b\,x\) gilt immer:</p>
+<ol class="recipe">
+  <li><div><b>Halbieren</b><span class="f">\(h = \dfrac{b}{2}\)</span><small>Die Zahl vor x halbieren, mit Vorzeichen.</small></div></li>
+  <li><div><b>Klammer hinschreiben</b><span class="f">\((x + h)^2\)</span></div></li>
+  <li><div><b>h² wieder abziehen</b><span class="f">\(x^2 + b\,x = (x + h)^2 - h^2\)</span><small>Die Klammer bringt ein h² zu viel mit, das muss wieder weg.</small></div></li>
+</ol>
+<div class="box"><p style="margin:0"><b>Warum?</b> Ausmultipliziert ist \((x + h)^2 = x^2 + 2h\,x + h^2\). Damit der Teil mit x stimmt, muss \(2h = b\) sein, also \(h = \tfrac{b}{2}\). Das \(h^2\) ist zu viel und wird abgezogen.<br><b>Probe:</b> Ausmultiplizieren muss wieder den Anfang geben.<br><b>Zahl vor x²?</b> Zuerst ausklammern: \(2x^2 + 12x = 2(x^2 + 6x)\), dann in der Klammer ergänzen.</p></div>
+<article class="ex" id="qe1">
+  <div class="ex-head"><h3>Übung 1</h3></div>
+  <div class="task">Ergänze quadratisch: \(x^2 - 8x\)</div>
+  <ol class="steps">
+    <li class="step"><div class="ask" data-form="h = _" data-ans="-4"><p class="q">Wie gross ist h, die halbe Zahl vor x?</p><p class="hint" data-when="4">Fast: Das Vorzeichen bleibt beim Halbieren.</p><p class="hint" data-when="-8">Das ist die ganze Zahl vor x. Davon die Hälfte.</p><p class="hint">Die Zahl vor x ist \(-8\). Teile sie durch 2.</p></div><span class="nr">SCHRITT 1</span><h4>Halbieren</h4>
+      <div class="calc">$$h = \frac{-8}{2} = -4$$</div>
+    </li>
+    <li class="step"><div class="ask" data-form="h² = _" data-ans="16" data-keys="√"><p class="q">Und h²?</p><p class="hint" data-when="-16">Ein Quadrat ist nie negativ.</p><p class="hint">Rechne \((-4)^2\).</p></div><span class="nr">SCHRITT 2</span><h4>Quadrat von h</h4>
+      <div class="calc">$$h^2 = \left(-4\right)^2 = 16$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4>Zusammensetzen</h4>
+      <div class="calc">$$x^2 - 8x = (x - 4)^2 - 16$$</div>
+    </li>
+  </ol>
+  <div class="done">Probe: ausmultipliziert gibt das wieder \(x^2 - 8x\).</div>
+</article>
+<article class="ex" id="qe2">
+  <div class="ex-head"><h3>Übung 2</h3></div>
+  <div class="task">Ergänze quadratisch: \(y^2 + 10y\)</div>
+  <ol class="steps">
+    <li class="step"><div class="ask" data-form="h = _" data-ans="5"><p class="q">Wie gross ist h, die halbe Zahl vor y?</p><p class="hint" data-when="-5">Fast: Das Vorzeichen bleibt beim Halbieren.</p><p class="hint" data-when="10">Das ist die ganze Zahl vor y. Davon die Hälfte.</p><p class="hint">Die Zahl vor y ist \(10\). Teile sie durch 2.</p></div><span class="nr">SCHRITT 1</span><h4>Halbieren</h4>
+      <div class="calc">$$h = \frac{10}{2} = 5$$</div>
+    </li>
+    <li class="step"><div class="ask" data-form="h² = _" data-ans="25" data-keys="√"><p class="q">Und h²?</p><p class="hint" data-when="-25">Ein Quadrat ist nie negativ.</p><p class="hint">Rechne \((5)^2\).</p></div><span class="nr">SCHRITT 2</span><h4>Quadrat von h</h4>
+      <div class="calc">$$h^2 = \left(5\right)^2 = 25$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4>Zusammensetzen</h4>
+      <div class="calc">$$y^2 + 10y = (y + 5)^2 - 25$$</div>
+    </li>
+  </ol>
+  <div class="done">Probe: ausmultipliziert gibt das wieder \(y^2 + 10y\).</div>
+</article>
+<article class="ex" id="qe3">
+  <div class="ex-head"><h3>Übung 3</h3></div>
+  <div class="task">Ergänze quadratisch: \(x^2 + 3x\)</div>
+  <ol class="steps">
+    <li class="step"><div class="ask" data-form="h = _" data-ans="3/2"><p class="q">Wie gross ist h, die halbe Zahl vor x?</p><p class="hint" data-when="-3/2">Fast: Das Vorzeichen bleibt beim Halbieren.</p><p class="hint" data-when="3">Das ist die ganze Zahl vor x. Davon die Hälfte.</p><p class="hint">Die Zahl vor x ist \(3\). Teile sie durch 2.</p></div><span class="nr">SCHRITT 1</span><h4>Halbieren</h4>
+      <div class="calc">$$h = \frac{3}{2}$$</div>
+    </li>
+    <li class="step"><div class="ask" data-form="h² = _" data-ans="9/4" data-keys="√"><p class="q">Und h²?</p><p class="hint" data-when="-9/4">Ein Quadrat ist nie negativ.</p><p class="hint">Rechne \((\tfrac{3}{2})^2\).</p></div><span class="nr">SCHRITT 2</span><h4>Quadrat von h</h4>
+      <div class="calc">$$h^2 = \left(\tfrac{3}{2}\right)^2 = \tfrac{9}{4}$$</div>
+    </li>
+    <li class="step"><span class="nr">SCHRITT 3</span><h4>Zusammensetzen</h4>
+      <div class="calc">$$x^2 + 3x = \left(x + \tfrac{3}{2}\right)^2 - \tfrac{9}{4}$$</div>
+    </li>
+  </ol>
+  <div class="done">Probe: ausmultipliziert gibt das wieder \(x^2 + 3x\).</div>
+</article>
+
 <h3>Rezept B: Kreis und Gerade schneiden</h3>
 <p>Am Beispiel: Kreis \(x^2 + y^2 = 25\) und Gerade \(x - y + 1 = 0\).</p>
 <ol class="recipe">
