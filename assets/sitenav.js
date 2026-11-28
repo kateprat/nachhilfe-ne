@@ -46,6 +46,23 @@ html .topctl .langsw button{border:0;border-radius:0;box-shadow:none;margin:0;mi
 html .topctl .langsw button[aria-current]{background:var(--ink);color:var(--bg)}
 @media(max-width:520px){html .topctl .langsw button{padding:5px 8px;font-size:13px}}
 html.embed,html.embed body{background:transparent!important}
+/* feedback bubble: she writes, then sends it herself in WhatsApp to a contact she picks (nothing is stored, no number in the code) */
+.fbb{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:60;display:flex;align-items:center;gap:6px;padding:10px 14px;border-radius:999px;border:2px solid var(--ink);background:var(--yellow);color:#1f2340;font:700 15px "Bricolage Grotesque",system-ui,sans-serif;cursor:pointer;box-shadow:3px 3px 0 var(--shadow);min-height:0}
+.fbb svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:699px){.fbb .fbt{display:none}.fbb{padding:11px}}
+.fbp{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:calc(max(16px,env(safe-area-inset-bottom)) + 58px);z-index:61;width:min(360px,calc(100vw - 32px));padding:16px;border:2px solid var(--ink);border-radius:18px;background:var(--card);color:var(--ink);box-shadow:5px 5px 0 var(--shadow)}
+.fbp[hidden]{display:none}
+.fbp h3{margin:0 0 4px;font-size:19px}
+.fbp p{margin:0 0 10px;font-size:15px;color:var(--mute)}
+.fbp textarea{width:100%;box-sizing:border-box;min-height:110px;padding:10px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:16px/1.4 "Atkinson Hyperlegible",system-ui,sans-serif;resize:vertical}
+.fbp textarea:focus{outline:none;border-color:var(--m)}
+.fbp .fbctx{font-size:13px;margin:6px 0 10px}
+.fbp .fbrow{display:flex;gap:8px;flex-wrap:wrap}
+.fbp .fbrow button{min-height:40px;padding:0 14px;border-radius:12px;border:2px solid var(--ink);background:var(--card);color:var(--ink);font:700 15px "Bricolage Grotesque",system-ui,sans-serif;cursor:pointer}
+.fbp .fbrow .fbsend{background:#25d366;border-color:#128c4a;color:#0b2b17}
+.fbp .fbmsg{margin:10px 0 0;font-weight:700;color:var(--ink)}
+.fbp .fbx{position:absolute;top:8px;right:10px;border:0;background:transparent;color:var(--mute);font-size:22px;cursor:pointer;min-height:0;padding:4px}
+@media print{.fbb,.fbp{display:none!important}}
 html.embed .panel,html.embed .panel>*{min-width:0;max-width:100%}html.embed .seg{flex-wrap:wrap;width:auto!important;max-width:100%}html.embed .seg button{flex:1 1 auto}
 html.embed main{padding:0!important;max-width:none!important}
 html.embed .topbar,html.embed .topctl,html.embed .crumb,html.embed .lang,html.embed .langsw,html.embed main>h1,html.embed footer,html.embed .lic,html.embed .chapnav{display:none!important}
@@ -239,10 +256,63 @@ iframe.embedded{display:block;width:100%;height:600px;border:0;margin:8px 0 24px
     addEventListener('message', e => { if (e.origin === location.origin && e.data && e.data.nachhilfe === 'height') requestAnimationFrame(keepGraph); });
   }
 
+
+  // feedback bubble on every page (not inside embedded widgets)
+  function feedback() {
+    if (document.querySelector('.fbb')) return;
+    const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'fbb';
+    btn.setAttribute('aria-haspopup', 'dialog');
+    btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg>' +
+      `<span class="fbt">${both(l => l === 'de' ? 'Feedback' : 'Feedback')}</span>`;
+    btn.setAttribute('aria-label', 'Feedback');
+    const box = document.createElement('div'); box.className = 'fbp'; box.hidden = true; box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', 'Feedback');
+    box.innerHTML = `<button type="button" class="fbx" aria-label="close">×</button>
+      <h3>${both(l => l === 'de' ? 'Was fällt dir auf?' : 'What do you notice?')}</h3>
+      <p>${both(l => l === 'de' ? 'Unklar, falsch, zu schnell, zu langsam, ein Wunsch? Alles ist willkommen. Du schickst es danach selbst per WhatsApp an Kate.' : 'Unclear, wrong, too fast, too slow, a wish? Everything is welcome. Then you send it to Kate yourself on WhatsApp.')}</p>
+      <textarea aria-label="Feedback"></textarea>
+      <p class="fbctx"></p>
+      <div class="fbrow"><button type="button" class="fbsend">${both(l => l === 'de' ? 'In WhatsApp öffnen' : 'Open in WhatsApp')}</button><button type="button" class="fbcopy">${both(l => l === 'de' ? 'Kopieren' : 'Copy')}</button></div>
+      <p class="fbmsg" hidden></p>`;
+    document.body.append(btn, box);
+    const ta = box.querySelector('textarea'), ctx = box.querySelector('.fbctx'), msg = box.querySelector('.fbmsg');
+    // where she is: page title + the section and exercise currently at the top of the screen
+    const where = () => {
+      const parts = [(document.querySelector('h1') || {}).textContent || document.title];
+      let sec = null, ex = null;
+      document.querySelectorAll('main h2, main article.ex').forEach(el => {
+        if (el.getBoundingClientRect().top < innerHeight * 0.4) { if (el.tagName === 'H2') { sec = el; ex = null; } else ex = el; }
+      });
+      if (sec) parts.push(sec.textContent.trim());
+      if (ex) { const h = ex.querySelector('.ex-head h3'); if (h) parts.push(h.textContent.trim()); }
+      return parts.map(t => t.replace(/\s+/g, ' ').trim()).filter(Boolean).join(' › ');
+    };
+    const text = () => `Feedback Mathe-Seite (${ctx.dataset.w}):\n${ta.value.trim()}`;
+    const say = (de, en) => { msg.innerHTML = both(l => l === 'de' ? de : en); msg.hidden = false; };
+    const open = () => {
+      ctx.dataset.w = where(); ctx.innerHTML = both(l => (l === 'de' ? 'Stelle: ' : 'Place: ')) + ctx.dataset.w.replace(/[<&]/g, c => c === '<' ? '&lt;' : '&amp;');
+      msg.hidden = true; box.hidden = false; btn.setAttribute('aria-expanded', 'true'); ta.focus();
+    };
+    const close = () => { box.hidden = true; btn.setAttribute('aria-expanded', 'false'); };
+    btn.addEventListener('click', () => box.hidden ? open() : close());
+    box.querySelector('.fbx').addEventListener('click', close);
+    addEventListener('keydown', e => { if (e.key === 'Escape' && !box.hidden) close(); });
+    box.querySelector('.fbsend').addEventListener('click', () => {
+      if (!ta.value.trim()) { say('Schreib zuerst etwas.', 'Write something first.'); ta.focus(); return; }
+      // no phone number: WhatsApp asks her to pick the contact
+      window.open('https://wa.me/?text=' + encodeURIComponent(text()), '_blank', 'noopener');
+      say('Danke! Wähl in WhatsApp Kate aus und schick es ab.', 'Thanks! Pick Kate in WhatsApp and send it.');
+    });
+    box.querySelector('.fbcopy').addEventListener('click', async () => {
+      if (!ta.value.trim()) { say('Schreib zuerst etwas.', 'Write something first.'); ta.focus(); return; }
+      try { await navigator.clipboard.writeText(text()); say('Kopiert. Du kannst es jetzt Kate schicken.', 'Copied. You can now send it to Kate.'); }
+      catch (e) { ta.select(); say('Markiert: jetzt kopieren und Kate schicken.', 'Selected: copy it now and send it to Kate.'); }
+    });
+  }
   let styled = false, observing = false;
   window.siteNav = function () {
     if (!styled) { const s = document.createElement('style'); s.textContent = css; document.head.append(s); styled = true; }
     if (EMBED) return;
+    feedback();
     const main = document.querySelector('main');
     if (main && !main.querySelector(':scope > .bc')) {
       const c = crumb(), old = main.querySelector(':scope > .crumb, .topbar > .crumb');
