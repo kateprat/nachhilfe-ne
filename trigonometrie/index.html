@@ -13,7 +13,7 @@
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
 <script defer src="../assets/steps.js?v=73"></script>
-<link rel="stylesheet" href="../assets/style.css?v=77">
+<link rel="stylesheet" href="../assets/style.css?v=78">
 <link rel="stylesheet" href="../assets/clean.css?v=3">
 </head>
 <body>
@@ -30,22 +30,20 @@
 </ul></nav>
 
 <h2 id="bogenmass">15.1 · Measuring angles: radians</h2>
-<p class="ref"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>In the script</b></a> (p. 1–3): Definition 15.1.2 (radian) · Examples 15.1.3 · Corollary 15.1.7 · Memo 15.1.9 · Exercise E1</p>
+<p class="need">What you need for E1:</p>
 <p>Instead of degrees, you can measure an angle as the <b>length of the arc on the unit circle</b> (radius 1). The whole circle has circumference \(2\pi\), so:</p>
-<div id="def-15-1-2" class="box"><b>Definition 15.1.2: radian</b><p style="margin:4px 0 0">Draw a circle with any radius r around the vertex of the angle. The angle cuts out an arc of length b. Then</p>$$\alpha = \frac{b}{r}\ \text{rad}$$<p style="margin:0">This doesn't depend on r: a circle twice as big has an arc twice as long, so the fraction stays the same. That's why you may just as well use the <b>unit circle</b> (r = 1): then the angle is simply the arc length (Memo 15.1.9). You may leave out “rad”, 1 rad = 1. Calculators and programs (e.g. Python) almost always work in radians.</p></div>
-<div id="bsp-15-1-3" class="box"><b>Examples 15.1.3</b>$$360^\circ = 2\pi, \qquad 180^\circ = \pi, \qquad 90^\circ = \tfrac{\pi}{2}$$
+<div id="bsp-15-1-3" class="box"><b>Degrees and radians</b><span class="tag">15.1.3</span>$$360^\circ = 2\pi, \qquad 180^\circ = \pi, \qquad 90^\circ = \tfrac{\pi}{2}$$
 <p style="margin:0">That's all you need to memorise. <b>Work everything else out from \(180^\circ = \pi\)</b>: divide by 180, multiply by π (or the other way round).</p></div>
 <p>Try it yourself: what is 60° in radians? <button type="button" class="reveal" data-answer="t1">Show answer</button></p>
 <p id="t1">\(60^\circ = \frac{60}{180}\pi = \frac{\pi}{3}\)</p>
 <iframe class="embedded" data-mode="bogenmass" src="interaktiv.html?embed=1&amp;one=1&amp;lang=en#bogenmass" title="Try it out" loading="lazy"></iframe>
-<div class="box"><b>Corollary 15.1.7: arc length and sector area</b><p style="margin:4px 0 0">In a circle with radius r, the angle α (in radians) gives</p>$$b = \alpha\cdot r, \qquad A = \frac{\alpha}{2}\cdot r^2$$<p style="margin:0">Check with the full circle, \(\alpha = 2\pi\): \(b = 2\pi r\) (circumference) ✓, \(A = \pi r^2\) ✓</p></div>
 
-<p>Every exercise works the same way: read the task and first think about how you would start. Then click through the solution with <b>“Next step”</b>, one step at a time. Before each click, think about what comes next. At the top of each exercise, <b>“Theory for this”</b> takes you to the matching theory (with the number from the script). Parts marked <span class="xtra">Extra</span> are not in the script, they are additional help.</p>
+<p>Every exercise works the same way: read the task and first think about how you would start. Then click through the solution with <b>“Next step”</b>, one step at a time. Before each click, think about what comes next. If you get stuck, <b>“Need help?”</b> at the top of the exercise takes you to the matching explanation. Anything marked ★ is not in the script: extra help. At the end of each section you can open <b>“More from the script”</b> if you want everything with the script's numbers.</p>
 
 <!-- E1 -->
 <article class="ex" id="e1" data-mode="worked">
   <div class="ex-head"><h3>E1</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#def-15-1-2">Definition 15.1.2 ↑</a> · <a href="#bsp-15-1-3">Examples 15.1.3 ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#bsp-15-1-3">Degrees and radians ↑</a></p>
   <div class="task">(a) Convert the angles 0°, 360°, 180°, 90°, 60°, 30°, −90°, 45°, 1° exactly into radians, and \(1\) rad into degrees.<br>(b) Find the conversion functions \(d(r)\) (radians → degrees) and \(r(d)\) (degrees → radians).</div>
   <ol class="steps">
     <li class="step"><span class="nr">STEP 1</span><h4>The one thing you need to know</h4>
@@ -64,32 +62,37 @@
   <div class="done">Only remember \(180^\circ = \pi\). Work out the rest each time.</div>
 </article>
 
+<details class="more"><summary>More from the script (15.1)</summary>
+<p class="ref" style="margin:0 0 10px"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>In the script</b></a> (p. 1–3): Definition 15.1.2 (radian) · Examples 15.1.3 · Corollary 15.1.7 · Memo 15.1.9 · Exercise E1</p>
+
+<div id="def-15-1-2" class="box"><b>Definition 15.1.2: radian</b><p style="margin:4px 0 0">Draw a circle with any radius r around the vertex of the angle. The angle cuts out an arc of length b. Then</p>$$\alpha = \frac{b}{r}\ \text{rad}$$<p style="margin:0">This doesn't depend on r: a circle twice as big has an arc twice as long, so the fraction stays the same. That's why you may just as well use the <b>unit circle</b> (r = 1): then the angle is simply the arc length (Memo 15.1.9). You may leave out “rad”, 1 rad = 1. Calculators and programs (e.g. Python) almost always work in radians.</p></div>
+<div class="box"><b>Corollary 15.1.7: arc length and sector area</b><p style="margin:4px 0 0">In a circle with radius r, the angle α (in radians) gives</p>$$b = \alpha\cdot r, \qquad A = \frac{\alpha}{2}\cdot r^2$$<p style="margin:0">Check with the full circle, \(\alpha = 2\pi\): \(b = 2\pi r\) (circumference) ✓, \(A = \pi r^2\) ✓</p></div>
+</details>
+
 <h2 id="kreis">15.2 · Trigonometric functions</h2>
-<p class="ref"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>In the script</b></a> (p. 3–6): Definition 15.2.2 (sin, cos, tan) · Memo 15.2.4 (calculator) · Memo 15.2.5 (special values) · Theorem 15.2.6 (Pythagoras) · Exercises E2–E7</p>
-<p id="def-15-2-2"><b>Definition 15.2.2</b></p>
-<p>Turn a ray by the angle α (anticlockwise, starting from the positive x-axis). It meets the circle at the point \(P_\alpha\). Then:</p>
+<p class="need">What you need for E2–E7:</p>
+<p id="def-15-2-2"><span class="tag">15.2.2</span>Turn a ray by the angle α (anticlockwise, starting from the positive x-axis). It meets the circle at the point \(P_\alpha\). Then:</p>
 <ul class="sub">
   <li><span class="cc">cos(α)</span> = the <b>x-coordinate</b> of P (how far right/left)</li>
   <li><span class="ss">sin(α)</span> = the <b>y-coordinate</b> of P (how far up/down)</li>
   <li><span class="tt">tan(α)</span> = the <b>slope</b> of the ray, i.e. \(\frac{\sin(\alpha)}{\cos(\alpha)}\). Exactly the m from \(\m x + \q\)! You can see it on the line \(x = 1\).</li>
 </ul>
-<p>tan(α) only exists if the ray is not vertical (at 90° and 270° it is vertical). In 15.2.3 the script shows the example α = 207°: cos and sin are negative (arrows to the left and down), but tan is still positive because the line goes up.</p>
 <iframe class="embedded" data-mode="einheitskreis" src="interaktiv.html?embed=1&amp;one=1&amp;lang=en#einheitskreis" title="Try it out" loading="lazy"></iframe>
 <p>Two things you can see straight from the picture:</p>
 <ul class="sub">
   <li>cos and sin are always between −1 and 1. P is on a circle of radius 1, after all.</li>
-  <li id="satz-15-2-6"><b>Theorem 15.2.6 (Pythagoras)</b>: the triangle made of <span class="cc">cos</span>, <span class="ss">sin</span> and radius 1 is right-angled, so \(\sin^2(\alpha) + \cos^2(\alpha) = 1\).</li>
+  <li id="satz-15-2-6"><b>Pythagoras</b><span class="tag">15.2.6</span>: the triangle made of <span class="cc">cos</span>, <span class="ss">sin</span> and radius 1 is right-angled, so \(\sin^2(\alpha) + \cos^2(\alpha) = 1\).</li>
 </ul>
 
-<div id="memo-15-2-5" class="box"><b>Memo 15.2.5: values at special angles</b>
+<div id="memo-15-2-5" class="box"><b>The special values</b><span class="tag">15.2.5</span>
 <div class="tbl"><table><tr><th>α</th><th>0°</th><th>30° = \(\frac{\pi}{6}\)</th><th>45° = \(\frac{\pi}{4}\)</th><th>60° = \(\frac{\pi}{3}\)</th><th>90° = \(\frac{\pi}{2}\)</th></tr>
 <tr><td><span class="ss">sin</span></td><td>\(\frac{\sqrt0}{2} = 0\)</td><td>\(\frac{\sqrt1}{2} = \frac12\)</td><td>\(\frac{\sqrt2}{2}\)</td><td>\(\frac{\sqrt3}{2}\)</td><td>\(\frac{\sqrt4}{2} = 1\)</td></tr>
 <tr><td><span class="cc">cos</span></td><td>1</td><td>\(\frac{\sqrt3}{2}\)</td><td>\(\frac{\sqrt2}{2}\)</td><td>\(\frac12\)</td><td>0</td></tr>
 <tr><td><span class="tt">tan</span></td><td>0</td><td>\(\frac{\sqrt3}{3}\)</td><td>1</td><td>\(\sqrt3\)</td><td>n.d.</td></tr></table></div>
 <p style="margin:0">Memory aid: sin row = square roots of 0, 1, 2, 3, 4, each divided by 2. cos row = the same backwards. tan = sin : cos. How to get there is shown in <a href="#e5">E5</a>.</p></div>
-<div id="memo-15-2-4" class="box tip"><b>Memo 15.2.4: calculator</b> The calculator must be set to <b>DEG</b> when you work in degrees and to <b>RAD</b> for radians. Test: \(\sin(90)\) gives 1 → DEG. Gives 0.89… → RAD.</div>
+<div id="memo-15-2-4" class="box tip"><b>Calculator</b><span class="tag">15.2.4</span> The calculator must be set to <b>DEG</b> when you work in degrees and to <b>RAD</b> for radians. Test: \(\sin(90)\) gives 1 → DEG. Gives 0.89… → RAD.</div>
 
-<h3 id="rezepte">The recipes <span class="xtra" title="Not in the script: a help from Kate">Extra</span></h3>
+<h3 id="rezepte">The recipes <span class="xtra" title="Not in the script: a help from Kate">★</span></h3>
 <p>Six short recipes, one for each type of task. They are not a sequence: pick the one that fits your task.</p>
 <ol class="recipe set">
   <li><div><b>Degrees ↔ radians</b><span class="f">\(r = \frac{\pi}{180}\cdot d, \quad d = \frac{180}{\pi}\cdot r\)</span><small>Always think from \(180^\circ = \pi\).</small></div></li>
@@ -103,12 +106,12 @@
 <iframe class="embedded" data-mode="gleichungen" src="interaktiv.html?embed=1&amp;one=1&amp;lang=en#gleichungen" title="Try it out" loading="lazy"></iframe>
 
 
-<p class="bridge"><b>Now exercises E2–E7.</b> Above all you need <a href="#def-15-2-2">Definition 15.2.2</a> (cos = x, sin = y, tan = slope), the signs (<a href="#rezepte">recipe 2</a>), the <a href="#memo-15-2-5">special values</a> and, for equations, <a href="#rezepte">recipes 3–5</a>.</p>
+<p class="bridge"><b>Now exercises E2–E7.</b> You need: <a href="#def-15-2-2">cos = x, sin = y, tan = slope</a>, the <a href="#memo-15-2-5">special values</a> and, for equations, the <a href="#rezepte">recipes</a>.</p>
 
 <!-- E2 -->
 <article class="ex" id="e2" data-mode="faded">
   <div class="ex-head"><h3>E2</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#def-15-2-2">Definition 15.2.2 ↑</a> · <a href="#memo-15-2-4">Memo 15.2.4 ↑</a> · <a href="#rezepte">Recipes 3–5 ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#rezepte">The recipes ↑</a></p>
   <div class="task">Draw a unit circle with a diameter of 8 cm. (a)–(c) Mark \(P_{55^\circ}, P_{290^\circ}, P_{-190^\circ}, P_{380^\circ}\), measure cos, sin and tan and check with the calculator. (d)–(h) For which α is \(\sin(\alpha) = 0.8\), \(\cos(\alpha) = -0.2\), \(\tan(\alpha) = -2\), \(\sin(\alpha) = 4.2\), \(\cos(\alpha) = -2\)?</div>
   <ol class="steps">
     <li class="step"><span class="nr">TIP</span><h4>Measure in units, not in cm</h4>
@@ -136,7 +139,7 @@
 <!-- E3 -->
 <article class="ex" id="e3" data-mode="worked">
   <div class="ex-head"><h3>E3</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#def-15-2-2">Definition 15.2.2 ↑</a> · <a href="#rezepte">Recipe 2 ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#rezepte">Recipe 2: signs ↑</a></p>
   <div class="task">For each angle interval, say whether cos, sin and tan are positive (+) or negative (−). No calculator, use the unit circle.</div>
   <ol class="steps">
     <li class="step"><span class="nr">STEP 1</span><h4>cos = x</h4>
@@ -161,7 +164,7 @@
 <!-- E4 -->
 <article class="ex" id="e4" data-mode="faded">
   <div class="ex-head"><h3>E4</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#def-15-2-2">Definition 15.2.2 ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#def-15-2-2">cos, sin, tan on the unit circle ↑</a></p>
   <div class="task">(a) Give the vertices of a regular pentagon ABCDE on the unit circle exactly, with \(A = (1, 0)\).<br>(b) The same on a circle of radius 4 cm, rounded to two decimals.<br>(c) Vertices of a regular n-gon with circumradius r?</div>
   <ol class="steps">
     <li class="step"><span class="nr">STEP 1</span><h4>How far apart are the vertices?</h4>
@@ -181,7 +184,7 @@
 <!-- E5 -->
 <article class="ex" id="e5" data-mode="worked">
   <div class="ex-head"><h3>E5</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#memo-15-2-5">Memo 15.2.5 ↑</a> · <a href="#satz-15-2-6">Theorem 15.2.6 ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#memo-15-2-5">The special values ↑</a></p>
   <div class="task">Find cos, sin and tan of 30° and 45° exactly, without a calculator. Then make a table for all multiples of 30° and 45° between 0° and 360°.</div>
   <ol class="steps">
     <li class="step"><span class="nr">STEP 1</span><h4>30°: half an equilateral triangle</h4>
@@ -204,7 +207,7 @@
 <!-- E6 -->
 <article class="ex" id="e6" data-mode="faded">
   <div class="ex-head"><h3>E6</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#def-15-2-2">Definition 15.2.2 ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#def-15-2-2">cos, sin, tan on the unit circle ↑</a></p>
   <div class="task">(a) Which of the values \(\pm\sin(\pm\alpha)\), \(\pm\cos(\pm\alpha)\) are equal?<br>(b) Which of \(\sin\alpha\), \(\sin(\alpha + 90^\circ)\), \(-\sin(\alpha + 180^\circ)\), \(\sin(\alpha + 360^\circ)\), \(\cos\alpha\), \(-\cos(\alpha + 90^\circ)\), \(-\cos(\alpha + 180^\circ)\), \(\cos(\alpha + 360^\circ)\) are equal?<br>(c) What about \(\tan\alpha\), \(\sin^2\alpha + \cos^2\alpha\), 1, \(\frac{\sin\alpha}{\cos\alpha}\)?</div>
   <ol class="steps">
     <li class="step"><span class="nr">TIP</span><h4>Draw, don't calculate</h4>
@@ -223,7 +226,7 @@
 <!-- E7 -->
 <article class="ex" id="e7" data-mode="faded">
   <div class="ex-head"><h3>E7</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#satz-15-2-6">Theorem 15.2.6 ↑</a> · <a href="#rezepte">Recipe 6 ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#rezepte">Recipe 6 ↑</a></p>
   <div class="task">If you know one of the numbers \(\cos\alpha\), \(\sin\alpha\), \(\tan\alpha\), you can find the other two up to their sign. Use \(\tan\alpha = \frac{\sin\alpha}{\cos\alpha}\) and \(\sin^2\alpha + \cos^2\alpha = 1\).<br>(a) cos known,<br>(b) sin known,<br>(c) tan known.</div>
   <ol class="steps">
     <li class="step"><span class="nr">(a)</span><h4>cos known → sin</h4>
@@ -245,21 +248,26 @@
   <div class="done">The script doesn't have a model solution for E7 yet. This solution was worked out separately, so if in doubt, check it with your teacher.</div>
 </article>
 
+<details class="more"><summary>More from the script (15.2)</summary>
+<p class="ref" style="margin:0 0 10px"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>In the script</b></a> (p. 3–6): Definition 15.2.2 (sin, cos, tan) · Memo 15.2.4 (calculator) · Memo 15.2.5 (special values) · Theorem 15.2.6 (Pythagoras) · Exercises E2–E7</p>
+
+<p>tan(α) only exists if the ray is not vertical (at 90° and 270° it is vertical). In 15.2.3 the script shows the example α = 207°: cos and sin are negative (arrows to the left and down), but tan is still positive because the line goes up.</p>
+</details>
+
 <h2 id="polar">15.3 · Polar coordinates</h2>
-<p class="ref"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>In the script</b></a> (p. 10–11): Definition 15.3.2 · Example 15.3.3 · Memo 15.3.4 (conversion) · Memo 15.3.5 (rotating point) · Exercises E8–E11</p>
+<p class="need">What you need for E9–E11:</p>
 <div class="box tip" id="e8"><b>Script pages 7–9 are still missing here</b>They contain the start of 15.3 (incl. 15.3.1) and exercise E8. As soon as we have them, they will be added here.</div>
 <p>So far, a point was given by \(x\) and \(y\): “3 to the right, 1 up”. You can also describe it like a direction: <b>“go 3 units, at an angle of 30°”</b>. That's polar coordinates.</p>
-<div id="def-15-3-2" class="box"><b>Definition 15.3.2: polar coordinates</b>$$P = (r, \varphi)$$
+<div id="def-15-3-2" class="box"><b>Polar coordinates</b><span class="tag">15.3.2</span>$$P = (r, \varphi)$$
 <ul class="sub">
   <li><b>r</b> = radial coordinate = <b>distance</b> of P from the origin O (the pole). Always \(r \ge 0\).</li>
   <li><b>φ</b> (phi) = angle coordinate = the <b>angle</b> between the positive x-axis (the polar axis) and the ray from O through P. Usually \(0^\circ \le \varphi \lt 360^\circ\). For the origin itself (r = 0) you take φ = 0°.</li>
 </ul></div>
-<div class="box"><b>Example 15.3.3</b><p style="margin:4px 0 0">The point in the script's figure is 3 units from the origin, at an angle of 30°: \(P = (3, 30^\circ) = \left(3, \tfrac{\pi}{6}\ \text{rad}\right)\).</p></div>
 <p>Careful: \((3, 30^\circ)\) in polar coordinates and \((3, 30)\) in cartesian coordinates are completely different points. The ° sign (or π) tells you it's an angle.</p>
 <p>The link to the unit circle: on the unit circle (\(r = 1\)) the point is \((\cos\varphi, \sin\varphi)\). A circle with radius \(r\) is the unit circle stretched by \(r\), so <b>multiply both coordinates by r</b>.</p>
 <ol class="recipe set">
-  <li id="memo-15-3-4"><div><b>Polar → cartesian (Memo 15.3.4)</b><span class="f">\(x = r\cdot\cos(\varphi), \quad y = r\cdot\sin(\varphi)\)</span><small>Works for every angle, also negative ones and angles of 360° or more.</small></div></li>
-  <li id="kart-polar"><div><b>Cartesian → polar <span class="xtra" title="Not in the script: a help from Kate">Extra</span></b><span class="f">\(r = \sqrt{x^2 + y^2}\)</span><small>Pythagoras: x and y are the legs, r is the hypotenuse. For φ: <strong>sketch the point</strong>, find the angle to the x-axis (reference angle) from \(\tan = \frac{|y|}{|x|}\), then adjust for the quadrant (table below).</small></div></li>
+  <li id="memo-15-3-4"><div><b>Polar → cartesian</b><span class="tag">15.3.4</span><span class="f">\(x = r\cdot\cos(\varphi), \quad y = r\cdot\sin(\varphi)\)</span><small>Works for every angle, also negative ones and angles of 360° or more.</small></div></li>
+  <li id="kart-polar"><div><b>Cartesian → polar <span class="xtra" title="Not in the script: a help from Kate">★</span></b><span class="f">\(r = \sqrt{x^2 + y^2}\)</span><small>Pythagoras: x and y are the legs, r is the hypotenuse. For φ: <strong>sketch the point</strong>, find the angle to the x-axis (reference angle) from \(\tan = \frac{|y|}{|x|}\), then adjust for the quadrant (table below).</small></div></li>
 </ol>
 <div class="tbl"><table>
   <tr><th>P lies in quadrant</th><th>I (right, top)</th><th>II (left, top)</th><th>III (left, bottom)</th><th>IV (right, bottom)</th></tr>
@@ -270,7 +278,7 @@
 <!-- E9 -->
 <article class="ex" id="e9" data-mode="worked">
   <div class="ex-head"><h3>E9</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#memo-15-3-4">Memo 15.3.4 ↑</a> · <a href="#memo-15-2-5">Memo 15.2.5 ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#memo-15-3-4">Polar → cartesian ↑</a></p>
   <div class="task">Without a calculator.<br>(a) Find the cartesian coordinates of the points \(A = (1, 30^\circ)\), \(B = (2, -30^\circ)\), \(C = (3, 150^\circ)\), \(D = (4, 1080^\circ)\), given in polar coordinates.<br>(b) What should be added in Memo 15.3.4? Test your formula with the points above.</div>
   <ol class="steps">
     <li class="step"><span class="nr">STEP 1</span><h4>The formula</h4>
@@ -298,7 +306,7 @@
 <!-- E10 -->
 <article class="ex" id="e10" data-mode="faded">
   <div class="ex-head"><h3>E10</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#def-15-3-2">Definition 15.3.2 ↑</a> · <a href="#kart-polar">Recipe cartesian → polar ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#kart-polar">Cartesian → polar ↑</a></p>
   <div class="task">Without a calculator. Find the polar coordinates of the points \(A = (0, 10)\), \(B = (5, 5)\), \(P = (1, \sqrt3)\), \(Q = (-1, \sqrt3)\), \(R = (1, -\sqrt3)\), \(S = (-1, -\sqrt3)\), given in cartesian coordinates.</div>
   <ol class="steps">
     <li class="step"><span class="nr">TIP</span><h4>Sketch all six points first</h4>
@@ -335,12 +343,12 @@
   <li><b>φ₀</b> = angle at the start (t = 0)</li>
   <li><b>Sign of ω</b>: positive → anticlockwise (the normal direction), negative → clockwise</li>
 </ul></div>
-<p>Special case (Memo 15.3.5): unit circle, start at \((1, 0)\), speed 1 unit per second. Then the angle is simply t, and the point is \((\cos t, \sin t)\). <b>Why?</b> In t seconds the point travels the distance t (speed 1). On the unit circle, arc length equals the angle in radians (Memo 15.1.9). So the angle is t, and by Definition 15.2.2 the point is \((\cos t, \sin t)\).</p>
+<p><span class="tag">15.3.5</span>Special case: unit circle, start at \((1, 0)\), speed 1 unit per second. Then the angle is simply t, and the point is \((\cos t, \sin t)\).</p>
 
 <!-- E11 -->
 <article class="ex" id="e11" data-mode="worked">
   <div class="ex-head"><h3>E11</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#drehung">Memo 15.3.5 ↑</a> · <a href="#memo-15-3-4">Memo 15.3.4 ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#drehung">Rotating points ↑</a></p>
   <div class="task">A wheel with its axis at the origin turns at constant angular velocity. A point A is marked at distance r from the origin.<br>(a) Find \(x(t)\) and \(y(t)\) for \(r = 7\), period \(T = 20\) s, start \(A(0) = (r, 0)\).<br>(b) Find \(A(t)\) for \(r = 1\), \(T = 2\pi\), \(A(0) = (r, 0)\). How fast is the point moving along the circle?<br>(c) Find \(A(t)\) for \(r = 1\), \(T = 2\pi\), \(A(0) = (0, r)\).<br>(d) \(B(t) = \left(3\cos\left(\frac{\pi}{3}t\right),\ 3\sin\left(\frac{\pi}{3}t\right)\right)\). Distance r? Period T? Where is B at t = 0?<br>(e) \(B(t) = \left(\cos\left(-5t + \frac{\pi}{3}\right),\ \sin\left(-5t + \frac{\pi}{3}\right)\right)\). Distance r? Period T? Where is B at t = 0? In which direction does it turn?</div>
   <ol class="steps">
     <li class="step"><span class="nr">STEP 1</span><h4>(a) How fast does the angle grow?</h4>
@@ -370,10 +378,17 @@
   <div class="done">\(\big(r\cos(\omega t + \varphi_0),\ r\sin(\omega t + \varphi_0)\big)\): r = radius, \(T = \frac{2\pi}{|\omega|}\), φ₀ = start angle, sign of ω = direction.</div>
 </article>
 
+<details class="more"><summary>More from the script (15.3)</summary>
+<p class="ref" style="margin:0 0 10px"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>In the script</b></a> (p. 10–11): Definition 15.3.2 · Example 15.3.3 · Memo 15.3.4 (conversion) · Memo 15.3.5 (rotating point) · Exercises E8–E11</p>
+
+<div class="box"><b>Example 15.3.3</b><p style="margin:4px 0 0">The point in the script's figure is 3 units from the origin, at an angle of 30°: \(P = (3, 30^\circ) = \left(3, \tfrac{\pi}{6}\ \text{rad}\right)\).</p></div>
+<p><b>Memo 15.3.5, why?</b> In t seconds the point travels the distance t (speed 1). On the unit circle, arc length equals the angle in radians (Memo 15.1.9). So the angle is t, and by Definition 15.2.2 the point is \((\cos t, \sin t)\).</p>
+</details>
+
 <h2 id="dreieck">15.4 · Trigonometry in right triangles</h2>
-<p class="ref"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>In the script</b></a> (p. 12): Definition 15.4.2 (adjacent, opposite side) · Theorem 15.4.3 (side ratios)</p>
+<p class="need">What you need for triangles:</p>
 <p>Trigonometry means “measuring triangles”. In a right triangle, sin, cos and tan are simply <b>ratios of two sides</b>.</p>
-<p id="def-15-4-2"><b>Definition 15.4.2</b> First the names. They always depend on <b>which angle</b> you are looking at:</p>
+<p id="def-15-4-2"><span class="tag">15.4.2</span>First the names. They always depend on <b>which angle</b> you are looking at:</p>
 <svg viewBox="0 0 320 180" role="img" aria-label="Right triangle with angle alpha, hypotenuse, opposite and adjacent side" style="width:100%;max-width:420px;display:block;margin:14px auto">
   <polygon points="30,150 290,150 290,30" fill="none" stroke="var(--ink)" stroke-width="2"/>
   <path d="M276 150v-14h14" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
@@ -391,8 +406,15 @@
   <li><span class="ss">Opposite side</span> (Gegenkathete): the leg <b>across from</b> α.</li>
 </ul>
 <p>Look at the other acute angle instead, and adjacent and opposite swap roles.</p>
-<div id="satz-15-4-3" class="box"><b>Theorem 15.4.3: sine and cosine as side ratios in right triangles</b><p style="margin:4px 0 0">In any right triangle, let \(\alpha \neq 90^\circ\) be one of the two non-right angles. Then:</p>$$\sin(\alpha) = \frac{\text{opposite}}{\text{hypotenuse}}, \qquad \cos(\alpha) = \frac{\text{adjacent}}{\text{hypotenuse}}, \qquad \tan(\alpha) = \frac{\text{opposite}}{\text{adjacent}}$$
+<div id="satz-15-4-3" class="box"><b>sin, cos and tan in a right triangle</b><span class="tag">15.4.3</span><p style="margin:4px 0 0">For each of the two acute angles α:</p>$$\sin(\alpha) = \frac{\text{opposite}}{\text{hypotenuse}}, \qquad \cos(\alpha) = \frac{\text{adjacent}}{\text{hypotenuse}}, \qquad \tan(\alpha) = \frac{\text{opposite}}{\text{adjacent}}$$
 <p style="margin:0">Memory aid: <b>SOH CAH TOA</b> (Sin = O/H, Cos = A/H, Tan = O/A).</p></div>
+<p>Try it yourself: a right triangle has legs 3 and 4 and hypotenuse 5. α is the angle opposite the side 3. What are sin α, cos α and tan α? <button type="button" class="reveal" data-answer="t2">Show answer</button></p>
+<p id="t2">\(\sin\alpha = \frac35\), \(\cos\alpha = \frac45\), \(\tan\alpha = \frac34\)</p>
+<div class="box tip"><b>Link to polar coordinates</b>\(x = r\cos\varphi\) is just “adjacent = hypotenuse · cos”: x is the adjacent side, r the hypotenuse. Same idea, two names.</div>
+
+<details class="more"><summary>More from the script (15.4)</summary>
+<p class="ref" style="margin:0 0 10px"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>In the script</b></a> (p. 12): Definition 15.4.2 (adjacent, opposite side) · Theorem 15.4.3 (side ratios)</p>
+
 <div class="box"><b>Proof of Theorem 15.4.3</b>
 <svg viewBox="0 0 420 160" role="img" aria-label="Small triangle in the unit circle with hypotenuse 1, legs cos alpha and sin alpha, stretched by c to the triangle of the theorem" style="width:100%;max-width:520px;display:block;margin:12px auto">
   <polygon points="20,130 102,130 102,73" fill="color-mix(in srgb,var(--rose) 12%,transparent)" stroke="var(--rose)" stroke-width="2.5"/>
@@ -417,9 +439,7 @@
   <li><div><b>Divide</b>$$\frac{\text{opposite}}{\text{hypotenuse}} = \frac{c\cdot\sin\alpha}{c} = \sin\alpha, \qquad \frac{\text{adjacent}}{\text{hypotenuse}} = \frac{c\cdot\cos\alpha}{c} = \cos\alpha$$$$\frac{\text{opposite}}{\text{adjacent}} = \frac{c\cdot\sin\alpha}{c\cdot\cos\alpha} = \frac{\sin\alpha}{\cos\alpha} = \tan\alpha \qquad \square$$</div></li>
 </ol>
 <p style="margin:0;color:var(--mute);font-size:16px">In the script, the gap in “The red triangle in the picture and the triangle in the theorem are ✎” is filled with: <b>similar</b>.</p></div>
-<p>Try it yourself: a right triangle has legs 3 and 4 and hypotenuse 5. α is the angle opposite the side 3. What are sin α, cos α and tan α? <button type="button" class="reveal" data-answer="t2">Show answer</button></p>
-<p id="t2">\(\sin\alpha = \frac35\), \(\cos\alpha = \frac45\), \(\tan\alpha = \frac34\)</p>
-<div class="box tip"><b>Link to polar coordinates</b>\(x = r\cos\varphi\) is just “adjacent = hypotenuse · cos”: x is the adjacent side, r the hypotenuse. Same idea, two names.</div>
+</details>
 
 <h2 id="spickzettel">Cheat sheet</h2>
 <iframe class="embedded" data-part="spickzettel" src="spickzettel.html?embed=1&amp;lang=en" title="Cheat sheet"></iframe>

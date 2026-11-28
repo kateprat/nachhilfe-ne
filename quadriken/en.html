@@ -13,7 +13,7 @@
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
 <script defer src="../assets/steps.js?v=73"></script>
-<link rel="stylesheet" href="../assets/style.css?v=77">
+<link rel="stylesheet" href="../assets/style.css?v=78">
 <link rel="stylesheet" href="../assets/clean.css?v=3">
 </head>
 <body>
@@ -30,10 +30,10 @@
 </ul></nav>
 
 <h2 id="parabel">17.1 · Parabolas as a locus and algebraically</h2>
-<p class="ref"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>In the script</b></a> (p. 1): 17.1.1 (definition of a parabola) · Satz 17.1.3 · Exercise A1</p>
+<p class="need">What you need for A1:</p>
 <p><b>Conics</b> (Quadriken) are curves whose equation contains x and y at most squared: parabolas, circles, ellipses and hyperbolas. This chapter is about <b>parabolas</b> and <b>circles</b>.</p>
 
-<h3 id="def-17-1-1">The definition (17.1.1)</h3>
+<h3 id="def-17-1-1">The definition <span class="tag">17.1.1</span></h3>
 <div class="box"><p style="margin:0">Given a point F, the <b>focus</b>, and a line ℓ, the <b>directrix</b>. The <b>parabola</b> is the set of all points P that are the same distance from F and from ℓ:</p>
 $$\overline{PF} = \overline{P\ell}$$</div>
 
@@ -44,7 +44,6 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <p>The example from the script: \(F = (0, 1)\), ℓ is the x-axis. For a point \(P = (x, y)\), “same distance” means:</p>
 <div class="calc">$$\begin{aligned} \overline{P\ell} &= \overline{PF} \\ |y| &= \sqrt{x^2 + (y - 1)^2} \quad\mid\ (\ )^2 \\ y^2 &= x^2 + y^2 - 2y + 1 \\ 2y &= x^2 + 1 \\ y &= \tfrac12 x^2 + \tfrac12 \end{aligned}$$</div>
 <p>So the parabola is the graph of a quadratic function. That is no coincidence:</p>
-<div id="satz-17-1-3" class="box"><b>Theorem 17.1.3</b><p style="margin:4px 0 0">The graph of every quadratic function \(f(x) = ax^2 + bx + c\) with \(a \neq 0\) is a parabola.</p></div>
 
 <h3 id="scheitelform">Vertex form</h3>
 <p>\(f(x) = a(x - u)^2 + v\). From it you read off directly:</p>
@@ -53,12 +52,12 @@ $$\overline{PF} = \overline{P\ell}$$</div>
   <li>\(a > 0\): opens upwards, \(a < 0\): downwards; large \(|a|\): narrow, small \(|a|\): wide;</li>
   <li>for \(f(x) = ax^2\) the focus is at \(F = \left(0, \tfrac{1}{4a}\right)\) and the directrix at \(y = -\tfrac{1}{4a}\) (17.1.2).</li>
 </ul>
-<p>Every exercise works the same way: read the task and first think about how you would start. Then click through the solution with <b>“Next step”</b>, one step at a time. Before each click, think about what comes next. At the top of each exercise, <b>“Theory for this”</b> takes you to the matching theory (with the number from the script). Parts marked <span class="xtra">Extra</span> are not in the script, they are additional help.</p>
+<p>Every exercise works the same way: read the task and first think about how you would start. Then click through the solution with <b>“Next step”</b>, one step at a time. Before each click, think about what comes next. If you get stuck, <b>“Need help?”</b> at the top of the exercise takes you to the matching explanation. Anything marked ★ is not in the script: extra help. At the end of each section you can open <b>“More from the script”</b> if you want everything with the script's numbers.</p>
 
 <!-- A1 -->
 <article class="ex" id="a1" data-mode="worked">
   <div class="ex-head"><h3>A1 (a)</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#def-17-1-1">The definition (17.1.1) ↑</a> · <a href="#def-zu-fkt">From the definition to the function ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#def-17-1-1">The definition ↑</a></p>
   <div class="task">Describe the parabola with focus \(F = (2, 1)\) and directrix \(\ell: y = -1\) as the graph of a function.<br><small style="color:var(--mute)">A parabola is the set of all points P that are equally far from F and from ℓ (17.1.1).</small></div>
   <ol class="steps">
     <li class="step"><span class="nr">STEP 1</span><h4>A general point</h4>
@@ -81,7 +80,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 
 <article class="ex" id="a1b" data-mode="faded">
   <div class="ex-head"><h3>A1 (b) and (c)</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#def-17-1-1">The definition (17.1.1) ↑</a> · <a href="#scheitelform">Vertex form ↑</a> · <a href="#satz-17-1-3">Theorem 17.1.3 ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#scheitelform">Vertex form ↑</a></p>
   <div class="task">(b) Let \(a \neq 0\) (you may assume \(a \gt 0\)). Describe the parabola with \(F = (0, a)\) and \(\ell: y = -a\) as the graph of a function.<br>(c) Find F and ℓ so that the parabola is the graph of \(f(x) = x^2\).</div>
   <ol class="steps">
     <li class="step"><span class="nr">(b)</span><h4>Exactly like (a), with a instead of numbers</h4>
@@ -94,9 +93,15 @@ $$\overline{PF} = \overline{P\ell}$$</div>
   <div class="done">This is 17.1.2 in the script: the graph of \(f(x) = \frac{1}{4a}x^2\) is the parabola with \(F = (0, a)\) and \(\ell: y = -a\).</div>
 </article>
 
+<details class="more"><summary>More from the script (17.1)</summary>
+<p class="ref" style="margin:0 0 10px"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>In the script</b></a> (p. 1): 17.1.1 (definition of a parabola) · Satz 17.1.3 · Exercise A1</p>
+
+<div id="satz-17-1-3" class="box"><b>Theorem 17.1.3</b><p style="margin:4px 0 0">The graph of every quadratic function \(f(x) = ax^2 + bx + c\) with \(a \neq 0\) is a parabola.</p></div>
+</details>
+
 <h2 id="tangenten">17.2 · Tangents to parabolas</h2>
-<p class="ref"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>In the script</b></a> (p. 2–4): Definition 17.2.2 (tangent) · Beispiel 17.2.3 · Proposition 17.2.4 · Exercises A2–A8</p>
-<h3 id="buchstaben">What do the letters mean? <span class="xtra" title="Not in the script: a help from Kate">Extra</span></h3>
+<p class="need">What you need for A2–A8:</p>
+<h3 id="buchstaben">What do the letters mean? <span class="xtra" title="Not in the script: a help from Kate">★</span></h3>
 <p><b>A letter stands for a number</b> that we don't know yet, or that is allowed to change. That's all. You calculate with it exactly like with a number.</p>
 
 <h3>Substituting into x</h3>
@@ -142,13 +147,10 @@ $$\overline{PF} = \overline{P\ell}$$</div>
   <li>\(D = 0\): exactly one point. <b>The line is a tangent.</b> Then \(x = -\frac{b}{2a}\).</li>
   <li>\(D \lt 0\): no point. The line misses.</li>
 </ul>
-<div class="box" id="def-17-2-2"><b>Definition 17.2.2: tangent</b><p style="margin:4px 0 0">A line that meets the graph of a quadratic function f in <b>exactly one point</b> is called a <b>tangent</b> to f. The point is the <b>point of contact</b> (Berührpunkt). (Vertical lines don't count.) With the discriminant this means: <b>D = 0</b>.</p></div>
+<div class="box" id="def-17-2-2"><b>What is a tangent?</b><span class="tag">17.2.2</span><p style="margin:4px 0 0">A line that meets the graph of a quadratic function f in <b>exactly one point</b> is called a <b>tangent</b> to f. The point is the <b>point of contact</b> (Berührpunkt). (Vertical lines don't count.) With the discriminant this means: <b>D = 0</b>.</p></div>
 <iframe class="embedded" data-mode="tangente" src="interaktiv.html?embed=1&amp;one=1&amp;lang=en#tangente" title="Try it out" loading="lazy"></iframe>
-<div class="box" id="bsp-17-2-3"><b>Example 17.2.3 from the script</b><p style="margin:4px 0 0">Tangent to \(f(x) = \frac18 x^2 - x + 3\) at \(x_0 = 2\). Exactly the <a href="#rezept">tangent recipe</a>:</p>
-$$\begin{aligned} P &= (2, f(2)) = \left(2, \tfrac32\right) && \text{point of contact} \\ t(x) &= mx + q,\ t(2) = \tfrac32 \Rightarrow q = \tfrac32 - 2m && \text{set-up} \\ \tfrac18 x^2 - x + 3 &= mx + \tfrac32 - 2m && \text{set equal} \\ x^2 + (-8m - 8)x + (16m + 12) &= 0 && \text{standard form} \\ (-8m - 8)^2 - 4(16m + 12) = 0 &\iff 4m^2 + 4m + 1 = 0 && D = 0 \\ m &= -\tfrac12,\quad q = \tfrac52 && \text{solve} \end{aligned}$$
-<p style="margin:0">The tangent is \(t(x) = -\frac12 x + \frac52\).</p></div>
 
-<h3 id="rezept">The tangent recipe <span class="xtra" title="Not in the script: a help from Kate">Extra</span></h3>
+<h3 id="rezept">The tangent recipe <span class="xtra" title="Not in the script: a help from Kate">★</span></h3>
 <p class="small" style="color:var(--mute)">Circles have two recipes of their own, in <a href="#kreisrezept1">17.3 · Circles</a>. All recipes at a glance: <a href="#spickzettel">Cheat sheet</a>.</p>
 <p>Almost all exercises A2–A8 use the same 7 steps. Only step 1 changes, depending on what is given.</p>
 <ol class="recipe">
@@ -177,7 +179,7 @@ $$\begin{aligned} P &= (2, f(2)) = \left(2, \tfrac32\right) && \text{point of co
 <!-- A2 -->
 <article class="ex" id="a2" data-mode="worked">
   <div class="ex-head"><h3>A2</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#def-17-2-2">Definition 17.2.2 ↑</a> · <a href="#rezept">The tangent recipe ↑</a> · <a href="#bsp-17-2-3">Example 17.2.3 ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#rezept">The tangent recipe ↑</a></p>
   <div class="task">Find the tangent with slope −3 to the parabola \(f(x) = x^2 - 2x + 3\) and its point of contact.</div>
   <ol class="steps">
     <li class="step"><span class="nr">STEP 1</span><h4>Set-up</h4>
@@ -209,7 +211,7 @@ $$\begin{aligned} P &= (2, f(2)) = \left(2, \tfrac32\right) && \text{point of co
 <!-- A3 -->
 <article class="ex" id="a3" data-mode="worked">
   <div class="ex-head"><h3>A3</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#rezept">The tangent recipe ↑</a> · <a href="#einsetzen">Does a point lie on the line? → Substitute ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#rezept">The tangent recipe ↑</a></p>
   <div class="task">Find all tangents to the parabola \(f(x) = x^2 - 2x + \frac{25}{16}\) that pass through the origin; give the point of contact for each.</div>
   <ol class="steps">
     <li class="step"><span class="nr">STEP 1</span><h4>Set-up</h4>
@@ -239,7 +241,7 @@ $$\begin{aligned} P &= (2, f(2)) = \left(2, \tfrac32\right) && \text{point of co
 <!-- A4 a -->
 <article class="ex" id="a4" data-mode="worked">
   <div class="ex-head"><h3>A4 (a)</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#rezept">The tangent recipe ↑</a> · <a href="#def-17-2-2">Definition 17.2.2 ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#rezept">The tangent recipe ↑</a></p>
   <div class="task">Find the equation \(t(x) = \m x + \q\) of the tangent to \(f(x) = x^2\) at the point \(Q = \left(\frac12, \frac14\right)\).</div>
   <ol class="steps">
     <li class="step"><span class="nr">STEP 1</span><h4>Set-up</h4>
@@ -266,7 +268,7 @@ $$\begin{aligned} P &= (2, f(2)) = \left(2, \tfrac32\right) && \text{point of co
 <!-- A4 b -->
 <article class="ex" id="a4b" data-mode="faded">
   <div class="ex-head"><h3>A4 (b)</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#rezept">The tangent recipe ↑</a> · <a href="#gerade">The line \(g(x) = \m\cdot x + \q\) ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#rezept">The tangent recipe ↑</a></p>
   <div class="task">General point \(P = (p, p^2)\) on the standard parabola \(f(x) = x^2\). Find the tangent \(t(x) = \m x + \q\) to f at the point P.<br><small style="color:var(--mute)">p is just a number we don't fix. Calculate exactly as in (a), only with p instead of ½.</small></div>
   <ol class="steps">
     <li class="step"><span class="nr">STEP 1</span><h4>Set-up: P lies on t</h4>
@@ -288,7 +290,7 @@ $$\begin{aligned} P &= (2, f(2)) = \left(2, \tfrac32\right) && \text{point of co
 <!-- A5 -->
 <article class="ex" id="a5" data-mode="faded">
   <div class="ex-head"><h3>A5</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#a4b">Proposition 17.2.4 ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#a4b">The shortcut from A4 (b) ↑</a></p>
   <div class="task">Using Proposition 17.2.4: give the tangents to the standard parabola \(f(x) = x^2\) at the points \(A = (-2, 4)\), \(B = (3, 9)\), \(C = (1, 1)\), \(D = (\frac12, \frac14)\), \(E = (-\frac32, \frac94)\), \(O = (0, 0)\).</div>
   <ol class="steps">
     <li class="step"><span class="nr">RULE</span><h4>The shortcut</h4>
@@ -307,7 +309,7 @@ $$\begin{aligned} P &= (2, f(2)) = \left(2, \tfrac32\right) && \text{point of co
 <!-- A6 -->
 <article class="ex" id="a6" data-mode="faded">
   <div class="ex-head"><h3>A6</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#rezept">The tangent recipe ↑</a> · <a href="#a4b">Proposition 17.2.4 ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#rezept">The tangent recipe ↑</a></p>
   <div class="task">(a) Find all tangents to the standard parabola \(f(x) = x^2\) that pass through \(A = (1, -3)\). A does <b>not</b> lie on the parabola.<br>(b) Give the points of contact.<br><small style="color:var(--mute)">Here the 2nd method from the script = our recipe. The 1st method is below.</small></div>
   <ol class="steps">
     <li class="step"><span class="nr">STEP 1</span><h4>Set-up: A lies on t</h4>
@@ -335,7 +337,7 @@ $$\begin{aligned} P &= (2, f(2)) = \left(2, \tfrac32\right) && \text{point of co
 <!-- A7 -->
 <article class="ex" id="a7" data-mode="faded">
   <div class="ex-head"><h3>A7</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#rezept">The tangent recipe ↑</a> · <a href="#scheitelform">Vertex form ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#rezept">The tangent recipe ↑</a></p>
   <div class="task">(a) Find all tangents to \(f(x) = \frac14(x + 3)^2 + 1\) that pass through \(P = (-2, -1)\).<br>(b) Find each point of contact.</div>
   <ol class="steps">
     <li class="step"><span class="nr">STEP 1</span><h4>Set-up: P lies on t</h4>
@@ -365,7 +367,7 @@ $$\begin{aligned} P &= (2, f(2)) = \left(2, \tfrac32\right) && \text{point of co
 <!-- A8 -->
 <article class="ex" id="a8" data-mode="faded">
   <div class="ex-head"><h3>A8</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#rezept">The tangent recipe ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#rezept">The tangent recipe ↑</a></p>
   <div class="task">Find the tangent to \(f(x) = \frac14(x + 3)^2 + 1\) at the point \(A = (-1, f(-1))\).</div>
   <ol class="steps">
     <li class="step"><span class="nr">STEP 0</span><h4>Calculate the point</h4>
@@ -387,10 +389,18 @@ $$\begin{aligned} P &= (2, f(2)) = \left(2, \tfrac32\right) && \text{point of co
   <div class="done">\(t(x) = x + 3\), point of contact \(A = (-1, 2)\).</div>
 </article>
 
+<details class="more"><summary>More from the script (17.2)</summary>
+<p class="ref" style="margin:0 0 10px"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>In the script</b></a> (p. 2–4): Definition 17.2.2 (tangent) · Beispiel 17.2.3 · Proposition 17.2.4 · Exercises A2–A8</p>
+
+<div class="box" id="bsp-17-2-3"><b>Example 17.2.3 from the script</b><p style="margin:4px 0 0">Tangent to \(f(x) = \frac18 x^2 - x + 3\) at \(x_0 = 2\). Exactly the <a href="#rezept">tangent recipe</a>:</p>
+$$\begin{aligned} P &= (2, f(2)) = \left(2, \tfrac32\right) && \text{point of contact} \\ t(x) &= mx + q,\ t(2) = \tfrac32 \Rightarrow q = \tfrac32 - 2m && \text{set-up} \\ \tfrac18 x^2 - x + 3 &= mx + \tfrac32 - 2m && \text{set equal} \\ x^2 + (-8m - 8)x + (16m + 12) &= 0 && \text{standard form} \\ (-8m - 8)^2 - 4(16m + 12) = 0 &\iff 4m^2 + 4m + 1 = 0 && D = 0 \\ m &= -\tfrac12,\quad q = \tfrac52 && \text{solve} \end{aligned}$$
+<p style="margin:0">The tangent is \(t(x) = -\frac12 x + \frac52\).</p></div>
+</details>
+
 <h2 id="kreise">17.3 · Circles and quadratic equations</h2>
-<p class="ref"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>In the script</b></a> (p. 4–6): Definition 17.3.2 (circle) · Merke 17.3.4 (circle equation) · Definition 17.3.6 (zero set) · Merke 17.3.7 · Exercises A9, A10</p>
+<p class="need">What you need for A9 and A10:</p>
 <p>A circle is the set of all points at exactly distance r from a centre M. Pythagoras turns this into the <b>circle equation</b>:</p>
-<div class="box" id="merke-17-3-4"><b>Definition 17.3.2 and Merke 17.3.4: circle equation</b>$$(x - a)^2 + (y - b)^2 = r^2 \qquad M = (a, b),\ \text{radius } r$$
+<div class="box" id="merke-17-3-4"><b>The circle equation</b><span class="tag">17.3.4</span>$$(x - a)^2 + (y - b)^2 = r^2 \qquad M = (a, b),\ \text{radius } r$$
 <p style="margin:0">Careful with signs: \((y + 10)^2\) is \((y - (-10))^2\), so \(b = -10\).</p></div>
 <p>For A9 you need <b>completing the square</b>. If that's rusty: <a href="../grundlagen/#ergaenzen">Algebra toolbox</a>.</p>
 
@@ -408,7 +418,7 @@ $$\begin{aligned} P &= (2, f(2)) = \left(2, \tfrac32\right) && \text{point of co
 
 <article class="ex" id="k1">
   <div class="ex-head"><h3>Question 1</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#merke-17-3-4">Merke 17.3.4 ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#merke-17-3-4">The circle equation ↑</a></p>
   <div class="task">What does \(x^2 + y^2 = 1\) describe?</div>
   <ol class="steps">
     <li class="step"><div class="ask" data-form="M = (_, _)" data-ans="0|0"><p class="q"><span data-l="de">Wo liegt der Mittelpunkt?</span><span data-l="en">Where is the centre?</span></p><p class="hint"><span data-l="de">Vergleiche mit \((x - a)^2 + (y - b)^2\). Was steht hier anstelle von a und b?</span><span data-l="en">Compare with \((x - a)^2 + (y - b)^2\). What stands in place of a and b here?</span></p></div><span class="nr">STEP 1</span><h4>Read off the centre</h4>
@@ -425,7 +435,7 @@ $$\begin{aligned} P &= (2, f(2)) = \left(2, \tfrac32\right) && \text{point of co
 
 <article class="ex" id="k2">
   <div class="ex-head"><h3>Question 2</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#merke-17-3-4">Merke 17.3.4 ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#merke-17-3-4">The circle equation ↑</a></p>
   <div class="task">What does \((3 - x)^2 + (y + 7)^2 = \sqrt5\) describe?</div>
   <ol class="steps">
     <li class="step"><div class="ask" data-form="a = _" data-ans="3"><p class="q"><span data-l="de">Erste Koordinate des Mittelpunkts?</span><span data-l="en">First coordinate of the centre?</span></p><p class="hint" data-when="-3"><span data-l="de">Fast. \(3 - x\) ist dasselbe wie \(-(x - 3)\), und im Quadrat fällt das Minus weg.</span><span data-l="en">Close. \(3 - x\) is the same as \(-(x - 3)\), and squaring removes the minus.</span></p><p class="hint"><span data-l="de">Schreib \((3 - x)^2\) als \((x - \ldots)^2\). Im Quadrat ist die Reihenfolge egal.</span><span data-l="en">Write \((3 - x)^2\) as \((x - \ldots)^2\). Squared, the order does not matter.</span></p></div><span class="nr">STEP 1</span><h4>Turn the first bracket around</h4>
@@ -446,7 +456,7 @@ $$\begin{aligned} P &= (2, f(2)) = \left(2, \tfrac32\right) && \text{point of co
 
 <article class="ex" id="k3">
   <div class="ex-head"><h3>Question 3</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#merke-17-3-4">Merke 17.3.4 ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#merke-17-3-4">The circle equation ↑</a></p>
   <div class="task">What does \(x^2 + y^2 = 0\) describe?</div>
   <ol class="steps">
     <li class="step"><div class="ask" data-type="choice"><p class="q"><span data-l="de">Dein Tipp, bevor du rechnest:</span><span data-l="en">Your guess, before you calculate:</span></p><button class="opt"><span data-l="de">Einen Kreis um (0, 0) mit Radius&nbsp;1</span><span data-l="en">A circle around (0, 0) with radius&nbsp;1</span><span class="oh"><span data-l="de">Dann müsste rechts 1 stehen. Hier ist \(r^2 = 0\).</span><span data-l="en">Then the right side would be 1. Here \(r^2 = 0\).</span></span></button><button class="opt" data-ok><span data-l="de">Nur den Punkt (0, 0)</span><span data-l="en">Only the point (0, 0)</span></button><button class="opt"><span data-l="de">Gar keinen Punkt (leere Menge)</span><span data-l="en">No point at all (empty set)</span><span class="oh"><span data-l="de">Setz \(x = 0\) und \(y = 0\) ein. Stimmt die Gleichung?</span><span data-l="en">Put in \(x = 0\) and \(y = 0\). Does the equation hold?</span></span></button></div><span class="nr">STEP 1</span><h4>Squares are never negative</h4>
@@ -462,7 +472,7 @@ $$\begin{aligned} P &= (2, f(2)) = \left(2, \tfrac32\right) && \text{point of co
 
 <article class="ex" id="k4">
   <div class="ex-head"><h3>Question 4</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#merke-17-3-4">Merke 17.3.4 ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#merke-17-3-4">The circle equation ↑</a></p>
   <div class="task">What does \(x^2 + y^2 = -1\) describe?</div>
   <ol class="steps">
     <li class="step"><div class="ask" data-type="choice"><p class="q"><span data-l="de">Dein Tipp, bevor du rechnest:</span><span data-l="en">Your guess, before you calculate:</span></p><button class="opt"><span data-l="de">Einen Kreis um (0, 0) mit Radius&nbsp;1</span><span data-l="en">A circle around (0, 0) with radius&nbsp;1</span><span class="oh"><span data-l="de">Rechts steht −1, nicht 1. Kann \(x^2 + y^2\) negativ sein?</span><span data-l="en">The right side is −1, not 1. Can \(x^2 + y^2\) be negative?</span></span></button><button class="opt"><span data-l="de">Nur den Punkt (0, 0)</span><span data-l="en">Only the point (0, 0)</span><span class="oh"><span data-l="de">Setz \(x = 0\), \(y = 0\) ein: \(0 = -1\)? Stimmt nicht.</span><span data-l="en">Put in \(x = 0\), \(y = 0\): \(0 = -1\)? False.</span></span></button><button class="opt" data-ok><span data-l="de">Gar keinen Punkt (leere Menge)</span><span data-l="en">No point at all (empty set)</span></button></div><span class="nr">STEP 1</span><h4>Squares are never negative</h4>
@@ -486,7 +496,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 <p class="ts">Backwards: write the equation</p>
 <ol class="tryl"><li><span class="tq"><b>e)</b> Centre \((-3, 4)\), radius \(\sqrt2\)</span> <button type="button" class="reveal" data-answer="kqe">Show solution</button><p id="kqe" class="ta">\((x + 3)^2 + (y - 4)^2 = 2\)</p></li></ol></div>
 
-<h3 id="kreisrezept1">Circle recipe 1: read off centre and radius <span class="xtra" title="Not in the script: a help from Kate">Extra</span></h3>
+<h3 id="kreisrezept1">Circle recipe 1: read off centre and radius <span class="xtra" title="Not in the script: a help from Kate">★</span></h3>
 <p>With the example \(x^2 + y^2 - 6x + 4y - 3 = 0\), step by step:</p>
 <ol class="recipe">
   <li><div><b>Sort</b><span class="f">\((x^2 - 6x) + (y^2 + 4y) = 3\)</span><small>x-terms together, y-terms together, the number to the right.</small></div></li>
@@ -495,7 +505,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
   <li><div><b>Read off</b><span class="f">\(M = (3, -2)\)</span><span class="f">\(r = \sqrt{16} = 4\)</span><small>Flip the signs from the brackets. If the right side is 0: just one point. If it is negative: no point at all.</small></div></li>
 </ol>
 
-<h3 id="ergaenzen">In-between step: completing the square <span class="xtra" title="Not in the script: a help from Kate">Extra</span></h3>
+<h3 id="ergaenzen">In-between step: completing the square <span class="xtra" title="Not in the script: a help from Kate">★</span></h3>
 <p>Step 2 of circle recipe 1 needs no guessing. For \(x^2 + b\,x\) it always works like this:</p>
 <ol class="recipe">
   <li><div><b>Halve</b><span class="f">\(h = \dfrac{b}{2}\)</span><small>Halve the number in front of x, sign included.</small></div></li>
@@ -505,7 +515,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 <div class="box"><p style="margin:0"><b>Why?</b> Multiplied out, \((x + h)^2 = x^2 + 2h\,x + h^2\). For the x-term to match, \(2h = b\) so \(h = \tfrac{b}{2}\). The \(h^2\) is extra and is subtracted.<br><b>Check:</b> multiplying out must give back what you started with.<br><b>Number in front of x²?</b> Factor it out first: \(2x^2 + 12x = 2(x^2 + 6x)\), then complete the square inside.</p></div>
 <article class="ex" id="qe1">
   <div class="ex-head"><h3>Practice 1</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#ergaenzen">In-between step: completing the square ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#ergaenzen">Completing the square ↑</a></p>
   <div class="task">Complete the square: \(x^2 - 8x\)</div>
   <ol class="steps">
     <li class="step"><div class="ask" data-form="h = _" data-ans="-4"><p class="q">What is h, half the number in front of x?</p><p class="hint" data-when="4">Close: the sign stays when you halve.</p><p class="hint" data-when="-8">That is the whole number in front of x. Take half of it.</p><p class="hint">The number in front of x is \(-8\). Divide it by 2.</p></div><span class="nr">STEP 1</span><h4>Halve</h4>
@@ -522,7 +532,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 </article>
 <article class="ex" id="qe2">
   <div class="ex-head"><h3>Practice 2</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#ergaenzen">In-between step: completing the square ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#ergaenzen">Completing the square ↑</a></p>
   <div class="task">Complete the square: \(y^2 + 10y\)</div>
   <ol class="steps">
     <li class="step"><div class="ask" data-form="h = _" data-ans="5"><p class="q">What is h, half the number in front of y?</p><p class="hint" data-when="-5">Close: the sign stays when you halve.</p><p class="hint" data-when="10">That is the whole number in front of y. Take half of it.</p><p class="hint">The number in front of y is \(10\). Divide it by 2.</p></div><span class="nr">STEP 1</span><h4>Halve</h4>
@@ -539,7 +549,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 </article>
 <article class="ex" id="qe3">
   <div class="ex-head"><h3>Practice 3</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#ergaenzen">In-between step: completing the square ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#ergaenzen">Completing the square ↑</a></p>
   <div class="task">Complete the square: \(x^2 + 3x\)</div>
   <ol class="steps">
     <li class="step"><div class="ask" data-form="h = _" data-ans="3/2"><p class="q">What is h, half the number in front of x?</p><p class="hint" data-when="-3/2">Close: the sign stays when you halve.</p><p class="hint" data-when="3">That is the whole number in front of x. Take half of it.</p><p class="hint">The number in front of x is \(3\). Divide it by 2.</p></div><span class="nr">STEP 1</span><h4>Halve</h4>
@@ -555,17 +565,16 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
   <div class="done">Check: multiplied out this gives back \(x^2 + 3x\).</div>
 </article>
 
-<div class="box" id="def-17-3-6"><b>Definition 17.3.6 and Merke 17.3.7: zero set</b>
+<div class="box" id="def-17-3-6"><b>What is a zero set?</b><span class="tag">17.3.6</span>
 <p style="margin:4px 0 0">A <b>zero</b> (Nullstelle) of \(f(x, y)\) is a point \((x, y)\) with \(f(x, y) = 0\). The <b>zero set</b> (Nullstellenmenge) is all these points, i.e. the solution set of \(f(x, y) = 0\).</p>
-<p style="margin:8px 0 0">Example from the script (17.3.5): multiplying out the circle equation \((x - 3)^2 + (y - 5)^2 = 7^2\) gives \(x^2 - 6x + y^2 - 10y - 15 = 0\). So the circle \(K_7(3, 5)\) is the zero set of \(x^2 - 6x + y^2 - 10y - 15\).</p>
-<p style="margin:8px 0 0"><b>Merke 17.3.7:</b> The zero set of \(x^2 + y^2 + sx + ty + u\) is always <b>a circle</b>, <b>a single point</b> or <b>empty</b>. Important: \(x^2\) and \(y^2\) have the same number in front, and there is no \(xy\).</p>
-<p style="margin:8px 0 0"><b>Why?</b> Complete the square, once for x and once for y. This gives \((x - a)^2 + (y - b)^2 = d\). If \(d \gt 0\): circle around \((a, b)\) with \(r = \sqrt d\). If \(d = 0\): only the point \((a, b)\). If \(d \lt 0\): empty.</p></div>
-<p class="bridge"><b>Now A9 and A10.</b> A9 is exactly Merke 17.3.7: complete the square, then read off with <a href="#kreisrezept1">circle recipe 1</a>. A10 shows which other figures can be zero sets.</p>
+<p style="margin:8px 0 0"><span class="tag">17.3.7</span>The zero set of \(x^2 + y^2 + sx + ty + u\) is always <b>a circle</b>, <b>a single point</b> or <b>empty</b>. Important: \(x^2\) and \(y^2\) have the same number in front, and there is no \(xy\).</p>
+</div>
+<p class="bridge"><b>Now A9 and A10.</b> A9: complete the square, then read off with <a href="#kreisrezept1">circle recipe 1</a>. A10: which other figures can be zero sets?</p>
 
 <!-- A9 e -->
 <article class="ex" id="a9" data-mode="worked">
   <div class="ex-head"><h3>A9 (a) e)</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#def-17-3-6">Definition 17.3.6 / Merke 17.3.7 ↑</a> · <a href="#kreisrezept1">Circle recipe 1: read off centre and radius ↑</a> · <a href="#ergaenzen">In-between step: completing the square ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#kreisrezept1">Circle recipe 1 ↑</a></p>
   <div class="task">Find the centre and radius of the circle \(x^2 + y^2 - 6x + 20y + 73 = 0\).</div>
   <ol class="steps">
     <li class="step"><span class="nr">STEP 1</span><h4>Sort</h4>
@@ -588,7 +597,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 <!-- A9 rest -->
 <article class="ex" id="a9b" data-mode="faded">
   <div class="ex-head"><h3>A9 (a) a)–d), f) and (b)</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#def-17-3-6">Definition 17.3.6 / Merke 17.3.7 ↑</a> · <a href="#kreisrezept1">Circle recipe 1: read off centre and radius ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#kreisrezept1">Circle recipe 1 ↑</a></p>
   <div class="task">(a) Find centre and radius:<br>a) \(x^2 + y^2 = 25\)<br>b) \(x^2 + y^2 - 5 = 0\)<br>c) \(x^2 - 2x + 1 + y^2 - \frac14 = 0\)<br>d) \(x^2 + 2x + 1 + y^2 - \frac14 = 0\)<br>f) \(x^2 + y^2 - 2\sqrt3 x + 4\sqrt2 y + 4 = 0\)<br>(b) Why are these not circles? What are they?<br>a) \(x^2 + y^2 + 25 = 0\)<br>b) \(x^2 + y^2 = 0\)<br>c) \(x^2 + \left(\frac{y}{2}\right)^2 - 1 = 0\)</div>
   <ol class="steps">
     <li class="step"><span class="nr">a) b)</span><h4>Almost done already</h4>
@@ -614,7 +623,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 <!-- A10 -->
 <article class="ex" id="a10" data-mode="faded">
   <div class="ex-head"><h3>A10</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#def-17-3-6">Definition 17.3.6 / Merke 17.3.7 ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#def-17-3-6">What is a zero set? ↑</a></p>
   <div class="task">The zero sets of these functions are not circles, but simple shapes. Sketch them:<br>(a) \(y\)<br>(b) \(y - 3\)<br>(c) \(x\)<br>(d) \(x + 4\)<br>(e) \(x - y\)<br>(f) \(x + y\)<br>(g) \(\frac12 x - 3 - y\)<br>(h) \(2x + 3y - 6\)<br>(i) \(x^2 - y\)<br>(j) \(x - y^2\)<br>(k) \(xy\)<br>(l) \((x + 4)(y - 3)\)<br>(m) \(xy + 2x + 5y + 10\)<br>(n) \(0\)<br>(o) \(-2\)<br>(p) \(xy(x - y)\)<br>(q) \(x^3y - xy^3\); extra (r), (s).</div>
   <ol class="steps">
     <li class="step"><span class="nr">RULE</span><h4>Set it equal to zero, solve for y (or x)</h4>
@@ -636,9 +645,17 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
   </ol>
 </article>
 
+<details class="more"><summary>More from the script (17.3)</summary>
+<p class="ref" style="margin:0 0 10px"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>In the script</b></a> (p. 4–6): Definition 17.3.2 (circle) · Merke 17.3.4 (circle equation) · Definition 17.3.6 (zero set) · Merke 17.3.7 · Exercises A9, A10</p>
+
+<p><b>About the zero set</b></p>
+<p style="margin:8px 0 0">Example from the script (17.3.5): multiplying out the circle equation \((x - 3)^2 + (y - 5)^2 = 7^2\) gives \(x^2 - 6x + y^2 - 10y - 15 = 0\). So the circle \(K_7(3, 5)\) is the zero set of \(x^2 - 6x + y^2 - 10y - 15\).</p>
+<p style="margin:8px 0 0"><b>Why?</b> Complete the square, once for x and once for y. This gives \((x - a)^2 + (y - b)^2 = d\). If \(d \gt 0\): circle around \((a, b)\) with \(r = \sqrt d\). If \(d = 0\): only the point \((a, b)\). If \(d \lt 0\): empty.</p>
+</details>
+
 <h2 id="kreisgerade">17.4 · Intersecting a circle with a line</h2>
-<p class="ref"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>In the script</b></a> (p. 6): Exercise A11</p>
-<h3 id="kreisrezept2">Circle recipe 2: intersect circle and line <span class="xtra" title="Not in the script: a help from Kate">Extra</span></h3>
+<p class="need">What you need for A11:</p>
+<h3 id="kreisrezept2">Circle recipe 2: intersect circle and line <span class="xtra" title="Not in the script: a help from Kate">★</span></h3>
 <p>With the example: circle \(x^2 + y^2 = 10\) and line \(x - y + 2 = 0\).</p>
 <ol class="recipe">
   <li><div><b>Solve the line for y</b><span class="f">\(y = x + 2\)</span><small>In general: \(y = \m x + \q\).</small></div></li>
@@ -654,7 +671,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 <!-- A11 a -->
 <article class="ex" id="a11" data-mode="worked">
   <div class="ex-head"><h3>A11 (a)</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#kreisrezept2">Circle recipe 2: intersect circle and line ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#kreisrezept2">Circle recipe 2 ↑</a></p>
   <div class="task">Calculate the intersection points of the line \(-x + y = 1\) and the circle \(x^2 + y^2 = 25\). (First draw and read off, then calculate.)</div>
   <ol class="steps">
     <li class="step"><span class="nr">STEP 1</span><h4>Solve the line for y</h4>
@@ -677,7 +694,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 <!-- A11 b-d -->
 <article class="ex" id="a11b" data-mode="faded">
   <div class="ex-head"><h3>A11 (b)–(d)</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#kreisrezept2">Circle recipe 2: intersect circle and line ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#kreisrezept2">Circle recipe 2 ↑</a></p>
   <div class="task">(b) Intersection points of \(y = \frac12 x + 1\) and \(x^2 + y^2 = 25\).<br>(c) Intersection points of the circle around \((-2, 1)\) with radius 4 and the line through the centre with slope \(\frac32\).<br>(d) optional: \(3x + 4y = 327\) and \((x - 5)^2 + (y - 3)^2 = 65^2\).</div>
   <ol class="steps">
     <li class="step"><span class="nr">(b)</span><h4>Substitute, multiply away the fraction</h4>
@@ -699,14 +716,19 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
   </ol>
 </article>
 
+<details class="more"><summary>More from the script (17.4)</summary>
+<p class="ref" style="margin:0 0 10px"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>In the script</b></a> (p. 6): Exercise A11</p>
+
+</details>
+
 <h2 id="zweikreise">17.5 · For the brave only: intersecting two circles</h2>
-<p class="ref"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>In the script</b></a> (p. 7): Exercise A12</p>
+<p class="need">What you need for A12: circle recipe 2 from 17.4, just with two circles.</p>
 <!-- A12 -->
 <iframe class="embedded" data-mode="zwei-kreise" src="interaktiv.html?embed=1&amp;one=1&amp;lang=en#zwei-kreise" title="Try it out" loading="lazy"></iframe>
 
 <article class="ex" id="a12" data-mode="faded">
   <div class="ex-head"><h3>A12</h3></div>
-  <p class="th"><b>Theory for this:</b> <a href="#merke-17-3-4">Merke 17.3.4 ↑</a> · <a href="#kreisrezept2">Circle recipe 2: intersect circle and line ↑</a></p>
+  <p class="th"><b>Need help?</b> <a href="#kreisrezept2">Circle recipe 2 ↑</a></p>
   <div class="task">Find the intersection points of the circle around \((0, 0)\) with radius 85 and the circle around \((140, 20)\) with radius 65.<br><small style="color:var(--mute)">Here is a shorter way than in the script: subtract the equations. Then \(x^2\) and \(y^2\) cancel and a line is left, so it's A11 again.</small></div>
   <ol class="steps">
     <li class="step"><span class="nr">STEP 1</span><h4>Both circle equations</h4>
@@ -725,6 +747,11 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
   </ol>
   <div class="done">Intersection points \((84, -13)\) and \((77, 36)\), as in the script. <a href="interaktiv.html#zwei-kreise">Check it in the picture</a></div>
 </article>
+
+<details class="more"><summary>More from the script (17.5)</summary>
+<p class="ref" style="margin:0 0 10px"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>In the script</b></a> (p. 7): Exercise A12</p>
+
+</details>
 
 <h2 id="spickzettel">Cheat sheet</h2>
 <iframe class="embedded" data-part="spickzettel" src="spickzettel.html?embed=1&amp;lang=en" title="Cheat sheet"></iframe>
