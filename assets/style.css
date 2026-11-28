@@ -84,6 +84,9 @@ a.card:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--shadow)}
 .box{border:2px solid var(--line);border-radius:18px;padding:16px 18px;margin:16px 0;background:var(--card)}
 .tip{background:var(--tip);border-color:transparent}
 .ref{margin:-4px 0 14px;font-size:15px;color:var(--mute)}.ref b{color:var(--ink)}
+.th{margin:2px 0 8px;font-size:15px;color:var(--mute)}.th b{color:var(--ink)}.th a{white-space:nowrap}
+.xtra{display:inline-block;vertical-align:middle;margin-left:6px;padding:1px 8px;border-radius:999px;background:var(--lilac);color:#1f1a40;font:700 12px "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:.02em}
+.bridge{margin:22px 0 0;padding:12px 16px;border-left:5px solid var(--yellow);background:var(--card);border-radius:0 14px 14px 0}
 .tip b:first-child{display:block;margin-bottom:4px}
 .exam{background:var(--hi);border:2px dashed var(--ink)}
 .sub{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:8px}

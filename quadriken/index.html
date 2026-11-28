@@ -13,7 +13,7 @@
 <script defer src="../assets/katex/katex.min.js"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js"></script>
 <script defer src="../assets/steps.js?v=73"></script>
-<link rel="stylesheet" href="../assets/style.css?v=76">
+<link rel="stylesheet" href="../assets/style.css?v=77">
 <link rel="stylesheet" href="../assets/clean.css?v=3">
 </head>
 <body>
@@ -33,31 +33,32 @@
 <p class="ref"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>Im Skript</b></a> (S. 1): 17.1.1 (Definition Parabel) · Satz 17.1.3 · Aufgabe A1</p>
 <p><b>Quadriken</b> sind Kurven, in deren Gleichung x und y höchstens im Quadrat vorkommen: Parabeln, Kreise, Ellipsen und Hyperbeln. In diesem Kapitel geht es um <b>Parabeln</b> und <b>Kreise</b>.</p>
 
-<h3>Die Definition (17.1.1)</h3>
+<h3 id="def-17-1-1">Die Definition (17.1.1)</h3>
 <div class="box"><p style="margin:0">Gegeben sind ein Punkt F, der <b>Brennpunkt</b>, und eine Gerade ℓ, die <b>Leitgerade</b>. Die <b>Parabel</b> ist die Menge aller Punkte P, die von F und von ℓ gleich weit entfernt sind:</p>
 $$\overline{PF} = \overline{P\ell}$$</div>
 
 <p>Zieh im Bild F, die Leitgerade oder P: Die rote und die blaue Strecke bleiben immer gleich lang.</p>
 <iframe class="embedded" data-mode="brennpunkt" src="interaktiv.html?embed=1&amp;one=1&amp;lang=de#brennpunkt" title="Ausprobieren" loading="lazy"></iframe>
 
-<h3>Von der Definition zur Funktion</h3>
+<h3 id="def-zu-fkt">Von der Definition zur Funktion</h3>
 <p>Das Beispiel aus dem Skript: \(F = (0, 1)\), ℓ ist die x-Achse. Für einen Punkt \(P = (x, y)\) heisst «gleich weit»:</p>
 <div class="calc">$$\begin{aligned} \overline{P\ell} &= \overline{PF} \\ |y| &= \sqrt{x^2 + (y - 1)^2} \quad\mid\ (\ )^2 \\ y^2 &= x^2 + y^2 - 2y + 1 \\ 2y &= x^2 + 1 \\ y &= \tfrac12 x^2 + \tfrac12 \end{aligned}$$</div>
 <p>Die Parabel ist also der Graph einer quadratischen Funktion. Das ist kein Zufall:</p>
-<div class="box"><b>Satz 17.1.3</b><p style="margin:4px 0 0">Der Graph jeder quadratischen Funktion \(f(x) = ax^2 + bx + c\) mit \(a \neq 0\) ist eine Parabel.</p></div>
+<div id="satz-17-1-3" class="box"><b>Satz 17.1.3</b><p style="margin:4px 0 0">Der Graph jeder quadratischen Funktion \(f(x) = ax^2 + bx + c\) mit \(a \neq 0\) ist eine Parabel.</p></div>
 
-<h3>Die Scheitelform</h3>
+<h3 id="scheitelform">Die Scheitelform</h3>
 <p>\(f(x) = a(x - u)^2 + v\). Daran liest du direkt ab:</p>
 <ul>
   <li>der <b>Scheitel</b> ist \(S = (u, v)\), der tiefste (oder höchste) Punkt;</li>
   <li>\(a > 0\): nach oben offen, \(a < 0\): nach unten; grosses \(|a|\): schmal, kleines \(|a|\): breit;</li>
   <li>für \(f(x) = ax^2\) liegt der Brennpunkt bei \(F = \left(0, \tfrac{1}{4a}\right)\) und die Leitgerade bei \(y = -\tfrac{1}{4a}\) (17.1.2).</li>
 </ul>
-<p>So funktionieren alle Aufgaben: Lies die Aufgabe und überleg zuerst selbst, wie du anfangen würdest. Dann klickst du dich mit <b>«Nächster Schritt»</b> durch die Lösung, ein Schritt nach dem anderen. Überleg vor jedem Klick, was als Nächstes kommt.</p>
+<p>So funktionieren alle Aufgaben: Lies die Aufgabe und überleg zuerst selbst, wie du anfangen würdest. Dann klickst du dich mit <b>«Nächster Schritt»</b> durch die Lösung, ein Schritt nach dem anderen. Überleg vor jedem Klick, was als Nächstes kommt. Oben in jeder Aufgabe führt dich <b>«Theorie dazu»</b> zur passenden Stelle in der Theorie (mit der Nummer aus dem Skript). Teile mit <span class="xtra">Extra</span> stehen nicht im Skript, das sind zusätzliche Hilfen.</p>
 
 <!-- A1 -->
 <article class="ex" id="a1" data-mode="worked">
   <div class="ex-head"><h3>A1 (a)</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#def-17-1-1">Die Definition (17.1.1) ↑</a> · <a href="#def-zu-fkt">Von der Definition zur Funktion ↑</a></p>
   <div class="task">Beschreibe die Parabel zum Brennpunkt \(F = (2, 1)\) und zur Leitgeraden \(\ell: y = -1\) als Graph einer Funktion.<br><small style="color:var(--mute)">Eine Parabel ist die Menge aller Punkte P, die von F und von ℓ gleich weit entfernt sind (17.1.1).</small></div>
   <ol class="steps">
     <li class="step"><span class="nr">SCHRITT 1</span><h4>Ein allgemeiner Punkt</h4>
@@ -80,6 +81,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 
 <article class="ex" id="a1b" data-mode="faded">
   <div class="ex-head"><h3>A1 (b) und (c)</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#def-17-1-1">Die Definition (17.1.1) ↑</a> · <a href="#scheitelform">Die Scheitelform ↑</a> · <a href="#satz-17-1-3">Satz 17.1.3 ↑</a></p>
   <div class="task">(b) Sei \(a \neq 0\) (du darfst \(a \gt 0\) annehmen). Beschreibe die Parabel zu \(F = (0, a)\) und \(\ell: y = -a\) als Graph einer Funktion.<br>(c) Finde F und ℓ so, dass die Parabel der Graph von \(f(x) = x^2\) ist.</div>
   <ol class="steps">
     <li class="step"><span class="nr">(b)</span><h4>Genau wie (a), nur mit a statt Zahlen</h4>
@@ -94,7 +96,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 
 <h2 id="tangenten">17.2 · Tangenten an Parabeln</h2>
 <p class="ref"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>Im Skript</b></a> (S. 2–4): Definition 17.2.2 (Tangente) · Beispiel 17.2.3 · Proposition 17.2.4 · Aufgaben A2–A8</p>
-<h3 id="buchstaben">Was bedeuten die Buchstaben?</h3>
+<h3 id="buchstaben">Was bedeuten die Buchstaben? <span class="xtra" title="Steht nicht im Skript: eine Hilfe von Kate">Extra</span></h3>
 <p><b>Ein Buchstabe steht für eine Zahl</b>, die wir noch nicht kennen oder die sich ändern darf. Mehr ist es nicht. Man rechnet mit ihm genau wie mit einer Zahl.</p>
 
 <h3>x einsetzen</h3>
@@ -109,7 +111,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
   <li><b>\(\m\) und \(\q\) sind Parameter.</b> Für eine bestimmte Gerade sind sie feste Zahlen, wir kennen sie nur noch nicht. <b>Genau diese Zahlen suchen wir</b> in den Tangenten-Aufgaben.</li>
 </ul>
 
-<h3>Die Gerade \(g(x) = \m\cdot x + \q\)</h3>
+<h3 id="gerade">Die Gerade \(g(x) = \m\cdot x + \q\)</h3>
 <p><span class="mm">m = Steigung</span>: Gehst du 1 nach rechts, geht die Gerade m nach oben (bei negativem m nach unten).<br>
 <span class="qq">q = y-Achsenabschnitt</span>: Dort schneidet die Gerade die y-Achse, im Punkt \((0, \q)\).</p>
 <div class="box play">
@@ -122,7 +124,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
   </div>
 </div>
 
-<h3>Liegt ein Punkt auf der Geraden? → Einsetzen</h3>
+<h3 id="einsetzen">Liegt ein Punkt auf der Geraden? → Einsetzen</h3>
 <p>Ein Punkt \(P = (x_P, y_P)\) liegt auf g, wenn \(g(x_P) = y_P\) stimmt.</p>
 <div class="box">
 <p>Beispiel: \(g(x) = -3x + 5\) und \(P = (2, -1)\): \(g(2) = -3\cdot 2 + 5 = -1\). ✓ P liegt auf g.</p>
@@ -133,17 +135,21 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <p>Dann gibt das Einsetzen eines Punktes eine <b>Gleichung zwischen m und q</b>. Die lösen wir nach q auf. Das ist Schritt 1 in fast jeder Aufgabe.</p>
 <div class="box">$$P = (1,-3) \text{ liegt auf } g:\qquad \m\cdot 1 + \q = -3 \iff \q = -\m - 3$$</div>
 
-<h3>Gleichsetzen und Diskriminante</h3>
+<h3 id="diskriminante">Gleichsetzen und Diskriminante</h3>
 <p>Wo sich Parabel f und Gerade g treffen, sind beide gleich hoch: \(f(x) = g(x)\). Das gibt eine quadratische Gleichung \(ax^2 + bx + c = 0\). Ihre <b>Diskriminante</b> \(D = b^2 - 4ac\) sagt, wie viele Treffpunkte es gibt (Kapitel 14):</p>
 <ul class="sub">
   <li>\(D \gt 0\): zwei Schnittpunkte. Die Gerade schneidet die Parabel.</li>
   <li>\(D = 0\): genau ein Punkt. <b>Die Gerade ist eine Tangente.</b> Dann ist \(x = -\frac{b}{2a}\).</li>
   <li>\(D \lt 0\): kein Punkt. Die Gerade geht vorbei.</li>
 </ul>
+<div class="box" id="def-17-2-2"><b>Definition 17.2.2: Tangente</b><p style="margin:4px 0 0">Eine Gerade, die den Graphen einer quadratischen Funktion f in <b>genau einem Punkt</b> schneidet, heisst <b>Tangente</b> an f. Der Punkt heisst <b>Berührpunkt</b>. (Senkrechte Geraden zählen nicht.) Mit der Diskriminante heisst das: <b>D = 0</b>.</p></div>
 <iframe class="embedded" data-mode="tangente" src="interaktiv.html?embed=1&amp;one=1&amp;lang=de#tangente" title="Ausprobieren" loading="lazy"></iframe>
+<div class="box" id="bsp-17-2-3"><b>Beispiel 17.2.3 aus dem Skript</b><p style="margin:4px 0 0">Tangente an \(f(x) = \frac18 x^2 - x + 3\) bei \(x_0 = 2\). Genau das <a href="#rezept">Tangenten-Rezept</a>:</p>
+$$\begin{aligned} P &= (2, f(2)) = \left(2, \tfrac32\right) && \text{Berührpunkt} \\ t(x) &= mx + q,\ t(2) = \tfrac32 \Rightarrow q = \tfrac32 - 2m && \text{Ansatz} \\ \tfrac18 x^2 - x + 3 &= mx + \tfrac32 - 2m && \text{gleichsetzen} \\ x^2 + (-8m - 8)x + (16m + 12) &= 0 && \text{Standardform} \\ (-8m - 8)^2 - 4(16m + 12) = 0 &\iff 4m^2 + 4m + 1 = 0 && D = 0 \\ m &= -\tfrac12,\quad q = \tfrac52 && \text{lösen} \end{aligned}$$
+<p style="margin:0">Die Tangente ist \(t(x) = -\frac12 x + \frac52\).</p></div>
 
-<h3 id="rezept">Das Tangenten-Rezept</h3>
-<p class="small" style="color:var(--mute)">Für Kreise gibt es zwei eigene Rezepte, sie stehen bei <a href="#kreisrezept1">5 · Kreise</a>. Alle Rezepte auf einen Blick: <a href="#spickzettel">6 · Spickzettel</a>.</p>
+<h3 id="rezept">Das Tangenten-Rezept <span class="xtra" title="Steht nicht im Skript: eine Hilfe von Kate">Extra</span></h3>
+<p class="small" style="color:var(--mute)">Für Kreise gibt es zwei eigene Rezepte, sie stehen bei <a href="#kreisrezept1">17.3 · Kreise</a>. Alle Rezepte auf einen Blick: <a href="#spickzettel">Spickzettel</a>.</p>
 <p>Fast alle Aufgaben A2–A8 gehen mit denselben 7 Schritten. Nur Schritt 1 ändert sich, je nachdem, was gegeben ist.</p>
 <ol class="recipe">
   <li><div><b>Ansatz</b><span class="f">\(t(x) = \m x + \q\)</span>Das Gegebene einsetzen.<small>Steigung gegeben → m einsetzen. Punkt gegeben → einsetzen und nach q auflösen.</small></div></li>
@@ -166,9 +172,12 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <div class="box exam"><b>So schreibst du es in der Prüfung auf</b>
 <p style="margin:4px 0 0">Wörter wie im Skript: «Ansatz: …», «Da P auf t liegt, gilt …», «⇔», «Also …», «Die gesuchte Tangente ist …». Kein Taschenrechner: Brüche stehen lassen. Probe: Berührpunkt auch in f einsetzen, es muss dasselbe y herauskommen.</p></div>
 
+<p class="bridge"><b>Jetzt die Aufgaben A2–A8.</b> Alle gehen mit dem <a href="#rezept">Tangenten-Rezept</a>. Welcher Schritt 1 passt, zeigt die Tabelle direkt darüber.</p>
+
 <!-- A2 -->
 <article class="ex" id="a2" data-mode="worked">
   <div class="ex-head"><h3>A2</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#def-17-2-2">Definition 17.2.2 ↑</a> · <a href="#rezept">Das Tangenten-Rezept ↑</a> · <a href="#bsp-17-2-3">Beispiel 17.2.3 ↑</a></p>
   <div class="task">Bestimme die Tangente mit Steigung −3 an die Parabel \(f(x) = x^2 - 2x + 3\) und den Berührpunkt.</div>
   <ol class="steps">
     <li class="step"><span class="nr">SCHRITT 1</span><h4>Ansatz</h4>
@@ -200,6 +209,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <!-- A3 -->
 <article class="ex" id="a3" data-mode="worked">
   <div class="ex-head"><h3>A3</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#rezept">Das Tangenten-Rezept ↑</a> · <a href="#einsetzen">Liegt ein Punkt auf der Geraden? → Einsetzen ↑</a></p>
   <div class="task">Bestimme alle Tangenten an die Parabel \(f(x) = x^2 - 2x + \frac{25}{16}\), die durch den Ursprung gehen; gib jeweils den Berührpunkt an.</div>
   <ol class="steps">
     <li class="step"><span class="nr">SCHRITT 1</span><h4>Ansatz</h4>
@@ -229,6 +239,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <!-- A4 a -->
 <article class="ex" id="a4" data-mode="worked">
   <div class="ex-head"><h3>A4 (a)</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#rezept">Das Tangenten-Rezept ↑</a> · <a href="#def-17-2-2">Definition 17.2.2 ↑</a></p>
   <div class="task">Bestimme die Gleichung \(t(x) = \m x + \q\) der Tangente an \(f(x) = x^2\) im Punkt \(Q = \left(\frac12, \frac14\right)\).</div>
   <ol class="steps">
     <li class="step"><span class="nr">SCHRITT 1</span><h4>Ansatz</h4>
@@ -255,6 +266,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <!-- A4 b -->
 <article class="ex" id="a4b" data-mode="faded">
   <div class="ex-head"><h3>A4 (b)</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#rezept">Das Tangenten-Rezept ↑</a> · <a href="#gerade">Die Gerade \(g(x) = \m\cdot x + \q\) ↑</a></p>
   <div class="task">Allgemeiner Punkt \(P = (p, p^2)\) auf der Normalparabel \(f(x) = x^2\). Bestimme die Tangente \(t(x) = \m x + \q\) an f im Punkt P.<br><small style="color:var(--mute)">p ist einfach eine Zahl, die wir nicht festlegen. Rechne genau wie in (a), nur mit p statt ½.</small></div>
   <ol class="steps">
     <li class="step"><span class="nr">SCHRITT 1</span><h4>Ansatz: P liegt auf t</h4>
@@ -276,6 +288,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <!-- A5 -->
 <article class="ex" id="a5" data-mode="faded">
   <div class="ex-head"><h3>A5</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#a4b">Proposition 17.2.4 ↑</a></p>
   <div class="task">Mit Proposition 17.2.4: Gib die Tangenten an die Normalparabel \(f(x) = x^2\) in den Punkten \(A = (-2, 4)\), \(B = (3, 9)\), \(C = (1, 1)\), \(D = (\frac12, \frac14)\), \(E = (-\frac32, \frac94)\), \(O = (0, 0)\) an.</div>
   <ol class="steps">
     <li class="step"><span class="nr">REGEL</span><h4>Die Abkürzung</h4>
@@ -294,6 +307,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <!-- A6 -->
 <article class="ex" id="a6" data-mode="faded">
   <div class="ex-head"><h3>A6</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#rezept">Das Tangenten-Rezept ↑</a> · <a href="#a4b">Proposition 17.2.4 ↑</a></p>
   <div class="task">(a) Bestimme alle Tangenten an die Normalparabel \(f(x) = x^2\), die durch \(A = (1, -3)\) gehen. A liegt <b>nicht</b> auf der Parabel.<br>(b) Gib die Berührpunkte an.<br><small style="color:var(--mute)">Hier der 2. Weg aus dem Skript = unser Kochrezept. Den 1. Weg findest du unten.</small></div>
   <ol class="steps">
     <li class="step"><span class="nr">SCHRITT 1</span><h4>Ansatz: A liegt auf t</h4>
@@ -321,6 +335,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <!-- A7 -->
 <article class="ex" id="a7" data-mode="faded">
   <div class="ex-head"><h3>A7</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#rezept">Das Tangenten-Rezept ↑</a> · <a href="#scheitelform">Die Scheitelform ↑</a></p>
   <div class="task">(a) Bestimme alle Tangenten an \(f(x) = \frac14(x + 3)^2 + 1\), die durch \(P = (-2, -1)\) gehen.<br>(b) Bestimme jeweils den Berührpunkt.</div>
   <ol class="steps">
     <li class="step"><span class="nr">SCHRITT 1</span><h4>Ansatz: P liegt auf t</h4>
@@ -350,6 +365,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <!-- A8 -->
 <article class="ex" id="a8" data-mode="faded">
   <div class="ex-head"><h3>A8</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#rezept">Das Tangenten-Rezept ↑</a></p>
   <div class="task">Bestimme die Tangente an \(f(x) = \frac14(x + 3)^2 + 1\) im Punkt \(A = (-1, f(-1))\).</div>
   <ol class="steps">
     <li class="step"><span class="nr">SCHRITT 0</span><h4>Den Punkt ausrechnen</h4>
@@ -374,7 +390,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 <h2 id="kreise">17.3 · Kreise und quadratische Gleichungen</h2>
 <p class="ref"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>Im Skript</b></a> (S. 4–6): Definition 17.3.2 (Kreis) · Merke 17.3.4 (Kreisgleichung) · Definition 17.3.6 (Nullstellenmenge) · Merke 17.3.7 · Aufgaben A9, A10</p>
 <p>Ein Kreis ist die Menge aller Punkte, die von einem Mittelpunkt M genau den Abstand r haben. Mit Pythagoras wird daraus die <b>Kreisgleichung</b>:</p>
-<div class="box">$$(x - a)^2 + (y - b)^2 = r^2 \qquad M = (a, b),\ \text{Radius } r$$
+<div class="box" id="merke-17-3-4"><b>Definition 17.3.2 und Merke 17.3.4: Kreisgleichung</b>$$(x - a)^2 + (y - b)^2 = r^2 \qquad M = (a, b),\ \text{Radius } r$$
 <p style="margin:0">Achtung Vorzeichen: \((y + 10)^2\) ist \((y - (-10))^2\), also ist \(b = -10\).</p></div>
 <p>Für A9 brauchst du das <b>quadratische Ergänzen</b>. Falls das nicht mehr sitzt: <a href="../grundlagen/#ergaenzen">Werkzeugkasten Algebra</a>.</p>
 
@@ -392,6 +408,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 
 <article class="ex" id="k1">
   <div class="ex-head"><h3>Frage 1</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#merke-17-3-4">Merke 17.3.4 ↑</a></p>
   <div class="task">Was beschreibt \(x^2 + y^2 = 1\)?</div>
   <ol class="steps">
     <li class="step"><div class="ask" data-form="M = (_, _)" data-ans="0|0"><p class="q"><span data-l="de">Wo liegt der Mittelpunkt?</span><span data-l="en">Where is the centre?</span></p><p class="hint"><span data-l="de">Vergleiche mit \((x - a)^2 + (y - b)^2\). Was steht hier anstelle von a und b?</span><span data-l="en">Compare with \((x - a)^2 + (y - b)^2\). What stands in place of a and b here?</span></p></div><span class="nr">SCHRITT 1</span><h4>Mittelpunkt ablesen</h4>
@@ -408,6 +425,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 
 <article class="ex" id="k2">
   <div class="ex-head"><h3>Frage 2</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#merke-17-3-4">Merke 17.3.4 ↑</a></p>
   <div class="task">Was beschreibt \((3 - x)^2 + (y + 7)^2 = \sqrt5\)?</div>
   <ol class="steps">
     <li class="step"><div class="ask" data-form="a = _" data-ans="3"><p class="q"><span data-l="de">Erste Koordinate des Mittelpunkts?</span><span data-l="en">First coordinate of the centre?</span></p><p class="hint" data-when="-3"><span data-l="de">Fast. \(3 - x\) ist dasselbe wie \(-(x - 3)\), und im Quadrat fällt das Minus weg.</span><span data-l="en">Close. \(3 - x\) is the same as \(-(x - 3)\), and squaring removes the minus.</span></p><p class="hint"><span data-l="de">Schreib \((3 - x)^2\) als \((x - \ldots)^2\). Im Quadrat ist die Reihenfolge egal.</span><span data-l="en">Write \((3 - x)^2\) as \((x - \ldots)^2\). Squared, the order does not matter.</span></p></div><span class="nr">SCHRITT 1</span><h4>Die erste Klammer umdrehen</h4>
@@ -428,6 +446,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 
 <article class="ex" id="k3">
   <div class="ex-head"><h3>Frage 3</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#merke-17-3-4">Merke 17.3.4 ↑</a></p>
   <div class="task">Was beschreibt \(x^2 + y^2 = 0\)?</div>
   <ol class="steps">
     <li class="step"><div class="ask" data-type="choice"><p class="q"><span data-l="de">Dein Tipp, bevor du rechnest:</span><span data-l="en">Your guess, before you calculate:</span></p><button class="opt"><span data-l="de">Einen Kreis um (0, 0) mit Radius&nbsp;1</span><span data-l="en">A circle around (0, 0) with radius&nbsp;1</span><span class="oh"><span data-l="de">Dann müsste rechts 1 stehen. Hier ist \(r^2 = 0\).</span><span data-l="en">Then the right side would be 1. Here \(r^2 = 0\).</span></span></button><button class="opt" data-ok><span data-l="de">Nur den Punkt (0, 0)</span><span data-l="en">Only the point (0, 0)</span></button><button class="opt"><span data-l="de">Gar keinen Punkt (leere Menge)</span><span data-l="en">No point at all (empty set)</span><span class="oh"><span data-l="de">Setz \(x = 0\) und \(y = 0\) ein. Stimmt die Gleichung?</span><span data-l="en">Put in \(x = 0\) and \(y = 0\). Does the equation hold?</span></span></button></div><span class="nr">SCHRITT 1</span><h4>Quadrate sind nie negativ</h4>
@@ -443,6 +462,7 @@ $$\overline{PF} = \overline{P\ell}$$</div>
 
 <article class="ex" id="k4">
   <div class="ex-head"><h3>Frage 4</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#merke-17-3-4">Merke 17.3.4 ↑</a></p>
   <div class="task">Was beschreibt \(x^2 + y^2 = -1\)?</div>
   <ol class="steps">
     <li class="step"><div class="ask" data-type="choice"><p class="q"><span data-l="de">Dein Tipp, bevor du rechnest:</span><span data-l="en">Your guess, before you calculate:</span></p><button class="opt"><span data-l="de">Einen Kreis um (0, 0) mit Radius&nbsp;1</span><span data-l="en">A circle around (0, 0) with radius&nbsp;1</span><span class="oh"><span data-l="de">Rechts steht −1, nicht 1. Kann \(x^2 + y^2\) negativ sein?</span><span data-l="en">The right side is −1, not 1. Can \(x^2 + y^2\) be negative?</span></span></button><button class="opt"><span data-l="de">Nur den Punkt (0, 0)</span><span data-l="en">Only the point (0, 0)</span><span class="oh"><span data-l="de">Setz \(x = 0\), \(y = 0\) ein: \(0 = -1\)? Stimmt nicht.</span><span data-l="en">Put in \(x = 0\), \(y = 0\): \(0 = -1\)? False.</span></span></button><button class="opt" data-ok><span data-l="de">Gar keinen Punkt (leere Menge)</span><span data-l="en">No point at all (empty set)</span></button></div><span class="nr">SCHRITT 1</span><h4>Quadrate sind nie negativ</h4>
@@ -466,7 +486,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 <p class="ts">Rückwärts: Gleichung aufstellen</p>
 <ol class="tryl"><li><span class="tq"><b>e)</b> Mittelpunkt \((-3, 4)\), Radius \(\sqrt2\)</span> <button type="button" class="reveal" data-answer="kqe">Lösung zeigen</button><p id="kqe" class="ta">\((x + 3)^2 + (y - 4)^2 = 2\)</p></li></ol></div>
 
-<h3 id="kreisrezept1">Kreis-Rezept 1: Mittelpunkt und Radius ablesen</h3>
+<h3 id="kreisrezept1">Kreis-Rezept 1: Mittelpunkt und Radius ablesen <span class="xtra" title="Steht nicht im Skript: eine Hilfe von Kate">Extra</span></h3>
 <p>Am Beispiel \(x^2 + y^2 - 6x + 4y - 3 = 0\), Schritt für Schritt:</p>
 <ol class="recipe">
   <li><div><b>Sortieren</b><span class="f">\((x^2 - 6x) + (y^2 + 4y) = 3\)</span><small>x-Terme zusammen, y-Terme zusammen, die Zahl nach rechts.</small></div></li>
@@ -475,7 +495,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
   <li><div><b>Ablesen</b><span class="f">\(M = (3, -2)\)</span><span class="f">\(r = \sqrt{16} = 4\)</span><small>Vorzeichen aus der Klammer umdrehen. Steht rechts 0: nur ein Punkt. Steht rechts etwas Negatives: gar kein Punkt.</small></div></li>
 </ol>
 
-<h3 id="ergaenzen">Zwischenschritt: quadratisch ergänzen</h3>
+<h3 id="ergaenzen">Zwischenschritt: quadratisch ergänzen <span class="xtra" title="Steht nicht im Skript: eine Hilfe von Kate">Extra</span></h3>
 <p>Für Schritt 2 von Kreis-Rezept 1 braucht es kein Raten. Für \(x^2 + b\,x\) gilt immer:</p>
 <ol class="recipe">
   <li><div><b>Halbieren</b><span class="f">\(h = \dfrac{b}{2}\)</span><small>Die Zahl vor x halbieren, mit Vorzeichen.</small></div></li>
@@ -485,6 +505,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 <div class="box"><p style="margin:0"><b>Warum?</b> Ausmultipliziert ist \((x + h)^2 = x^2 + 2h\,x + h^2\). Damit der Teil mit x stimmt, muss \(2h = b\) sein, also \(h = \tfrac{b}{2}\). Das \(h^2\) ist zu viel und wird abgezogen.<br><b>Probe:</b> Ausmultiplizieren muss wieder den Anfang geben.<br><b>Zahl vor x²?</b> Zuerst ausklammern: \(2x^2 + 12x = 2(x^2 + 6x)\), dann in der Klammer ergänzen.</p></div>
 <article class="ex" id="qe1">
   <div class="ex-head"><h3>Übung 1</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#ergaenzen">Zwischenschritt: quadratisch ergänzen ↑</a></p>
   <div class="task">Ergänze quadratisch: \(x^2 - 8x\)</div>
   <ol class="steps">
     <li class="step"><div class="ask" data-form="h = _" data-ans="-4"><p class="q">Wie gross ist h, die halbe Zahl vor x?</p><p class="hint" data-when="4">Fast: Das Vorzeichen bleibt beim Halbieren.</p><p class="hint" data-when="-8">Das ist die ganze Zahl vor x. Davon die Hälfte.</p><p class="hint">Die Zahl vor x ist \(-8\). Teile sie durch 2.</p></div><span class="nr">SCHRITT 1</span><h4>Halbieren</h4>
@@ -501,6 +522,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 </article>
 <article class="ex" id="qe2">
   <div class="ex-head"><h3>Übung 2</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#ergaenzen">Zwischenschritt: quadratisch ergänzen ↑</a></p>
   <div class="task">Ergänze quadratisch: \(y^2 + 10y\)</div>
   <ol class="steps">
     <li class="step"><div class="ask" data-form="h = _" data-ans="5"><p class="q">Wie gross ist h, die halbe Zahl vor y?</p><p class="hint" data-when="-5">Fast: Das Vorzeichen bleibt beim Halbieren.</p><p class="hint" data-when="10">Das ist die ganze Zahl vor y. Davon die Hälfte.</p><p class="hint">Die Zahl vor y ist \(10\). Teile sie durch 2.</p></div><span class="nr">SCHRITT 1</span><h4>Halbieren</h4>
@@ -517,6 +539,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 </article>
 <article class="ex" id="qe3">
   <div class="ex-head"><h3>Übung 3</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#ergaenzen">Zwischenschritt: quadratisch ergänzen ↑</a></p>
   <div class="task">Ergänze quadratisch: \(x^2 + 3x\)</div>
   <ol class="steps">
     <li class="step"><div class="ask" data-form="h = _" data-ans="3/2"><p class="q">Wie gross ist h, die halbe Zahl vor x?</p><p class="hint" data-when="-3/2">Fast: Das Vorzeichen bleibt beim Halbieren.</p><p class="hint" data-when="3">Das ist die ganze Zahl vor x. Davon die Hälfte.</p><p class="hint">Die Zahl vor x ist \(3\). Teile sie durch 2.</p></div><span class="nr">SCHRITT 1</span><h4>Halbieren</h4>
@@ -532,11 +555,17 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
   <div class="done">Probe: ausmultipliziert gibt das wieder \(x^2 + 3x\).</div>
 </article>
 
-<!-- A9 e -->
-<iframe class="embedded" data-mode="kreis" src="interaktiv.html?embed=1&amp;one=1&amp;lang=de#kreis" title="Ausprobieren" loading="lazy"></iframe>
+<div class="box" id="def-17-3-6"><b>Definition 17.3.6 und Merke 17.3.7: Nullstellenmenge</b>
+<p style="margin:4px 0 0">Eine <b>Nullstelle</b> von \(f(x, y)\) ist ein Punkt \((x, y)\) mit \(f(x, y) = 0\). Die <b>Nullstellenmenge</b> sind alle diese Punkte, also die Lösungsmenge von \(f(x, y) = 0\).</p>
+<p style="margin:8px 0 0">Beispiel aus dem Skript (17.3.5): Multipliziert man die Kreisgleichung \((x - 3)^2 + (y - 5)^2 = 7^2\) aus, kommt \(x^2 - 6x + y^2 - 10y - 15 = 0\) heraus. Der Kreis \(K_7(3, 5)\) ist also die Nullstellenmenge von \(x^2 - 6x + y^2 - 10y - 15\).</p>
+<p style="margin:8px 0 0"><b>Merke 17.3.7:</b> Die Nullstellenmenge von \(x^2 + y^2 + sx + ty + u\) ist immer <b>ein Kreis</b>, <b>ein einzelner Punkt</b> oder <b>leer</b>. Wichtig: Vor \(x^2\) und \(y^2\) steht dieselbe Zahl, und \(xy\) kommt nicht vor.</p>
+<p style="margin:8px 0 0"><b>Warum?</b> Quadratisch ergänzen, einmal für x und einmal für y. Das gibt \((x - a)^2 + (y - b)^2 = d\). Ist \(d \gt 0\): Kreis um \((a, b)\) mit \(r = \sqrt d\). Ist \(d = 0\): nur der Punkt \((a, b)\). Ist \(d \lt 0\): leer.</p></div>
+<p class="bridge"><b>Jetzt A9 und A10.</b> A9 ist genau Merke 17.3.7: quadratisch ergänzen, dann mit <a href="#kreisrezept1">Kreis-Rezept 1</a> ablesen. In A10 siehst du, welche anderen Figuren Nullstellenmengen sein können.</p>
 
+<!-- A9 e -->
 <article class="ex" id="a9" data-mode="worked">
   <div class="ex-head"><h3>A9 (a) e)</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#def-17-3-6">Definition 17.3.6 / Merke 17.3.7 ↑</a> · <a href="#kreisrezept1">Kreis-Rezept 1: Mittelpunkt und Radius ablesen ↑</a> · <a href="#ergaenzen">Zwischenschritt: quadratisch ergänzen ↑</a></p>
   <div class="task">Finde Mittelpunkt und Radius des Kreises \(x^2 + y^2 - 6x + 20y + 73 = 0\).</div>
   <ol class="steps">
     <li class="step"><span class="nr">SCHRITT 1</span><h4>Sortieren</h4>
@@ -559,6 +588,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 <!-- A9 rest -->
 <article class="ex" id="a9b" data-mode="faded">
   <div class="ex-head"><h3>A9 (a) a)–d), f) und (b)</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#def-17-3-6">Definition 17.3.6 / Merke 17.3.7 ↑</a> · <a href="#kreisrezept1">Kreis-Rezept 1: Mittelpunkt und Radius ablesen ↑</a></p>
   <div class="task">(a) Finde Mittelpunkt und Radius:<br>a) \(x^2 + y^2 = 25\)<br>b) \(x^2 + y^2 - 5 = 0\)<br>c) \(x^2 - 2x + 1 + y^2 - \frac14 = 0\)<br>d) \(x^2 + 2x + 1 + y^2 - \frac14 = 0\)<br>f) \(x^2 + y^2 - 2\sqrt3 x + 4\sqrt2 y + 4 = 0\)<br>(b) Warum sind das keine Kreise? Was ist es dann?<br>a) \(x^2 + y^2 + 25 = 0\)<br>b) \(x^2 + y^2 = 0\)<br>c) \(x^2 + \left(\frac{y}{2}\right)^2 - 1 = 0\)</div>
   <ol class="steps">
     <li class="step"><span class="nr">a) b)</span><h4>Schon fast fertig</h4>
@@ -584,6 +614,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 <!-- A10 -->
 <article class="ex" id="a10" data-mode="faded">
   <div class="ex-head"><h3>A10</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#def-17-3-6">Definition 17.3.6 / Merke 17.3.7 ↑</a></p>
   <div class="task">Die Nullstellenmengen dieser Funktionen sind keine Kreise, aber einfache Figuren. Skizziere sie:<br>(a) \(y\)<br>(b) \(y - 3\)<br>(c) \(x\)<br>(d) \(x + 4\)<br>(e) \(x - y\)<br>(f) \(x + y\)<br>(g) \(\frac12 x - 3 - y\)<br>(h) \(2x + 3y - 6\)<br>(i) \(x^2 - y\)<br>(j) \(x - y^2\)<br>(k) \(xy\)<br>(l) \((x + 4)(y - 3)\)<br>(m) \(xy + 2x + 5y + 10\)<br>(n) \(0\)<br>(o) \(-2\)<br>(p) \(xy(x - y)\)<br>(q) \(x^3y - xy^3\); Zusatz (r), (s).</div>
   <ol class="steps">
     <li class="step"><span class="nr">REGEL</span><h4>Gleich null setzen, nach y (oder x) auflösen</h4>
@@ -607,7 +638,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 
 <h2 id="kreisgerade">17.4 · Kreis mit Gerade schneiden</h2>
 <p class="ref"><a href="https://fginfo.ksbg.ch/dokuwiki/doku.php?id=lehrkraefte:snr:klasse-ib-2025" target="_blank" rel="noopener"><b>Im Skript</b></a> (S. 6): Aufgabe A11</p>
-<h3 id="kreisrezept2">Kreis-Rezept 2: Kreis und Gerade schneiden</h3>
+<h3 id="kreisrezept2">Kreis-Rezept 2: Kreis und Gerade schneiden <span class="xtra" title="Steht nicht im Skript: eine Hilfe von Kate">Extra</span></h3>
 <p>Am Beispiel: Kreis \(x^2 + y^2 = 10\) und Gerade \(x - y + 2 = 0\).</p>
 <ol class="recipe">
   <li><div><b>Gerade nach y auflösen</b><span class="f">\(y = x + 2\)</span><small>Allgemein: \(y = \m x + \q\).</small></div></li>
@@ -618,9 +649,12 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
   <li><div><b>Probe</b><span class="f">\(1^2 + 3^2 = 10\ \checkmark\)</span><span class="f">\((-3)^2 + (-1)^2 = 10\ \checkmark\)</span><small>Beide Punkte liegen auch auf der Geraden.</small></div></li>
 </ol>
 
+<iframe class="embedded" data-mode="kreis" src="interaktiv.html?embed=1&amp;one=1&amp;lang=de#kreis" title="Ausprobieren" loading="lazy"></iframe>
+
 <!-- A11 a -->
 <article class="ex" id="a11" data-mode="worked">
   <div class="ex-head"><h3>A11 (a)</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#kreisrezept2">Kreis-Rezept 2: Kreis und Gerade schneiden ↑</a></p>
   <div class="task">Berechne die Schnittpunkte der Geraden \(-x + y = 1\) mit dem Kreis \(x^2 + y^2 = 25\). (Zuerst zeichnen und ablesen, dann rechnen.)</div>
   <ol class="steps">
     <li class="step"><span class="nr">SCHRITT 1</span><h4>Gerade nach y auflösen</h4>
@@ -643,6 +677,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 <!-- A11 b-d -->
 <article class="ex" id="a11b" data-mode="faded">
   <div class="ex-head"><h3>A11 (b)–(d)</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#kreisrezept2">Kreis-Rezept 2: Kreis und Gerade schneiden ↑</a></p>
   <div class="task">(b) Schnittpunkte von \(y = \frac12 x + 1\) mit \(x^2 + y^2 = 25\).<br>(c) Schnittpunkte des Kreises um \((-2, 1)\) mit Radius 4 mit der Geraden durch den Mittelpunkt mit Steigung \(\frac32\).<br>(d) freiwillig: \(3x + 4y = 327\) mit \((x - 5)^2 + (y - 3)^2 = 65^2\).</div>
   <ol class="steps">
     <li class="step"><span class="nr">(b)</span><h4>Einsetzen, Bruch wegmultiplizieren</h4>
@@ -671,6 +706,7 @@ $$(x - 2)^2 + (y + 1)^2 = (\sqrt3)^2 = 3$$</div>
 
 <article class="ex" id="a12" data-mode="faded">
   <div class="ex-head"><h3>A12</h3></div>
+  <p class="th"><b>Theorie dazu:</b> <a href="#merke-17-3-4">Merke 17.3.4 ↑</a> · <a href="#kreisrezept2">Kreis-Rezept 2: Kreis und Gerade schneiden ↑</a></p>
   <div class="task">Bestimme die Schnittpunkte des Kreises um \((0, 0)\) mit Radius 85 und des Kreises um \((140, 20)\) mit Radius 65.<br><small style="color:var(--mute)">Hier ein kürzerer Weg als im Skript: die Gleichungen voneinander abziehen. Dann fallen \(x^2\) und \(y^2\) weg, und es bleibt eine Gerade, also wieder A11.</small></div>
   <ol class="steps">
     <li class="step"><span class="nr">SCHRITT 1</span><h4>Beide Kreisgleichungen</h4>
